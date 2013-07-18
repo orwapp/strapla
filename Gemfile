@@ -15,6 +15,8 @@ gem 'simple_form' #, :github => 'plataformatec/simple_form'
 gem 'jbuilder', '~> 1.2'
 gem 'sass-rails', '~> 4.0.0'
 gem 'bootstrap-sass', '~> 2.3.2.0'
+gem 'devise'
+gem 'compass'
 
 group :development do
   gem 'growl'
