@@ -28,6 +28,12 @@ group :development do
   gem 'quiet_assets'
 end
 
+group :development, :test do
+  gem 'rspec'
+  gem 'rspec-rails'
+  #gem 'poltergeist', :git => 'https://github.com/jonleighton/poltergeist.git'
+end
+
 
 group :test do
   gem 'capybara'

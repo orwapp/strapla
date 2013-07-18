@@ -1,0 +1,16 @@
+p
+  strong Subject:
+  = @request.subject
+p
+  strong Description:
+  = @request.description
+p
+  strong Goal:
+  = @request.goal
+p
+  strong Group:
+  = @request.request_group.title
+
+= link_to 'Edit', edit_request_path(@request)
+'|
+= link_to 'Back', requests_path

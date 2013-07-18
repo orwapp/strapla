@@ -25,6 +25,16 @@ module CodeRunner
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+
+    config.generators do |g|
+      g.fixture_replacement :fabrication
+      g.template_engine     :slim
+      g.test_framework      :rspec, :fixture => true, :views => false
+    end
+
+    Fabrication.configure do |config|
+      fabricator_dir = "data/fabricators"
+    end
     
   end
 end

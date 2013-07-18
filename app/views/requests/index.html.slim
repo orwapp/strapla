@@ -1,0 +1,25 @@
+h1 Listing requests
+
+table
+  tr
+    th Subject
+    th Description
+    th Goal
+    th Group
+    th
+    th
+    th
+
+  - @requests.each do |request|
+    tr
+      td = request.subject
+      td = request.description
+      td = request.goal
+      td = request.request_group.title
+      td = link_to 'Show', request
+      td = link_to 'Edit', edit_request_path(request)
+      td = link_to 'Destroy', request, :confirm => 'Are you sure?', :method => :delete
+
+br
+
+= link_to 'New Request', new_request_path
