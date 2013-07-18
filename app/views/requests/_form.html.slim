@@ -12,8 +12,8 @@
     = f.input :goal, hint: 'Should be measureable'
 
     = label_tag 'request_group', 'Select group'
-    /= select_tag "group", options_from_collection_for_select(RequestGroup.all, "id", "title")
-    = select("request", "request_group_id", RequestGroup.all.collect {|p| [ p.title, p.id ] }, { :include_blank => false })
+    = select("request", "request_group_id", 
+      RequestGroup.all.collect {|p| [ p.title, p.id ] }, { :include_blank => false })
     
     br
     br

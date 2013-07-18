@@ -1,0 +1,17 @@
+h1.lead Submit your question
+
+= simple_form_for @request do |f|
+  = f.submit "Send the question to the #{@request.request_group.title} group", 
+    class: 'btn btn-primary'
+  = label_tag 'This is often fastest, as all of our experts will get the question.', 
+    nil, class: 'muted'
+
+
+strong Or select one of our experts yourselves
+br
+
+.span6
+  = simple_form_for @request do |f|
+    .span3.img-polaroid
+      i.icon-user.big_font
+

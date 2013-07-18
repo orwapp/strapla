@@ -24,12 +24,15 @@ class RequestsController < ApplicationController
 
   def create
     @request = Request.new(request_params)
-    flash[:notice] = 'User was successfully created.' if @request.save 
-    respond_with(@request) 
+    flash[:notice] = 'Request was successfully created.' if @request.save 
+    #respond_with(@request) 
+    render :select_recipient
   end
 
-  # PATCH/PUT /requests/1
-  # PATCH/PUT /requests/1.json
+  def select_recipient
+
+  end
+
   def update
     respond_to do |format|
       if @request.update(request_params)
@@ -42,8 +45,6 @@ class RequestsController < ApplicationController
     end
   end
 
-  # DELETE /requests/1
-  # DELETE /requests/1.json
   def destroy
     @request = Request.find(params[:id]) 
     @request.destroy 
