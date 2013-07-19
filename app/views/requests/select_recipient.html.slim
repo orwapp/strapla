@@ -1,17 +1,49 @@
-h1.lead Submit your question
+.row
+  .span12
+    = field_set_tag "Who shall we send the question to?" do
+    
+      = simple_form_for @request do |f|
+        = f.submit "Send the question to the #{@request.request_group.title} group", 
+          class: 'btn btn-primary'
+        = label_tag 'This is often fastest, as all of our experts will get the question.', 
+          nil, class: 'muted'
+      
+      br
+      br
+      
+      strong Or select one of our experts yourselves
+      br
 
-= simple_form_for @request do |f|
-  = f.submit "Send the question to the #{@request.request_group.title} group", 
-    class: 'btn btn-primary'
-  = label_tag 'This is often fastest, as all of our experts will get the question.', 
-    nil, class: 'muted'
+      #myCarousel.carousel.slide
+        ol.carousel-indicators
+          li.active data-slide-to="0" data-target="#myCarousel"
+          li data-slide-to="1" data-target="#myCarousel"
+          li data-slide-to="2" data-target="#myCarousel"
+        .carousel-inner
+          .item.active
+            img alt="" src="http://upload.wikimedia.org/wikipedia/commons/7/70/Vixie.jpg"
+              .carousel-caption
+                h4 First Thumbnail label
+                p Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+          .item
+            img alt="" src="http://upload.wikimedia.org/wikipedia/commons/7/70/Vixie.jpg"
+              .carousel-caption
+                h4 Second Thumbnail label
+                p Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+          .item
+            img alt="" src="assets/img/bootstrap-mdo-sfmoma-02.jpg"
+              .carousel-caption
+                h4 Third Thumbnail label
+                p Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+        a.left.carousel-control data-slide="prev" href="#myCarousel"
+        a.right.carousel-control data-slide="next" href="#myCarousel"
+      
 
 
-strong Or select one of our experts yourselves
-br
 
-.span6
-  = simple_form_for @request do |f|
-    .span3.img-polaroid
-      i.icon-user.big_font
-
+      
+      /.span6.border
+        = simple_form_for @request do |f|
+          .span3.img-polaroid
+            i.icon-user.big_font
+    

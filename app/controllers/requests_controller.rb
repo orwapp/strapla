@@ -2,35 +2,35 @@ class RequestsController < ApplicationController
   respond_to :html, :json
   before_action :set_request, only: [:show, :edit, :update, :destroy]
 
-  # GET /requests
-  # GET /requests.json
   def index
     @requests = Request.all
   end
 
-  # GET /requests/1
-  # GET /requests/1.json
   def show
   end
 
-  # GET /requests/new
   def new
     @request = Request.new
   end
 
-  # GET /requests/1/edit
   def edit
   end
 
   def create
     @request = Request.new(request_params)
-    flash[:notice] = 'Request was successfully created.' if @request.save 
-    #respond_with(@request) 
-    render :select_recipient
+    if @request.save 
+      render :select_recipient
+    else
+      respond_with(@request)
+    end
   end
 
   def select_recipient
-
+    require 'ostruct'
+    @experts = []
+    @experts << OpenStruct.new('name' => 'Paul Vixie', 
+       'bio' => 'Paul Vixie is an American Internet pioneer, the author of several RFCs and well-known Unix software author.',
+       'image' => 'http://upload.wikimedia.org/wikipedia/commons/7/70/Vixie.jpg')
   end
 
   def update
