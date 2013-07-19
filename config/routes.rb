@@ -13,6 +13,7 @@ CodeRunner::Application.routes.draw do
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
+  get 'select_recipient/:request_id' => 'requests#select_recipient', as: :select_recipient
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

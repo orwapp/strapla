@@ -19,18 +19,28 @@ class RequestsController < ApplicationController
   def create
     @request = Request.new(request_params)
     if @request.save 
-      render :select_recipient
+      redirect_to select_recipient_path(@request)
     else
       respond_with(@request)
     end
   end
 
   def select_recipient
+    @request = Request.find(params[:request_id])
     require 'ostruct'
     @experts = []
     @experts << OpenStruct.new('name' => 'Paul Vixie', 
        'bio' => 'Paul Vixie is an American Internet pioneer, the author of several RFCs and well-known Unix software author.',
        'image' => 'http://upload.wikimedia.org/wikipedia/commons/7/70/Vixie.jpg')
+    @experts << OpenStruct.new('name' => 'Jon Postel', 
+       'bio' => 'Jon Postel (1943–1998) was a researcher at the Information Sciences Institute. He was editor of all early Internet standards specifications, such as the Request for Comments (RFC) series. His beard and sandals made him "the most recognizable archetype of an Internet pioneer"',
+       'image' => 'http://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Jon_Postel.jpg/150px-Jon_Postel.jpg')
+    @experts << OpenStruct.new('name' => 'Richard Stallman', 
+       'bio' => 'Stallman launched the GNU Project in September 1983 to create a Unix-like computer operating system composed entirely of free software. ' +
+                'With this, he also launched the free software movement. He has been the GNU project\'s lead architect and organizer, and developed a number ' +
+                'of pieces of widely used GNU software including, among others, the GNU Compiler Collection, the GNU Debugger and the GNU Emacs text editor.' +
+                'In October 1985 he founded the Free Software Foundation.',
+       'image' => 'http://stallman.org/saintignucius.jpg')
   end
 
   def update
