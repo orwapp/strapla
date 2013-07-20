@@ -7,6 +7,18 @@ html
     = csrf_meta_tags
   body
     .container
+      .navbar
+        .navbar-inner
+          a.brand href="#" CodeRunner
+          ul.nav
+            li.active
+              a href="#" Browse experts
+            /li
+              a href="#" Sign out
+          ul.nav.pull-right
+            li
+              = link_to "Sign out", destroy_user_session_path, method: :delete
+
       h2= @title
       - if notice 
        p.notice.alert.alert-info= notice 
