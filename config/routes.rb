@@ -1,4 +1,5 @@
 CodeRunner::Application.routes.draw do
+  devise_for :users
   resources :requests
 
   resources :request_groups
