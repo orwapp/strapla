@@ -1,7 +1,7 @@
 .item(class="#{'active' if index == 0}" )
   .offset1
     .image.pull-left
-      = image_tag expert.image, size: '150x150'
+      = image_tag expert.image_url, size: '150x150'
 
     .right.span8
       h4= expert.name 
@@ -19,4 +19,7 @@
       br
       strong Average hours spend: 1.5
 
-      = link_to "Send the question to #{expert.name.split.first}", "#", class: 'btn btn-info send_question pull-right'
+      = simple_form_for :delegate_to_expert, url: delegate_to_expert_path do |f|
+        = f.hidden_field :expert_id,  value: expert.id
+        = f.hidden_field :request_id, value: @request.id
+        = f.submit "Send the question to #{expert.name.split.first}", class: 'btn btn-info send_question pull-right'

@@ -14,7 +14,12 @@ CodeRunner::Application.routes.draw do
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
-  get 'select_recipient/:request_id' => 'requests#select_recipient', as: :select_recipient
+  get  'select_recipient/:request_id' => 'requests#select_recipient', as: :select_recipient
+  get  'my_requests/' => 'requests#my_requests', as: :my_requests
+  post 'delegate_to_expert/' => 'requests#delegate_to_expert',  as: :delegate_to_expert
+  post 'delegate_to_group/' => 'requests#delegate_to_group',  as: :delegate_to_group
+
+
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

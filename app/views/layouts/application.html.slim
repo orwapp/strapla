@@ -9,15 +9,26 @@ html
     .container
       .navbar
         .navbar-inner
-          a.brand href="#" CodeRunner
-          ul.nav
-            li.active
-              a href="#" Browse experts
-            /li
-              a href="#" Sign out
-          ul.nav.pull-right
-            li
-              = link_to "Sign out", destroy_user_session_path, method: :delete
+          a.brand href="/" CodeRunner
+          - if user_signed_in?
+            ul.nav
+              li[class="#{'active' if current_page?(my_requests_path)}"]=  link_to 'My requests', my_requests_path
+
+              - if Request.unassigned.size < 0
+                li[class="#{'active' if current_page?(requests_path)}"]
+                  = link_to (content_tag(:span, " Unassigned #{'request'.pluralize(Request.unassigned.size)} ", class: "") +  \
+                    content_tag(:strong, "#{Request.unassigned.size}", class: "badge badge-success")).html_safe,
+                    requests_path
+
+            ul.nav.pull-right
+
+              li
+                = link_to "Sign out", destroy_user_session_path, method: :delete, class: 'pull-right'
+          - else
+            ul.nav.pull-right
+              li[class="#{'active' if current_page?(new_user_session_path)}"]=  link_to 'Sign in', new_user_session_path
+              li[class="#{'active' if current_page?(new_user_registration_path)}"]=  link_to 'Sign up', new_user_registration_path
+              
 
       h2= @title
       - if notice 

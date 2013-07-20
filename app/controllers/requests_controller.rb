@@ -3,7 +3,13 @@ class RequestsController < ApplicationController
   before_action :set_request, only: [:show, :edit, :update, :destroy]
 
   def index
-    @requests = Request.all
+    @requests = Request.unassigned
+    @groups   = @requests.all.collect(&:request_group).uniq if @requests
+  end
+
+  def my_requests
+    @requests = current_user.requests.all
+    render :index
   end
 
   def show
@@ -29,20 +35,22 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:request_id])
     require 'ostruct'
     prng = Random.new
-    @experts = []
-    @experts << OpenStruct.new('name' => 'Paul Vixie', 
-       'bio' => 'Paul Vixie is an American Internet pioneer, the author of several RFCs and well-known Unix software author.',
-       'image' => 'http://upload.wikimedia.org/wikipedia/commons/7/70/Vixie.jpg',
-       'average_price' => prng.rand(5.0..9.0).round(2))
-    @experts << OpenStruct.new('name' => 'Jon Postel', 
-       'bio' => 'Jon Postel was editor of all early Internet standards specifications, such as the Request for Comments (RFC) series. His beard and sandals made him "the most recognizable archetype of an Internet pioneer"',
-       'image' => 'http://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Jon_Postel.jpg/150px-Jon_Postel.jpg', 
-       'average_price' => prng.rand(5.0..9.0).round(2))
-    @experts << OpenStruct.new('name' => 'Richard Stallman', 
-       'bio' => 'Stallman launched the GNU Project in September 1983 to create a Unix-like computer operating system composed entirely of free software. ' +
-                'In October 1985 he founded the Free Software Foundation.',
-       'image' => 'http://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/NicoBZH_-_Richard_Stallman_%28by-sa%29_%285%29.jpg/240px-NicoBZH_-_Richard_Stallman_%28by-sa%29_%285%29.jpg', 
-       'average_price' => prng.rand(5.0..9.0).round(2))
+    @experts = User.all
+  end
+
+  def delegate_to_expert
+    flash[:notice] = "The request has been forwarded to our expert group"
+    @expert  = User.find( params[:delegate_to_expert][:expert_id] )
+    @request = Request.find(params[:delegate_to_expert][:request_id])
+    @request.update_attribute(:user, @expert)
+
+    flash[:notice] = "Thank you! #{@expert.name} will contact you shortly." 
+    redirect_to root_url
+  end
+
+  def delegate_to_group
+    flash[:notice] = "The request has been forwarded to our expert group"
+    redirect_to root_url
   end
 
   def update
