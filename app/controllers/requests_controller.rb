@@ -35,13 +35,11 @@ class RequestsController < ApplicationController
        'image' => 'http://upload.wikimedia.org/wikipedia/commons/7/70/Vixie.jpg',
        'average_price' => prng.rand(5.0..9.0).round(2))
     @experts << OpenStruct.new('name' => 'Jon Postel', 
-       'bio' => 'Jon Postel (1943–1998) was a researcher at the Information Sciences Institute. He was editor of all early Internet standards specifications, such as the Request for Comments (RFC) series. His beard and sandals made him "the most recognizable archetype of an Internet pioneer"',
+       'bio' => 'Jon Postel was editor of all early Internet standards specifications, such as the Request for Comments (RFC) series. His beard and sandals made him "the most recognizable archetype of an Internet pioneer"',
        'image' => 'http://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Jon_Postel.jpg/150px-Jon_Postel.jpg', 
        'average_price' => prng.rand(5.0..9.0).round(2))
     @experts << OpenStruct.new('name' => 'Richard Stallman', 
        'bio' => 'Stallman launched the GNU Project in September 1983 to create a Unix-like computer operating system composed entirely of free software. ' +
-                'With this, he also launched the free software movement. He has been the GNU project\'s lead architect and organizer, and developed a number ' +
-                'of pieces of widely used GNU software including, among others, the GNU Compiler Collection, the GNU Debugger and the GNU Emacs text editor.' +
                 'In October 1985 he founded the Free Software Foundation.',
        'image' => 'http://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/NicoBZH_-_Richard_Stallman_%28by-sa%29_%285%29.jpg/240px-NicoBZH_-_Richard_Stallman_%28by-sa%29_%285%29.jpg', 
        'average_price' => prng.rand(5.0..9.0).round(2))

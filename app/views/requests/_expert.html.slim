@@ -1,11 +1,18 @@
 .item(class="#{'active' if index == 0}" )
   .offset1
     .image.pull-left
-      = image_tag expert.image, size: '200x200'
+      = image_tag expert.image, size: '150x150'
 
-    .right.span6
+    .right.span8
       h4= expert.name 
-      p.bio= expert.bio
+      .row
+        .span3.bio= expert.bio
+        .span3.previously_answered
+          = "Have answered questions matching the words "
+          strong RSpec
+          |  and 
+          strong OpenGraph
+          |  previously.
       .clearfix
       strong= "Average price / hour: "
       = "$ #{expert.average_price}"
