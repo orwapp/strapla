@@ -11,25 +11,17 @@
       br
       br
       
-      strong Or select one of our experts yourselves
+      strong Or select one of our experts
       br
 
-      #myCarousel.carousel.slide
+      #expert_carousel.carousel.slide.pause.border
         ol.carousel-indicators
-          li.active data-slide-to="0" data-target="#myCarousel"
-          li data-slide-to="1" data-target="#myCarousel"
-          li data-slide-to="2" data-target="#myCarousel"
+          li.active data-slide-to="0" data-target="#expert_carousel"
+          li data-slide-to="1" data-target="#expert_carousel"
+          li data-slide-to="2" data-target="#expert_carousel"
         .carousel-inner
-          = render partial: "expert", collection: @experts, as: :expert, locals: { nr: @experts.index }
-        a.left.carousel-control data-slide="prev" href="#myCarousel"
-        a.right.carousel-control data-slide="next" href="#myCarousel"
-      
-
-
-
-      
-      /.span6.border
-        = simple_form_for @request do |f|
-          .span3.img-polaroid
-            i.icon-user.big_font
-    
+          - @experts.each_with_index do |expert, index|
+            = render partial: "expert", locals: { expert: expert, index: index }
+          
+        a.left.carousel-control data-slide="prev" href="#expert_carousel"  &lsaquo;
+        a.right.carousel-control data-slide="next" href="#expert_carousel" &rsaquo;

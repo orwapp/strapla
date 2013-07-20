@@ -1,5 +1,15 @@
-.item(class=nr)
-  = image_tag expert.image
-  .carousel-caption
-    h4= expert.name 
-    p= expert.bio
+.item(class="#{'active' if index == 0}" )
+  .offset1
+    .image.pull-left
+      = image_tag expert.image, size: '200x200'
+
+    .right.span6
+      h4= expert.name 
+      p.bio= expert.bio
+      .clearfix
+      strong= "Average price / hour: "
+      = "$ #{expert.average_price}"
+      br
+      strong Average hours spend: 1.5
+
+      = link_to "Send the question to #{expert.name.split.first}", "#", class: 'btn btn-info send_question pull-right'
