@@ -14,7 +14,7 @@ html
             ul.nav
               li[class="#{'active' if current_page?(my_requests_path)}"]=  link_to 'My requests', my_requests_path
 
-              - if Request.unassigned.size < 0
+              - if Request.unassigned.size > 0
                 li[class="#{'active' if current_page?(requests_path)}"]
                   = link_to (content_tag(:span, " Unassigned #{'request'.pluralize(Request.unassigned.size)} ", class: "") +  \
                     content_tag(:strong, "#{Request.unassigned.size}", class: "badge badge-success")).html_safe,

@@ -1,15 +1,21 @@
-p
-  strong Subject:
-  = @request.subject
-p
-  strong Description:
-  = @request.description
-p
-  strong Goal:
-  = @request.goal
-p
-  strong Group:
-  = @request.request_group.title
+table.table.table-striped.table-hover
+  tr
+    th Subject
+    th Description
+    th Goal
+    th Group
+    th
+    th
+    th
+
+  tr
+    td = @request.subject
+    td = @request.description
+    td = @request.goal
+    td = @request.request_group.title
+    td = link_to 'Show', @request, class: 'btn btn-mini '
+
+br
 
 = link_to 'Edit', edit_request_path(@request)
 '|

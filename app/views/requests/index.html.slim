@@ -1,6 +1,4 @@
-h1 Listing requests
-
-table.table.table-striped
+table.table.table-striped.table-hover
   tr
     th Subject
     th Description
@@ -16,8 +14,6 @@ table.table.table-striped
       td = request.description
       td = request.goal
       td = request.request_group.title
-      td = link_to 'Show', request
-      td = link_to 'Edit', edit_request_path(request)
-      td = link_to 'Destroy', request, :confirm => 'Are you sure?', :method => :delete
+      td = link_to 'Show', request, class: 'btn btn-mini '
 
 br
