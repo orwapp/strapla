@@ -1,9 +1,8 @@
 CodeRunner::Application.routes.draw do
   devise_for :users
+
   resources :requests
-
   resources :request_groups
-
   resources :pages
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -14,6 +13,7 @@ CodeRunner::Application.routes.draw do
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
+  get  'user/:id' => 'users#profile', as: :user_profile
   get  'select_recipient/:request_id' => 'requests#select_recipient', as: :select_recipient
   get  'my_requests/' => 'requests#my_requests', as: :my_requests
   post 'delegate_to_expert/' => 'requests#delegate_to_expert',  as: :delegate_to_expert

@@ -13,4 +13,8 @@ class User < ActiveRecord::Base
     prng.rand(5.0..9.0).round(2)
   end
 
+  def profile
+  end
+
+
 end

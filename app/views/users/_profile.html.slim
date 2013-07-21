@@ -1,0 +1,26 @@
+#user_profile_partial.item(class="#{'active' if index == 0}" )
+  .offset1
+    .image.pull-left
+      = image_tag user.image_url, size: '150x150'
+
+    .right.span8
+      h4= user.name 
+      .row
+        .span3.bio= user.bio
+        .span3.previously_answered
+          = "Have answered questions matching the words "
+          strong RSpec
+          |  and 
+          strong OpenGraph
+          |  previously.
+      .clearfix
+      strong= "Average price / hour: "
+      = "$ #{user.average_price}"
+      br
+      strong Average hours spend: 1.5
+
+  - if show_form
+    = simple_form_for :delegate_to_expert, url: delegate_to_expert_path do |f|
+      = f.hidden_field :expert_id,  value: user.id
+      = f.hidden_field :request_id, value: @request.id
+      = f.submit "Send the question to #{user.name.split.first}", class: 'btn btn-info send_question pull-right'
