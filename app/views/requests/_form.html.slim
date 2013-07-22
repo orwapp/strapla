@@ -8,9 +8,14 @@
 
   .form-inputs
     = f.input :subject,     input_html: { class: 'span10' }
+    br
+    = f.input :goal,        input_html: { class: 'span10', placeholder: 'Should be clear and measureable' }
+    br
     = f.input :description, input_html: { class: 'span10' }
-    = f.input :goal,        input_html: { class: 'span10' }
-    p.muted Should be clear and measureable
+    br
+    = f.input :repository_url, input_html: { class: 'span10', placeholder: 'github.com/username/repository' }
+
+
     br
     .pull-left
       = label_tag 'request_group', 'Select group'

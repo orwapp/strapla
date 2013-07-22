@@ -1,21 +1,38 @@
-table.table.table-striped.table-hover
-  tr
-    th Subject
-    th Description
-    th Goal
-    th Group
-    th
-    th
-    th
+h2.label.label-info.big_font= @request.request_group.title
+.container.border.small_padding
 
-  tr
-    td = @request.subject
-    td = @request.description
-    td = @request.goal
-    td = @request.request_group.title
-    td = link_to 'Show', @request, class: 'btn btn-mini '
 
-br
+  .media
+    a.pull-left href="#"
+      img.media-object data-src="holder.js/64x64"
+      = image_tag 'request_iphone.png', size: '150x150', class: 'media-object'
+    .media-body
+      h4.lead.lead-pull-up= @request.subject
+      br
+      strong Description
+      br
+      = @request.description
+      br
+      .media
+        strong Goal     
+        br
+        = @request.goal
+        br
+
+  
+  
+
+
+
+  hr
+  .browse_code.lead.clickable
+    ="Browse code... &nbsp;".html_safe 
+    .icon-collapse
+
+  .code_details.hide
+    p I got a running test here, but it fails on line 15.
+    = image_tag 'code_preview.png'
+
 
 = link_to 'Edit', edit_request_path(@request)
 '|
