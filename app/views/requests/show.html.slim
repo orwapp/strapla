@@ -2,58 +2,66 @@ h2.label.label-info.big_font= @request.request_group.title
 .container.border.small_padding
 
 
-  .media
-    a.pull-left href="#"
-      img.media-object data-src="holder.js/64x64"
-      = image_tag 'request_iphone.png', size: '150x150', class: 'media-object'
+  .row
+    .span8
+      .media
+        a.pull-left href="#"
+          = image_tag 'request_iphone.png', size: '150x150', class: 'media-object'
 
-    .media-body
-      h4.lead.lead-pull-up= @request.subject
 
-      p
-        strong Description
-        br
-        = @request.description
+        .media-body
+          h4.lead.lead-pull-up= @request.subject
 
-      p
-        .media
-          strong Goal     
-          br
-          = @request.goal
-          br
-          br
+          p
+            strong Description
+            br
+            = @request.description
 
-      p
-        strong Project status
-        br
-        a href="http://travis-ci.org/colszowka/simplecov" title="SimpleCov is built around the clock by travis-ci.org"
-          img alt="Build Status" src="https://secure.travis-ci.org/colszowka/simplecov.png" style="max-width:100%;"
-        = nbsp
-        a href="https://gemnasium.com/colszowka/simplecov" title="SimpleCov dependencies on Gemnasium"
-          img alt="Dependency Status" src="https://gemnasium.com/colszowka/simplecov.png" style="max-width:100%;"
-        = nbsp
-        a href="https://codeclimate.com/github/colszowka/simplecov"
-          img alt="Code Climate" src="https://codeclimate.com/github/colszowka/simplecov.png" style="max-width:100%;"
+          p
+            .media
+              strong Goal     
+              br
+              = @request.goal
+              br
+              br
+
+          p
+            strong Project status
+            br
+            a href="http://travis-ci.org/colszowka/simplecov" title="SimpleCov is built around the clock by travis-ci.org"
+              img alt="Build Status" src="https://secure.travis-ci.org/colszowka/simplecov.png" style="max-width:100%;"
+            = nbsp
+            a href="https://gemnasium.com/colszowka/simplecov" title="SimpleCov dependencies on Gemnasium"
+              img alt="Dependency Status" src="https://gemnasium.com/colszowka/simplecov.png" style="max-width:100%;"
+            = nbsp
+            a href="https://codeclimate.com/github/colszowka/simplecov"
+              img alt="Code Climate" src="https://codeclimate.com/github/colszowka/simplecov.png" style="max-width:100%;"
+
+
+    .span4
+      p.pull-right
+        em.muted Client: 
+        strong= @request.user.name
+        em= @request.user.title if @request.user.title
 
       br
-      br
-      br
-      .pull-right
-        .btn.btn-primary Quote a price
-        = nbsp
-        .btn Contact the client
-      
 
+  .row
+    .pull-right
+      .btn.btn-primary Quote a price
+      = nbsp
+      .btn Contact the client
 
+  .row
+    .span12
+      hr
+      .browse_code.lead.clickable
+        ="Browse code... &nbsp;".html_safe 
+        i.icon-collapse
 
-  hr
-  .browse_code.lead.clickable
-    ="Browse code... &nbsp;".html_safe 
-    i.icon-collapse
-
-  .code_details.hide
-    p I got a running test here, but it fails on line 15.
-    = image_tag 'code_preview.png'
+      .code_details.hide
+        p I got a running test here, but it fails on line 15.
+        = image_tag 'code_preview.png'
 
 
 = link_to 'Edit', edit_request_path(@request)
