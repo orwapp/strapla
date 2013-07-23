@@ -21,8 +21,10 @@ br
         li.active data-slide-to="0" data-target="#expert_carousel"
         li data-slide-to="1" data-target="#expert_carousel"
         li data-slide-to="2" data-target="#expert_carousel"
+
       .carousel-inner
         - @experts.each_with_index do |expert, index|
           = render partial: "expert", locals: { expert: expert, index: index }
+
       a.left.carousel-control data-slide="prev" href="#expert_carousel"  &lsaquo;
       a.right.carousel-control data-slide="next" href="#expert_carousel" &rsaquo;
