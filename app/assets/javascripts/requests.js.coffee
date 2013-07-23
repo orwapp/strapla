@@ -3,5 +3,8 @@ $ ->
     $(this).carousel interval: false
 
 
+  # Expand code preview
   $(document).on 'click', '.browse_code', (e) => 
     $('.code_details').slideToggle()
+    $(this).find('i').toggleClass('icon-collapse')
+    $(this).find('i').toggleClass('icon-collapse-top')
