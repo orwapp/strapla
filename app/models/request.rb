@@ -7,7 +7,6 @@ class Request < ActiveRecord::Base
   
   attr_accessor :repository_url
 
-
   scope :unassigned, -> { where user_id: nil }
 
 end
