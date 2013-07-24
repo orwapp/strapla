@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-  respond_to :html, :json
+  respond_to :html
   before_action :set_request, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -13,6 +13,7 @@ class RequestsController < ApplicationController
   end
 
   def show
+    @price_quote = current_user.price_quotes.new
   end
 
   def new
@@ -54,15 +55,12 @@ class RequestsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @request.update(request_params)
-        format.html { redirect_to @request, notice: 'Request was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @request.errors, status: :unprocessable_entity }
-      end
+    if @request.update(request_params)
+      flash[:notice]  = 'Request was successfully updated.'
+    else
+      flash[:warning] = 'Request was NOT updated.'
     end
+      respond_with(@request)
   end
 
   def destroy
@@ -81,5 +79,7 @@ class RequestsController < ApplicationController
     def request_params
       params.require(:request).permit(:subject, :description, :goal, :request_group_id)
     end
+
+    #params.require(:bill).permit(:company, :month, :year, :dues_attributes[:amount, :person_id])
 
 end

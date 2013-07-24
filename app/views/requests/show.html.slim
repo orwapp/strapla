@@ -46,14 +46,6 @@ h2.label.label-info.big_font= @request.request_group.title
 
       br
 
-  .row
-    .pull-right
-      = link_to 'Quote a price', new_request_price_quote_path(@request), class: 'btn btn-primary'
-      = nbsp
-      .btn Contact the client
-
-      .price_quote_form
-        == render '/price_quotes/form'
 
   .row
     .span12
@@ -65,7 +57,16 @@ h2.label.label-info.big_font= @request.request_group.title
       .code_details.hide
         p I got a running test here, but it fails on line 15.
         = image_tag 'code_preview.png'
+        hr
 
+  .row
+    .pull-right
+      = link_to 'Quote a price', '#', class: 'btn btn-info show_price_quote_form'
+      = nbsp
+      .btn Contact the client
+
+      .price_quote_form.hide
+        == render '/price_quotes/form'
 
 = link_to 'Edit', edit_request_path(@request)
 '|
