@@ -34,3 +34,18 @@ User.create(
   password_confirmation:  'lkjljklj',
   email: 'expersdft@expert.com'
 )
+
+User.create(
+  'name'  => 'Martin Stabenfeldt', 
+  'bio'   => 'Software Craftsman',
+  'image_url' => 'http://farm1.staticflickr.com/18/24092201_c6567c660a_m.jpg', 
+  'role' => :expert,
+  phone: '555-22323-232',
+  password: 'martin@stabenfeldt.net',
+  password_confirmation:  'martin@stabenfeldt.net',
+  email: 'martin@stabenfeldt.net'
+)
+
+RequestGroup.create(title: 'iOS')
+RequestGroup.create(title: 'Java')
+RequestGroup.create(title: 'Ruby')
