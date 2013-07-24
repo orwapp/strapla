@@ -32,19 +32,22 @@ end
 group :development, :test do
   gem 'rspec'
   gem 'rspec-rails'
-  #gem 'poltergeist', :git => 'https://github.com/jonleighton/poltergeist.git'
 end
 
 
 group :test do
   gem 'capybara'
   gem 'turn'
-  gem 'minitest-rails-capybara'
+  gem 'faker'
+  gem 'poltergeist', :git => 'https://github.com/jonleighton/poltergeist.git'
+  gem 'database_cleaner'
+  gem 'email_spec'
+  gem 'guard-rspec'
 end
 
 gem 'mail_form'
 gem 'redis'
-gem 'split'
+#gem 'split'
 gem 'split', :require => 'split/dashboard'
 
 gem 'foreman'

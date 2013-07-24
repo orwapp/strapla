@@ -25,6 +25,7 @@ class RequestsController < ApplicationController
 
   def create
     @request = Request.new(request_params)
+    @request.user = current_user
     if @request.save 
       redirect_to select_recipient_path(@request)
     else
@@ -70,16 +71,12 @@ class RequestsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_request
       @request = Request.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def request_params
-      params.require(:request).permit(:subject, :description, :goal, :request_group_id)
+      params.require(:request).permit(:subject, :description, :goal, :request_group_id, :repository_url)
     end
-
-    #params.require(:bill).permit(:company, :month, :year, :dues_attributes[:amount, :person_id])
 
 end
