@@ -48,9 +48,12 @@ h2.label.label-info.big_font= @request.request_group.title
 
   .row
     .pull-right
-      .btn.btn-primary Quote a price
+      = link_to 'Quote a price', new_request_price_quote_path(@request), class: 'btn btn-primary'
       = nbsp
       .btn Contact the client
+
+      .price_quote_form
+        == render '/price_quotes/form'
 
   .row
     .span12

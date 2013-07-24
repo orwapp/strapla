@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   
   validates_presence_of :name, :bio, :phone, :email
   has_many :requests
+  has_many :price_quotes
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 

@@ -1,7 +1,11 @@
 CodeRunner::Application.routes.draw do
+
   devise_for :users
 
-  resources :requests
+  resources :price_quotes, :only => [:create]
+  resources :requests do
+    resources :price_quotes
+  end
   resources :request_groups
   resources :pages
 

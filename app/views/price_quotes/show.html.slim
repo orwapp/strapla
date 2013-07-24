@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong User:
+  = @price_quote.user
+p
+  strong Request:
+  = @price_quote.request
+p
+  strong Price:
+  = @price_quote.price
+p
+  strong Hours estimated:
+  = @price_quote.hours_estimated
+
+= link_to 'Edit', edit_price_quote_path(@price_quote)
+'|
+= link_to 'Back', price_quotes_path

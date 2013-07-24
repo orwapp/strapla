@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130720133633) do
+ActiveRecord::Schema.define(version: 20130723104458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "price_quotes", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "request_id"
+    t.float    "price"
+    t.float    "hours_estimated"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "comment"
+  end
+
+  add_index "price_quotes", ["request_id"], name: "index_price_quotes_on_request_id", using: :btree
+  add_index "price_quotes", ["user_id"], name: "index_price_quotes_on_user_id", using: :btree
 
   create_table "request_groups", force: true do |t|
     t.string   "title"
