@@ -221,7 +221,7 @@ GEM
       activesupport (>= 3.0, < 4.1)
       railties (>= 3.0, < 4.1)
       slim (~> 2.0)
-    slop (3.4.5)
+    slop (3.4.6)
     split (0.6.3)
       redis (>= 2.1)
       redis-namespace (>= 1.1.0)
