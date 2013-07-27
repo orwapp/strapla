@@ -1,0 +1,15 @@
+= "Hi #{@price_quote.user.name},"
+
+= "#{@price_quote.request.user.name} has accepted your price quote!"
+br
+= "#{link_to 'Review the request here.', request_path(@price_quote.request)}"
+
+hr
+ 
+= "#{@price_quote.comment}" if @price_quote.comment
+= "#{@price_quote.price}"
+= "#{@price_quote.hours_estimated}"
+
+= link_to 'Click here', request_price_quote_path(@price_quote, @price_quote.request)
+= " to review and accept the quote."
+= "Or contact #{@price_quote.user.name} by email #{@price_quote.user.email}"

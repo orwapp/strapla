@@ -12,19 +12,20 @@ describe "Create a new request" do
   end
 
 
-  it "Click the new request button on the front page" do
-    sign_in(@user)
-    visit root_path
-    Request.all.size.should eq 0
-    click_link 'Find someone to help you'
-
-    fill_in_request_form(group: 'iOS') 
-
-    # We are now on the select recipient page
-    
-    click_button 'Send the question to the iOS group'
-    page.should have_content('The request has been forwarded to our expert group')
-    Request.all.size.should eq 1
+  describe "Click the new request button on the front page" do
+    before do
+      sign_in(@user)
+      visit root_path
+      Request.all.size.should eq 0
+      click_link 'Find someone to help you'
+      fill_in_request_form(group: 'iOS') 
+      # We are now on the select recipient page
+      click_button 'Send the question to the iOS group'
+      page.should have_content('The request has been forwarded to our expert group')
+    end
+    it "creates a new request" do
+      Request.all.size.should eq 1
+    end
   end
 
   it "test that a single expert can be delegate a request" do

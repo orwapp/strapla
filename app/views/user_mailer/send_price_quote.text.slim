@@ -1,0 +1,12 @@
+= "Hi #{@price_quote.request.user.name},"
+
+= "#{@price_quote.user.name} has sent you a price quote on your request."
+
+hr
+ 
+= "#{@price_quote.comment}" if @price_quote.comment
+= "#{@price_quote.price}"
+= "#{@price_quote.hours_estimated}"
+
+= "#{link_to '#', 'Click here'} to review and accept the quote."
+= "Or contact #{@price_quote.user.name} by email #{@price_quote.user.email}"

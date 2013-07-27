@@ -20,16 +20,25 @@ class PriceQuotesController < ApplicationController
   def create
     @price_quote = PriceQuote.new(price_quote_params)
     @price_quote.user = current_user
-    flash[:notice] = 'Price quote saved' if @price_quote.save!
+    flash[:notice] = 'Price quote sent to client' if @price_quote.save!
+    @price_quote.send_quote_to_owner
     respond_with(@price_quote.request)
+  end
+
+  def accept
+    #@price_quote = current_user.price_quotes.find(params[:id])
+    @price_quote = PriceQuote.find(params[:id])
+    @price_quote.update_attribute(:status, 'accepted')
+    UserMailer.inform_about_accepted_quote(@price_quote).deliver
+    flash[:notice] = "Price quote accepted. #{@price_quote.user.name} has been notified"
+    redirect_to request_price_quote_path(@price_quote.request, @price_quote)
   end
 
   def update
     respond_to do |format|
       if @price_quote.update(price_quote_params)
+        flash[:notice]= 'Price quote was successfully updated.' 
         respond_with(@price_quote.request)
-        #format.html { redirect_to @price_quote, notice: 'Price quote was successfully updated.' }
-        #format.json { head :no_content }
       else
         #format.html { render action: 'edit' }
         #format.json { render json: @price_quote.errors, status: :unprocessable_entity }

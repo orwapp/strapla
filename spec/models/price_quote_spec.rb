@@ -1,5 +1,8 @@
 require 'spec_helper'
 
 describe PriceQuote do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before do
+    @price_quote = Fabricate(:price_quote)
+  end
+  specify { @price_quote.should be_valid }
 end

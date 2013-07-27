@@ -2,7 +2,10 @@ CodeRunner::Application.routes.draw do
 
   devise_for :users
 
-  resources :price_quotes, :only => [:create]
+  post 'accept_price_quote/:id' => 'price_quotes#accept', as: :accept_price_quote 
+  post 'reject_price_quote/:id' => 'price_quotes#reject', as: :reject_price_quote 
+
+  resources :price_quotes
   resources :requests do
     resources :price_quotes
   end

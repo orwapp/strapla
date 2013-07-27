@@ -2,5 +2,5 @@ Fabricator(:request) do
   subject     "MyString"
   description "MyText"
   goal        "MyText"
-  group       nil
+  request_group  { Fabricate(:request_group) }
 end

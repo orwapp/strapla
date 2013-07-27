@@ -16,7 +16,7 @@ html
 
               - if Request.unassigned.size > 0
                 li[class="#{'active' if current_page?(requests_path)}"]
-                  = link_to (content_tag(:span, " Unassigned #{'request'.pluralize(Request.unassigned.size)} ", class: "") +  \
+                  = link_to (content_tag(:span, "Unassigned #{'request'.pluralize(Request.unassigned.size)} ") +  \
                     content_tag(:strong, "#{Request.unassigned.size}", class: "badge badge-success")).html_safe,
                     requests_path
 
@@ -36,5 +36,7 @@ html
       - if alert
         p.alert= alert
   
-      = yield 
+      .row
+        .span12
+          = yield 
 

@@ -1,18 +1,20 @@
-p#notice = notice
+h2.label.label-success.big_font= @price_quote.status.titleize if @price_quote.status
+.container.border.small_padding
+  span = "Price quote from #{@price_quote.user.name}"
+  blockquote= @price_quote.comment
 
-p
-  strong User:
-  = @price_quote.user
-p
-  strong Request:
-  = @price_quote.request
-p
-  strong Price:
-  = @price_quote.price
-p
-  strong Hours estimated:
-  = @price_quote.hours_estimated
+  strong= "Price: "
+  em= @price_quote.price
+  br
 
-= link_to 'Edit', edit_price_quote_path(@price_quote)
-'|
-= link_to 'Back', price_quotes_path
+  strong= "Hours estimated: "
+  em= @price_quote.hours_estimated
+  
+  - if @price_quote.accepted?
+    .button-group.pull-right
+      = mail_to  @price_quote.user.email, 'Contact the expert',class: 'btn '
+  - else
+    .button-group.pull-right
+      = link_to 'Accept', accept_price_quote_path, class: 'btn btn-success', method: :post
+      = nbsp
+      = link_to 'Reject', reject_price_quote_path, class: 'btn btn-danger', method: :post

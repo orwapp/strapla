@@ -5,8 +5,6 @@ table.table.table-striped.table-hover
     th Goal
     th Group
     th
-    th
-    th
 
   - @requests.each do |request|
     tr
@@ -14,6 +12,6 @@ table.table.table-striped.table-hover
       td = request.description
       td = request.goal
       td = request.request_group.title
-      td = link_to 'Show', request, class: 'btn btn-mini '
+      td = link_to 'Show', request
 
 br

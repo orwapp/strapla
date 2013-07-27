@@ -1,22 +1,18 @@
 h2.label.label-info.big_font= @request.request_group.title
 .container.border.small_padding
 
-
   .row
     .span8
       .media
         a.pull-left href="#"
           = image_tag 'request_iphone.png', size: '150x150', class: 'media-object'
 
-
         .media-body
           h4.lead.lead-pull-up= @request.subject
-
           p
             strong Description
             br
             = @request.description
-
           p
             .media
               strong Goal     
@@ -43,10 +39,7 @@ h2.label.label-info.big_font= @request.request_group.title
         em.muted Client: 
         strong= @request.user.name
         em= @request.user.title if @request.user.title
-
       br
-
-
   .row
     .span12
       hr
@@ -59,14 +52,15 @@ h2.label.label-info.big_font= @request.request_group.title
         = image_tag 'code_preview.png'
         hr
 
-  .row
-    .pull-right
-      = link_to 'Quote a price', '#', class: 'btn btn-info show_price_quote_form'
-      = nbsp
-      .btn Contact the client
+  - unless current_user == @request.user
+    .row
+      .pull-right
+        = link_to 'Quote a price', '#', class: 'btn btn-info show_price_quote_form'
+        = nbsp
+        .btn Contact the client
 
-      .price_quote_form.hide
-        == render '/price_quotes/form'
+        .price_quote_form.hide
+          == render '/price_quotes/form'
 
 = link_to 'Edit', edit_request_path(@request)
 '|

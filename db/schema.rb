@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130724152807) do
+ActiveRecord::Schema.define(version: 20130726142005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20130724152807) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "comment"
+    t.string   "status"
   end
 
   add_index "price_quotes", ["request_id"], name: "index_price_quotes_on_request_id", using: :btree
