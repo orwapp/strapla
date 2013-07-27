@@ -1,0 +1,24 @@
+h2.label.label-success.big_font= price_quote.status.titleize if price_quote.status
+.container.border.small_padding(
+  class="#{'alert alert-success' if price_quote.status == 'accepted'}"
+  class="#{'alert alert-warning' if price_quote.status == 'rejected'}"
+)
+
+  span = "Price quote from #{price_quote.user.name}: "
+  blockquote= price_quote.comment
+
+  strong= "Price: "
+  em= price_quote.price
+  br
+
+  strong= "Hours estimated: "
+  em= price_quote.hours_estimated
+  
+  - if price_quote.accepted?
+    .button-group.pull-right
+      = mail_to  price_quote.user.email, 'Contact the expert',class: 'btn '
+  - else
+    .button-group.pull-right
+      = link_to 'Accept', accept_price_quote_path(price_quote.id), class: 'btn btn-success', method: :post
+      = nbsp
+      = link_to 'Reject', reject_price_quote_path(price_quote.id), class: 'btn btn-danger', method: :post

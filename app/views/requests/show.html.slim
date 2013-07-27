@@ -43,9 +43,10 @@ h2.label.label-info.big_font= @request.request_group.title
   .row
     .span12
       hr
-      .browse_code.lead.clickable
+      a.browse_code.clickable
         ="Browse code... &nbsp;".html_safe 
         i.icon-collapse
+      br
 
       .code_details.hide
         p I got a running test here, but it fails on line 15.
@@ -62,6 +63,12 @@ h2.label.label-info.big_font= @request.request_group.title
         .price_quote_form.hide
           == render '/price_quotes/form'
 
-= link_to 'Edit', edit_request_path(@request)
-'|
-= link_to 'Back', requests_path
+  = link_to 'Edit', edit_request_path(@request), class: 'pull-right'   if @request.user == current_user
+
+br
+br
+h3.lead Price Quotes
+hr
+= render @request.price_quotes.to_a
+/p=  @request.price_quotes.to_a.inspect
+  

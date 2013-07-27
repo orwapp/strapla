@@ -49,15 +49,19 @@ describe "PriceQuotes" do
         page.should have_content 'Price quote accepted'
         last_email.body.raw_source.should include request_price_quote_path(@price_quote, @price_quote.request)
         PriceQuote.last.status.should eq 'accepted'
+
         recipients = ActionMailer::Base.deliveries.collect(&:to).flatten
         recipients += ActionMailer::Base.deliveries.collect(&:cc).flatten
         recipients.should eq [@request_owner.email, @expert.email]
       end
 
       it "When rejected" do
-        pending
         click_link 'Reject'
         PriceQuote.last.status.should eq 'rejected'
+        last_email.body.raw_source.should match "#{@request_owner.name} has rejected your price quote."
+        recipients = ActionMailer::Base.deliveries.collect(&:to).flatten
+        recipients += ActionMailer::Base.deliveries.collect(&:cc).flatten
+        recipients.should eq [@request_owner.email, @expert.email]
       end
 
     end

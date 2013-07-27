@@ -15,4 +15,10 @@ class UserMailer < ActionMailer::Base
     @price_quote = price_quote
     mail to: @price_quote.request.user.email, cc: @price_quote.user.email 
   end
+
+  def inform_about_rejected_quote(price_quote)
+    @price_quote = price_quote
+    mail to: @price_quote.request.user.email, cc: @price_quote.user.email 
+  end
+
 end

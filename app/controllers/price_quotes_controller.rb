@@ -26,12 +26,24 @@ class PriceQuotesController < ApplicationController
   end
 
   def accept
-    #@price_quote = current_user.price_quotes.find(params[:id])
+    # TODO Add cancan
     @price_quote = PriceQuote.find(params[:id])
     @price_quote.update_attribute(:status, 'accepted')
+    @price_quote.save!
     UserMailer.inform_about_accepted_quote(@price_quote).deliver
     flash[:notice] = "Price quote accepted. #{@price_quote.user.name} has been notified"
-    redirect_to request_price_quote_path(@price_quote.request, @price_quote)
+    redirect_to request_path(@price_quote.request)
+  end
+
+  def reject
+    # TODO Add cancan
+    @price_quote = PriceQuote.find(params[:id])
+    @price_quote.update_attribute(:status, 'rejected')
+    @price_quote.save!
+    #raise "PriceQuote is #{@price_quote.inspect}"
+    UserMailer.inform_about_rejected_quote(@price_quote).deliver
+    flash[:notice] = "Price quote rejected. #{@price_quote.user.name} has been notified"
+    redirect_to request_path(@price_quote.request)
   end
 
   def update
