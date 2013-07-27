@@ -3,7 +3,7 @@ class RequestsController < ApplicationController
   before_action :set_request, only: [:show, :edit, :update, :destroy]
 
   def index
-    @requests = Request.unassigned
+    @requests = Request.unassigned #.where.not(user_id: current_user.id)
     @groups   = @requests.all.collect(&:request_group).uniq if @requests
   end
 
@@ -44,7 +44,7 @@ class RequestsController < ApplicationController
     flash[:notice] = "The request has been forwarded to our expert group"
     @expert  = User.find( params[:delegate_to_expert][:expert_id] )
     @request = Request.find(params[:delegate_to_expert][:request_id])
-    @request.update_attribute(:user, @expert)
+    @request.update_attribute(:contractor, @expert)
 
     flash[:notice] = "Thank you! #{@expert.name} will contact you shortly." 
     redirect_to root_url

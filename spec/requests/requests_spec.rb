@@ -12,38 +12,71 @@ describe "Create a new request" do
   end
 
 
-  describe "Click the new request button on the front page" do
-    before do
+  describe "It can be delegated to.." do
+    it "a single expert" do
       sign_in(@user)
-      visit root_path
-      Request.all.size.should eq 0
-      click_link 'Find someone to help you'
+      visit new_request_path
       fill_in_request_form(group: 'iOS') 
+      
+      # We are now on the select recipient page
+      click_button 'Send the question to Richard'
+
+      page.should have_content('Richard Stallman will contact you shortly.')
+
+      r = Request.last
+      r.request_group.title.should eq 'iOS'
+      r.user.should eq @user
+      r.contractor.should eq @expert
+      Request.unassigned.first.should_not eq r
+    end
+
+
+    it "a group" do
+      sign_in(@user)
+      visit new_request_path
+      fill_in_request_form(group: 'iOS') 
+      
       # We are now on the select recipient page
       click_button 'Send the question to the iOS group'
+
       page.should have_content('The request has been forwarded to our expert group')
-    end
-    it "creates a new request" do
-      Request.all.size.should eq 1
+
+      r = Request.last
+      r.request_group.title.should eq 'iOS'
+      r.user.should eq @user
+      r.contractor.should eq nil
+      Request.unassigned.first.should eq r
     end
   end
 
-  it "test that a single expert can be delegate a request" do
-    sign_in(@user)
-    visit new_request_path
-    fill_in_request_form(group: 'iOS') 
-    
-    # We are now on the select recipient page
-    click_button 'Send the question to the iOS group'
+  describe "new undelegated requests " do
+    before do
+      @request = Fabricate(:request, subject: 'My new request')
+      @request.should be_valid
+    end
 
-    page.should have_content('The request has been forwarded to our expert group')
-
-    r = Request.last
-    r.request_group.title.should eq 'iOS'
-    r.user.should eq @user
-    Request.unassigned.first.should eq r
+    it "should be visible under 'Unassigned Requests'" do
+      sign_in(@user)
+      visit requests_path
+      page.should have_content('My new request')
+    end
   end
 
+  describe "new delegated requests " do
+    before do
+      @request = Fabricate(:request, subject: 'Special task for Martin')
+      @request.should be_valid
+    end
 
+    it "should be visible under 'My Assignments'" do
+      sign_in(@user)
+      visit my_assignments_path
+      page.should have_content('Special task for Martin')
+    end
+
+    describe "if the expert rejects a new request"
+      it "should be forwarded to the RequestGroup so that a new expert can have it" do
+      end
+  end
 
 end

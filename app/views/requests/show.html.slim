@@ -2,7 +2,7 @@ h2.label.label-info.big_font= @request.request_group.title
 .container.border.small_padding
 
   .row
-    .span8
+    .span7
       .media
         a.pull-left href="#"
           = image_tag 'request_iphone.png', size: '150x150', class: 'media-object'
@@ -56,7 +56,11 @@ h2.label.label-info.big_font= @request.request_group.title
   - unless current_user == @request.user
     .row
       .pull-right
-        = link_to 'Quote a price', '#', class: 'btn btn-info show_price_quote_form'
+        - if @request.price_quotes.where(user: current_user)
+          strong.text-success You have sent a price quote.
+        - else
+          = link_to 'Quote a price', '#', class: 'btn btn-info show_price_quote_form'
+
         = nbsp
         .btn Contact the client
 
@@ -65,10 +69,12 @@ h2.label.label-info.big_font= @request.request_group.title
 
   = link_to 'Edit', edit_request_path(@request), class: 'pull-right'   if @request.user == current_user
 
-br
-br
-h3.lead Price Quotes
-hr
-= render @request.price_quotes.to_a
-/p=  @request.price_quotes.to_a.inspect
+
+- if current_user == @request.user
+  br
+  br
+  h3.lead Price Quotes
+  hr
+  = render @request.price_quotes.to_a
+  /p=  @request.price_quotes.to_a.inspect
   
