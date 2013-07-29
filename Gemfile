@@ -30,8 +30,6 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec'
-  gem 'rspec-rails'
   #gem 'poltergeist', :git => 'https://github.com/jonleighton/poltergeist.git'
 end
 
@@ -40,6 +38,10 @@ group :test do
   gem 'capybara'
   gem 'turn'
   gem 'minitest-rails-capybara'
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'cucumber-rails', :require => false
+  gem 'database_cleaner'
 end
 
 gem 'mail_form'
