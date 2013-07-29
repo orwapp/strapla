@@ -74,9 +74,15 @@ describe "Create a new request" do
       page.should have_content('Special task for Martin')
     end
 
-    describe "if the expert rejects a new request"
-      it "should be forwarded to the RequestGroup so that a new expert can have it" do
-      end
+  describe "if the expert rejects a new request"
+    before do
+      @request = Fabricate(:request, subject: 'Special task for Martin')
+    end
+
+    it "should be forwarded to the RequestGroup so that a new expert can have it" do
+      pending
+
+    end
   end
 
 end
