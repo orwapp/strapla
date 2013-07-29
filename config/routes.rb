@@ -1,8 +1,15 @@
 CodeRunner::Application.routes.draw do
-  resources :requests
 
+  devise_for :users
+
+  post 'accept_price_quote/:id' => 'price_quotes#accept', as: :accept_price_quote 
+  post 'reject_price_quote/:id' => 'price_quotes#reject', as: :reject_price_quote 
+
+  resources :price_quotes
+  resources :requests do
+    resources :price_quotes
+  end
   resources :request_groups
-
   resources :pages
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -13,6 +20,13 @@ CodeRunner::Application.routes.draw do
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
+  get  'user/:id' => 'users#profile', as: :user_profile
+  get  'select_recipient/:request_id' => 'requests#select_recipient', as: :select_recipient
+  get  'my_requests/' => 'requests#my_requests', as: :my_requests
+  post 'delegate_to_expert/' => 'requests#delegate_to_expert',  as: :delegate_to_expert
+  post 'delegate_to_group/' => 'requests#delegate_to_group',  as: :delegate_to_group
+
+
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

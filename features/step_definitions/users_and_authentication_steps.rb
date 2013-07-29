@@ -1,9 +1,14 @@
-
-
-Given(/^I have a user "(.*?)" with password "(.*?)"$/) do |arg1, arg2|
+Given /^(?:I|we) have a user "([^\"]*)"(?: named "([^\"]*)" with password "([^\"]*)")?$/ do |email, name, password|
   unless User.find_by_email(email)
     name = name.split(' ')
     user = User.make :email => email, :first_name => name[0], :last_name => name[1], :password => password, :password_confirmation => password
+    user.save!
+  end
+end
+
+Given /^(?:I|we) have a user "([^\"]*)"(?: with password "([^\"]*)")?$/ do |email, password|
+  unless User.find_by_email(email)
+    user = Fabricate(:user, email: email, password: password, password_confirmation: password )
     user.save!
   end
 end

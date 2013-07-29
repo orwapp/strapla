@@ -1,3 +1,16 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$ ->
+  $("#expert_carousel").each ->
+    $(this).carousel interval: false
+
+
+  # Expand code preview
+  $(document).on 'click', '.browse_code', (e) => 
+    $('.code_details').slideToggle()
+    $(this).find('i').toggleClass('icon-collapse')
+    $(this).find('i').toggleClass('icon-collapse-top')
+
+
+  # Expand price quote form
+  $(document).on 'click', '.show_price_quote_form', (e) => 
+    e.preventDefault()
+    $('.price_quote_form').slideToggle()

@@ -1,0 +1,5 @@
+h1 Your profile
+
+.container.border
+  = render partial: "expert_profile", locals: { user: @user, index: 1, show_form: false }
+= link_to 'Edit', edit_user_registration_path, class: 'btn pull-right btn-info'

@@ -30,28 +30,27 @@ group :development do
 end
 
 group :development, :test do
-  #gem 'poltergeist', :git => 'https://github.com/jonleighton/poltergeist.git'
 end
 
 
 group :test do
   gem 'capybara'
   gem 'turn'
-  gem 'minitest-rails-capybara'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'cucumber-rails', :require => false
+  gem 'poltergeist', :git => 'https://github.com/jonleighton/poltergeist.git'
   gem 'database_cleaner'
+  gem 'email_spec'
+  gem 'guard-rspec'
+  gem 'selenium-webdriver'
 end
 
 gem 'mail_form'
 gem 'redis'
-gem 'split'
 gem 'split', :require => 'split/dashboard'
-
 gem 'foreman'
 gem 'unicorn'
 gem 'resque'
-
 gem 'resque_mailer'
-
+gem 'faker'

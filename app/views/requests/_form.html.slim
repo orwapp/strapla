@@ -1,4 +1,4 @@
-= simple_form_for @request, class: "form-horizontal" do |f|
+= simple_form_for @request,  :html => { :class => 'form-horizontal span10' } do |f|
   - if @request.errors.any?
     #error_explanation
       h2 = "#{pluralize(@request.errors.count, "error")} prohibited this request from being saved:"
@@ -7,17 +7,20 @@
           li = message
 
   .form-inputs
-    = f.input :subject
-    = f.input :description
-    = f.input :goal, hint: 'Should be measureable'
-
-    = label_tag 'request_group', 'Select group'
-    = select("request", "request_group_id", 
-      RequestGroup.all.collect {|p| [ p.title, p.id ] }, { :include_blank => false })
-    
+    = f.input :subject,     input_html: { class: 'span10' }
     br
+    = f.input :goal,        input_html: { class: 'span10', placeholder: 'Should be clear and measureable' }
     br
+    = f.input :description, input_html: { class: 'span10' }
     br
+    = f.input :repository_url, input_html: { class: 'span10', placeholder: 'github.com/username/repository' }
 
 
-    = f.button :submit, :class => 'btn btn-primary'
+    br
+    .pull-left
+      = label_tag 'request_group', 'Select group'
+      = select("request", "request_group_id", 
+        RequestGroup.all.collect {|p| [ p.title, p.id ] }, { :include_blank => false })
+    .pull-right
+      br
+      = f.button :submit,  'Next', :class => 'btn btn-primary pull-right'

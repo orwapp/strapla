@@ -1,0 +1,17 @@
+= "Hi #{@price_quote.user.name},"
+
+p
+  = "Unfortunately, #{@price_quote.request.user.name} has rejected your price quote."
+  br
+  = "Better luck next time! :)"
+
+br
+= "#{link_to 'Review the request here.', request_path(@price_quote.request)}"
+
+hr
+ 
+p
+  = "#{@price_quote.comment}" if @price_quote.comment
+  = "#{@price_quote.price}"
+  = "#{@price_quote.hours_estimated}"
+

@@ -25,6 +25,7 @@ module CodeRunner
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+    config.assets.initialize_on_precompile = false
 
     config.generators do |g|
       g.fixture_replacement :fabrication
@@ -35,6 +36,16 @@ module CodeRunner
     Fabrication.configure do |config|
       fabricator_dir = "data/fabricators"
     end
+
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      address:              'smtp.gmail.com',
+      port:                 587,
+      domain:               ENV['KAFFESMAK_SMTP_DOMAIN'],
+      user_name:            ENV['KAFFESMAK_SMTP_USERNAME'],
+      password:             ENV['KAFFESMAK_SMTP_PASSWORD'],
+      authentication:       'plain',
+      enable_starttls_auto: true  }
     
   end
 end

@@ -9,7 +9,8 @@ Bundler.setup :default, :development, :test
 
 
 Capybara.run_server = false
-Capybara.register_driver(:selenium){ |app| Capybara::Selenium::Driver.new(app, { :browser => :chrome }) }
+#Capybara.register_driver(:selenium){ |app| Capybara::Selenium::Driver.new(app, { :browser => :chrome }) }
+Capybara.register_driver(:selenium){ |app| Capybara::Selenium::Driver.new(app, { :browser => :firefox }) }
 Capybara.default_driver = :selenium
 
 # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
