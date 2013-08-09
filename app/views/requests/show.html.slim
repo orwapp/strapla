@@ -41,7 +41,7 @@ h2.label.label-info.big_font= @request.request_group.title
         em= @request.user.title if @request.user.title
       br
   .row
-    .span12
+    .span11
       hr
       a.browse_code.clickable
         ="Browse code... &nbsp;".html_safe 
@@ -67,10 +67,12 @@ h2.label.label-info.big_font= @request.request_group.title
         .price_quote_form.hide
           == render '/price_quotes/form'
 
-  = link_to 'Edit', edit_request_path(@request), class: 'pull-right'   if @request.user == current_user
+  .row
+    .span11
+      = link_to 'Edit', edit_request_path(@request), class: 'pull-right'   if @request.user == current_user
 
 
-- if current_user == @request.user
+- if (current_user == @request.user) && @request.price_quotes.size > 0
   br
   br
   h3.lead Price Quotes
