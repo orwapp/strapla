@@ -3,12 +3,11 @@ include LoginHelper
 include IntegrationHelpers
 
 describe "Create a new request" do
-  before do
+  before(:all) do
     @request_group = RequestGroup.create(title: 'iOS')
-    @user = Fabricate(:user)
+    @user   = Fabricate(:user)
     @expert = Fabricate(:user, name: 'Richard Stallman')
     @expert.request_groups << @request_group
-    @expert.should be_valid
   end
 
 
@@ -63,14 +62,15 @@ describe "Create a new request" do
   end
 
   describe "new delegated requests " do
+    pending
     before do
       @request = Fabricate(:request, subject: 'Special task for Martin')
       @request.should be_valid
     end
 
-    it "should be visible under 'My Assignments'" do
+    it "should be visible under 'My Request'" do
       sign_in(@user)
-      visit my_assignments_path
+      visit my_requests_path
       page.should have_content('Special task for Martin')
     end
 
