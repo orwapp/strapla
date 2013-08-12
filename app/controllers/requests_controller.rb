@@ -7,6 +7,9 @@ class RequestsController < ApplicationController
     @groups   = @requests.all.collect(&:request_group).uniq if @requests
   end
 
+  def select_type_of_problem
+  end
+
   def my_requests
     @requests = current_user.requests.all
     render :index
