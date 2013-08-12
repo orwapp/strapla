@@ -5,7 +5,7 @@ Feature: Get code help
 
   Background:
     Given I am signed in as "m@coderunner.no"
-    And   We have a user "expert@domain.com"
+    And   We have a user "expert@domain.com" with password "secret"
     And   The user "expert@domain.com" is an expert.
 
   Scenario: Post new request
