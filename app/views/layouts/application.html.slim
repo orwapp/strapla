@@ -29,6 +29,8 @@ html
               li[class="#{'active' if current_page?(new_user_session_path)}"]=  link_to 'Sign in', new_user_session_path
               li[class="#{'active' if current_page?(new_user_registration_path)}"]=  link_to 'Sign up', new_user_registration_path
               
+      - if @current_user.present?
+        span.muted= "Signed in as #{@current_user.email}" 
 
       h2= @title
       - if notice 
