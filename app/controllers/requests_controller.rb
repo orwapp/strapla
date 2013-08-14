@@ -3,7 +3,7 @@ class RequestsController < ApplicationController
   before_action :set_request, only: [:show, :edit, :update, :destroy]
 
   def index
-    @requests = Request.unassigned #.where.not(user_id: current_user.id)
+    @requests = Request.unassigned.where.not(user_id: current_user.id)
     @groups   = @requests.all.collect(&:request_group).uniq if @requests
   end
 
