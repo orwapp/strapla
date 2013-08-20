@@ -11,7 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130726142005) do
+ActiveRecord::Schema.define(version: 20130820125207) do
+
+  create_table "elevator_pitches", force: true do |t|
+    t.text     "text"
+    t.integer  "request_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "elevator_pitches", ["request_id"], name: "index_elevator_pitches_on_request_id", using: :btree
+
+  create_table "feature_requests", force: true do |t|
+    t.integer  "user_id"
+    t.text     "user_story"
+    t.integer  "priority"
+    t.integer  "request_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "feature_requests", ["request_id"], name: "index_feature_requests_on_request_id", using: :btree
+  add_index "feature_requests", ["user_id"], name: "index_feature_requests_on_user_id", using: :btree
 
   create_table "price_quotes", force: true do |t|
     t.integer  "user_id"
@@ -48,6 +69,7 @@ ActiveRecord::Schema.define(version: 20130726142005) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "contractor_id"
+    t.string   "status"
   end
 
   add_index "requests", ["request_group_id"], name: "index_requests_on_request_group_id", using: :btree

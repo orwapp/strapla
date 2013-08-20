@@ -1,0 +1,23 @@
+h1 Listing feature_requests
+
+table
+  tr
+    th User
+    th User story
+    th Request
+    th
+    th
+    th
+
+  - @feature_requests.each do |feature_request|
+    tr
+      td = feature_request.user
+      td = feature_request.user_story
+      td = feature_request.request
+      td = link_to 'Show', feature_request
+      td = link_to 'Edit', edit_feature_request_path(feature_request)
+      td = link_to 'Destroy', feature_request, :confirm => 'Are you sure?', :method => :delete
+
+br
+
+= link_to 'New Feature request', new_feature_request_path
