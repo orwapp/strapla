@@ -1,7 +1,5 @@
 CodeRunner::Application.routes.draw do
 
-  get "elevator_pitch/text:text"
-  get "elevator_pitch/request:references"
   resources :feature_requests do
     get "wizzard/introduction"
     get "wizzard/features"

@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130820125207) do
+ActiveRecord::Schema.define(version: 20130821080138) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "elevator_pitches", force: true do |t|
     t.text     "text"
@@ -69,7 +72,6 @@ ActiveRecord::Schema.define(version: 20130820125207) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "contractor_id"
-    t.string   "status"
   end
 
   add_index "requests", ["request_group_id"], name: "index_requests_on_request_group_id", using: :btree

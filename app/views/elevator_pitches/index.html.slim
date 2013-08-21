@@ -1,0 +1,21 @@
+h1 Listing elevator_pitches
+
+table
+  tr
+    th Text
+    th Request
+    th
+    th
+    th
+
+  - @elevator_pitches.each do |elevator_pitch|
+    tr
+      td = elevator_pitch.text
+      td = elevator_pitch.request
+      td = link_to 'Show', elevator_pitch
+      td = link_to 'Edit', edit_elevator_pitch_path(elevator_pitch)
+      td = link_to 'Destroy', elevator_pitch, :confirm => 'Are you sure?', :method => :delete
+
+br
+
+= link_to 'New Elevator pitch', new_elevator_pitch_path
