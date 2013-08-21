@@ -11,7 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130726142005) do
+ActiveRecord::Schema.define(version: 20130821080138) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "elevator_pitches", force: true do |t|
+    t.text     "text"
+    t.integer  "request_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "elevator_pitches", ["request_id"], name: "index_elevator_pitches_on_request_id", using: :btree
+
+  create_table "feature_requests", force: true do |t|
+    t.integer  "user_id"
+    t.text     "user_story"
+    t.integer  "priority"
+    t.integer  "request_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "feature_requests", ["request_id"], name: "index_feature_requests_on_request_id", using: :btree
+  add_index "feature_requests", ["user_id"], name: "index_feature_requests_on_user_id", using: :btree
 
   create_table "price_quotes", force: true do |t|
     t.integer  "user_id"

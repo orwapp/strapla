@@ -16,8 +16,15 @@
       .clearfix
       strong= "Average price / hour: "
       = "$ #{user.average_price}"
+      /strong Average hours spent: 1.5
       br
-      strong Average hours spend: 1.5
+      strong="Antall oppdrag: "
+      ="12"
+      br
+      strong="Prosent fornøyde kunder: "
+      ="23"
+
+
 
   - if show_form
     = simple_form_for :delegate_to_expert, url: delegate_to_expert_path do |f|

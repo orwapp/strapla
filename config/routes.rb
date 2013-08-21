@@ -1,5 +1,11 @@
 CodeRunner::Application.routes.draw do
 
+  resources :feature_requests do
+    get "wizzard/introduction"
+    get "wizzard/features"
+    get "wizzard/review"
+  end
+
   devise_for :users
 
   post 'accept_price_quote/:id'  => 'price_quotes#accept', as: :accept_price_quote 
@@ -7,6 +13,7 @@ CodeRunner::Application.routes.draw do
   get  'requests/select_type_of_problem/' => 'requests#select_type_of_problem', as: :select_type_of_problem 
 
   resources :price_quotes
+  resources :elevator_pitches
   resources :requests do
     resources :price_quotes
   end

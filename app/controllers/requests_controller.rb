@@ -23,6 +23,9 @@ class RequestsController < ApplicationController
     @request = Request.new
   end
 
+  def add_features
+  end
+
   def edit
   end
 
@@ -74,12 +77,12 @@ class RequestsController < ApplicationController
   end
 
   private
-    def set_request
-      @request = Request.find(params[:id])
-    end
+  def set_request
+    @request = Request.find(params[:id])
+  end
 
-    def request_params
-      params.require(:request).permit(:subject, :description, :goal, :request_group_id, :repository_url)
-    end
+  def request_params
+    params.require(:request).permit(:subject, :description, :goal, :request_group_id, :repository_url)
+  end
 
 end

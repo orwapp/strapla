@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong User:
+  = @feature_request.user
+p
+  strong User story:
+  = @feature_request.user_story
+p
+  strong Request:
+  = @feature_request.request
+
+= link_to 'Edit', edit_feature_request_path(@feature_request)
+'|
+= link_to 'Back', feature_requests_path

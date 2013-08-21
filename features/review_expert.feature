@@ -1,7 +1,7 @@
 Feature: Review an expert
   In order to know which experts that are any good
   As someone how has bought help from an expert
-  I want to give that expert an review
+  I want to give that expert a review
 
   Background:
     Given I have a user "m@kaffesmak.no" with password "not_gonna_get_it"
