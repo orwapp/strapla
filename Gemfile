@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.0'
+#gem 'rails', '4.0.0'
+gem 'rails',
+    :git => 'http://github.com/rails/rails.git'
+
 ruby '2.0.0'
 gem 'pg'
 gem 'slim'
