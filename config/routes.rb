@@ -1,9 +1,9 @@
 CodeRunner::Application.routes.draw do
 
   resources :feature_requests do
-    get "wizzard/introduction"
-    get "wizzard/features"
-    get "wizzard/review"
+    get "wizard/introduction"
+    get "wizard/features"
+    get "wizard/review"
   end
 
   devise_for :users
