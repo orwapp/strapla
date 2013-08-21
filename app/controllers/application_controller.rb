@@ -5,7 +5,9 @@ class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_filter :set_current_user
 
-  http_basic_authenticate_with name: ENV['HTTP_USERNAME'] || 'funky_admin' , password: ENV['HTTP_PASSWORD'] || 'top_secret'
+  if Rails.env.production?
+    http_basic_authenticate_with name: ENV['HTTP_USERNAME'] || 'funky_admin' , password: ENV['HTTP_PASSWORD'] || 'top_secret'
+  end
   
 
 
