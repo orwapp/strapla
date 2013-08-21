@@ -1,24 +1,25 @@
-Feature: Use the wizzard to create a new request
-  In order to answer all the though questions that are needed to start a successful project
+Feature: Use the wizard to create a new request
+  In order to answer all the tough questions that are needed to start a successful project
   As a registered user
-  I want guidance from the wizzard
+  I want guidance from the wizard
 
   Background:
-    Given I am signed in as "m@coderunner.co"
-    And   We have the expert "expert@domain.com"
+    Given I am signed in
+    And   We have one expert user in our database
 
-  Scenario: Post a new request using the wizzard
+  Scenario: Complete the first page of the wizard, the background information
     When I go to the frontpage
     Then I press "Get someone to help you"
-    And I press "Build something new"
-    Then I should see "New request"
-    And I fill in "Subject" with "I want to build CodeRunner"
-    And I fill in "Goal" with "Get the wizzard working within a week"
-    And I fill in "Description" with "Do as discussed with Joachim"
-    And I select "Ruby" from "request_request_group_id"
-    When I press "Next"
+    When I press "Build something new"
+    Then I should see "Please provide some background information"
+    And I fill in all the mandatory fields with the necessary background information.
+    And I select "Ruby on Rails" as the technology I want the this application build in.
+    And I press "Next"
 
-    Then I should see "Describe the products' functionallity"
-    And  I should see "To make sure the developer understands what you want to build, please answer the following questions"
+  Scenario: Create two features
+    Given I have completed the first part of the wizard
+    An I am on the page where I can add new features
+    Then I should see "Describe which features you want"
+    And  I should see "Understand what a User Story is"
+    Then I fill in the "New feature form"
 
-    And I fill in feature_name with 'The Wizzard'
