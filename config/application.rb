@@ -18,7 +18,7 @@ module CodeRunner
 
     config.generators do |g|
       g.fixture_replacement :fabrication
-      g.template_engine     :slim
+      g.template_engine     :haml # slim
       g.test_framework      :rspec, :fixture => true, :views => false
     end
 

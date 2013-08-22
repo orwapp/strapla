@@ -21,6 +21,11 @@ gem 'bootstrap-sass', '~> 2.3.2.0'
 gem 'font-awesome-rails'
 gem 'devise'
 gem 'compass'
+gem 'bootstrap-generators', '~> 2.3'
+#gem 'bootstrap-generators', :github => 'stabenfeldt/bootstrap-generators'
+gem 'haml'
+gem 'haml-rails'
+
 
 group :development do
   gem 'growl'
