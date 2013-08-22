@@ -14,7 +14,7 @@ Given(/^We have one expert user in our database$/) do
 end
 
 When(/^I go to the frontpage$/) do
-  pending # express the regexp above with the code you wish you had
+  visit '/'
 end
 
 Then(/^I press Get someone to help you$/) do
