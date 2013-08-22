@@ -1,5 +1,6 @@
 CodeRunner::Application.routes.draw do
 
+
   resources :feature_requests do
     get "wizard/introduction"
     get "wizard/features"
@@ -14,9 +15,13 @@ CodeRunner::Application.routes.draw do
 
   resources :price_quotes
   resources :elevator_pitches
+
+  resources :background_informations
   resources :requests do
+    resources :background_informations
     resources :price_quotes
   end
+
   resources :request_groups
   resources :pages
 

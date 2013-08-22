@@ -1,0 +1,30 @@
+= form_for @background_information do |f|
+  - if @background_information.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@background_information.errors.count, "error")} prohibited this background_information from being saved:"
+      %ul
+        - @background_information.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field.hide
+    = f.text_area :request_id, value: @request.id
+  .field
+    = f.label :elevator_pitch
+    = f.text_area :elevator_pitch
+  .field
+    = f.label :background_information
+    = f.text_area :background_information
+  .field
+    = f.label :no_list
+    = f.text_area :no_list
+  .field
+    = f.label :what_can_go_wrong
+    = f.text_area :what_can_go_wrong
+  .field
+    = f.label :what_is_it_going_to_give
+    = f.text_area :what_is_it_going_to_give
+  .field
+    = f.label :what_is_the_frame
+    = f.text_area :what_is_the_frame
+  .actions
+    = f.submit 'Save', class: 'btn btn-primary'

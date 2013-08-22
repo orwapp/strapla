@@ -1,0 +1,31 @@
+%h1 Listing background_informations
+
+%table
+  %tr
+    %th Elevator pitch
+    %th Background information
+    %th No list
+    %th What can go wrong
+    %th What is it going to give
+    %th What is the frame
+    %th Request
+    %th
+    %th
+    %th
+
+  - @background_informations.each do |background_information|
+    %tr
+      %td= background_information.elevator_pitch
+      %td= background_information.background_information
+      %td= background_information.no_list
+      %td= background_information.what_can_go_wrong
+      %td= background_information.what_is_it_going_to_give
+      %td= background_information.what_is_the_frame
+      %td= background_information.request.title
+      %td= link_to 'Show', background_information
+      %td= link_to 'Edit', edit_background_information_path(background_information)
+      %td= link_to 'Destroy', background_information, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Background information', new_request_background_information_path(@request)
