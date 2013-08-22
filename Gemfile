@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-#gem 'rails', '4.0.0'
-gem 'rails',
-    :git => 'http://github.com/rails/rails.git'
+gem 'rails', '4.0.0'
+#gem 'rails',
+#    :git => 'http://github.com/rails/rails.git'
 
 ruby '2.0.0'
 gem 'pg'
@@ -38,13 +38,8 @@ group :development do
 end
 
 group :development, :test do
-end
-
-
-group :test do
   gem 'capybara'
   #gem 'turn'
-  #gem 'rspec'
   gem 'rspec-rails'
   gem 'cucumber-rails', :require => false
   #gem 'poltergeist', :git => 'https://github.com/jonleighton/poltergeist.git'
