@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130821080138) do
+ActiveRecord::Schema.define(version: 20130822064346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "background_informations", force: true do |t|
+    t.text     "elevator_pitch"
+    t.text     "background_information"
+    t.text     "no_list"
+    t.text     "what_can_go_wrong"
+    t.text     "what_is_it_going_to_give"
+    t.text     "what_is_the_frame"
+    t.integer  "request_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "background_informations", ["request_id"], name: "index_background_informations_on_request_id", using: :btree
 
   create_table "elevator_pitches", force: true do |t|
     t.text     "text"

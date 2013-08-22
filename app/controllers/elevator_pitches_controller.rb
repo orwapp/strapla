@@ -22,7 +22,9 @@ class ElevatorPitchesController < ApplicationController
       if @elevator_pitch.save
         format.html { redirect_to @elevator_pitch, notice: 'Elevator pitch was successfully created.' }
         format.json { render action: 'show', status: :created, location: @elevator_pitch }
+        format.js
       else
+        raise 'h'
         format.html { render action: 'new' }
         format.json { render json: @elevator_pitch.errors, status: :unprocessable_entity }
       end
