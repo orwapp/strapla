@@ -17,18 +17,11 @@ When(/^I go to the frontpage$/) do
   visit '/'
 end
 
-Then(/^I press Get someone to help you$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-When(/^I press Build something new$/) do
-  pending # express the regexp above with the code you wish you had
+Then(/^I press (.*)$/) do |link| 
+  click_on link
 end
 
 Then(/^I should be on the page where I provide background information$/) do
-  pending # express the regexp above with the code you wish you had
+  current_path.should eq new_background_information_path
 end
 
-Then(/^I fill in all the mandatory fields with the necessary background information\.$/) do
-  pending # express the regexp above with the code you wish you had
-end

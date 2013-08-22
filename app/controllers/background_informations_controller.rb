@@ -1,6 +1,6 @@
 class BackgroundInformationsController < ApplicationController
   before_action :set_background_information, only: [:show, :edit, :update, :destroy]
-  before_action :set_request
+  #before_action :set_request, except:
 
   # GET /background_informations
   # GET /background_informations.json
@@ -15,6 +15,7 @@ class BackgroundInformationsController < ApplicationController
 
   # GET /background_informations/new
   def new
+    @request = Request.create(user: current_user)
     @background_information = BackgroundInformation.new(request: @request)
   end
 

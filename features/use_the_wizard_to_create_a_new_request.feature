@@ -5,6 +5,9 @@ Feature: Use the wizard to create a new request
 
   Background:
     Given I am signed in
+    Given this data to fill the background information form:
+      | Elevator pitch         | Get help from anyone |
+      | Background information | Inspiration from OSW |
     And   We have one expert user in our database
 
   Scenario: Complete the first page of the wizard, the background information
