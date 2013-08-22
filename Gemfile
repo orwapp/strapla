@@ -38,11 +38,11 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'turn'
-  gem 'rspec'
+  #gem 'turn'
+  #gem 'rspec'
   gem 'rspec-rails'
   gem 'cucumber-rails', :require => false
-  gem 'poltergeist', :git => 'https://github.com/jonleighton/poltergeist.git'
+  #gem 'poltergeist', :git => 'https://github.com/jonleighton/poltergeist.git'
   gem 'database_cleaner'
   gem 'email_spec'
   gem 'guard-rspec'
