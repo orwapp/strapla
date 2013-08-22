@@ -11,7 +11,7 @@ Feature: Use the wizard to create a new request
     When I go to the frontpage
     Then I press Get someone to help you
     When I press Build something new
-    Then I should see Please provide some background information
+    Then I should be on the page where I provide background information
     And I fill in all the mandatory fields with the necessary background information.
     And I select Ruby on Rails as the technology I want the this application build in.
     And I press Next

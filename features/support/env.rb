@@ -1,7 +1,7 @@
-require 'cucumber/rails'
-require 'rubygems'
-require 'bundler'
-
+#require 'cucumber/rails'
+#require 'rubygems'
+#require 'bundler'
+#
 Bundler.setup :default, :development, :test
 #require "#{Rails.root}/spec/fabricators/*"  
 #require "#{Rails.root}/spec/fabricators/**/*fabricator.rb
@@ -29,7 +29,7 @@ Capybara.default_selector = :css
 # 2) Set the value below to true. Beware that doing this globally is not
 # recommended as it will mask a lot of errors for you!
 #
-ActionController::Base.allow_rescue = false
+#ActionController::Base.allow_rescue = false
 
 # Remove/comment out the lines below if your app doesn't have a database.
 # For some databases (like MongoDB and CouchDB) you may need to use :truncation instead.
@@ -39,5 +39,5 @@ rescue NameError
   raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
 end
 
-Cucumber::Rails::Database.javascript_strategy = :truncation
+#Cucumber::Rails::Database.javascript_strategy = :truncation
 
