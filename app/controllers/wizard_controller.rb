@@ -1,4 +1,4 @@
-class WizzardController < ApplicationController
+class WizardController < ApplicationController
   before_action :set_request
 
   def introduction
