@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130822095602) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20130823120842) do
 
   create_table "background_informations", force: true do |t|
     t.text     "elevator_pitch"
@@ -50,6 +47,15 @@ ActiveRecord::Schema.define(version: 20130822095602) do
 
   add_index "feature_requests", ["request_id"], name: "index_feature_requests_on_request_id", using: :btree
   add_index "feature_requests", ["user_id"], name: "index_feature_requests_on_user_id", using: :btree
+
+  create_table "features", force: true do |t|
+    t.integer  "request_id"
+    t.text     "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "features", ["request_id"], name: "index_features_on_request_id", using: :btree
 
   create_table "price_quotes", force: true do |t|
     t.integer  "user_id"

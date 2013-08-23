@@ -1,6 +1,8 @@
 CodeRunner::Application.routes.draw do
 
 
+  resources :features
+
   resources :feature_requests do
     get "wizard/introduction"
     get "wizard/features"
