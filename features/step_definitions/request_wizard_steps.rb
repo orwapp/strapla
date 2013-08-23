@@ -3,7 +3,6 @@ Then(/^I select "(.+)" as the technology I want the this application build in\.$
 end
 
 Given(/^I have completed the first part of the wizard$/) do
-  #step "Scenario: Complete the first page of the wizard, the background information"
   steps %{
     When I go to the frontpage
     Then I press Get someone to help you
@@ -19,11 +18,11 @@ Given(/^I have completed the first part of the wizard$/) do
 end
 
 Given(/^I am on the page where I can add new features$/) do
-  pending # express the regexp above with the code you wish you had
+  current_path.should eq new_request_feature_path(@request)
 end
 
-Then(/^I should see "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+Then(/^I should see "(.*?)"$/) do |text|
+  page.should have_content text
 end
 
 Then(/^I fill in the New feature form$/) do
