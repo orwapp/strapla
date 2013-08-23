@@ -21,7 +21,3 @@ Then(/^I press (.*)$/) do |link|
   click_on link
 end
 
-Then(/^I should be on the page where I provide background information$/) do
-  current_path.should eq new_background_information_path
-end
-

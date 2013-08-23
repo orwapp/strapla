@@ -29,7 +29,9 @@ class BackgroundInformationsController < ApplicationController
     @background_information = BackgroundInformation.new(background_information_params)
 
     respond_to do |format|
-      if @background_information.save
+      if @background_information.save!
+        @background_information.request = @request = Request.create(user: current_user)
+        @request.save(:validate => false)
         format.html { redirect_to @background_information, notice: 'Background information was successfully created.' }
         format.json { render action: 'show', status: :created, location: @background_information }
       else
