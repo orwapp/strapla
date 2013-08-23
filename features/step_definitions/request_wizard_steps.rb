@@ -27,8 +27,6 @@ Then(/^I fill in all the mandatory fields with the necessary background informat
   @table.each do |data|
     fill_in data.first, :with => data.last
   end
-  click_button 'Save'
-  page.should have_content 'Background information was successfully created.'
 end
 
 Given(/^We have the expert group named (.+)/) do |title| 

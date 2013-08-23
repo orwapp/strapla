@@ -18,7 +18,7 @@ Feature: Use the wizard to create a new request
     Then I should be on the page where I provide background information
     And I fill in all the mandatory fields with the necessary background information.
     And I select "Ruby on Rails" as the technology I want the this application build in.
-    And I press Next
+    And I press Save
 
   Scenario: Create two features
     Given I have completed the first part of the wizard
