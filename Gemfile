@@ -49,6 +49,10 @@ group :development, :test do
   gem 'selenium-webdriver'
 end
 
+group :test do
+  gem 'launchy'
+end
+
 gem 'mail_form'
 gem 'redis'
 gem 'split', :require => 'split/dashboard'

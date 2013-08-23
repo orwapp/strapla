@@ -308,6 +308,7 @@ DEPENDENCIES
   haml-rails
   jbuilder (~> 1.2)
   jquery-rails
+  launchy
   mail_form
   meta_request
   pg
