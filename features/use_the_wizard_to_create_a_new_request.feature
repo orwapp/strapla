@@ -5,10 +5,11 @@ Feature: Use the wizard to create a new request
 
   Background:
     Given I am signed in
-    Given this data to fill the background information form:
+    And We have the expert group named Ruby on Rails
+    And We have one expert user in our database
+    And this data to fill the background information form:
       | Elevator pitch         | Get help from anyone |
       | Background information | Inspiration from OSW |
-    And   We have one expert user in our database
 
   Scenario: Complete the first page of the wizard, the background information
     When I go to the frontpage
@@ -16,7 +17,7 @@ Feature: Use the wizard to create a new request
     When I press Build something new
     Then I should be on the page where I provide background information
     And I fill in all the mandatory fields with the necessary background information.
-    And I select Ruby on Rails as the technology I want the this application build in.
+    And I select "Ruby on Rails" as the technology I want the this application build in.
     And I press Next
 
   Scenario: Create two features

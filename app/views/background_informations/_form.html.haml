@@ -28,5 +28,11 @@
   .field
     = f.label :what_is_the_frame
     = f.text_area :what_is_the_frame
+
+  = label_tag 'request_group', 'Select group'
+  = select("request", "request_group_id", 
+    RequestGroup.all.collect {|p| [ p.title, p.id ] }, { :include_blank => false })
+
+
   .actions
     = f.submit 'Save', class: 'btn btn-primary'
