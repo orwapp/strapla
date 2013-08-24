@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/plataformatec/simple_form.git
+  revision: 359606f222fa0972a4a14ec70140ac00f7c80839
+  specs:
+    simple_form (3.0.0.rc)
+      actionpack (>= 4.0.0, < 4.1)
+      activemodel (>= 4.0.0, < 4.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -227,7 +235,6 @@ GEM
       rubyzip
       websocket (~> 1.0.4)
     simple-random (0.9.3)
-    simple_form (1.4.1)
     sinatra (1.4.3)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -321,7 +328,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 4.0.0)
   selenium-webdriver
-  simple_form
+  simple_form!
   slim
   slim-rails
   split
