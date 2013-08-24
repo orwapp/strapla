@@ -1,5 +1,7 @@
-%h1 
+.page-header
+  = link_to features_path, :class => 'btn' do
+    %i.icon-list-alt
+    Back
+  %h1 New feature
 
 = render 'form'
-
-= link_to 'Back', features_path

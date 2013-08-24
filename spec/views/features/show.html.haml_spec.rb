@@ -4,7 +4,8 @@ describe "features/show" do
   before(:each) do
     @feature = assign(:feature, stub_model(Feature,
       :request => nil,
-      :text => "MyText"
+      :text => "MyText",
+      :title => "Title"
     ))
   end
 
@@ -13,5 +14,6 @@ describe "features/show" do
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     rendered.should match(//)
     rendered.should match(/MyText/)
+    rendered.should match(/Title/)
   end
 end

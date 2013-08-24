@@ -4,7 +4,8 @@ describe "features/edit" do
   before(:each) do
     @feature = assign(:feature, stub_model(Feature,
       :request => nil,
-      :text => "MyText"
+      :text => "MyText",
+      :title => "MyString"
     ))
   end
 
@@ -15,6 +16,7 @@ describe "features/edit" do
     assert_select "form[action=?][method=?]", feature_path(@feature), "post" do
       assert_select "input#feature_request[name=?]", "feature[request]"
       assert_select "textarea#feature_text[name=?]", "feature[text]"
+      assert_select "input#feature_title[name=?]", "feature[title]"
     end
   end
 end

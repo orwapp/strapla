@@ -1,7 +1,10 @@
-%h1 Editing feature
+.page-header
+  = link_to features_path, :class => 'btn' do
+    %i.icon-list-alt
+    Back
+  = link_to @feature, :class => 'btn btn-primary' do
+    %i.icon-info-sign.icon-white
+    Show
+  %h1 Editing feature
 
 = render 'form'
-
-= link_to 'Show', @feature
-\|
-= link_to 'Back', features_path

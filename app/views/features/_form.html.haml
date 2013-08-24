@@ -1,16 +1,10 @@
-= form_for [@requste, @feature] do |f|
-  - if @feature.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@feature.errors.count, "error")} prohibited this feature from being saved:"
-      %ul
-        - @feature.errors.full_messages.each do |msg|
-          %li= msg
+= simple_form_for(@feature, :defaults => { :input_html => { :class => 'input-xxlarge' } }) do |f|
+  = f.error_notification
 
-  .field
-    = f.label :request
-    = f.text_field :request
-  .field
-    = f.label :text
-    = f.text_area :text
-  .actions
-    = f.submit 'Save'
+  .form-inputs
+    = f.association :request
+    = f.input :text
+    = f.input :title
+
+  .form-actions
+    = f.button :submit, :class => "btn-primary"

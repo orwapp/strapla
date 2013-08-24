@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130823120842) do
+ActiveRecord::Schema.define(version: 20130824164259) do
 
   create_table "background_informations", force: true do |t|
     t.text     "elevator_pitch"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20130823120842) do
   create_table "features", force: true do |t|
     t.integer  "request_id"
     t.text     "text"
+    t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
