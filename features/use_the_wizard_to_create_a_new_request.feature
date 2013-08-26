@@ -22,9 +22,15 @@ Feature: Use the wizard to create a new request
 
   Scenario: Create two features
     Given I have completed the first part of the wizard
-    And  I am on the page where I can add new features
     Then I should see "Describe which features you want"
     And  I should see "Understand what a User Story is"
-    Then I fill in the New feature form
-    # Provide a select menu for the keywords /Given|And|Then|Or|etc../
+    Then I fill in the first New feature form
+    And I fill in the second New feature form
+    And I press Next
 
+  Scenario: Review the feature before submitting
+    Given I have created two features and pressed Next
+    Then I should see "Please review before submitting"
+    When I press Submit
+    Then we should have a new request available for consultants to give a price quote on.
+    # Provide a select menu for the keywords /Given|And|Then|Or|etc../

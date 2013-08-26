@@ -7,6 +7,10 @@ class FeaturesController < ApplicationController
     @features = Feature.all
   end
 
+  def create_many
+    @feature = Feature.new
+  end
+
   # GET /features/1
   # GET /features/1.json
   def show

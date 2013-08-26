@@ -1,10 +1,10 @@
-= simple_form_for(@feature, :defaults => { :input_html => { :class => 'input-xxlarge' } }) do |f|
+strong= "Feature #{n}"
+= simple_form_for(@feature, :remote => true, :defaults => { :input_html => { :class => 'input-xxlarge' } }) do |f|
   = f.error_notification
 
   .form-inputs
-    = f.association :request
-    = f.input :text
     = f.input :title
+    = f.input :text
 
   .form-actions
     = f.button :submit, :class => "btn-primary"

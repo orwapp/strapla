@@ -32,7 +32,7 @@ class BackgroundInformationsController < ApplicationController
       if @background_information.save
         @background_information.request = @request = Request.create(user: current_user)
         @request.save(:validate => false)
-        format.html { redirect_to new_request_feature_path(@request), notice: 'Background information was successfully created.' }
+        format.html { redirect_to request_create_many_path(@request), notice: 'Background information was successfully created.' }
         format.json { render action: 'show', status: :created, location: @background_information }
       else
         format.html { render action: 'new' }

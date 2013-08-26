@@ -19,8 +19,10 @@ CodeRunner::Application.routes.draw do
 
   resources :background_informations
 
+
   resources :features
   resources :requests do
+    get  'features/create_many/' => 'features#create_many', as: :create_many 
     resources :features
     resources :background_informations
     resources :price_quotes
