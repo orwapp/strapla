@@ -1,10 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.0.0'
-#gem 'rails',
-#    :git => 'http://github.com/rails/rails.git'
-
 ruby '2.0.0'
+
 gem 'pg'
 gem 'slim'
 gem 'slim-rails'
@@ -21,6 +19,7 @@ gem 'bootstrap-sass', '~> 2.3.2.0'
 gem 'font-awesome-rails'
 gem 'devise'
 gem 'compass'
+gem 'compass-rails', :github => 'roderickvd/compass-rails'
 gem 'bootstrap-generators', '~> 2.3'
 #gem 'bootstrap-generators', :github => 'stabenfeldt/bootstrap-generators'
 gem 'haml'
@@ -39,10 +38,8 @@ end
 
 group :development, :test do
   gem 'capybara'
-  #gem 'turn'
   gem 'rspec-rails'
   gem 'cucumber-rails', :require => false
-  #gem 'poltergeist', :git => 'https://github.com/jonleighton/poltergeist.git'
   gem 'database_cleaner'
   gem 'email_spec'
   gem 'guard-rspec'

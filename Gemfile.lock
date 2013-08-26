@@ -6,6 +6,13 @@ GIT
       actionpack (>= 4.0.0, < 4.1)
       activemodel (>= 4.0.0, < 4.1)
 
+GIT
+  remote: git://github.com/roderickvd/compass-rails.git
+  revision: aea69635f6000bbc7180f7fdd0ce216f904db30d
+  specs:
+    compass-rails (2.0.alpha.0)
+      compass (>= 0.12.2, < 0.14)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -301,6 +308,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.0.0)
   compass
+  compass-rails!
   cucumber-rails
   database_cleaner
   devise
