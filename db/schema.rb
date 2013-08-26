@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20130824164259) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "background_informations", force: true do |t|
     t.text     "elevator_pitch"
     t.text     "background_information"
