@@ -29,4 +29,3 @@ Feature: Price Quotes
     Then "need_help@cr.no" should receive an email with the text "Martin Stabenfeldt has sent you a price quote"
     And "need_help@cr.no" clicks the link "Resond to price quote"
     Then 
-
