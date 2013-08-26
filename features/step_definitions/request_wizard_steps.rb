@@ -47,3 +47,19 @@ end
 Then(/^I should be on the page where I provide background information$/) do
   current_path.should eq new_background_information_path
 end
+
+Then(/^I fill in the .+ New feature form$/) do
+  fill_in :title, with: 'Post requests for help'
+end
+
+#Then(/^I fill in the second New feature form$/) do
+#  pending # express the regexp above with the code you wish you had
+#end
+
+Given(/^I have created two features and pressed Next$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^we should have a new request available for consultants to give a price quote on\.$/) do
+  pending # express the regexp above with the code you wish you had
+end
