@@ -1,11 +1,12 @@
 strong= "Feature #{n}"
-= simple_form_for([@request, @feature], html: {class: "form-inline new_feature feature#{n}" }) do |f|
+= simple_form_for([@request, @feature], remote: true, html: {class: "form-inline new_feature feature#{n}" }) do |f|
   .border.padding10
     = f.error_notification
 
     .form-inputs
-      = f.input :title
-      = f.input :text
+      = f.hidden_field :request_id, :values => @request.id
+      = f.input :title, input_html: { class: 'input-medium' }
+      = f.input :text,  input_html: { class: 'input-medium' }
 
     .form-actions
       = f.button :submit, :class => "btn-primary"
