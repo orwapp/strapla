@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130824164259) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20130827114835) do
 
   create_table "background_informations", force: true do |t|
     t.text     "elevator_pitch"
@@ -88,7 +85,7 @@ ActiveRecord::Schema.define(version: 20130824164259) do
   end
 
   create_table "requests", force: true do |t|
-    t.string   "subject"
+    t.string   "title"
     t.text     "description"
     t.text     "goal"
     t.integer  "request_group_id"
