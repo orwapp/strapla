@@ -1,6 +1,6 @@
 table.table.table-striped.table-hover
   tr
-    th Subject
+    th Title
     th Description
     th Goal
     th Group
@@ -8,7 +8,7 @@ table.table.table-striped.table-hover
 
   - @requests.each do |request|
     tr
-      td = request.subject
+      td = request.title
       td = request.description
       td = request.goal
       td = request.request_group.title

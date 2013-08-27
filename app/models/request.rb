@@ -4,7 +4,7 @@ class Request < ActiveRecord::Base
   has_many :price_quotes
   has_one :elevator_pitch
 
-  validates_presence_of :subject, :goal, :request_group,  :description
+  validates_presence_of :title, :goal, :request_group,  :description
   
   attr_accessor :repository_url
 

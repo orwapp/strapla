@@ -82,7 +82,7 @@ class RequestsController < ApplicationController
   end
 
   def request_params
-    params.require(:request).permit(:subject, :description, :goal, :request_group_id, :repository_url)
+    params.require(:request).permit(:title, :description, :goal, :request_group_id, :repository_url)
   end
 
 end

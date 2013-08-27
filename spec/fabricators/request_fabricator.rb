@@ -1,5 +1,5 @@
 Fabricator(:request) do
-  subject     "MyString"
+  title     "MyString"
   description "MyText"
   goal        "MyText"
   request_group  { Fabricate(:request_group) }
