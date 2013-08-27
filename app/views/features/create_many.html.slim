@@ -5,34 +5,38 @@
   h1 Describe which features you want
 
 .well
-  One of the benefits of agile user stories is that they can be written at varying levels of detail. 
-  We can write a user story to cover large amounts of functionality. These large user stories are generally known as epics. Here is an epic agile user story example from a desktop backup product:
+  h3 User stories 
+  | One of the benefits of agile user stories is that they can be written at varying levels of detail. 
+  | We can write a user story to cover large amounts of functionality. These large user stories are generally known as epics. Here is an epic agile user story example from a desktop backup product:
   br
   br
  
-  strong Epics
+  h3 Epics
   br
-  As a user, I can backup my entire hard drive.
-  Because an epic is generally too large for an agile team to complete in one iteration, it is split into multiple smaller user stories before it is worked on."
-  br
-  br
- 
-  The epic above could be split into dozens (or   
-  possibly hundreds), including these two:
+  blockquote
+    strong As a user, I can backup my entire hard drive.
+    br
+  = "Because an epic is generally too large for an agile team to complete in one iteration, it is split into multiple smaller user stories before it is worked on."
   br
   br
  
-  As a power user, I can specify files or folders to backup based on file size, date created and date modified.
-  As a user, I can indicate folders not to backup so that my backup drive isn't filled up with things I don't need saved.
+  | The epic above could be split into dozens (or possibly hundreds), including these two:
+  br
+  br
+ 
+  blockquote
+    ="As a power user, I can specify files or folders to backup based on file size, date created and date modified."
+  blockquote
+    ="As a user, I can indicate folders not to backup so that my backup drive isn't filled up with things I don't need saved."
 
 
 
 
-- 3.times do |n|
-  .span3
+- 2.times do |n|
+  .span5
     =render('form', n: n).html_safe
 
 .row
   .span12
     = button_to "Add more features", '#', class: 'btn btn-success'
-    = link_to "Next", '#', class: 'btn btn-primary continue_from_the_create_many_page', data: {navigate_to: 'http://dn.no/' }
+    = link_to "Next", '#', class: 'btn btn-primary continue_from_the_create_many_page pull-right', data: {navigate_to: request_review_path(@request) }
