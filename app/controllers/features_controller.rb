@@ -6,6 +6,7 @@ class FeaturesController < ApplicationController
   end
 
   def create_many
+    @request = Request.find(params[:request_id])
     @feature = Feature.new
   end
 
@@ -28,6 +29,7 @@ class FeaturesController < ApplicationController
       if @feature.save!
         format.html { redirect_to @feature, notice: 'Feature was successfully created.' }
         format.json { render action: 'show', status: :created, location: @feature }
+        format.js
       else
         format.html { render action: 'new' }
         format.json { render json: @feature.errors, status: :unprocessable_entity }
