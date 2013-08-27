@@ -11,7 +11,7 @@ table.table.table-striped.table-hover
       td = request.title
       td = request.description
       td = request.goal
-      td = request.request_group.title
+      td = request.request_group.title rescue nil
       td = link_to 'Show', request
       td = link_to 'Destroy', request, method: :delete
 
