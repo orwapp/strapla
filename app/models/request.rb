@@ -3,6 +3,7 @@ class Request < ActiveRecord::Base
   belongs_to :user
   has_many :price_quotes
   has_one :elevator_pitch
+  has_one :background_information
 
   validates_presence_of :title, :goal, :request_group,  :description
   
