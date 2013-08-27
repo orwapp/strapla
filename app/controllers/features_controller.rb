@@ -1,8 +1,6 @@
 class FeaturesController < ApplicationController
   before_action :set_feature, only: [:show, :edit, :update, :destroy]
 
-  # GET /features
-  # GET /features.json
   def index
     @features = Feature.all
   end
@@ -11,27 +9,23 @@ class FeaturesController < ApplicationController
     @feature = Feature.new
   end
 
-  # GET /features/1
-  # GET /features/1.json
   def show
   end
 
-  # GET /features/new
   def new
     @feature = Feature.new
   end
 
-  # GET /features/1/edit
   def edit
   end
 
-  # POST /features
-  # POST /features.json
   def create
+    @request = Request.find(params[:request_id])
     @feature = Feature.new(feature_params)
+    @feature.request = @request
 
     respond_to do |format|
-      if @feature.save
+      if @feature.save!
         format.html { redirect_to @feature, notice: 'Feature was successfully created.' }
         format.json { render action: 'show', status: :created, location: @feature }
       else
@@ -41,8 +35,6 @@ class FeaturesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /features/1
-  # PATCH/PUT /features/1.json
   def update
     respond_to do |format|
       if @feature.update(feature_params)
@@ -55,8 +47,6 @@ class FeaturesController < ApplicationController
     end
   end
 
-  # DELETE /features/1
-  # DELETE /features/1.json
   def destroy
     @feature.destroy
     respond_to do |format|

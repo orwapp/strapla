@@ -48,18 +48,32 @@ Then(/^I should be on the page where I provide background information$/) do
   current_path.should eq new_background_information_path
 end
 
-Then(/^I fill in the .+ New feature form$/) do
-  fill_in :title, with: 'Post requests for help'
+Then(/^I fill in the first New feature form$/) do
+  within(:css, '.feature1') do
+    fill_in 'Title', with: 'Post requests for help'
+  end
 end
 
-#Then(/^I fill in the second New feature form$/) do
-#  pending # express the regexp above with the code you wish you had
-#end
+Then(/^I fill in the second New feature form$/) do
+  within(:css, '.feature2') do
+    fill_in 'Title', with: 'Post requests for help'
+  end
+end
 
 Given(/^I have created two features and pressed Next$/) do
-  pending # express the regexp above with the code you wish you had
+  Feature.all.size.should eq 2
 end
 
 Then(/^we should have a new request available for consultants to give a price quote on\.$/) do
   pending # express the regexp above with the code you wish you had
+end
+
+
+Then(/^I should have (\d+) features stored in the database$/) do |n|
+  Feature.all.size.should eq n
+end
+
+
+Then(/^we should have one BackgroundInformation object saved$/) do
+  BackgroundInformation.all.size.should eq 1
 end

@@ -1,3 +1,7 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$ ->
+  $('.continue_from_the_create_many_page').on "click", (e) ->
+    e.preventDefault()
+
+    $('form.new_feature').each ->
+      $(this).submit()
+

@@ -18,18 +18,19 @@ Feature: Use the wizard to create a new request
     Then I should be on the page where I provide background information
     And I fill in all the mandatory fields with the necessary background information.
     And I select "Ruby on Rails" as the technology I want the this application build in.
-    And I press Save
+    When I press Save
+    Then we should have one BackgroundInformation object saved
 
   Scenario: Create two features
     Given I have completed the first part of the wizard
     Then I should see "Describe which features you want"
-    And  I should see "Understand what a User Story is"
     Then I fill in the first New feature form
     And I fill in the second New feature form
-    And I press Next
+    When I press Next
+    Then I should have 2 features stored in the database
 
   Scenario: Review the feature before submitting
-    Given I have created two features and pressed Next
+    Given I have created two features
     Then I should see "Please review before submitting"
     When I press Submit
     Then we should have a new request available for consultants to give a price quote on.

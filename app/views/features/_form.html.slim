@@ -1,5 +1,5 @@
 strong= "Feature #{n}"
-= simple_form_for(@feature, html: {class: 'form-inline' }) do |f|
+= simple_form_for([@request, @feature], html: {class: "form-inline new_feature feature#{n}" }) do |f|
   .border.padding10
     = f.error_notification
 
