@@ -1,5 +1,5 @@
 strong= "Feature #{n}"
-= simple_form_for(@feature, :remote => true, :defaults => { :input_html => { :class => 'input-xxlarge' } }) do |f|
+= simple_form_for(@feature, html: {class: 'form-inline' }) do |f|
   .border.padding10
     = f.error_notification
 
