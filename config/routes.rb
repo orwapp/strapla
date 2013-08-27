@@ -23,6 +23,7 @@ CodeRunner::Application.routes.draw do
   resources :features
   resources :requests do
     get  'features/create_many/' => 'features#create_many', as: :create_many 
+    get  'features/review'       => 'features#review', as: :review 
     resources :features
     resources :background_informations
     resources :price_quotes
