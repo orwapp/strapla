@@ -34,9 +34,7 @@
 
 - 2.times do |n|
   .span5
-    /=render('form', n: n).html_safe
-    = render 'form', remote: true
-
+    = render 'form',n: n, remote: true
 
 .row
   .span12

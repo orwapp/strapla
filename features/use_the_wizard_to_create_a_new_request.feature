@@ -1,3 +1,4 @@
+@javascript
 Feature: Use the wizard to create a new request
   In order to answer all the tough questions that are needed to start a successful project
   As a registered user
