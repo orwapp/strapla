@@ -25,7 +25,7 @@ Feature: Price Quotes
     And I fill "Comment" with "I've done this many times"
     And I fill "Price" with "120"
     And I fill "Hours Estimated" with "2"
-    When I press Send
+    When I press "Send"
     Then "need_help@cr.no" should receive an email with the text "Martin Stabenfeldt has sent you a price quote"
     And "need_help@cr.no" clicks the link "Resond to price quote"
     Then 

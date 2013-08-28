@@ -19,7 +19,6 @@ describe "PriceQuotes" do
       click_link 'Unassigned request' 
       page.should have_content 'Please help me'
       click_link 'Show'
-      save_and_open_page
       click_link 'Quote a price'
       fill_in 'Comment', :with => 'I can do it'
       fill_in 'Price', :with => '3'

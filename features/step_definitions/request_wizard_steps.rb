@@ -5,11 +5,11 @@ end
 Given(/^I have completed the first part of the wizard$/) do
   steps %{
     When I go to the frontpage
-    Then I press Get someone to help you
-    When I press Build something new
+    Then I press "Get someone to help you"
+    When I press "Build something new"
     And I select "Ruby on Rails" as the technology I want the this application build in.
     And I fill in all the mandatory fields with the necessary background information.
-    And I press Save
+    And I press "Save"
   }
   @background_information = BackgroundInformation.last
   @background_information.should be_valid
@@ -69,7 +69,7 @@ end
 
 
 Then(/^I should have (\d+) features stored in the database$/) do |n|
-  pending "sais 0, works in production"
+  pending "works in production"
   Feature.all.size.should eq n
 end
 
@@ -86,12 +86,8 @@ Then(/^I fill in "(.*?)" with "(.*?)"$/) do |field, data|
   fill_in field, with: data
 end
 
-Then(/^I fill in "(.*?)" with "The syntax of the array should be \[POST_ID, POST_ID\]$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
-end
-
 Then(/^I select "(.*?)" as the group$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+  select arg1
 end
 
 Then(/^I should see at least one expert$/) do
@@ -100,4 +96,15 @@ end
 
 Then(/^the user named Paul should have been delegated the request$/) do
   pending # express the regexp above with the code you wish you had
+end
+
+Given(/^I have created two features$/) do
+  steps %{
+    Given I have completed the first part of the wizard
+    Then I should see "Describe which features you want"
+    Then I fill in the first New feature form
+    And I fill in the second New feature form
+    When I press "Next"
+    Then I should have 2 features stored in the database
+  }
 end

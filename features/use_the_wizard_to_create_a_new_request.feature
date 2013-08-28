@@ -14,11 +14,11 @@ Feature: Use the wizard to create a new request
 
   Scenario: Complete the first page of the wizard, the background information
     When I go to the frontpage
-    Then I press Get someone to help you
-    When I press Build something new
+    Then I press "Get someone to help you"
+    When I press "Build something new"
     Then I fill in all the mandatory fields with the necessary background information.
     And I select "Ruby on Rails" as the technology I want the this application build in.
-    When I press Save
+    When I press "Save"
     Then we should have one BackgroundInformation object saved
 
   Scenario: Create two features
@@ -26,12 +26,12 @@ Feature: Use the wizard to create a new request
     Then I should see "Describe which features you want"
     Then I fill in the first New feature form
     And I fill in the second New feature form
-    When I press Next
+    When I press "Next"
     Then I should have 2 features stored in the database
 
   Scenario: Review the feature before submitting
     Given I have created two features
     Then I should see "Please review before submitting"
-    When I press Submit
+    When I press "Submit"
     Then we should have a new request available for consultants to give a price quote on.
     # Provide a select menu for the keywords /Given|And|Then|Or|etc../

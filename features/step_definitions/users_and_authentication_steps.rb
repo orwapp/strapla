@@ -44,9 +44,7 @@ Given /^(user "(?:.+)") is not an administrator$/ do |user|
 end
 
 Given /^(user "(?:.+)") is named "([^"]*)"$/ do |user, name|
-  name = name.split(' ')
-  user.first_name = name.shift
-  user.last_name = name.join(" ")
+  user.name = name
   user.save!
 end
 
