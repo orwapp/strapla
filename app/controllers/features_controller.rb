@@ -1,4 +1,5 @@
 class FeaturesController < ApplicationController
+  #before_action :set_feature, only: [:show, :edit, :update, :destroy]
   before_action :set_feature, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -20,15 +21,20 @@ class FeaturesController < ApplicationController
   def edit
   end
 
+  def review
+    @request = Request.find params[:request_id]
+    @background_information = @request.background_information
+  end
+
   def create
     @request = Request.find(params[:request_id])
-    @feature = Feature.new(feature_params)
+    @feature = Feature.create(feature_params)
     @feature.request = @request
 
     respond_to do |format|
-      if @feature.save
-        format.html { redirect_to @feature, notice: 'Feature was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @feature }
+      if @feature.save!
+        #format.html { redirect_to @feature, notice: 'Feature was successfully created.' }
+        #format.json { render action: 'show', status: :created, location: @feature }
         format.js
       else
         format.html { render action: 'new' }
@@ -60,7 +66,11 @@ class FeaturesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_feature
-      @feature = Feature.find(params[:id])
+      if params[:id].present?
+        @feature = Feature.find(params[:id])
+      else
+        @feature = Feature.find(params[:features_id])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

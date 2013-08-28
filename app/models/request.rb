@@ -2,6 +2,7 @@ class Request < ActiveRecord::Base
   belongs_to :request_group
   belongs_to :user
   has_many :price_quotes
+  has_many :features
   has_one :elevator_pitch
   has_one :background_information
 

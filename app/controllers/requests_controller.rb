@@ -8,6 +8,8 @@ class RequestsController < ApplicationController
   end
 
   def select_type_of_problem
+    @request = Request.new(user: current_user)
+    @request.save(:validate => false)
   end
 
   def my_requests
