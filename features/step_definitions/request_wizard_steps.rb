@@ -63,7 +63,8 @@ Given(/^I have created two features and pressed Next$/) do
 end
 
 Then(/^we should have a new request available for consultants to give a price quote on\.$/) do
-  pending # express the regexp above with the code you wish you had
+  Request.last.should be_valid
+  Request.last.title.should eq 'Post request for help'
 end
 
 
@@ -75,4 +76,28 @@ end
 
 Then(/^we should have one BackgroundInformation object saved$/) do
   BackgroundInformation.all.size.should eq 1
+end
+
+Given(/^We have one expert user in our database, named (.+)/) do |name|
+  Fabricate(:user, name: name)
+end
+
+Then(/^I fill in "(.*?)" with "(.*?)"$/) do |field, data|
+  fill_in field, with: data
+end
+
+Then(/^I fill in "(.*?)" with "The syntax of the array should be \[POST_ID, POST_ID\]$/) do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I select "(.*?)" as the group$/) do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I should see at least one expert$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^the user named Paul should have been delegated the request$/) do
+  pending # express the regexp above with the code you wish you had
 end

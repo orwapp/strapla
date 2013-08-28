@@ -3,7 +3,7 @@ Transform /^user "([^\"]*)"$/ do |email|
 end
 
 Given /^I am not signed in$/ do
-  visit('/users/sign_out')
+  page.driver.submit :delete, "/users/sign_out", {}
 end
 
 Given /^I am signed out$/ do
@@ -21,16 +21,14 @@ end
 
 Given /^(?:I|we) have a user "([^\"]*)"(?: with password "([^\"]*)")?$/ do |email, password|
   unless User.find_by_email(email)
-    user = User.make :email => email, :password => password, :password_confirmation => password
-    user.skip_confirmation!
-    user.save!
+    user = Fabricate(:user, :email => email)
   end
 end
 
 Given /^I am signed in as "([^"]*)"$/ do |email|
-  Given %{I am not signed in}
-  Given %{I have a user "#{email}" with password "secret"}
-  Given %{I am signed in as "#{email}" with password "secret"}
+  step %{I am not signed in}
+  step %{I have a user "#{email}" with password "secret"}
+  step %{I am signed in as "#{email}" with password "secret"}
 end
 
 Given /^(user "(?:.+)") is an administrator$/ do |user|
@@ -53,16 +51,17 @@ Given /^(user "(?:.+)") is named "([^"]*)"$/ do |user, name|
 end
 
 Given /^I am signed in as "([^\"]*)" with password "([^\"]*)"$/ do |email, password|
-  Given %{I am not signed in}
-
-  token_id = "abc"
+  step %{I am not signed in}
   user     = User.find_by_email(email)
-
-  SetUserFromAuthApiSignInToken.should_receive(:process).with(token_id).and_return(user)
-  
-  visit users_sign_in_from_auth_app_path(:token_id => token_id)
-
+  sign_in(user)
   @current_user = user
+end
+
+def sign_in(user)
+  visit '/users/sign_in'
+  fill_in "user_email", :with => user.email
+  fill_in "user_password", :with => 'supersecret'
+  click_button "Sign in"
 end
 
 Given /^my account has an unconfirmed extra email "([^"]*)"$/ do |email|

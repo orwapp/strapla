@@ -12,7 +12,7 @@ Feature: Get code help
     When I go to the frontpage
     Then I press Get someone to help you    
     When I press Code help
-    Then I fill in "Subject" with "Need help with searching all Facebook posts for Sony"
+    Then I fill in "Title" with "Need help with searching all Facebook posts for Sony"
     And  I fill in "Goal" with "I want an array of IDs to the matching posts returned"
     And  I fill in "Description" with "The syntax of the array should be [POST_ID, POST_ID]
     And  I select "Ruby" as the group
