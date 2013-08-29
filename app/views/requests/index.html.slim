@@ -1,18 +1,10 @@
-table.table.table-striped.table-hover
-  tr
-    th Title
-    th Description
-    th Goal
-    th Group
-    th
+.row-fluid
+  .span12
+    .hero-unit
+      p
+        |
+          lorem ipsum ...
 
-  - @requests.each do |request|
-    tr
-      td = request.title
-      td = request.description
-      td = request.goal
-      td = request.request_group.title rescue nil
-      td = link_to 'Show', request
-      td = link_to 'Destroy', request, method: :delete
+    = link_to 'Get someone to help you', select_type_of_problem_path, class: 'btn btn-primary'
+    = link_to 'Register as an expert', new_user_registration_path, class: 'btn btn-primary pull-right' unless user_signed_in?
 
-br

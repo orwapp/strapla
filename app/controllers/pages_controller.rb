@@ -4,6 +4,9 @@ class PagesController < ApplicationController
   # GET /pages
   # GET /pages.json
   def index
+    @unassigned_requests = Request.unassigned.where.not(user_id: @current_user.id)
+    @groups = @unassigned_requests.all.collect(&:request_group).uniq if @unassigned_requests
+    @my_requests = current_user.requests.where.not(user_id: @current_user.id).all
   end
 
   # GET /pages/1

@@ -28,7 +28,7 @@ class FeaturesController < ApplicationController
 
   def create
     @request = Request.find(params[:request_id])
-    @feature = Feature.create(feature_params)
+    @feature = Feature.new(feature_params)
     @feature.request = @request
 
     respond_to do |format|

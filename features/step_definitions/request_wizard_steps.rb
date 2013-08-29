@@ -115,8 +115,10 @@ Given(/^"(.*?)" has the name "(.*?)"$/) do |email, name|
 end
 
 Given(/^"(.*?)" has posted a request titled "(.*?)" in the "(.*?)" group$/) do |user_email, title, group_name|
-  group = Fabricate(:request_group, title: group_name)
-  Fabricate(:request, title: title, request_group: group)
+  user    = Fabricate(:user, email: user_email)
+  group   = Fabricate(:request_group, title: group_name)
+  request = Fabricate(:request, user: user, title: title, request_group: group)
+  request.should be_valid
 end
 
 
