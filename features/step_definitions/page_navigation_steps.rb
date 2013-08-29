@@ -17,22 +17,16 @@ When(/^I go to the frontpage$/) do
   visit '/'
 end
 
-Then(/^I press "(.*)"$/) do |link| 
-  click_on link
-end
 
 
 Given(/^I am on the home page$/) do
   visit('/')
 end
 
-When(/^I follow "(.*?)"$/) do |name|
+When(/^I (?:follow|click|press) "(.*?)"$/) do |name|
   click_on name
 end
 
-#Given(/^"(.*?)" has posted a request titled "(.*?)" delegated to "(.*?)"$/) do |arg1, arg2, arg3|                                                                                                                                                                       [0/
-#  pending # express the regexp above with the code you wish you had
-#end
 
 When(/^I visit the frontpage$/) do
   pending # express the regexp above with the code you wish you had
@@ -68,7 +62,7 @@ end
 
 
 When(/^I go to the home page$/) do
-  pending # express the regexp above with the code you wish you had
+  visit('/')
 end
 
 Then(/^I should not see "(.*?)"$/) do |arg1|

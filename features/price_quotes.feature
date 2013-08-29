@@ -4,19 +4,18 @@ Feature: Price Quotes
   I want to see new requests and reply with a price quote.
 
   Background:
-    Given I am signed in as "expert@coderunner.co"
-    And "expert@coderunner.co" is an expert
-    And "expert@coderunner.co" has the name "Martin Stabenfeldt"
+    Given We have the expert "expert@coderunner.co" named "Martin Stabenfeldt"
     And We have the expert group named "Ruby on Rails"
 
-  Scenario: Respond to a requst sent to a group
+  Scenario: Respond to a request sent to a group
+    Given I am signed in as "expert@coderunner.co"
     Given "need_help@cr.no" has posted a request titled "Need help with Facebook" in the "Ruby on Rails" group
     When I go to the frontpage
-    Then I click "Unassiged request (1)"
+    Then I click "Unassigned request 1"
     And I click "Need help with Facebook"
 
 
-  Scenario: Respond to a requst sent to one expert
+  Scenario: Respond to a request sent to one expert
     Given "need_help@cr.no" has posted a request titled "Need help with Facebook" delegated to "expert@coderunner.co"
     And I am signed in as "need_help@cr.no"
     When I visit the frontpage

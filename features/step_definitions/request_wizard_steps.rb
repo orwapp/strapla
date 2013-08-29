@@ -109,21 +109,16 @@ Given(/^I have created two features$/) do
   }
 end
 
-Given(/^"(.*?)" is an expert$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+Given(/^"(.*?)" has the name "(.*?)"$/) do |email, name|
+  user = User.find_by_email(email)
+  user.update_attribute(:name, name)
 end
 
-Given(/^"(.*?)" has the name "(.*?)"$/) do |arg1, arg2|
-  pending # express the regexp above with the code you wish you had
+Given(/^"(.*?)" has posted a request titled "(.*?)" in the "(.*?)" group$/) do |user_email, title, group_name|
+  group = Fabricate(:request_group, title: group_name)
+  Fabricate(:request, title: title, request_group: group)
 end
 
-Given(/^"(.*?)" has posted a request titled "(.*?)" in the "(.*?)" group$/) do |arg1, arg2, arg3|
-  pending # express the regexp above with the code you wish you had
-end
-
-Then(/^I click "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
-end
 
 Given(/^"(.*?)" has posted a request titled "(.*?)" delegated to "(.*?)"$/) do |arg1, arg2, arg3|
   pending # express the regexp above with the code you wish you had
@@ -131,4 +126,8 @@ end
 
 When(/^I press "(.*?)" within the invitation pop up box$/) do |arg1|
   pending # express the regexp above with the code you wish you had
+end
+
+Given(/^We have the expert "(.*?)" named "(.*?)"$/) do |email, name|
+  Fabricate(:user, name: name, email: email)
 end
