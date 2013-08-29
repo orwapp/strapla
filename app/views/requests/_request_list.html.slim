@@ -1,0 +1,18 @@
+table.table.table-striped.table-hover
+  tr
+    th Title
+    th Description
+    th Goal
+    th Group
+    th
+
+  - requests.each do |request|
+    tr
+      td = request.title
+      td = request.description
+      td = request.goal
+      td = request.request_group.title rescue nil
+      td = link_to 'Show', request
+      td = link_to 'Destroy', request, method: :delete
+
+br

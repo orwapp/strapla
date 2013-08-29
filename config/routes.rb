@@ -28,6 +28,8 @@ CodeRunner::Application.routes.draw do
     resources :background_informations
     resources :price_quotes
   end
+  get  'my_requests/' => 'requests#my_requests', as: :my_requests
+  get  'unassigned_requests/' => 'requests#unassigned_requests', as: :unassigned_requests
 
   resources :request_groups
   resources :pages
@@ -42,7 +44,6 @@ CodeRunner::Application.routes.draw do
   #   get 'products/:id' => 'catalog#view'
   get  'user/:id' => 'users#profile', as: :user_profile
   get  'select_recipient/:request_id' => 'requests#select_recipient', as: :select_recipient
-  get  'my_requests/' => 'requests#my_requests', as: :my_requests
   post 'delegate_to_expert/' => 'requests#delegate_to_expert',  as: :delegate_to_expert
   post 'delegate_to_group/' => 'requests#delegate_to_group',  as: :delegate_to_group
 

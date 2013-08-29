@@ -1,0 +1,12 @@
+h2.page-header Your requests
+br
+- if @my_requests.present?
+  = render :partial => 'request_list', locals: {requests: @my_requests}
+- else
+  p You have not created any requests.
+
+br
+br
+br
+=link_to 'Create a request', select_type_of_problem_path, class: 'btn btn-info'
+
