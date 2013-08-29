@@ -108,3 +108,27 @@ Given(/^I have created two features$/) do
     Then I should have 2 features stored in the database
   }
 end
+
+Given(/^"(.*?)" is an expert$/) do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+Given(/^"(.*?)" has the name "(.*?)"$/) do |arg1, arg2|
+  pending # express the regexp above with the code you wish you had
+end
+
+Given(/^"(.*?)" has posted a request titled "(.*?)" in the "(.*?)" group$/) do |arg1, arg2, arg3|
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I click "(.*?)"$/) do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+Given(/^"(.*?)" has posted a request titled "(.*?)" delegated to "(.*?)"$/) do |arg1, arg2, arg3|
+  pending # express the regexp above with the code you wish you had
+end
+
+When(/^I press "(.*?)" within the invitation pop up box$/) do |arg1|
+  pending # express the regexp above with the code you wish you had
+end

@@ -17,8 +17,10 @@ Feature: Get code help
     And  I fill in "Description" with "The syntax of the array should be [POST_ID, POST_ID]"
     And  I select "Ruby" as the group
     When I press "Next"
+
     Then I should see "Who shall we send the question to"
-    And I should see at least one expert
+    And  I should see at least one expert
     When I press "Send the question to Paul"
+
     Then I should see "Paul will contact you shortly"
     And the user named Paul should have been delegated the request

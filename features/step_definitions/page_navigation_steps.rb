@@ -27,7 +27,7 @@ Given(/^I am on the home page$/) do
 end
 
 When(/^I follow "(.*?)"$/) do |name|
-  click name
+  click_on name
 end
 
 #Given(/^"(.*?)" has posted a request titled "(.*?)" delegated to "(.*?)"$/) do |arg1, arg2, arg3|                                                                                                                                                                       [0/
