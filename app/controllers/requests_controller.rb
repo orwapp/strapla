@@ -1,10 +1,15 @@
 class RequestsController < ApplicationController
   respond_to :html
   before_action :set_request, only: [:show, :edit, :update, :destroy]
+  before_action :find_requests
 
   def index
-    @requests = Request.unassigned.where.not(user_id: current_user.id)
-    @groups   = @requests.all.collect(&:request_group).uniq if @requests
+  end
+
+  def unassigned_requests
+  end
+
+  def my_requests
   end
 
   def select_type_of_problem
@@ -12,10 +17,6 @@ class RequestsController < ApplicationController
     @request.save(:validate => false)
   end
 
-  def my_requests
-    @requests = current_user.requests.all
-    render :index
-  end
 
   def show
     @price_quote = current_user.price_quotes.new
@@ -43,8 +44,6 @@ class RequestsController < ApplicationController
 
   def select_recipient
     @request = Request.find(params[:request_id])
-    require 'ostruct'
-    prng = Random.new
     @experts = User.all
   end
 
@@ -75,7 +74,7 @@ class RequestsController < ApplicationController
   def destroy
     @request = Request.find(params[:id]) 
     @request.destroy 
-    respond_with(@request)
+    redirect_to :back, notice: 'Request deleted'
   end
 
   private
@@ -86,5 +85,12 @@ class RequestsController < ApplicationController
   def request_params
     params.require(:request).permit(:title, :description, :goal, :request_group_id, :repository_url)
   end
+
+  def find_requests
+    @unassigned_requests = Request.unassigned.where.not(user_id: @current_user.id)
+    @groups = @unassigned_requests.all.collect(&:request_group).uniq if @unassigned_requests
+    @my_requests = current_user.requests.all
+  end
+
 
 end

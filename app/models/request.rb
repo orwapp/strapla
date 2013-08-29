@@ -10,7 +10,7 @@ class Request < ActiveRecord::Base
   
   attr_accessor :repository_url
 
-  scope :unassigned, -> { where contractor_id: nil }
+  scope :unassigned, -> { where delegated_to_user_id: nil }
 
   def contractor
     return unless self.contractor_id
