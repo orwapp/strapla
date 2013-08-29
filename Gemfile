@@ -34,6 +34,7 @@ group :development do
   gem 'meta_request'
   gem 'zeus'
   gem 'quiet_assets'
+  gem 'guard-cucumber'
 end
 
 group :development, :test do
