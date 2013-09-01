@@ -130,3 +130,7 @@ end
 Given(/^We have the expert "(.*?)" named "(.*?)"$/) do |email, name|
   Fabricate(:user, name: name, email: email)
 end
+
+Then(/^"(.*?)" should be notified that I have sent a price quote$/) do |email|
+  last_email.to.should include(email)
+end
