@@ -24,3 +24,4 @@ Feature: Get code help
 
     Then I should see "Paul will contact you shortly"
     And the user named Paul should have been delegated the request
+

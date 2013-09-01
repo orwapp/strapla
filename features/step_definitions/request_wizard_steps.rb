@@ -82,9 +82,6 @@ Given(/^We have one expert user in our database, named (.+)/) do |name|
   Fabricate(:user, name: name)
 end
 
-Then(/^I fill in "(.*?)" with "(.*?)"$/) do |field, data|
-  fill_in field, with: data
-end
 
 Then(/^I select "(.*?)" as the group$/) do |arg1|
   select arg1

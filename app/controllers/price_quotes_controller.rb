@@ -2,6 +2,7 @@ class PriceQuotesController < ApplicationController
   before_action :set_price_quote, only: [:show, :edit, :update, :destroy]
   before_action :set_request, only: [:new, :edit, :update]
   respond_to :html
+  before_filter :authenticate_user!, except: [:index, :show]
 
   def index
     @price_quotes = PriceQuote.all

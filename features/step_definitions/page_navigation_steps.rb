@@ -36,8 +36,8 @@ When(/^I click New requests sent to you$/) do
   pending # express the regexp above with the code you wish you had
 end
 
-Then(/^I fill "(.*?)" with "(.*?)"$/) do |arg1, arg2|
-  pending # express the regexp above with the code you wish you had
+Then(/^I fill in "(.*?)" with "(.*?)"$/) do |field, data|
+  fill_in field, with: data
 end
 
 Then(/^"(.*?)" should receive an email with the text "(.*?)"$/) do |arg1, arg2|
@@ -67,4 +67,8 @@ end
 
 Then(/^I should not see "(.*?)"$/) do |arg1|
   pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I open the page$/) do
+  save_and_open_page
 end

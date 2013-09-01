@@ -124,3 +124,13 @@ When /^I ask Companybook to resend my confirmation email to "([^"]*)"$/ do |emai
     click_button "Resend confirmation instructions"
   end
 end
+
+
+When(/^I should be on the Sign in page$/) do
+  current_path.should eq new_user_session_path
+end
+
+Then(/^I sign up as "(.*?)"$/) do |email|
+  sign_in(Fabricate(:user, email: email))
+end
+

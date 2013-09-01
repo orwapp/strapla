@@ -2,6 +2,7 @@ class RequestsController < ApplicationController
   respond_to :html
   before_action :set_request, only: [:show, :edit, :update, :destroy]
   before_action :find_requests
+  #before_filter :authenticate_user!, except: [:index, :show]
 
   def index
   end
@@ -19,7 +20,7 @@ class RequestsController < ApplicationController
 
 
   def show
-    @price_quote = current_user.price_quotes.new
+    @price_quote = current_user.price_quotes.new  if user_signed_in?
   end
 
   def new
@@ -87,9 +88,13 @@ class RequestsController < ApplicationController
   end
 
   def find_requests
-    @unassigned_requests = Request.unassigned.where.not(user_id: @current_user.id)
+    if user_signed_in?
+      @unassigned_requests = Request.unassigned.where.not(user_id: @current_user.id) 
+      @my_requests = current_user.requests.all
+    else
+      @unassigned_requests = Request.unassigned
+    end
     @groups = @unassigned_requests.all.collect(&:request_group).uniq if @unassigned_requests
-    @my_requests = current_user.requests.all
   end
 
 

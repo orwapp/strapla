@@ -8,6 +8,6 @@
   
   = f.hidden_field :request_id, value: @request.id
   = f.input :comment
-  = f.input :price
+  = f.input :price, label: 'Total price in USD'
   = f.input :hours_estimated
   = f.submit 'Send', class: 'btn btn-primary', disable_with: "Saving..."

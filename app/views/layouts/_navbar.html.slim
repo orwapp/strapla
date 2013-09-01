@@ -1,21 +1,22 @@
 .navbar
   .navbar-inner
     a.brand href="/" CodeRunner
-    - if user_signed_in?
-      ul.nav
-        //- if @my_requests.present?
+    ul.nav
+      - if user_signed_in?
         li[class="#{'active' if current_page?(my_requests_path)}"]=  link_to 'My requests', my_requests_path
-                                                                                                                                                
-        - if @unassigned_requests.present?
-          li[class="#{'active' if current_page?(unassigned_requests_path)}"]
-            = link_to (content_tag(:span, "Unassigned #{'request'.pluralize(@unassigned_requests.size)} ") +  \
-              content_tag(:strong, "#{@unassigned_requests.size}", class: "badge badge-success")).html_safe,
-              unassigned_requests_path
-                                                                                                                                                
+                                                                                                                                              
+      - if @unassigned_requests.present?
+        li[class="#{'active' if current_page?(unassigned_requests_path)}"]
+          = link_to (content_tag(:span, "Unassigned #{'request'.pluralize(@unassigned_requests.size)} ") +  \
+            content_tag(:strong, "#{@unassigned_requests.size}", class: "badge badge-success")).html_safe,
+            unassigned_requests_path
+                                                                                                                                              
+    - if user_signed_in?
       ul.nav.pull-right
-        li[class="#{'active' if current_page?(user_profile_path(current_user.id))}"]=  link_to 'My profile', user_profile_path(current_user.id)
-        li= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'pull-right'
-                                                                                                                                                
+        li[class="#{'active' if current_page?(user_profile_path(current_user.id))}"]
+          = link_to 'My profile', user_profile_path(current_user.id)
+        li
+          = link_to "Sign out", destroy_user_session_path, method: :delete, class: 'pull-right'
     - else
       ul.nav.pull-right
         li[class="#{'active' if current_page?(new_user_session_path)}"]=  link_to 'Sign in', new_user_session_path
