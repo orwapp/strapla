@@ -16,7 +16,7 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 RSpec.configure do |config|
-  config.include(EmailSpec::Helpers)
+  configinclude(EmailSpec::Helpers)
   config.include(EmailSpec::Matchers)
   config.include Warden::Test::Helpers
   config.include Capybara::DSL
