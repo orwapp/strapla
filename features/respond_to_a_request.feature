@@ -21,5 +21,13 @@ Feature: Respond to a request
     When I press "Send"
     Then "noob@noob.no" should be notified that I have sent a price quote
 
+  Scenario: The owner of the request receives an email telling him that someone wants to do his assignment
+    Given "expert@coder.com" has sent a price quote to the request owner "noob@noob.no"
+    Then "noob@noob.no" should receive an email
+    When "noob@noob.no" opens the email with subject "New price quote on CodeRunner"
+    And I am signed in as "noob@noob.no"
+    And I follow "Show price quote" in the email
+    And he should be one the request show page
+
 
 

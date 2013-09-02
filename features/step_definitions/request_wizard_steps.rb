@@ -24,9 +24,9 @@ Then(/^I should see "(.*?)"$/) do |text|
   page.should have_content text
 end
 
-Then(/^I fill in the New feature form$/) do
-  pending # express the regexp above with the code you wish you had
-end
+#Then(/^I fill in the New feature form$/) do
+#  pending # express the regexp above with the code you wish you had
+#end
 
 Given(/^this data to fill the background information form:$/) do |table|
   @table = table.raw
@@ -114,18 +114,21 @@ end
 Given(/^"(.*?)" has posted a request titled "(.*?)" in the "(.*?)" group$/) do |user_email, title, group_name|
   user    = Fabricate(:user, email: user_email)
   group   = Fabricate(:request_group, title: group_name)
-  request = Fabricate(:request, user: user, title: title, request_group: group)
-  request.should be_valid
+  @request = Fabricate(:request, user: user, title: title, request_group: group)
+  @request.should be_valid
 end
 
 
-Given(/^"(.*?)" has posted a request titled "(.*?)" delegated to "(.*?)"$/) do |arg1, arg2, arg3|
-  pending # express the regexp above with the code you wish you had
+Given(/^"(.*?)" has posted a request titled "(.*?)" delegated to "(.*?)"$/) do |customer_email, title, expert_email|
+  @customer = Fabricate(:user, email: customer_email)
+  @expert   = Fabricate(:user, email: expert_email)
+  @request = Fabricate(:request, user: customer, delegated_to_user_id: expert.id)
+
+  @customer.valid? == true
+  @expert.valid? == true
+  @request.valid? == true
 end
 
-When(/^I press "(.*?)" within the invitation pop up box$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
-end
 
 Given(/^We have the expert "(.*?)" named "(.*?)"$/) do |email, name|
   Fabricate(:user, name: name, email: email)
@@ -133,4 +136,22 @@ end
 
 Then(/^"(.*?)" should be notified that I have sent a price quote$/) do |email|
   last_email.to.should include(email)
+end
+
+Given(/^"(.*?)" has sent a price quote to the request owner "(.*?)"$/) do |expert_email, owner_email|
+  @expert   = Fabricate(:user, email: expert_email)
+  @price_quote = Fabricate(:price_quote, user: @expert, request: @request)
+  @price_quote.notify_owner_about_new_quote
+end
+
+When(/^"(.*?)" opens his email and clicks "(.*?)"$/) do |arg1, email|
+  last_email.content.should include(request_price_quote_url(@request, @price_quote))
+end
+
+Then(/^he should be one the request show page$/) do |request, price_quote|
+  current_path.should eq request_price_quote(request, price_quote)
+end
+
+Then(/^(he|I|she) should see "(.*?)"$/) do |text|
+  page.should have_content(text)
 end
