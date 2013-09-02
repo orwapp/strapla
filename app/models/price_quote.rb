@@ -7,6 +7,10 @@ class PriceQuote < ActiveRecord::Base
     UserMailer.send_price_quote(self).deliver
   end
 
+  def notify_expert_about_accept_price_quote
+    UserMailer.accepted_price_quote(self).deliver
+  end
+
   def accepted?
     status == 'accepted'
   end

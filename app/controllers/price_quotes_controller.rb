@@ -35,7 +35,11 @@ class PriceQuotesController < ApplicationController
     @price_quote = PriceQuote.find(params[:id])
     @price_quote.update_attribute(:status, 'accepted')
     @price_quote.save!
-    UserMailer.inform_about_accepted_quote(@price_quote).deliver
+
+    @price_quote.request.contractor = @price_quote.user
+    @price_quote.save
+    @price_quote.notify_expert_about_accept_price_quote
+
     flash[:notice] = "Price quote accepted. #{@price_quote.user.name} has been notified"
     redirect_to request_path(@price_quote.request)
   end

@@ -135,9 +135,10 @@ Then(/^"(.*?)" should be notified that I have sent a price quote$/) do |email|
   last_email.to.should include(email)
 end
 
-Given(/^"(.*?)" has sent a price quote to the request owner "(.*?)"$/) do |expert_email, owner_email|
+Given(/^"(.*?)" has sent a price quote to the request owner "(.*?)"/) do |expert_email, owner_email|
   @expert   = Fabricate(:user, email: expert_email)
   @price_quote = Fabricate(:price_quote, user: @expert, request: @request)
+  @request.valid? == true
   @price_quote.notify_owner_about_new_quote
 end
 
@@ -146,7 +147,7 @@ When(/^"(.*?)" opens his email and clicks "(.*?)"$/) do |arg1, email|
 end
 
 Then(/^he should be one the request show page$/) do
-  current_path.should eq request_price_quote(request, price_quote)
+  current_path.should eq request_price_quote(@request, @price_quote)
 end
 
 Then(/^(?:he|I|she) should see "(.*?)"$/) do |text|

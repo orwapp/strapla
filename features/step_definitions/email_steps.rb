@@ -65,7 +65,8 @@ Then /^(?:I|they|"([^"]*?)") should receive (an|no|\d+) emails? with subject \/(
 end
 
 Then /^(?:I|they|"([^"]*?)") should receive an email with the following body:$/ do |address, expected_body|
-  open_email(address, :with_text => expected_body)
+  body = expected_body.raw.flatten.join(' ')
+  open_email(address, :with_text => body)
 end
 
 #

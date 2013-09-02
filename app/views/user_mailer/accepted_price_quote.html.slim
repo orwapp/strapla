@@ -1,0 +1,19 @@
+doctype html
+html
+  body
+
+    = "Hi #{@price_quote.user.name},".html_safe
+    
+    = "#{@price_quote.request.user.name} has accepted your price quote!".html_safe
+    br
+    = "#{link_to 'Review the request here.', request_path(@price_quote.request)}".html_safe
+    
+    hr
+     
+    = "#{@price_quote.comment}".html_safe if @price_quote.comment
+    = "#{@price_quote.price}".html_safe
+    = "#{@price_quote.hours_estimated}".html_safe
+    
+    = link_to('Click here', request_price_quote_url(@price_quote, @price_quote.request)).html_safe
+    = " to review and accept the quote.".html_safe
+    = "Or contact #{@price_quote.user.name} by email #{@price_quote.user.email}".html_safe
