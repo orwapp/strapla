@@ -6,13 +6,23 @@ html
     
     = "#{@price_quote.request.user.name} has accepted your price quote!".html_safe
     br
-    = "#{link_to 'Review the request here.', request_path(@price_quote.request)}".html_safe
-    
+    br
+    /= "#{link_to 'Review the request here.', request_url(@price_quote.request)}".html_safe
+    br
     hr
      
+    strong Comment
     = "#{@price_quote.comment}".html_safe if @price_quote.comment
+    br
+    br
+    strong Price
     = "#{@price_quote.price}".html_safe
+    br
+    br
+    strong Hours estimated
     = "#{@price_quote.hours_estimated}".html_safe
+    br
+    br
     
     = link_to('Click here', request_price_quote_url(@price_quote, @price_quote.request)).html_safe
     = " to review and accept the quote.".html_safe
