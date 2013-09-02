@@ -48,7 +48,9 @@ group :development, :test do
 end
 
 group :test do
+  gem 'email_spec'
   gem 'launchy'
+  gem 'capybara-webkit'
 end
 
 gem 'mail_form'

@@ -30,4 +30,3 @@ Feature: Respond to a request
     And he should be one the request show page
 
 
-
