@@ -20,9 +20,6 @@ Given(/^I am on the page where I can add new features$/) do
   current_path.should eq new_request_feature_path(@request)
 end
 
-Then(/^I should see "(.*?)"$/) do |text|
-  page.should have_content text
-end
 
 #Then(/^I fill in the New feature form$/) do
 #  pending # express the regexp above with the code you wish you had
@@ -152,6 +149,6 @@ Then(/^he should be one the request show page$/) do |request, price_quote|
   current_path.should eq request_price_quote(request, price_quote)
 end
 
-Then(/^(he|I|she) should see "(.*?)"$/) do |text|
+Then(/^(?:he|I|she) should see "(.*?)"$/) do |text|
   page.should have_content(text)
 end
