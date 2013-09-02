@@ -22,7 +22,7 @@ class PriceQuotesController < ApplicationController
     @price_quote = PriceQuote.new(price_quote_params)
     @price_quote.user = current_user
     flash[:notice] = 'Price quote sent to client' if @price_quote.save!
-    @price_quote.send_quote_to_owner
+    @price_quote.notify_owner_about_new_quote
     respond_with(@price_quote.request)
   end
 
@@ -53,7 +53,7 @@ class PriceQuotesController < ApplicationController
         flash[:notice]= 'Price quote was successfully updated.' 
         respond_with(@price_quote.request)
       else
-        #format.html { render action: 'edit' }
+        format.html { render action: 'edit' }
         #format.json { render json: @price_quote.errors, status: :unprocessable_entity }
       end
     end
