@@ -21,9 +21,13 @@ class PriceQuotesController < ApplicationController
   def create
     @price_quote = PriceQuote.new(price_quote_params)
     @price_quote.user = current_user
-    flash[:notice] = 'Price quote sent to client' if @price_quote.save!
-    @price_quote.notify_owner_about_new_quote
-    respond_with(@price_quote.request)
+    if @price_quote.save!
+      flash[:notice] = 'Price quote sent to client' 
+      @price_quote.notify_owner_about_new_quote
+      respond_with(@price_quote.request)
+    else
+      redirect_to :back, warning: 'Failed to save'
+    end
   end
 
   def accept

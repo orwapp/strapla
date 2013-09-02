@@ -11,7 +11,7 @@ include MailerMacros
 require 'email_spec' # add this line if you use spork
 require 'email_spec/cucumber'
 
-Capybara.javascript_driver = :webkit
+#Capybara.javascript_driver = :webkit
 
 
 # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In

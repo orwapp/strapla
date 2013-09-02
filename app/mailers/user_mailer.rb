@@ -8,7 +8,7 @@ class UserMailer < ActionMailer::Base
   #
   def send_price_quote(price_quote)
     @price_quote = price_quote
-    mail to: @price_quote.request.user.email 
+    mail to: @price_quote.request.user.email, subject: 'New price quote on CodeRunner'
   end
 
   def inform_about_accepted_quote(price_quote)

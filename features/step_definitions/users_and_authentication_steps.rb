@@ -3,7 +3,7 @@ Transform /^user "([^\"]*)"$/ do |email|
 end
 
 Given /^I am not signed in$/ do
-  page.driver.submit :delete, "/users/sign_out", {}
+  visit('/users/sign_out') # ensure that at least
 end
 
 Given /^I am signed out$/ do

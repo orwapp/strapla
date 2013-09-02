@@ -145,7 +145,7 @@ When(/^"(.*?)" opens his email and clicks "(.*?)"$/) do |arg1, email|
   last_email.content.should include(request_price_quote_url(@request, @price_quote))
 end
 
-Then(/^he should be one the request show page$/) do |request, price_quote|
+Then(/^he should be one the request show page$/) do
   current_path.should eq request_price_quote(request, price_quote)
 end
 

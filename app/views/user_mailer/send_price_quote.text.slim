@@ -8,5 +8,5 @@ hr
 = "#{@price_quote.price}"
 = "#{@price_quote.hours_estimated}"
 
-= "#{link_to request_price_quote_url(@price_quote.request, @price_quote), 'Click here'} to review and accept the quote."
+= link_to('Show price quote', request_price_quote_url(@price_quote.request, @price_quote))
 = "Or contact #{@price_quote.user.name} by email #{@price_quote.user.email}"
