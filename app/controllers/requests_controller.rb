@@ -2,6 +2,7 @@ class RequestsController < ApplicationController
   respond_to :html
   before_action :set_request, only: [:show, :edit, :update, :destroy]
   before_action :find_requests
+  before_filter :set_wizzard
   #before_filter :authenticate_user!, except: [:index, :show]
 
   def index
@@ -15,7 +16,6 @@ class RequestsController < ApplicationController
 
   def select_type_of_problem
     @request = Request.new(user: current_user)
-    @request.save(:validate => false)
   end
 
 
@@ -37,7 +37,11 @@ class RequestsController < ApplicationController
     @request = Request.new(request_params)
     @request.user = current_user
     if @request.save 
-      redirect_to select_recipient_path(@request)
+      if @wizzard
+        redirect_to request_create_many_path(@request) 
+      else
+        redirect_to select_recipient_path(@request)
+      end
     else
       respond_with(@request)
     end
@@ -95,6 +99,11 @@ class RequestsController < ApplicationController
       @unassigned_requests = Request.unassigned
     end
     @groups = @unassigned_requests.all.collect(&:request_group).uniq if @unassigned_requests
+  end
+
+
+  def set_wizzard
+    @wizzard ||= params[:wizzard].present?
   end
 
 

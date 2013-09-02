@@ -5,5 +5,6 @@ $ ->
     $('form.new_feature').each ->
       $(this).submit()
 
-      #window.location.href= $(this).data('navigate-to')
+    console.log  $(this).data('navigate-to')
+    window.location.href= $(this).data('navigate-to')
 

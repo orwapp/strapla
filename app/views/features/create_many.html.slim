@@ -31,9 +31,10 @@
 
 - 2.times do |n|
   .span5
-    = render 'form',n: n, remote: true
+    = render 'form',n: n, remote: true, hide_submit: true
 
 .row
   .span12
     = button_to "Add more features", '#', class: 'btn btn-success'
-    = link_to "Next", '#', class: 'btn btn-primary continue_from_the_create_many_page pull-right', data: {navigate_to: request_review_path(@request) }
+    = link_to "Next", '#', class: 'btn btn-primary continue_from_the_create_many_page pull-right', 
+      data: {navigate_to: request_review_path(@request) }

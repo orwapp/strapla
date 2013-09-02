@@ -21,7 +21,6 @@ class BackgroundInformationsController < ApplicationController
 
     respond_to do |format|
       if @background_information.save!
-        #@request.save(:validate => false)
         format.html { redirect_to request_create_many_path(@request), 
                       notice: 'Background information was successfully created.' }
         format.json { render action: 'show', status: :created, location: @background_information }

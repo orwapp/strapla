@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130902113625) do
+ActiveRecord::Schema.define(version: 20130902181945) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,6 +97,12 @@ ActiveRecord::Schema.define(version: 20130902113625) do
     t.integer  "user_id"
     t.integer  "delegated_to_user_id"
     t.integer  "contractor_id"
+    t.text     "elevator_pitch"
+    t.text     "background_information"
+    t.text     "no_list"
+    t.text     "what_can_go_wrong"
+    t.text     "what_is_it_going_to_give"
+    t.text     "what_is_the_frame"
   end
 
   add_index "requests", ["request_group_id"], name: "index_requests_on_request_group_id", using: :btree

@@ -1,5 +1,5 @@
 .row
-  = simple_form_for(@request, remote: remote,  :html => { :class => 'form-inline span10' }) do |f|
+  = simple_form_for(@request, url: "/requests/?wizzard=#{@wizzard}", remote: remote,  :html => { :class => 'form-inline span10' }) do |f|
     - if @request.errors.any?
       #error_explanation
         h2 = "#{pluralize(@request.errors.count, "error")} prohibited this request from being saved:"
@@ -12,6 +12,15 @@
       = f.input :goal,        input_html: { class: 'span10', placeholder: 'Should be clear and measureable' }
       = f.input :description, input_html: { class: 'span10' }
       = f.input :repository_url, input_html: { class: 'span10', placeholder: 'github.com/username/repository' }
+
+      - if @wizzard
+        hr
+        = f.input :elevator_pitch, input_html: { class: 'span10', placeholder: 'E.g.  Fix bug in code, make API work, etc' }
+        = f.input :background_information, input_html: { class: 'span10', placeholder: 'E.g.  Fix bug in code, make API work, etc' }
+        = f.input :no_list, input_html: { class: 'span10', placeholder: 'E.g.  Fix bug in code, make API work, etc' }
+        = f.input :what_can_go_wrong, input_html: { class: 'span10', placeholder: 'E.g.  Fix bug in code, make API work, etc' }
+        = f.input :what_is_it_going_to_give, input_html: { class: 'span10', placeholder: 'E.g.  Fix bug in code, make API work, etc' }
+        = f.input :what_is_the_frame, input_html: { class: 'span10', placeholder: 'E.g.  Fix bug in code, make API work, etc' }
   
   
       br

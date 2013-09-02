@@ -1,3 +1,5 @@
+/- @feature ||= feature  if feature.present?
+
 .page-header
   = link_to features_path, :class => 'btn' do
     %i.icon-list-alt
@@ -7,10 +9,10 @@
     Edit
   %h1 Listing features
 
-%dl
-  %dt Request:
-  %dd= @feature.request.title
-  %dt Text:
-  %dd= @feature.text
-  %dt Title:
-  %dd= @feature.title
+//%dl
+//  %dt Request:
+//  %dd= @feature.request.title
+//  %dt Text:
+//  %dd= @feature.text
+//  %dt Title:
+//  %dd= @feature.title

@@ -32,8 +32,8 @@ class FeaturesController < ApplicationController
     @feature.request = @request
 
     respond_to do |format|
-      if @feature.save!
-        #format.html { redirect_to @feature, notice: 'Feature was successfully created.' }
+      if @feature.save
+        format.html { redirect_to @feature, notice: 'Feature was successfully created.' }
         #format.json { render action: 'show', status: :created, location: @feature }
         format.js
       else

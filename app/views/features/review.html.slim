@@ -1,6 +1,8 @@
 h1 Please review your request
 p 
 
-= render template: "background_informations/show"
-/= render 'features/show'
-/= render 'request/show'
+/= render template: "background_informations/show"
+- @request.features.each do |feature|
+  = render :template => 'features/show', feature: feature
+
+= render :partial => 'requests/request', locals: {request: @request}
