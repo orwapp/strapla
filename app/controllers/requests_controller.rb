@@ -1,9 +1,8 @@
 class RequestsController < ApplicationController
   respond_to :html
-  before_action :set_request, only: [:show, :edit, :update, :destroy]
+  before_action :set_request, only: [:show, :edit, :update, :destroy, :publish]
   before_action :find_requests
   before_filter :set_wizzard
-  #before_filter :authenticate_user!, except: [:index, :show]
 
   def index
   end
@@ -80,6 +79,10 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:id]) 
     @request.destroy 
     redirect_to :back, notice: 'Request deleted'
+  end
+
+  def publish
+    @request.update_attribute(published: true)
   end
 
   private

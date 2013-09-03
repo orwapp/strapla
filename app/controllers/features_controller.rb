@@ -46,7 +46,7 @@ class FeaturesController < ApplicationController
   def update
     respond_to do |format|
       if @feature.update(feature_params)
-        format.html { redirect_to @feature, notice: 'Feature was successfully updated.' }
+        format.html { redirect_to request_review_path(@feature.request), notice: 'Feature was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -55,10 +55,11 @@ class FeaturesController < ApplicationController
     end
   end
 
+
   def destroy
     @feature.destroy
     respond_to do |format|
-      format.html { redirect_to features_url }
+      format.html { redirect_to :back }
       format.json { head :no_content }
     end
   end

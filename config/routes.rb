@@ -3,9 +3,6 @@ CodeRunner::Application.routes.draw do
 
 
   resources :feature_requests do
-    #get "wizard/introduction"
-    #get "wizard/features"
-    #get "wizard/review"
   end
 
   devise_for :users
@@ -23,7 +20,8 @@ CodeRunner::Application.routes.draw do
   resources :features
   resources :requests do
     get  'features/create_many/' => 'features#create_many', as: :create_many 
-    get  'features/review'       => 'features#review', as: :review, format: false
+    get  'features/review'       => 'features#review',  as: :review,  format: false
+    post '/publish'      => 'requests#publish', as: :publish, format: false
     resources :features
     resources :background_informations
     resources :price_quotes
