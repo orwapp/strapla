@@ -36,5 +36,5 @@
 .row
   .span12
     = button_to "Add more features", '#', class: 'btn btn-success'
-    = link_to "Next", '#', class: 'btn btn-primary continue_from_the_create_many_page pull-right', 
+    = link_to "Next", request_review_path(@request), class: 'btn btn-primary continue_from_the_create_many_page pull-right', 
       data: {navigate_to: request_review_path(@request) }
