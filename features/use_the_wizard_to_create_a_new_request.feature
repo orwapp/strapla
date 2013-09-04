@@ -11,6 +11,9 @@ Feature: Use the wizard to create a new request
     And this data to fill the background information form:
       | Elevator pitch         | Get help from anyone |
       | Background information | Inspiration from OSW |
+      | Title                  | Build something nice |
+      | Goal                   | Best interface ever  |
+      | Description            | ljlkjljl             |
 
   Scenario: Complete the first page of the wizard, the background information
     When I go to the frontpage
@@ -18,8 +21,8 @@ Feature: Use the wizard to create a new request
     When I press "Build something new"
     Then I fill in all the mandatory fields with the necessary background information.
     And I select "Ruby on Rails" as the technology I want the this application build in.
-    When I press "Save"
-    Then we should have one BackgroundInformation object saved
+    When I press "Next"
+    Then we should have one Request object saved
 
   Scenario: Create two features
     Given I have completed the first part of the wizard

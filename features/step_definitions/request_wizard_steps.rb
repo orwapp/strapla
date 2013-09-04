@@ -9,11 +9,10 @@ Given(/^I have completed the first part of the wizard$/) do
     When I press "Build something new"
     And I select "Ruby on Rails" as the technology I want the this application build in.
     And I fill in all the mandatory fields with the necessary background information.
-    And I press "Save"
+    And I press "Next"
   }
-  @background_information = BackgroundInformation.last
-  @background_information.should be_valid
   @request = Request.last
+  @request.should be_valid
 end
 
 Given(/^I am on the page where I can add new features$/) do
@@ -71,8 +70,8 @@ Then(/^I should have (\d+) features stored in the database$/) do |n|
 end
 
 
-Then(/^we should have one BackgroundInformation object saved$/) do
-  BackgroundInformation.all.size.should eq 1
+Then(/^we should have one Request object saved$/) do
+  Request.all.size.should eq 1
 end
 
 Given(/^We have one expert user in our database, named (.+)/) do |name|

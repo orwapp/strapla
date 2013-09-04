@@ -27,6 +27,9 @@ When(/^I (?:follow|click|press) "(.*?)"$/) do |name|
   click_on name
 end
 
+When(/^I go to the home page$/) do
+  visit('/')
+end
 
 #When(/^I visit the frontpage$/) do
 #  pending # express the regexp above with the code you wish you had
@@ -61,9 +64,6 @@ end
 #end
 #
 #
-#When(/^I go to the home page$/) do
-#  visit('/')
-#end
 #
 #Then(/^I should not see "(.*?)"$/) do |arg1|
 #  pending # express the regexp above with the code you wish you had
