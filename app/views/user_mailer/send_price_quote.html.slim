@@ -1,0 +1,26 @@
+= "Hi #{@price_quote.request.user.name},".html_safe
+br
+br
+= "#{@price_quote.user.name} has sent you a price quote on your request.".html_safe
+
+hr
+ 
+strong Comment:
+br
+= "#{@price_quote.comment}".html_safe if @price_quote.comment
+br
+br
+
+strong Price:
+br
+= "#{@price_quote.price}".html_safe
+br
+br
+
+strong Hours estimated:
+br
+= "#{@price_quote.hours_estimated}".html_safe
+br
+br
+
+= link_to('Open price quote at CodeRunner', request_price_quote_url(@price_quote.request, @price_quote))
