@@ -1,6 +1,6 @@
 class PriceQuotesController < ApplicationController
   before_action :set_price_quote, only: [:show, :edit, :update, :destroy]
-  before_action :set_request, only: [:new, :edit, :update]
+  before_action :set_request, only: [:new, :edit, :update, :show]
   respond_to :html
   before_filter :authenticate_user!, except: [:index, :show]
 
