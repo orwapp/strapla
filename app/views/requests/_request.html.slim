@@ -16,24 +16,70 @@ h2.label.label-info.big_font= request.request_group.title
             br
             = request.description
           p
-            .media
-              strong Goal     
-              br
-              = request.goal
-              br
-              br
+            -  if request.goal
+              .media
+                strong Goal     
+                em Should be clear and measureable
+                br
+                = request.goal
+                br
+                br
 
-          p
-            strong Project status
-            br
-            a href="http://travis-ci.org/colszowka/simplecov" title="SimpleCov is built around the clock by travis-ci.org"
-              img alt="Build Status" src="https://secure.travis-ci.org/colszowka/simplecov.png" style="max-width:100%;"
-            = nbsp
-            a href="https://gemnasium.com/colszowka/simplecov" title="SimpleCov dependencies on Gemnasium"
-              img alt="Dependency Status" src="https://gemnasium.com/colszowka/simplecov.png" style="max-width:100%;"
-            = nbsp
-            a href="https://codeclimate.com/github/colszowka/simplecov"
-              img alt="Code Climate" src="https://codeclimate.com/github/colszowka/simplecov.png" style="max-width:100%;"
+            -  if request.elevator_pitch
+              .media
+                strong Elevator pitch     
+                br
+                = request.elevator_pitch
+                br
+                br
+
+            -  if request.background_information
+              .media
+                strong Background information   
+                br
+                = request.background_information
+                br
+                br
+
+            -  if request.no_list
+              .media
+                strong Not List
+                br
+                = request.no_list
+                br
+                br
+
+            -  if request.what_is_it_going_to_give
+              .media
+                strong What’s most and least important for this project at this time?
+                br
+                = request.what_is_it_going_to_give
+                br
+                br
+
+            -  if request.what_is_the_frame
+              .media
+                strong What's the frame?   
+                br
+                = request.what_is_the_frame
+                br
+                br
+
+
+
+
+          - unless @review
+            p
+              strong Project status
+              br
+              a href="http://travis-ci.org/colszowka/simplecov" title="SimpleCov is built around the clock by travis-ci.org"
+                img alt="Build Status" src="https://secure.travis-ci.org/colszowka/simplecov.png" style="max-width:100%;"
+              = nbsp
+              a href="https://gemnasium.com/colszowka/simplecov" title="SimpleCov dependencies on Gemnasium"
+                img alt="Dependency Status" src="https://gemnasium.com/colszowka/simplecov.png" style="max-width:100%;"
+              = nbsp
+              a href="https://codeclimate.com/github/colszowka/simplecov"
+                img alt="Code Climate" src="https://codeclimate.com/github/colszowka/simplecov.png" style="max-width:100%;"
 
 
     .span4
