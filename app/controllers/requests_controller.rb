@@ -2,7 +2,7 @@ class RequestsController < ApplicationController
   respond_to :html
   before_action :set_request, only: [:show, :edit, :update, :destroy]
   before_action :find_requests
-  before_filter :set_wizzard
+  before_filter :set_wizard
 
   def index
   end
@@ -36,7 +36,7 @@ class RequestsController < ApplicationController
     @request = Request.new(request_params)
     @request.user = current_user
     if @request.save 
-      if @wizzard
+      if @wizard
         redirect_to request_create_many_path(@request) 
       else
         redirect_to select_recipient_path(@request)
@@ -107,8 +107,8 @@ class RequestsController < ApplicationController
   end
 
 
-  def set_wizzard
-    @wizzard ||= params[:wizzard].present? &&  params[:wizzard] == 'true'
+  def set_wizard
+    @wizard ||= params[:wizard].present? &&  params[:wizard] == 'true'
   end
 
 
