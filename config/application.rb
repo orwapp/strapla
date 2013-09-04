@@ -30,11 +30,12 @@ module CodeRunner
     config.action_mailer.smtp_settings = {
       address:              'smtp.gmail.com',
       port:                 587,
-      domain:               ENV['KAFFESMAK_SMTP_DOMAIN'],
-      user_name:            ENV['KAFFESMAK_SMTP_USERNAME'],
-      password:             ENV['KAFFESMAK_SMTP_PASSWORD'],
+      domain:               ENV['SMTP_DOMAIN'],
+      user_name:            ENV['SMTP_USERNAME'],
+      password:             ENV['SMTP_PASSWORD'],
       authentication:       'plain',
-      enable_starttls_auto: true  }
+      enable_starttls_auto: true  
+    }
     
   end
 end
