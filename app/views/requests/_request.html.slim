@@ -126,11 +126,3 @@ h2.label.label-info.big_font= request.request_group.title
       = link_to 'Edit', edit_request_path(request), class: 'pull-right'   if request.user == current_user
 
 
-- if (current_user == request.user) && request.price_quotes.size > 0
-  br
-  br
-  h3.lead Price Quotes
-  hr
-  = render request.price_quotes.to_a
-  /p=  request.price_quotes.to_a.inspect
-  

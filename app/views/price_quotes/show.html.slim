@@ -1,3 +1,9 @@
+= render :partial => 'requests/request', locals: {request: @price_quote.request}
+br
+br
+br
+
+
 h2.label.label-success.big_font= @price_quote.status.titleize if @price_quote.status
 .container.border.small_padding
   span = "Price quote from #{@price_quote.user.name}"
