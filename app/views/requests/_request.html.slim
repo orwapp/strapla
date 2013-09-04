@@ -58,7 +58,9 @@ h2.label.label-info.big_font= request.request_group.title
     - unless price_quote
       .row
         .pull-right
-          - if user_signed_in? and request.price_quotes.where(user: current_user).present?
+          - if user_signed_in? and request.contractor == current_user
+            strong.text-success You won this assignment!
+          - elsif user_signed_in? and request.price_quotes.where(user: current_user).present?
             strong.text-success You have sent a price quote.
           - elsif @current_user != request.user
             - if not user_signed_in?

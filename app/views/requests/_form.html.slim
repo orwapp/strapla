@@ -1,3 +1,4 @@
+- remote ||= false
 .row
   = simple_form_for(@request, url: "/requests/?wizzard=#{@wizzard}", remote: remote,  :html => { :class => 'form-inline span10' }) do |f|
     - if @request.errors.any?

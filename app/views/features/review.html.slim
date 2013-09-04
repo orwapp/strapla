@@ -3,21 +3,26 @@ p
 
 = render :partial => 'requests/request', locals: {request: @request}
 
-h2 Features
 
-table.table
-  thead
-    tr
-      th Title
-      th Text
-      th
-  tbody
-    - @request.features.each do |feature|
+- if @request.features.present?
+  h2 Features
+  table.table
+    thead
       tr
-       td= feature.title
-       td= feature.text
-       td= button_to "Delete", feature, method: :delete, class: 'btn btn-mini'
-       td= link_to "Edit", edit_feature_path(feature), class: 'btn btn-mini'
+        th Title
+        th Text
+        th
+    tbody
+      - @request.features.each do |feature|
+        tr
+         td= feature.title
+         td= feature.text
+         td= button_to "Delete", feature, method: :delete, class: 'btn btn-mini'
+         td= link_to "Edit", edit_feature_path(feature), class: 'btn btn-mini'
 
 
+br
+br
+br
+br
 = button_to 'Publish', request_publish_path(@request), class: 'btn btn-primary pull-right'

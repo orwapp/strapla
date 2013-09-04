@@ -30,6 +30,7 @@ class FeaturesController < ApplicationController
     @request = Request.find(params[:request_id])
     @feature = Feature.new(feature_params)
     @feature.request = @request
+    @form_id = params[:form_id]
 
     respond_to do |format|
       if @feature.save
@@ -76,6 +77,6 @@ class FeaturesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def feature_params
-      params.require(:feature).permit(:request_id, :text, :title)
+      params.require(:feature).permit(:request_id, :text, :title, :form_id)
     end
 end

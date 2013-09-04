@@ -1,6 +1,9 @@
 h1 Editing feature_request
 
 == render 'form'
+- 2.times do |n|
+  .span5
+    = render 'form',n: n, remote: true, hide_submit: false
 
 = link_to 'Show', @feature_request
 '|

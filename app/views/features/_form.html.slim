@@ -9,7 +9,7 @@ strong= "Feature #{n+1}"
     = f.error_notification
 
     .form-inputs
-      = f.hidden_field :request_id, :values => @request.id rescue nil
+      = f.hidden_field :form_id, name: 'form_id', :value => "feature#{n+1}"
       = f.input :title, required: true, input_html: { class: 'input-medium' }
       = f.input :text,  required: true, input_html: { class: 'input-medium' }
 

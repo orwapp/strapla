@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
   respond_to :html
-  before_action :set_request, only: [:show, :edit, :update, :destroy, :publish]
+  before_action :set_request, only: [:show, :edit, :update, :destroy]
   before_action :find_requests
   before_filter :set_wizzard
 
@@ -82,7 +82,9 @@ class RequestsController < ApplicationController
   end
 
   def publish
-    @request.update_attribute(published: true)
+    @request = Request.find(params[:request_id])
+    @request.update_attribute(:published, true)
+    redirect_to root_path, notice: 'Your request is publised'
   end
 
   private
@@ -106,7 +108,7 @@ class RequestsController < ApplicationController
 
 
   def set_wizzard
-    @wizzard ||= params[:wizzard].present?
+    @wizzard ||= params[:wizzard].present? &&  params[:wizzard] == 'true'
   end
 
 
