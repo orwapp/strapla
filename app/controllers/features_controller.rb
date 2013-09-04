@@ -22,6 +22,7 @@ class FeaturesController < ApplicationController
   end
 
   def review
+    @review = true
     @request = Request.find params[:request_id]
     @background_information = @request.background_information
   end

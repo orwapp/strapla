@@ -12,10 +12,10 @@
       - @title_placeholder = @wizard.present? ? 'E.g. Build Facebook for businesses or iPhone app for single mothers' :  'E.g.  Fix bug in code, make API work, etc'
       = f.input :title,           input_html: { class: 'span10', placeholder: @title_placeholder }
       = f.input :goal,            input_html: { class: 'span10', placeholder: 'Should be clear and measureable. E.g. "We need a beta with feature 1-3 completed within 1 week. You can review this page and update the goal after' } unless @wizard
-      = f.input :description,     input_html: { class: 'span10' }  unless @wizard
+      = f.input :description,     input_html: { class: 'span10' }  
       = f.input :repository_url,  input_html: { class: 'span10', placeholder: 'github.com/username/repository' }   unless @wizard
 
-      - if @wizard
+      - if @wizard or @request.type_of == 'big'
         hr
         = f.input :elevator_pitch, input_html: { class: 'span10', placeholder: 'If we had thirty seconds and two sentences to describe our project, what would we say?' }
         br

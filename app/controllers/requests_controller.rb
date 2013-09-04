@@ -36,6 +36,7 @@ class RequestsController < ApplicationController
   def create
     @request = Request.new(request_params)
     @request.user = current_user
+    @request.type_of = @wizard.present? ? 'big' : 'small'
     if @request.save 
       if @wizard
         redirect_to request_create_many_path(@request) 
@@ -94,7 +95,16 @@ class RequestsController < ApplicationController
   end
 
   def request_params
-    params.require(:request).permit(:title, :description, :goal, :request_group_id, :repository_url)
+    params.require(:request).permit(:title, :description, :goal, 
+                                    :request_group_id, 
+                                    :repository_url, 
+                                    :elevator_pitch,
+                                    :background_information,
+                                    :no_list,
+                                    :what_can_go_wrong,
+                                    :what_is_it_going_to_give,
+                                    :what_is_the_frame
+                                   )
   end
 
   def find_requests
