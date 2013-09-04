@@ -6,7 +6,7 @@ class Request < ActiveRecord::Base
   has_one :elevator_pitch
   has_one :background_information
 
-  validates_presence_of :title, :goal, :request_group,  :description
+  #validates_presence_of :title, :goal, :request_group,  :description
   
   attr_accessor :repository_url
 
