@@ -3,6 +3,7 @@ class RequestsController < ApplicationController
   before_action :set_request, only: [:show, :edit, :update, :destroy]
   before_action :find_requests
   before_filter :set_wizard
+  before_filter :authenticate_user!, except: [:index, :show, :unassigned_requests]
 
   def index
   end
