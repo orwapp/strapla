@@ -9,6 +9,9 @@ class ApplicationController < ActionController::Base
     http_basic_authenticate_with name: ENV['HTTP_USERNAME'] || 'funky_admin' , password: ENV['HTTP_PASSWORD'] || 'top_secret'
   end
   
+  def keep_alive
+    render :nothing => true
+  end
 
 
   protected

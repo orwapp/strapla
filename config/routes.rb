@@ -1,6 +1,8 @@
 CodeRunner::Application.routes.draw do
 
 
+  get '/keep_alive', to: 'application#keep_alive'
+  
 
   resources :feature_requests do
   end
