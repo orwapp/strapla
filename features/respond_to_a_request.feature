@@ -6,7 +6,7 @@ Feature: Respond to a request
   Background:
     Given "noob@noob.no" has posted a request titled "Need help to build an iOS app" in the "iOS" group
 
-  Scenario: See which unassined requests we got and respond to one of them
+  Scenario: See which unassigned requests we got and respond to one of them
     When I go to the frontpage
     Then I click "Unassigned request 1"
     And  I click "Need help to build an iOS app"
@@ -27,7 +27,7 @@ Feature: Respond to a request
     Then "noob@noob.no" should receive an email
     When "noob@noob.no" opens the email with subject "New price quote on CodeRunner"
     And I am signed in as "noob@noob.no"
-    And I follow "Show price quote" in the email
+    And I follow "Open price quote at CodeRunner" in the email
     When I press "Accept"
     Then "expert@coder.com" should receive an email
     And "expert@coder.com" opens the email with subject "Your price quote was accepted"

@@ -12,7 +12,6 @@ Feature: Use the wizard to create a new request
       | Elevator pitch         | Get help from anyone |
       | Background information | Inspiration from OSW |
       | Title                  | Build something nice |
-      | Goal                   | Best interface ever  |
       | Description            | ljlkjljl             |
 
   Scenario: Complete the first page of the wizard, the background information
