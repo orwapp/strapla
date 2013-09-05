@@ -4,7 +4,7 @@
   = field_set_tag "Who shall we send the question to?" do
   
     br
-    = simple_form_for :request, url: delegate_to_group_path do |f|
+    = simple_form_for :request, url: delegate_to_group_path(@request) do |f|
       = f.submit "Send the question to the #{@request.request_group.title} group", 
         class: 'btn btn-primary'
       = label_tag 'This is often fastest, as all of our experts will get the question.', 

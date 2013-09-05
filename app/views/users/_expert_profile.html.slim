@@ -16,18 +16,17 @@
       .clearfix
       strong= "Average price / hour: "
       = "$ #{user.average_price}"
-      /strong Average hours spent: 1.5
       br
       strong="Antall oppdrag: "
-      ="12"
+      ="1259"
       br
       strong="Prosent fornøyde kunder: "
-      ="23"
+      ="99.9"
 
 
 
   - if show_form
-    = simple_form_for :delegate_to_expert, url: delegate_to_expert_path do |f|
+    = simple_form_for :delegate_to_expert, url: delegate_to_expert_path(@request) do |f|
       = f.hidden_field :expert_id,  value: user.id
       = f.hidden_field :request_id, value: @request.id
       = f.submit "Send the question to #{user.name.split.first}", class: 'btn btn-info send_question pull-right'

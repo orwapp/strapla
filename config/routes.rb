@@ -23,7 +23,8 @@ CodeRunner::Application.routes.draw do
   resources :requests do
     get  'features/create_many/' => 'features#create_many', as: :create_many 
     get  'features/review'       => 'features#review',  as: :review,  format: false
-    post '/publish'      => 'requests#publish', as: :publish, format: false
+    post '/publish'   => 'requests#publish',     as: :publish,   format: false
+    post '/unpublish' => 'requests#unpublish',   as: :unpublish, format: false
     resources :features
     resources :background_informations
     resources :price_quotes
@@ -44,8 +45,8 @@ CodeRunner::Application.routes.draw do
   #   get 'products/:id' => 'catalog#view'
   get  'user/:id' => 'users#profile', as: :user_profile
   get  'select_recipient/:request_id' => 'requests#select_recipient', as: :select_recipient
-  post 'delegate_to_expert/' => 'requests#delegate_to_expert',  as: :delegate_to_expert
-  post 'delegate_to_group/' => 'requests#delegate_to_group',  as: :delegate_to_group
+  post 'delegate_to_expert/:request_id' => 'requests#delegate_to_expert',  as: :delegate_to_expert
+  post 'delegate_to_group/:request_id'  => 'requests#delegate_to_group',  as: :delegate_to_group
 
 
 end
