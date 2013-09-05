@@ -1,4 +1,4 @@
--price_quote ||= false
+- price_quote ||= false
 
 h2.label.label-info.big_font= request.request_group.title
 .container.border.small_padding
@@ -106,7 +106,7 @@ h2.label.label-info.big_font= request.request_group.title
         .pull-right
           - if user_signed_in? and request.contractor == current_user
             strong.text-success You won this assignment!
-          - elsif user_signed_in? and request.price_quotes.where(user: current_user).present?
+          - elsif (user_signed_in? and request.price_quotes.where(user: current_user).present?)
             strong.text-success You have sent a price quote.
           - elsif @current_user != request.user
             - if not user_signed_in?
@@ -123,6 +123,9 @@ h2.label.label-info.big_font= request.request_group.title
 
   .row
     .span11
-      = link_to 'Edit', edit_request_path(request), class: 'pull-right'   if request.user == current_user
-
+      = link_to 'Edit', edit_request_path(request), class: 'pull-right btn '   if request.user == current_user
+      - if request.published
+        = button_to 'Unpublish', request_unpublish_path(request), class: 'pull-right btn  btn-warning'   if request.user == current_user
+      - else
+        = button_to 'Publish', request_publish_path(request), class: 'pull-right btn btn-success '   if request.user == current_user
 

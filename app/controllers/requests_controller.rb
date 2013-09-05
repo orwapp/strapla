@@ -58,13 +58,16 @@ class RequestsController < ApplicationController
     @expert  = User.find( params[:delegate_to_expert][:expert_id] )
     @request = Request.find(params[:delegate_to_expert][:request_id])
     @request.update_attribute(:contractor, @expert)
+    @request.update_attribute(:published, true)
 
     flash[:notice] = "Thank you! #{@expert.name} will contact you shortly." 
     redirect_to root_url
   end
 
   def delegate_to_group
+    @request = Request.find(params[:request_id])
     flash[:notice] = "The request has been forwarded to our expert group"
+    @request.update_attribute(:published, true)
     redirect_to root_url
   end
 
@@ -86,7 +89,13 @@ class RequestsController < ApplicationController
   def publish
     @request = Request.find(params[:request_id])
     @request.update_attribute(:published, true)
-    redirect_to root_path, notice: 'Your request is publised'
+    redirect_to @request, notice: 'Your request is publised'
+  end
+
+  def unpublish
+    @request = Request.find(params[:request_id])
+    @request.update_attribute(:published, false)
+    redirect_to @request, notice: 'Your request is no longer publised'
   end
 
   private
@@ -109,10 +118,10 @@ class RequestsController < ApplicationController
 
   def find_requests
     if user_signed_in?
-      @unassigned_requests = Request.unassigned.where.not(user_id: @current_user.id) 
+      @unassigned_requests = Request.published_and_unassigned
       @my_requests = current_user.requests.all
     else
-      @unassigned_requests = Request.unassigned
+      @unassigned_requests = Request.published.unassigned
     end
     @groups = @unassigned_requests.all.collect(&:request_group).uniq if @unassigned_requests
   end
