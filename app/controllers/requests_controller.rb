@@ -15,7 +15,8 @@ class RequestsController < ApplicationController
   end
 
   def delegated_to_me
-    @requests = @current_user.delegated_requests
+    @requests_delegated_to_me = @current_user.delegated_requests
+    @requests_delegated_to_me_and_accepted = @current_user.delegated_requests
   end
 
   def select_type_of_problem

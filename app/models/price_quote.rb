@@ -22,6 +22,7 @@ class PriceQuote < ActiveRecord::Base
   end
 
   def self.belonging_to_users_requests(user)
+    # Foo.includes(:bar).where(Bar.arel_table[:id].not_eq(nil))
     price_quotes = []
     user.requests.each do |request|
       price_quotes << request.price_quotes.to_a

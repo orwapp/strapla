@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+
   def average_price
     prng = Random.new
     prng.rand(15.0..90.0).round(2)
@@ -20,7 +21,11 @@ class User < ActiveRecord::Base
   end
 
   def delegated_requests
-    @requests_delegated = Request.where(contractor_id: self.id).all
+    Request.where(contractor_id: self.id).load
+  end
+
+  def delegated_and_accepted_requests
+    Request.where(contractor_id: self.id, status: :accepted).load
   end
 
 end

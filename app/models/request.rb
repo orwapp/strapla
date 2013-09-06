@@ -10,7 +10,8 @@ class Request < ActiveRecord::Base
 
   scope :published,  -> { where published: true }
   scope :published_and_unassigned, -> { published.where(:contractor_id => nil) }
-  scope :unassigned, -> { where delegated_to_user_id: nil }
+  scope :unassigned, -> { where contractor_id: nil }
+  scope :in_process, -> { where( "contractor_id <> 0" ) }
 
   def contractor
     return unless self.contractor_id
