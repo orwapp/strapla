@@ -15,8 +15,9 @@ class ApplicationController < ActionController::Base
 
   def find_requests
     if user_signed_in?
-      @unassigned_requests = Request.published_and_unassigned
-      @my_requests = current_user.requests.load
+      @unassigned_requests     = Request.published_and_unassigned
+      @my_requests_unassigned  = current_user.requests.published_and_unassigned.all
+      @my_requests_in_progress = current_user.requests.in_process.load
     else
       @unassigned_requests = Request.published.unassigned
     end
