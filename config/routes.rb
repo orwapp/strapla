@@ -9,6 +9,10 @@ CodeRunner::Application.routes.draw do
 
   devise_for :users
 
+  resources :users do
+    get  'new_price_quotes' => 'price_quotes#new_price_quotes', as: :new_price_quotes 
+  end
+
   post 'accept_price_quote/:id'  => 'price_quotes#accept', as: :accept_price_quote 
   post 'reject_price_quote/:id'  => 'price_quotes#reject', as: :reject_price_quote 
   get  'requests/select_type_of_problem/' => 'requests#select_type_of_problem', as: :select_type_of_problem 
