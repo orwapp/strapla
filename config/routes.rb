@@ -29,8 +29,9 @@ CodeRunner::Application.routes.draw do
     resources :background_informations
     resources :price_quotes
   end
-  get  'my_requests/' => 'requests#my_requests', as: :my_requests
+  get  'my_requests/'         => 'requests#my_requests',         as: :my_requests
   get  'unassigned_requests/' => 'requests#unassigned_requests', as: :unassigned_requests
+  get  'delegated_to_me/'     => 'requests#delegated_to_me',     as: :delegated_to_me
 
   resources :request_groups
   resources :pages

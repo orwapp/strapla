@@ -4,6 +4,8 @@
     ul.nav
       - if user_signed_in?
         li[class="#{'active' if current_page?(my_requests_path)}"]=  link_to 'My requests', my_requests_path
+        li[class="#{'active' if current_page?(delegated_to_me_path)}"]=  link_to 'Delegated to me', delegated_to_me_path
+        li[class="#{'active' if current_page?(price_quotes_path)}"]=  link_to 'Price quotes', price_quotes_path
                                                                                                                                               
       - if @unassigned_requests.present?
         li[class="#{'active' if current_page?(unassigned_requests_path)}"]

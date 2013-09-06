@@ -1,0 +1,13 @@
+h2.page-header Your requests
+br
+- if @requests_delegated.present?
+  = render :partial => 'request_list', locals: {requests: @requests_delegated}
+- else
+  p No one has delegated anything to you yet. Perhaps you should put some more time into your profile?
+  = link_to 'This is your profile', user_profile_path(current_user)
+
+br
+br
+br
+=link_to 'Create a request', select_type_of_problem_path, class: 'btn btn-info'
+

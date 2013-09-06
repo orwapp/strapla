@@ -1,24 +1,25 @@
-h1 Listing price_quotes
-
-table
-  tr
-    th User
-    th Request
-    th Price
-    th Hours estimated
-    th
-    th
-    th
-
-  - @price_quotes.each do |price_quote|
-    tr
-      td = price_quote.user
-      td = price_quote.request
-      td = price_quote.price
-      td = price_quote.hours_estimated
-      td = link_to 'Show', price_quote
-      td = link_to 'Edit', edit_price_quote_path(price_quote)
-      td = link_to 'Destroy', price_quote, :confirm => 'Are you sure?', :method => :delete
-
+h1 Price Quotes
+br
 br
 
+.tabbable
+  ul.nav.nav-tabs
+    - if @unprocessed_belonging_to_user.present?
+      li[class="#{'active' if @unprocessed_belonging_to_user.present?}"]
+        a data-toggle="tab" href="#new" New price quotes
+    - if @accepted_price_quotes.present?
+      li[class="#{'active' if @accepted_price_quotes.present? and @unprocessed_belonging_to_user.blank?}"]
+        a data-toggle="tab" href="#accepted" Accepted price quotes
+  .tab-content
+    #new[class="tab-pane #{'active' if @unprocessed_belonging_to_user.present?}"]
+      - if @unprocessed_belonging_to_user.present?
+        - @unprocessed_belonging_to_user.each do |price_quote|
+          = render :partial => 'price_quote', locals: {price_quote: price_quote}
+
+    #accepted[class="tab-pane #{'active' if @accepted_price_quotes.present?}"]
+
+      - if @accepted_price_quotes.present?
+        - @accepted_price_quotes.each do |price_quote|
+          = render :partial => 'price_quote', locals: {price_quote: price_quote}
+      - else 
+        p You have not accepted any price quotes yet

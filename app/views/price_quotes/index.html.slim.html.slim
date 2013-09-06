@@ -1,0 +1,24 @@
+h1 Listing price_quotes
+
+table
+  tr
+    th User
+    th Request
+    th Price
+    th Hours estimated
+    th
+    th
+    th
+
+  - @price_quotes.each do |price_quote|
+    tr
+      td = price_quote.user
+      td = price_quote.request
+      td = price_quote.price
+      td = price_quote.hours_estimated
+      td = link_to 'Show', price_quote
+      td = link_to 'Edit', edit_price_quote_path(price_quote)
+      td = link_to 'Destroy', price_quote, :confirm => 'Are you sure?', :method => :delete
+
+br
+

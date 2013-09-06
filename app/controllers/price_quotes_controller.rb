@@ -3,10 +3,13 @@ class PriceQuotesController < ApplicationController
   before_action :set_request, only: [:new, :edit, :update, :show]
   respond_to :html
   before_filter :authenticate_user!, except: [:index, :show]
+  before_action :find_requests
 
   def index
-    @price_quotes = PriceQuote.all
+    @unprocessed_belonging_to_user ||= PriceQuote.unprocessed_belonging_to_user(@current_user)
+    @accepted_price_quotes         ||= PriceQuote.accepted_belonging_to_user(@current_user)
   end
+
 
   def show
   end
@@ -49,7 +52,6 @@ class PriceQuotesController < ApplicationController
     @price_quote = PriceQuote.find(params[:id])
     @price_quote.update_attribute(:status, 'rejected')
     @price_quote.save!
-    #raise "PriceQuote is #{@price_quote.inspect}"
     UserMailer.inform_about_rejected_quote(@price_quote).deliver
     flash[:notice] = "Price quote rejected. #{@price_quote.user.name} has been notified"
     redirect_to request_path(@price_quote.request)
@@ -88,4 +90,6 @@ class PriceQuotesController < ApplicationController
     def price_quote_params
       params.require(:price_quote).permit(:price, :hours_estimated, :comment, :request_id)
     end
+
+
 end
