@@ -13,6 +13,15 @@ class ApplicationController < ActionController::Base
     render :nothing => true
   end
 
+  def find_requests
+    if user_signed_in?
+      @unassigned_requests = Request.published_and_unassigned
+      @my_requests = current_user.requests.load
+    else
+      @unassigned_requests = Request.published.unassigned
+    end
+    @groups = @unassigned_requests.load.collect(&:request_group).uniq if @unassigned_requests
+  end
 
   protected
 
