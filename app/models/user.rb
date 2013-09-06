@@ -13,11 +13,14 @@ class User < ActiveRecord::Base
 
   def average_price
     prng = Random.new
-    prng.rand(5.0..9.0).round(2)
+    prng.rand(15.0..90.0).round(2)
   end
 
   def profile
   end
 
+  def delegated_requests
+    @requests_delegated = Request.where(contractor_id: self.id).all
+  end
 
 end

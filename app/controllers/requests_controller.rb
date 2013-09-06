@@ -14,6 +14,10 @@ class RequestsController < ApplicationController
   def my_requests
   end
 
+  def delegated_to_me
+    @requests = @current_user.delegated_requests
+  end
+
   def select_type_of_problem
     @request = Request.new(user: current_user)
   end
@@ -116,15 +120,6 @@ class RequestsController < ApplicationController
                                    )
   end
 
-  def find_requests
-    if user_signed_in?
-      @unassigned_requests = Request.published_and_unassigned
-      @my_requests = current_user.requests.all
-    else
-      @unassigned_requests = Request.published.unassigned
-    end
-    @groups = @unassigned_requests.all.collect(&:request_group).uniq if @unassigned_requests
-  end
 
 
   def set_wizard
