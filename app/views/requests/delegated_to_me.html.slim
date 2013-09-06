@@ -1,11 +1,40 @@
-h2.page-header Your requests
-br
-- if @requests_delegated.present?
-  = render :partial => 'request_list', locals: {requests: @requests_delegated}
-- else
-  p No one has delegated anything to you yet. Perhaps you should put some more time into your profile?
-  = link_to 'This is your profile', user_profile_path(current_user)
+h2 These requests are delegated to you.
+.well
+  ="You are wanted as a developer for these requests."
+  br
+  ="Please click into the request and send a price quote if it's interesting."
 
+
+.tabbable
+  ul.nav.nav-tabs
+    - if @requests_delegated_to_me.present?
+      li[class="#{'active' if @requests_delegated_to_me.present?}"]
+        a data-toggle="tab" href="#requests_delegated_to_me" Not responded to yet
+
+    - if @requests_delegated_to_me_and_accepted.present?
+      li[class="#{'active' if @requests_delegated_to_me_and_accepted.present? and @requests_delegated_to_me.blank?}"]
+        a data-toggle="tab" href="#my_requests_in_progress" Requests that I've started working on
+
+
+  .tab-content
+    #requests_delegated_to_me[class="tab-pane #{'active' if @requests_delegated_to_me.present?}"]
+      - if @requests_delegated_to_me.present?
+        = render :partial => 'request_list', locals: {requests: @my_requests_unassigned}
+
+    #requests_delegated_to_me_and_accepted[class="tab-pane #{'active' if @requests_delegated_to_me_and_accepted.present?}"]
+      - if @requests_delegated_to_me_and_accepted.present?
+        = render :partial => 'request_list', locals: {requests: @requests_delegated_to_me_and_accepted}
+
+
+
+
+br
+//- if @requests_delegated_to_me.present?
+//  = render :partial => 'request_list', locals: {requests: @requests_delegated_to_me}
+//- else
+//  p No one has delegated anything to you yet. Perhaps you should put some more time into your profile?
+//  = link_to 'This is your profile', user_profile_path(current_user)
+//
 br
 br
 br
