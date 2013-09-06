@@ -15,4 +15,27 @@ class PriceQuote < ActiveRecord::Base
     status == 'accepted'
   end
 
+  def unprocessed
+    connection = ActiveRecord::Base.connection
+    ActiveRecord::Base.connection.execute(" select * from price_quotes join requests on price_quotes.request_id=requests.id ")
+    #PriceQuote.joins('LEFT OUTER JOIN addresses ON addresses.client_id = clients.id')
+  end
+
+  def self.belonging_to_users_requests(user)
+    price_quotes = []
+    user.requests.each do |request|
+      price_quotes << request.price_quotes.to_a
+    end
+    price_quotes.flatten!
+    price_quotes
+  end
+
+  def self.accepted_belonging_to_user(user)
+    belonging_to_users_requests(user).select {|p| p.status == 'accepted' }
+  end
+
+  def self.unprocessed_belonging_to_user(user)
+    belonging_to_users_requests(user).select {|p| p.status == nil }
+  end
+
 end
