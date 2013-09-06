@@ -4,7 +4,8 @@ h2.label.label-success.big_font= price_quote.status.titleize if price_quote.stat
   class="#{'alert alert-warning' if price_quote.status == 'rejected'}"
 )
 
-  span = "Price quote from #{price_quote.user.name}: "
+  span = "Price quote from " 
+  = link_to price_quote.user.name, user_profile_path(price_quote.user)
   blockquote= price_quote.comment
 
   strong= "Price: "
