@@ -1,6 +1,6 @@
 @javascript
-Feature: Respond to a request
-  The experts that want to earn money should be able to respond to requests
+Feature: Respond to a request - Send a Price Quote
+  The experts that wants to earn money should be able to respond to requests
   Even as visitors, they should be able to see which assignments they can earn money by solving
 
   Background:
@@ -23,7 +23,6 @@ Feature: Respond to a request
 
   Scenario: The owner of the request receives an email telling him that someone wants to do his assignment
     Given "expert@coder.com" has sent a price quote to the request owner "noob@noob.no" 
-    #titled "I can do this"
     Then "noob@noob.no" should receive an email
     When "noob@noob.no" opens the email with subject "New price quote on CodeRunner"
     And I am signed in as "noob@noob.no"
@@ -33,5 +32,9 @@ Feature: Respond to a request
     And "expert@coder.com" opens the email with subject "Your price quote was accepted"
     And "expert@coder.com" should receive an email with the following body:
       |  has accepted your price quote! |
+    And the request titled "Need help to build an iOS app" should be marked as delegated to "expert@coder.com"
 
-
+  Scenario: Requests that are delegated to an expert is not visible any more
+    Given the request titled "Need help to build an iOS app" have been marked as delegated to "expert@coder.com"
+    When I visit "Unassigned requests"
+    Then I should not see ""Need help to build an iOS app"

@@ -31,44 +31,11 @@ When(/^I go to the home page$/) do
   visit('/')
 end
 
-#When(/^I visit the frontpage$/) do
-#  pending # express the regexp above with the code you wish you had
-#end
-#
-#When(/^I click New requests sent to you$/) do
-#  pending # express the regexp above with the code you wish you had
-#end
 
 Then(/^I fill in "(.*?)" with "(.*?)"$/) do |field, data|
   fill_in field, with: data
 end
 
-#Then(/^"(.*?)" should receive an email with the text "(.*?)"$/) do |arg1, arg2|
-#  pending # express the regexp above with the code you wish you had
-#end
-
-#Then(/^"(.*?)" clicks the link "(.*?)"$/) do |arg1, arg2|
-#  pending # express the regexp above with the code you wish you had
-#end
-#
-#Then(/^$/) do
-#  pending # express the regexp above with the code you wish you had
-#end
-#
-#Given(/^I have a the expert "(.*?)" with password "(.*?)"$/) do |arg1, arg2|
-#  pending # express the regexp above with the code you wish you had
-#end
-#
-#When(/^I fill in and submit the request form$/) do
-#  pending # express the regexp above with the code you wish you had
-#end
-#
-#
-#
-#Then(/^I should not see "(.*?)"$/) do |arg1|
-#  pending # express the regexp above with the code you wish you had
-#end
-#
-#Then(/^I open the page$/) do
-#  save_and_open_page
-#end
+Then(/^(?:he|I|she) should see "(.*?)"$/) do |text|
+  page.should have_content(text)
+end

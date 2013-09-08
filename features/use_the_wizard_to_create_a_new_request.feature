@@ -26,14 +26,14 @@ Feature: Use the wizard to create a new request
   Scenario: Create two features
     Given I have completed the first part of the wizard
     Then I should see "Describe which features you want"
-    Then I fill in the first New feature form
-    And I fill in the second New feature form
+    Then I fill in and submit the first New feature form
+    And I fill in and submit the second New feature form
     When I press "Next"
     Then I should have 2 features stored in the database
 
   Scenario: Review the feature before submitting
     Given I have created two features
-    Then I should see "Please review before submitting"
-    When I press "Submit"
+    Then I should see "Please review your request"
+    When I press "Publish"
     Then we should have a new request available for consultants to give a price quote on.
     # Provide a select menu for the keywords /Given|And|Then|Or|etc../
