@@ -10,9 +10,8 @@ strong= "Feature #{n+1}"
 
     .form-inputs
       = f.hidden_field :form_id, name: 'form_id', :value => "feature#{n+1}"
-      = f.input :title, required: true, input_html: { class: 'input-medium' }
-      = f.input :text,  required: true, input_html: { class: 'input-medium' }
+      = f.input :title, required: true, input_html: { :value => "feat#{n+1}", class: 'input-medium' }
+      = f.input :text,  required: true, input_html: { :value => "feat#{n+1}", class: 'input-medium' }
 
-    - unless hide_submit
-      .form-actions
-        = f.button :submit, :class => "btn-primary"
+    .form-actions[class="#{'hide' if hide_submit}"]
+      = f.button :submit, :class => "btn-primary"
