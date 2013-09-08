@@ -3,7 +3,7 @@ class FeaturesController < ApplicationController
   before_action :set_feature, only: [:show, :edit, :update, :destroy]
 
   def index
-    @features = Feature.all
+    @features = Feature.load.to_a
   end
 
   def create_many
@@ -24,7 +24,6 @@ class FeaturesController < ApplicationController
   def review
     @review = true
     @request = Request.find params[:request_id]
-    @background_information = @request.background_information
   end
 
   def create

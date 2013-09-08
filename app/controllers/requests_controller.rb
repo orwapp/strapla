@@ -94,7 +94,7 @@ class RequestsController < ApplicationController
   def publish
     @request = Request.find(params[:request_id])
     @request.update_attribute(:published, true)
-    redirect_to @request, notice: 'Your request is publised'
+    redirect_to root_url, notice: 'Your request is publised'
   end
 
   def unpublish
