@@ -1,6 +1,8 @@
 CodeRunner::Application.routes.draw do
 
 
+  resources :comments
+
   get '/keep_alive', to: 'application#keep_alive'
   
 
@@ -25,13 +27,15 @@ CodeRunner::Application.routes.draw do
 
   resources :features
   resources :requests do
+    resources :price_quotes do
+      resources :comments
+    end
     get  'features/create_many/' => 'features#create_many', as: :create_many 
     get  'features/review'       => 'features#review',  as: :review,  format: false
     post '/publish'   => 'requests#publish',     as: :publish,   format: false
     post '/unpublish' => 'requests#unpublish',   as: :unpublish, format: false
     resources :features
     resources :background_informations
-    resources :price_quotes
   end
   get  'my_requests/'         => 'requests#my_requests',         as: :my_requests
   get  'unassigned_requests/' => 'requests#unassigned_requests', as: :unassigned_requests
