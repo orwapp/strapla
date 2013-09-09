@@ -4,9 +4,9 @@ h2.label.label-success.big_font= price_quote.status.titleize if price_quote.stat
   class="#{'alert alert-warning' if price_quote.status == 'rejected'}"
 )
 
-  span = "Price quote from " 
-  = link_to price_quote.user.name, user_profile_path(price_quote.user)
-  blockquote= price_quote.comment
+  span = "Request: #{link_to price_quote.request.title, price_quote.request}".html_safe
+  hr
+
 
   strong= "Price: "
   em= price_quote.price
@@ -14,12 +14,26 @@ h2.label.label-success.big_font= price_quote.status.titleize if price_quote.stat
 
   strong= "Hours estimated: "
   em= price_quote.hours_estimated
+
+  hr
+  span = "Price quote from " 
+  = link_to price_quote.user.name, user_profile_path(price_quote.user)
+  = render price_quote.comments
   
   - if price_quote.accepted?
-    .button-group.pull-right
-      = mail_to  price_quote.user.email, 'Contact the expert',class: 'btn '
+    = simple_form_for([price_quote.request, price_quote, @comment], :defaults => { :input_html => { :class => 'input-xxlarge' } }) do |f|
+      = f.error_notification
+      .form-inputs
+        = f.input :text
+      .form-actions
+        = f.button :submit, :class => "btn-primary"
   - else
     .button-group.pull-right
       = link_to 'Accept', accept_price_quote_path(price_quote.id), class: 'btn btn-success', method: :post
       = nbsp
       = link_to 'Reject', reject_price_quote_path(price_quote.id), class: 'btn btn-danger', method: :post
+
+    hr
+
+    br
+

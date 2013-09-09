@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   validates_presence_of :name, :bio, :phone, :email
   has_many :requests
   has_many :price_quotes
+  has_many :comments
   has_and_belongs_to_many :request_groups
 
   devise :database_authenticatable, :registerable,

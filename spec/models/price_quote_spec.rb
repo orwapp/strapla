@@ -24,4 +24,5 @@ describe PriceQuote do
     end
   end
 
+
 end

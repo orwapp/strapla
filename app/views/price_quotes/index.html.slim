@@ -10,6 +10,7 @@ br
     - if @accepted_price_quotes.present?
       li[class="#{'active' if @accepted_price_quotes.present? and @unprocessed_belonging_to_user.blank?}"]
         a data-toggle="tab" href="#accepted" Accepted price quotes
+
   .tab-content
     #new[class="tab-pane #{'active' if @unprocessed_belonging_to_user.present?}"]
       - if @unprocessed_belonging_to_user.present?

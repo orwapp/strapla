@@ -26,6 +26,8 @@ class RequestsController < ApplicationController
 
   def show
     @price_quote = current_user.price_quotes.new  if user_signed_in?
+    @comment = @price_quote.comments.new           if user_signed_in?
+    @comments = @price_quote.comments
   end
 
   def new
