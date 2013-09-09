@@ -8,7 +8,7 @@ Feature: Respond to a request - Send a Price Quote
 
   Scenario: See which unassigned requests we got and respond to one of them
     When I go to the frontpage
-    Then I click "Unassigned request 1"
+    Then I click "Unassigned requests 1"
     And  I click "Need help to build an iOS app"
 
     When  I press "Quote a price"
@@ -24,9 +24,23 @@ Feature: Respond to a request - Send a Price Quote
   Scenario: The owner of the request receives an email telling him that someone wants to do his assignment
     Given "expert@coder.com" has sent a price quote to the request owner "noob@noob.no" 
     Then "noob@noob.no" should receive an email
-    When "noob@noob.no" opens the email with subject "New price quote on CodeRunner"
-    And I am signed in as "noob@noob.no"
+    And "noob@noob.no" opens the email with subject "New price quote on CodeRunner"
+
+    Given I am signed in as "noob@noob.no"
     And I follow "Open price quote at CodeRunner" in the email
+    Then I should be on the page where I can negotiate terms with the developer
+    And I fill in "Reply to developer" with "I think you are both slow and expensive. Can we reduce the price to $100"
+    And I press "Reply"
+    And "expert@coder.com" should receive an email with the following body:
+      | I think you are both slow and expensive. Can we reduce the price to $100? |
+    When "expert@coder.com" follow "Open price quote at CodeRunner" in the email
+    And he fill in "Total price in USD" with "100"
+    And he press "Update"
+
+    Then "noob@noob.no" should receive an email
+    Given he is signed in as "noob@noob.no"
+    When "noob@noob.no" opens the email with subject "Updated price quote at CodeRunner"
+    And "noob@noob.no" follow "Updated price quote at CodeRunner" in the email
     When I press "Accept"
     Then "expert@coder.com" should receive an email
     And "expert@coder.com" opens the email with subject "Your price quote was accepted"

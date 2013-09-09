@@ -2,11 +2,11 @@ Transform /^user "([^\"]*)"$/ do |email|
   User.find_by_email(email)
 end
 
-Given /^I am not signed in$/ do
+Given /^(?:he|I|she) am not signed in$/ do
   visit('/users/sign_out') # ensure that at least
 end
 
-Given /^I am signed out$/ do
+Given /^(?:he|I|she) am signed out$/ do
   Given %{I am not signed in}
 end
 
@@ -25,34 +25,23 @@ Given /^(?:I|we) have a user "([^\"]*)"(?: with password "([^\"]*)")?$/ do |emai
   end
 end
 
-Given /^I am signed in as "([^"]*)"$/ do |email|
+Given /^(?:he|I|she) (?:is|am|) signed in as "([^"]*)"$/ do |email|
   step %{I am not signed in}
   step %{I have a user "#{email}" with password "secret"}
   step %{I am signed in as "#{email}" with password "secret"}
 end
 
-Given /^(user "(?:.+)") is an administrator$/ do |user|
-  user.assign_role(:administrator)
-  user.save!
-  CONFIG['emails']['administrators'] << user.email
-  CONFIG['emails']['administrators'].uniq!
-end
-
-Given /^(user "(?:.+)") is not an administrator$/ do |user|
-  user.revoke_role(:administrator)
-  user.save!
-end
-
-Given /^(user "(?:.+)") is named "([^"]*)"$/ do |user, name|
-  user.name = name
-  user.save!
-end
-
-Given /^I am signed in as "([^\"]*)" with password "([^\"]*)"$/ do |email, password|
+Given /^(?:he|I|she) (?:is|am|) signed in as "([^\"]*)" with password "([^\"]*)"$/ do |email, password|
   step %{I am not signed in}
   user     = User.find_by_email(email)
   sign_in(user)
   @current_user = user
+end
+
+
+Given /^(user "(?:.+)") is named "([^"]*)"$/ do |user, name|
+  user.name = name
+  user.save!
 end
 
 def sign_in(user)

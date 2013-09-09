@@ -1,10 +1,10 @@
-Given(/^We have the expert group named (.+)/) do |title| 
+Given(/^we have the expert group named (.+)/) do |title| 
   Fabricate(:request_group, title: title)
   RequestGroup.last.title.should eq title
 end
 
 
-Given(/^We have one expert user in our database, named (.+)/) do |name|
+Given(/^we have one expert user in our database, named (.+)/) do |name|
   Fabricate(:user, name: name)
 end
 
@@ -31,6 +31,6 @@ Given(/^"(.*?)" has posted a request titled "(.*?)" delegated to "(.*?)"$/) do |
 end
 
 
-Given(/^We have the expert "(.*?)" named "(.*?)"$/) do |email, name|
+Given(/^we have the expert "(.*?)" named "(.*?)"$/) do |email, name|
   Fabricate(:user, name: name, email: email)
 end

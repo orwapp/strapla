@@ -6,8 +6,8 @@ Feature: Use the wizard to create a new request
 
   Background:
     Given I am signed in
-    And We have the expert group named Ruby on Rails
-    And We have one expert user in our database
+    And we have the expert group named Ruby on Rails
+    And we have one expert user in our database
     And this data to fill the background information form:
       | Elevator pitch         | Get help from anyone |
       | Background information | Inspiration from OSW |

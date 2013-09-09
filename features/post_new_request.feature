@@ -5,8 +5,8 @@ Feature: Get code help
 
   Background:
     Given I am signed in as "i_need_help@example.com"
-    And We have the expert group named Ruby on Rails
-    And We have one expert user in our database, named Paul
+    And we have the expert group named Ruby on Rails
+    And we have one expert user in our database, named Paul
 
   Scenario: Post new request
     When I go to the frontpage
