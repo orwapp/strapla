@@ -21,9 +21,10 @@ h2 These requests are delegated to you.
       - if @requests_delegated_to_me.present?
         = render :partial => 'request_list', locals: {requests: @my_requests_unassigned}
 
-    #requests_delegated_to_me_and_accepted[class="tab-pane #{'active' if @requests_delegated_to_me_and_accepted.present?}"]
-      - if @requests_delegated_to_me_and_accepted.present?
-        = render :partial => 'request_list', locals: {requests: @requests_delegated_to_me_and_accepted}
+    - if @requests_delegated_to_me_and_accepted.present?
+      #requests_delegated_to_me_and_accepted[class="tab-pane #{'active' if @requests_delegated_to_me_and_accepted.present? and @requests_delegated_to_me.blank?}"]
+        - if @requests_delegated_to_me_and_accepted.present?
+          = render :partial => 'request_list', locals: {requests: @requests_delegated_to_me_and_accepted}
 
 
 

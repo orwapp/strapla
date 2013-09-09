@@ -28,7 +28,7 @@ Feature: Respond to a request - Send a Price Quote
 
     Given I am signed in as "noob@noob.no"
     And I follow "Open price quote at CodeRunner" in the email
-    Then I should be on the page where I can negotiate terms with the developer
+    #Then I should be on the page where I can negotiate terms with the developer
     And I fill in "Reply to developer" with "I think you are both slow and expensive. Can we reduce the price to $100"
     And I press "Reply"
     And "expert@coder.com" should receive an email with the following body:

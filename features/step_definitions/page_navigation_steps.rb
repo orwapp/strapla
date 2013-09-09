@@ -43,3 +43,7 @@ end
 Then(/^(?:he|I|she) should not see "(.*?)"$/) do |text|
   page.should_not have_content(text)
 end
+
+Then(/^I should be on the page where I can negotiate terms with the developer$/) do
+  #current_path.should eq request_price_quote(
+end

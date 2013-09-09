@@ -1,10 +1,8 @@
 = render :partial => 'requests/request', locals: {request: @request}
 
-- if (current_user == @request.user) && @request.price_quotes.size > 0
+j if (current_user == @request.user) && @request.price_quotes.present?
   br
   br
   h3.lead Price Quotes
   hr
   = render @request.price_quotes.to_a
-  /p=  request.price_quotes.to_a.inspect
-  

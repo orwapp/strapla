@@ -6,12 +6,12 @@ p
   = "Better luck next time! :)"
 
 br
-= "#{link_to 'Review the request here.', request_path(@price_quote.request)}"
+= "#{link_to 'Review the request here.', request_path(@price_quote.request)}".html_safe
 
 hr
  
 p
-  = "#{@price_quote.comment}" if @price_quote.comment
-  = "#{@price_quote.price}"
-  = "#{@price_quote.hours_estimated}"
+  = "#{@price_quote.comment}".html_safe if @price_quote.comment
+  = "#{@price_quote.price}".html_safe
+  = "#{@price_quote.hours_estimated}".html_safe
 
