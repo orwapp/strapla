@@ -10,7 +10,7 @@
                                                                                                                                               
       - if @unassigned_requests.present?
         li[class="#{'active' if current_page?(unassigned_requests_path)}"]
-          = link_to (content_tag(:span, "Unassigned #{'request'.pluralize(@unassigned_requests.size)} ") +  \
+          = link_to (content_tag(:span, "Unassigned requests ") +  \
             content_tag(:strong, "#{@unassigned_requests.size}", class: "badge badge-success")).html_safe,
             unassigned_requests_path
                                                                                                                                               
