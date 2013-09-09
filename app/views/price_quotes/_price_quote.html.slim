@@ -1,7 +1,7 @@
 h2.label.label-success.big_font= price_quote.status.titleize if price_quote.status
 .container.border.small_padding(
-  class="#{'alert alert-success' if price_quote.status == 'accepted'}"
-  class="#{'alert alert-warning' if price_quote.status == 'rejected'}"
+  class=""
+  class=""
 )
 
   span = "Request: #{link_to price_quote.request.title, price_quote.request}".html_safe
