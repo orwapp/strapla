@@ -22,11 +22,24 @@ class User < ActiveRecord::Base
   end
 
   def delegated_requests
-    Request.where(contractor_id: self.id).load
+    Request.where(delegated_to_user_id: self.id).load
+  end
+
+  def delegated_requests_not_responded_to
+    all = Request.where(delegated_to_user_id: self.id).to_a
+    all - delegated_requests_sent_quote_on
+  end
+
+  def delegated_requests_sent_quote_on
+    self.price_quotes.collect(&:request)
+  end
+
+  def requests_responded_to
+    self.price_quotes.pluck(:request)
   end
 
   def delegated_and_accepted_requests
-    Request.where(contractor_id: self.id, status: :accepted).load
+    Request.where(delegated_to_user_id: self.id, contractor_id: self.id).load
   end
 
 end
