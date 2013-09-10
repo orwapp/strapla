@@ -16,6 +16,10 @@ class PriceQuote < ActiveRecord::Base
     status == 'accepted'
   end
 
+  def rejected?
+    status == 'rejected'
+  end
+
   def unprocessed
     connection = ActiveRecord::Base.connection
     ActiveRecord::Base.connection.execute(" select * from price_quotes join requests on price_quotes.request_id=requests.id ")
