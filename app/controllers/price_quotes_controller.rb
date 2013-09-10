@@ -9,6 +9,7 @@ class PriceQuotesController < ApplicationController
     @unprocessed_belonging_to_user ||= PriceQuote.unprocessed_belonging_to_user(@current_user)
     @accepted_price_quotes         ||= PriceQuote.accepted_belonging_to_user(@current_user)
     @comment = @current_user.comments.new
+    @unprocessed_belonging_to_user ||= PriceQuote.unprocessed_belonging_to_user(@current_user)
   end
 
 

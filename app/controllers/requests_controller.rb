@@ -12,11 +12,18 @@ class RequestsController < ApplicationController
   end
 
   def my_requests
+    #@comment = @current_user.comments.new
+    #@new_price_quotes_raw ||= PriceQuote.unprocessed_belonging_to_user(@current_user)
+    #@new_price_quotes = @my_requests_assigned_not_accepted - @new_price_quotes_raw
+    @unassigned_requests     ||= Request.published_and_unassigned.to_a
+    @my_requests_unassigned  ||= current_user.requests.published_and_unassigned.to_a
+    @my_requests_in_progress ||= current_user.requests.in_process.to_a
+    @my_requests_assigned_not_accepted ||= current_user.requests.assigned_not_accepted.to_a
   end
 
   def delegated_to_me
-    @requests_delegated_to_me = @current_user.delegated_requests
-    @requests_delegated_to_me_and_accepted = @current_user.delegated_requests
+    @delegated_requests_not_responded_to = @current_user.delegated_requests_not_responded_to.to_a
+    @delegated_requests_sent_quote_on    = @current_user.delegated_requests_sent_quote_on.to_a
   end
 
   def select_type_of_problem
@@ -26,8 +33,7 @@ class RequestsController < ApplicationController
 
   def show
     @price_quote = current_user.price_quotes.new  if user_signed_in?
-    @comment = @price_quote.comments.new           if user_signed_in?
-    @comments = @price_quote.comments
+    @comment = @price_quote.comments.new          if user_signed_in?
   end
 
   def new
@@ -64,8 +70,9 @@ class RequestsController < ApplicationController
     flash[:notice] = "The request has been forwarded to our expert group"
     @expert  = User.find( params[:delegate_to_expert][:expert_id] )
     @request = Request.find(params[:delegate_to_expert][:request_id])
-    @request.update_attribute(:contractor, @expert)
+    @request.update_attribute(:delegated_to_user_id, @expert.id)
     @request.update_attribute(:published, true)
+    @request.save
 
     flash[:notice] = "Thank you! #{@expert.name} will contact you shortly." 
     redirect_to root_url
