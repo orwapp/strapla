@@ -4,7 +4,7 @@ table.table.table-striped.table-hover
     th Description
     th Goal
     th Group
-    th Delegated to  
+    th="Delegated to"
 
   - requests.each do |request|
     tr
@@ -12,7 +12,7 @@ table.table.table-striped.table-hover
       td = request.description
       td = request.goal
       td = request.request_group.title
-      td = request.contractor && request.contractor.name ? request.contractor.name : '-'
+      td = request.contractor && request.contractor.name ? request.contractor.name : request.delegated_to.name rescue nil
       /td = link_to 'Destroy', request, method: :delete    if (current_user == request.user) and user_signed_in?
 
 br

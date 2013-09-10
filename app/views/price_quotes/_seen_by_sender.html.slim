@@ -1,0 +1,29 @@
+h2.label.label-success.big_font= price_quote.status.titleize if price_quote.status
+.container.border.small_padding
+  .pull-right
+    = link_to 'Edit', edit_price_quote_path(price_quote)
+
+  h4 You sent this quote
+  br
+
+
+  strong= "Price: "
+  em= price_quote.price
+  br
+
+  strong= "Hours estimated: "
+  em= price_quote.hours_estimated
+
+  hr
+  = render price_quote.comments || ''
+  
+  - if price_quote.accepted?
+    span The quotes has been accepted!
+  - elsif price_quote.rejected?
+    span The quotes has been rejected!
+
+    hr
+
+    br
+
+  = render :partial => 'comments/on_price_quote_form', locals: {price_quote: price_quote, comment: @comment}

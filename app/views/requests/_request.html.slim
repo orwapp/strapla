@@ -98,9 +98,9 @@ h2.label.label-info.big_font= request.request_group.title
       .row
         .pull-right
           - if user_signed_in? and request.contractor == current_user
-            strong.text-success You won this assignment!
+            strong.text-success You won this assignment! Do your best and make the client happy.
           - elsif (user_signed_in? and request.price_quotes.where(user: current_user).present?)
-            strong.text-success You have sent a price quote.
+            /strong.text-success You have sent a price quote.
           - elsif @current_user != request.user
             - if not user_signed_in?
               = link_to 'Quote a price', new_request_price_quote_path(request), class: 'btn btn-info'
@@ -122,3 +122,7 @@ h2.label.label-info.big_font= request.request_group.title
       - else
         = button_to 'Publish', request_publish_path(request), class: 'pull-right btn btn-success '   if request.user == current_user
 
+br
+hr
+
+= render partial: 'price_quotes/seen_by_sender', collection: request.price_quotes.where(user_id: @current_user.id), as: :price_quote
