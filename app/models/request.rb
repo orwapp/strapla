@@ -1,7 +1,7 @@
 class Request < ActiveRecord::Base
   belongs_to :request_group
   belongs_to :user
-  has_many :price_quotes
+  has_many :price_quotes, dependent: :destroy
   has_many :features
 
   validates_presence_of :title, :request_group, :description
