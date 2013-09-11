@@ -15,10 +15,10 @@ class RequestsController < ApplicationController
     #@comment = @current_user.comments.new
     #@new_price_quotes_raw ||= PriceQuote.unprocessed_belonging_to_user(@current_user)
     #@new_price_quotes = @my_requests_assigned_not_accepted - @new_price_quotes_raw
-    @unassigned_requests     ||= Request.published_and_unassigned.to_a
-    @my_requests_unassigned  ||= current_user.requests.published_and_unassigned.to_a
-    @my_requests_in_progress ||= current_user.requests.in_process.to_a
-    @my_requests_assigned_not_accepted ||= current_user.requests.assigned_not_accepted.to_a
+    @unassigned_requests     = Request.published_and_unassigned.to_a
+    @my_requests_unassigned  = current_user.requests.published_and_unassigned.to_a
+    @my_requests_in_progress = current_user.requests.in_process.to_a
+    @my_requests_assigned_not_accepted = current_user.requests.awaiting_response
   end
 
   def delegated_to_me

@@ -9,10 +9,25 @@ class Request < ActiveRecord::Base
   attr_accessor :repository_url
 
   scope :published,  -> { where published: true }
-  scope :published_and_unassigned, -> { published.where(:delegated_to_user_id => nil) }
+  scope :published_and_unassigned, -> { published.where(delegated_to_user_id: nil).where(contractor_id: nil) }
   scope :unassigned, -> { where contractor_id: nil }
   scope :in_process, -> { where( "contractor_id <> 0" ) }
   scope :assigned_not_accepted, -> { where( "delegated_to_user_id <> 0" ) }
+
+  def self.awaiting_response
+    # Select all requests where we can't find any PriceQuotes with that request_id
+    Request.find_by_sql("
+                        SELECT *
+                        FROM requests WHERE NOT EXISTS 
+                        (SELECT price_quotes.request_id 
+                        FROM price_quotes WHERE price_quotes.request_id = requests.id );")
+  end
+
+  def self.with_price_quotes
+    # Select all requests that have a price quote
+    Request.find_by_sql("SELECT requests.id, requests.title FROM price_quotes 
+                        INNER JOIN requests ON price_quotes .request_id = requests.id;")
+  end
 
   def contractor
     return unless self.contractor_id
