@@ -63,7 +63,7 @@ class RequestsController < ApplicationController
 
   def select_recipient
     @request = Request.find(params[:request_id])
-    @experts = User.all
+    @experts = User.where(role: :expert).load
   end
 
   def delegate_to_expert
