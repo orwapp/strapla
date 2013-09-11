@@ -4,6 +4,7 @@ class PriceQuote < ActiveRecord::Base
   validates_presence_of :user, :hours_estimated, :request_id, :price
   has_many :comments, dependent: :destroy
 
+
   def notify_owner_about_new_quote
     UserMailer.send_price_quote(self).deliver
   end
@@ -21,7 +22,7 @@ class PriceQuote < ActiveRecord::Base
   end
 
   def unprocessed
-    connection = ActiveRecord::Base.connection
+    #connection = ActiveRecord::Base.connection
     ActiveRecord::Base.connection.execute(" select * from price_quotes join requests on price_quotes.request_id=requests.id ")
     #PriceQuote.joins('LEFT OUTER JOIN addresses ON addresses.client_id = clients.id')
   end

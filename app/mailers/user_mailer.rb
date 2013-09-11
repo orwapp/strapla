@@ -21,11 +21,12 @@ class UserMailer < ActionMailer::Base
     mail to: @price_quote.request.user.email, cc: @price_quote.user.email 
   end
 
-  def new_comment(object_commented_on, comment, receiver)
+  def new_comment(from, to, comment)
+    @from    = from
+    @to      = to
     @comment = comment
-    @commenter = comment.user
-    @owner = object_commented_on.user
-    mail to: @owner.email, from: @commenter.email
+
+    mail to: @to.email #, from: @from.email
   end
 
 end

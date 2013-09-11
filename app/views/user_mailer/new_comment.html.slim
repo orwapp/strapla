@@ -1,10 +1,9 @@
-| Hi,
+= "Hi #{@to.name}, "
+br
+br
+= "#{@from.name} has added a comment:"
+blockquote= @comment.text
+br
+br
 
-= "#{@owner.name}"
-br
-br
-= "#{@commenter.name} has added a comment"
-br
-br
-
-= link_to "Read it here", request_url(@comment.price_quote.request)
+= link_to "Open request on CodeRunner", request_url(@comment.price_quote.request)
