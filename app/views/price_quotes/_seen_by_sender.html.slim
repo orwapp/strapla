@@ -1,7 +1,7 @@
 h2.label.label-success.big_font= price_quote.status.titleize if price_quote.status
 .container.border.small_padding
   .pull-right
-    = link_to 'Edit', edit_price_quote_path(price_quote)
+    = link_to 'Edit', edit_request_price_quote_path(@request, price_quote)
 
   h4 You sent this quote
   br

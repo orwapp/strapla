@@ -1,37 +1,24 @@
 - price_quote ||= false
+
 h2.label.label-success.big_font= price_quote.status.titleize if price_quote.status
 .container.border.small_padding
 
   span = "Request: #{link_to price_quote.request.title, price_quote.request}".html_safe
   hr
-
-
   strong= "Price: "
   em= price_quote.price
   br
-
   strong= "Hours estimated: "
   em= price_quote.hours_estimated
-
   hr
-  = render price_quote.comments
-  
-  = render :partial => 'comments/on_price_quote_form', locals: {price_quote: price_quote, comment: @comment}
-  - if price_quote.accepted?
-    = simple_form_for([price_quote.request, price_quote, @comment], :defaults => { :input_html => { :class => 'input-xxlarge' } }) do |f|
-      = f.error_notification
-      .form-inputs
-        = f.input :text
-      .form-actions
-        = f.button :submit, :class => "btn-primary"
-  - else
-    .button-group.pull-right
-      br
-      = link_to 'Accept', accept_price_quote_path(price_quote.id), class: 'btn btn-success', method: :post
-      = nbsp
-      = link_to 'Reject', reject_price_quote_path(price_quote.id), class: 'btn btn-danger', method: :post
-
-    hr
-
-    br
-
+  .span11
+    = render price_quote.comments
+    = render :partial => 'comments/on_price_quote_form', locals: {price_quote: price_quote, comment: @comment}
+    .row
+      .span11
+        - unless price_quote.accepted?
+          .pull-right
+             = link_to 'Accept', accept_price_quote_path(price_quote.id), class: 'btn btn-small btn-success', method: :post
+             = nbsp
+             = link_to 'Reject', reject_price_quote_path(price_quote.id), class: 'btn btn-small btn-danger', method: :post
+             = nbsp

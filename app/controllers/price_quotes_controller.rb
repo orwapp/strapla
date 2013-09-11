@@ -1,6 +1,6 @@
 class PriceQuotesController < ApplicationController
   before_action :set_price_quote, only: [:show, :edit, :update, :destroy]
-  before_action :set_request, only: [:new, :edit, :update, :show]
+  before_action :set_request, only: [:new, :show]
   respond_to :html
   before_filter :authenticate_user!
   before_action :find_requests
@@ -21,6 +21,8 @@ class PriceQuotesController < ApplicationController
   end
 
   def edit
+    @price_quote = PriceQuote.find params[:id]
+    @request     = Request.find params[:request_id]
   end
 
   def create
@@ -63,7 +65,8 @@ class PriceQuotesController < ApplicationController
     respond_to do |format|
       if @price_quote.update(price_quote_params)
         flash[:notice]= 'Price quote was successfully updated.' 
-        respond_with(@price_quote.request)
+        #respond_with(@price_quote.request)
+        format.html { redirect_to @price_quote.request}
       else
         format.html { render action: 'edit' }
         #format.json { render json: @price_quote.errors, status: :unprocessable_entity }
