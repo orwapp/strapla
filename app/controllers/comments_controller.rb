@@ -30,7 +30,8 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save!
-        UserMailer.new_comment(@comment, @comment.price_quote.request.user)
+        #object_commented_on, comment, receiver
+        UserMailer.new_comment(@comment.price_quote, @comment, @comment.price_quote.request.user)
         format.html { redirect_to :back, notice: 'Comment was successfully created.' }
         format.json { render action: 'show', status: :created, location: @comment }
       else
