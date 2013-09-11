@@ -9,7 +9,7 @@ h2 These requests are delegated to you.
   ul.nav.nav-tabs
       li.active: a data-toggle="tab" href="#delegated_requests_not_responded_to" Not responded to yet
       li: a data-toggle="tab" href="#requests_sent_quote_on" Requests I've sent a quote on
-      li: a data-toggle="tab" href="#requests_i_am_working_on" Requests that I've started working on
+      li: a data-toggle="tab" href="#requests_with_accepted_quotes" Requests with accepted quotes
 
 
   .tab-content
@@ -17,13 +17,13 @@ h2 These requests are delegated to you.
       - if @delegated_requests_not_responded_to.present?
         = render :partial => 'request_list', locals: {requests: @delegated_requests_not_responded_to}
 
-    .tab-pane#delegated_requests_sent_quote_on
-      - if @delegated_requests_sent_quote_on.present?
-        = render :partial => 'request_list', locals: {requests: @delegated_requests_sent_quote_on}
+    .tab-pane#requests_sent_quote_on
+      - if @requests_sent_quote_on.present?
+        = render :partial => 'request_list', locals: {requests: @requests_sent_quote_on}
 
-    .tab-pane#requests_i_am_working_on
-      - if @requests_i_am_working_on.present?
-        = render :partial => 'request_list', locals: {requests: @requests_i_am_working_on}
+    .tab-pane#requests_with_accepted_quotes
+      - if @requests_with_accepted_quotes.present?
+        = render :partial => 'request_list', locals: {requests: @requests_with_accepted_quotes}
 
 
 br

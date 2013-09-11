@@ -36,7 +36,7 @@ class PriceQuote < ActiveRecord::Base
     price_quotes
   end
 
-  def self.accepted_belonging_to_user(user)
+  def self.accepted_belonging_to_request_owner(user)
     belonging_to_users_requests(user).select {|p| p.status == 'accepted' }
   end
 

@@ -19,8 +19,8 @@ describe PriceQuote do
   end
 
   describe "accepted_belonging_to_user" do
-    it "Return all accepted price quotes" do
-      PriceQuote.accepted_belonging_to_user(@request_owner).should include @accepted_price_quote
+    it "Return all accepted price quotes on the requests owned by Request Owner" do
+      PriceQuote.accepted_belonging_to_request_owner(@request_owner).should include @accepted_price_quote
     end
   end
 

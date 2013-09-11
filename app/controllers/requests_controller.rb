@@ -18,12 +18,13 @@ class RequestsController < ApplicationController
     @unassigned_requests     = Request.published_and_unassigned.to_a
     @my_requests_unassigned  = current_user.requests.published_and_unassigned.to_a
     @my_requests_in_progress = current_user.requests.in_process.to_a
-    @my_requests_assigned_not_accepted = current_user.requests.awaiting_response
+    @my_requests_assigned_not_accepted = current_user.requests.awaiting_response(@current_user)
   end
 
   def delegated_to_me
     @delegated_requests_not_responded_to = @current_user.delegated_requests_not_responded_to.to_a
-    @delegated_requests_sent_quote_on    = @current_user.delegated_requests_sent_quote_on.to_a
+    @requests_sent_quote_on    = @current_user.requests_sent_quote_on.to_a - Request.where(contractor_id: @current_user.id).to_a
+    @requests_with_accepted_quotes    = Request.where(contractor_id: @current_user.id).to_a 
   end
 
   def select_type_of_problem
