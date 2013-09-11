@@ -27,11 +27,8 @@ class CommentsController < ApplicationController
     @comment = @current_user.comments.new(comment_params)
     @comment.price_quote_id = params[:price_quote_id]
 
-
     respond_to do |format|
       if @comment.save!
-        #object_commented_on, comment, receiver
-        UserMailer.new_comment(@comment.price_quote, @comment, @comment.price_quote.request.user)
         format.html { redirect_to :back, notice: 'Comment was successfully created.' }
         format.json { render action: 'show', status: :created, location: @comment }
       else
