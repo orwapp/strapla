@@ -3,28 +3,23 @@ h2.page-header Your requests
 
 .tabbable
   ul.nav.nav-tabs
-    li.active: a data-toggle="tab" href="#my_requests_unassigned" Requests not assigned to anyone
-    li: a data-toggle="tab" href="#my_requests_assigned_not_accepted" Awaiting response from expert
-    li: a data-toggle="tab" href="#my_requests_in_progress" Requests in progress
+    li.active: a data-toggle="tab" href="#my_requests_assigned_not_accepted" Awaiting price quotes
     li: a data-toggle="tab" href="#new_price_quotes" Price quotes received
+    li: a data-toggle="tab" href="#my_requests_in_progress" Requests in progress
         
 
   .tab-content
-    .tab-pane.active#my_requests_unassigned
-      - if @my_requests_unassigned.present?
-        = render :partial => 'request_list', locals: {requests: @my_requests_unassigned}
+
+    .tab-pane.active#my_requests_assigned_not_accepted
+      - if @my_requests_assigned_not_accepted.present?
+        = render :partial => 'request_list', locals: {requests: @my_requests_assigned_not_accepted}
+        
+    .tab-pane#new_price_quotes
+      -if @new_price_quotes.present?
+        = render :partial => 'request_list', locals: {requests: @new_price_quotes}
 
     .tab-pane#my_requests_in_progress
       - if @my_requests_in_progress.present?
         = render :partial => 'request_list', locals: {requests: @my_requests_in_progress}
-
-    .tab-pane#my_requests_assigned_not_accepted
-      - if @my_requests_assigned_not_accepted.present?
-        = render :partial => 'request_list', locals: {requests: @my_requests_assigned_not_accepted}
-
-    .tab-pane#new_price_quotes
-      -if @new_price_quotes.present?
-        = render @new_price_quotes
-
 
 = link_to 'Create a request', select_type_of_problem_path, class: 'btn btn-info'
