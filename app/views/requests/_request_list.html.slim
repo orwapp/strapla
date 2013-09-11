@@ -10,6 +10,6 @@ table.table.table-striped.table-hover
       td = link_to request.title, request
       td = request.description
       td = request.goal
-      td = request.delegated_to.present? ? link_to(request.delegated_to.name, request.delegated_to) : request.request_group.title
+      td = request.delegated_to.present? ? link_to(request.delegated_to.name, user_profile_path(request.delegated_to)) : request.request_group.title
 
 br
