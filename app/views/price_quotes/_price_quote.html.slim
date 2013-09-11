@@ -10,6 +10,9 @@ h2.label.label-success.big_font= price_quote.status.titleize if price_quote.stat
   br
   strong= "Hours estimated: "
   em= price_quote.hours_estimated
+  br
+  strong= "Comment: "
+  em= price_quote.comment
   hr
   .span11
     = render price_quote.comments
