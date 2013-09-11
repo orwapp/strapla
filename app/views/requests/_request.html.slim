@@ -116,13 +116,15 @@ h2.label.label-info.big_font= request.request_group.title
 
   .row
     .span11
-      = link_to 'Edit', edit_request_path(request), class: 'pull-right btn '   if request.user == current_user
-      - if request.published
-        = button_to 'Unpublish', request_unpublish_path(request), class: 'pull-right btn  btn-warning'   if request.user == current_user
-      - else
-        = button_to 'Publish', request_publish_path(request), class: 'pull-right btn btn-success '   if request.user == current_user
+      - if user_signed_in?
+        = link_to 'Edit', edit_request_path(request), class: 'pull-right btn '   if request.user == current_user
+        - if request.published
+          = button_to 'Unpublish', request_unpublish_path(request), class: 'pull-right btn  btn-warning'   if request.user == current_user
+        - else
+          = button_to 'Publish', request_publish_path(request), class: 'pull-right btn btn-success '   if request.user == current_user
 
 br
-hr
 
-= render partial: 'price_quotes/seen_by_sender', collection: request.price_quotes.where(user_id: @current_user.id), as: :price_quote
+- if user_signed_in?
+  hr
+  = render partial: 'price_quotes/seen_by_sender', collection: request.price_quotes.where(user_id: @current_user.id), as: :price_quote
