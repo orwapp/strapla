@@ -164,6 +164,7 @@ GEM
     mono_logger (1.1.0)
     multi_json (1.7.9)
     multi_test (0.0.2)
+    newrelic_rpm (3.6.7.152)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     orm_adapter (0.4.0)
@@ -326,6 +327,7 @@ DEPENDENCIES
   launchy
   mail_form
   meta_request
+  newrelic_rpm
   pg
   quiet_assets
   rails (= 4.0.0)
