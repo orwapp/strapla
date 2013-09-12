@@ -38,19 +38,20 @@ group :development do
 end
 
 group :development, :test do
-  gem 'capybara'
   gem 'rspec-rails'
-  gem 'cucumber-rails', :require => false
-  gem 'database_cleaner'
-  gem 'email_spec'
-  gem 'guard-rspec'
-  gem 'selenium-webdriver'
+  gem 'faker'
 end
 
 group :test do
   gem 'email_spec'
   gem 'launchy'
   gem 'capybara-webkit'
+  gem 'capybara'
+  gem 'cucumber-rails', :require => false
+  gem 'database_cleaner'
+  gem 'email_spec'
+  gem 'guard-rspec'
+  gem 'selenium-webdriver'
 end
 
 gem 'mail_form'
@@ -60,5 +61,4 @@ gem 'foreman'
 gem 'unicorn'
 gem 'resque'
 gem 'resque_mailer'
-gem 'faker'
 gem 'newrelic_rpm'
