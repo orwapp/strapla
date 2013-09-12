@@ -19,7 +19,14 @@ module CodeRunner
     config.generators do |g|
       g.fixture_replacement :fabrication
       g.template_engine     :haml # slim
-      g.test_framework      :rspec, :fixture => true, :views => false
+      g.test_framework      :rspec, 
+        views: false,
+        fixtures: true,
+        view_specs: false,
+        helper_specs: false,
+        routing_specs: false,
+        controller_specs: true,
+        request_specs: false
     end
 
     Fabrication.configure do |config|
