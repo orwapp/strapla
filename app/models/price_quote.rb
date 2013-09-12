@@ -4,6 +4,9 @@ class PriceQuote < ActiveRecord::Base
   validates_presence_of :user, :hours_estimated, :request_id, :price
   has_many :comments, dependent: :destroy
 
+  after_save :update_request!
+
+
 
   def notify_owner_about_new_quote
     UserMailer.send_price_quote(self).deliver
@@ -43,6 +46,11 @@ class PriceQuote < ActiveRecord::Base
 
   def self.unprocessed_belonging_to_user(user)
     belonging_to_users_requests(user).select {|p| p.status == nil }
+  end
+
+  private
+  def update_request!
+    self.request.update_attribute(:status, status)    if status == :accepted
   end
 
 end
