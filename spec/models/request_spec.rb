@@ -23,6 +23,7 @@ describe Request do
       end
 
       it "requests_with_price_quotes" do
+        @dont_find_me = Fabricate(:request, user: @user)
         expect(@user.requests_with_price_quotes.first).to eq @request
       end
     end
@@ -33,6 +34,7 @@ describe Request do
       end
 
       it "requests_with_price_quotes" do
+        @dont_find_me = Fabricate(:request, user: @user)
         expect(@user.requests_with_price_quotes.first).to eq @request
       end
     end
