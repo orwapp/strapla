@@ -38,4 +38,12 @@ class User < ActiveRecord::Base
     Request.where(delegated_to_user_id: self.id, contractor_id: self.id).load
   end
 
+  def requests_awaiting_response
+    Request.awaiting_response(self)
+  end
+
+  def requests_with_price_quotes
+    Request.with_price_quotes(self)
+  end
+
 end
