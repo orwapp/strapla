@@ -6,6 +6,9 @@ h2.label.label-success.big_font= price_quote.status.titleize if price_quote.stat
   - if price_quote.request.present?
     span = "Request: #{link_to price_quote.request.title, price_quote.request}".html_safe
   hr
+  strong= "From: "
+  em= price_quote.user.name
+  br
   strong= "Price: "
   em= price_quote.price
   br
