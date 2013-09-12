@@ -13,8 +13,9 @@ class RequestsController < ApplicationController
 
   def my_requests
     #@comment = @current_user.comments.new
-    #@new_price_quotes_raw ||= PriceQuote.unprocessed_belonging_to_user(@current_user)
-    #@new_price_quotes = @my_requests_assigned_not_accepted - @new_price_quotes_raw
+    @new_price_quotes_raw ||= PriceQuote.unprocessed_belonging_to_user(@current_user)
+    @new_price_quotes = @my_requests_assigned_not_accepted - @new_price_quotes_raw
+
     @my_requests_unassigned  = current_user.requests.published_and_unassigned.to_a
     @my_requests_in_progress = current_user.requests.in_process.to_a
     @my_requests_assigned_not_accepted = current_user.requests.awaiting_response(@current_user)
