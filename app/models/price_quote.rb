@@ -21,7 +21,7 @@ class PriceQuote < ActiveRecord::Base
   end
 
   def rejected?
-    status == 'rejected'
+    status == :rejected
   end
 
   def unprocessed
@@ -50,7 +50,7 @@ class PriceQuote < ActiveRecord::Base
 
   private
   def update_request!
-    self.request.update_attribute(:status, status.to_sym) rescue nil
+    self.request.update_attribute(:status, status)
   end
 
 end

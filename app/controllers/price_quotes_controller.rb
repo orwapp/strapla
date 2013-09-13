@@ -7,7 +7,7 @@ class PriceQuotesController < ApplicationController
 
   def index
     @unprocessed_belonging_to_user = @current_user.price_quotes.where(status: nil)
-    @accepted_price_quotes         = @current_user.price_quotes.where(status: :accepted)
+    @accepted_price_quotes         = @current_user.price_quotes.where(status: 'accepted')
   end
 
   def show

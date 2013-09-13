@@ -5,9 +5,10 @@ describe PriceQuote do
     @request_owner = Fabricate(:user)
     @request       = Fabricate(:request, user: @request_owner)
     @price_quote   = Fabricate(:price_quote, user: Fabricate(:user), request: @request, status: nil)
-    @accepted_price_quote   = Fabricate(:price_quote, user: Fabricate(:user), request: @request, status: :accepted)
+    @accepted_price_quote   = Fabricate(:price_quote, user: Fabricate(:user), request: @request, status: 'accepted')
   end
   specify { @price_quote.should be_valid }
+  specify { @accepted_price_quote.should be_valid }
 
 
   it "Returns unprocessed price quotes made on a user's Request" do
@@ -25,7 +26,7 @@ describe PriceQuote do
   end
 
   it "Updates the Request it belongs to´s status" do
-    expect(@request.status).to eq :accepted
+    expect(@request.status).to eq 'accepted'
   end
 
 

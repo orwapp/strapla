@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
   end
 
   def requests_with_accepted_quotes
-    Request.where(status: :accepted).to_a
+    Request.where(status: 'accepted').to_a
   end
 
 end
