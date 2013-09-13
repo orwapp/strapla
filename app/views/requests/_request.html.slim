@@ -11,6 +11,7 @@ h2.label.label-info.big_font= request.request_group.title
 
         .media-body
           h4.lead.lead-pull-up= request.title
+          em= request.status
           p
             strong Description
             br
@@ -117,7 +118,7 @@ h2.label.label-info.big_font= request.request_group.title
   .row
     .span11
       - if user_signed_in?
-        = link_to 'Edit', edit_request_path(request), class: 'pull-right btn '   if request.user == current_user
+        = link_to 'Edit', edit_request_path(request), class: 'pull-right btn '   if (request.user == current_user) and request.status != :accepted
         - if request.published
           = button_to 'Unpublish', request_unpublish_path(request), class: 'pull-right btn  btn-warning'   if request.user == current_user
         - else
