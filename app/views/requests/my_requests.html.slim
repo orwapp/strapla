@@ -15,11 +15,16 @@ h2.page-header Your requests
         = render :partial => 'request_list', locals: {requests: @awaiting_response}
         
     .tab-pane#requests_with_price_quotes
-      -if @requests_with_price_quotes.present?
-        = render :partial => 'request_list', locals: {requests: @requests_with_price_quotes}
+      -if @new_price_quotes.present?
+        - @new_price_quotes.each do |price_quote|
+          = render price_quote
 
     .tab-pane#requests_with_accepted_quotes
       - if @requests_with_accepted_quotes.present?
         = render :partial => 'request_list', locals: {requests: @requests_with_accepted_quotes}
 
+br
+br
+br
+br
 = link_to 'Create a request', select_type_of_problem_path, class: 'btn btn-info'

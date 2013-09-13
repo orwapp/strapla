@@ -6,6 +6,9 @@ class PriceQuote < ActiveRecord::Base
 
   after_save :update_request!
 
+  scope :unprocessed, -> { where status: nil }
+  scope :accepted, -> { where status: 'accepted' }
+  scope :rejected, -> { where status: 'rejected' }
 
 
   def notify_owner_about_new_quote

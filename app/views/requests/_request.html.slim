@@ -78,8 +78,10 @@ h2.label.label-info.big_font= request.request_group.title
 
     .span4
       p.pull-right
-        em.muted Client: 
-        strong= request.user.name
+        span Client: 
+        span= request.user.name
+        br
+        span.muted= "<#{request.user.email}>"
         em= request.user.title if request.user.title
       br
   .row

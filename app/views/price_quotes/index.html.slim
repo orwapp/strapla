@@ -2,28 +2,31 @@ h1 Price Quotes
 br
 br
 
-//.tabbable
-//  ul.nav.nav-tabs
-//    - if @unprocessed_belonging_to_user.present?
-//      li[class="#{'active' if @unprocessed_belonging_to_user.present?}"]
-//        a data-toggle="tab" href="#new" New price quotes
-//    - if @accepted_price_quotes.present?
-//      li[class="#{'active' if @accepted_price_quotes.present? and @unprocessed_belonging_to_user.blank?}"]
-//        a data-toggle="tab" href="#accepted" Accepted price quotes
-//
-//  .tab-content
+.tabbable
+  ul.nav.nav-tabs
+      li.active: a data-toggle="tab" href="#new" Quotes I've sent
+      li: a data-toggle="tab" href="#accepted" Accepted price quotes
+      li: a data-toggle="tab" href="#rejected" Rejected price quotes
 
-#new[class="tab-pane #{'active' if @unprocessed_belonging_to_user.present?}"]
-  - if @unprocessed_belonging_to_user.present?
-    - @unprocessed_belonging_to_user.each do |price_quote|
-      br
-      br
-      = render :partial => 'price_quote', locals: {price_quote: price_quote}
+  .tab-content
 
-//#accepted[class="tab-pane #{'active' if @accepted_price_quotes.present?}"]
-//
-//  - if @accepted_price_quotes.present?
-//    - @accepted_price_quotes.each do |price_quote|
-//      = render :partial => 'price_quote', locals: {price_quote: price_quote}
-//  - else 
-//    p You have not accepted any price quotes yet
+    .tab-pane.active#new
+      - if @unprocessed_price_quotes.present?
+        - @unprocessed_price_quotes.each do |price_quote|
+          br
+          br
+          = render :partial => 'price_quote', locals: {price_quote: price_quote}
+    
+    .tab-pane#accepted
+      - if @accepted_price_quotes.present?
+        - @accepted_price_quotes.each do |price_quote|
+          = render :partial => 'price_quote', locals: {price_quote: price_quote}
+      - else 
+        p You have no accepted price quotes
+    
+    .tab-pane#rejected
+      - if @rejected_price_quotes.present?
+        - @rejected_price_quotes.each do |price_quote|
+          = render :partial => 'price_quote', locals: {price_quote: price_quote}
+      - else 
+        p You have no rejected price quotes

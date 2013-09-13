@@ -6,8 +6,9 @@ class PriceQuotesController < ApplicationController
   before_action :find_requests
 
   def index
-    @unprocessed_belonging_to_user = @current_user.price_quotes.where(status: nil)
-    @accepted_price_quotes         = @current_user.price_quotes.where(status: 'accepted')
+    @unprocessed_price_quotes = @current_user.price_quotes.where(status: nil).to_a
+    @accepted_price_quotes    = @current_user.price_quotes.where(status: 'accepted').to_a
+    @rejected_price_quotes    = @current_user.price_quotes.where(status: 'rejected').to_a
   end
 
   def show
