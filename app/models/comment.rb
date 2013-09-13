@@ -8,8 +8,14 @@ class Comment < ActiveRecord::Base
 
   private
   def send_email
-    UserMailer.new_comment(self.user, self.price_quote.request.user, self).deliver
-    UserMailer.new_comment(self.price_quote.request.user, self.user, self).deliver
+    if price_quote.request.user != user
+      to   = price_quote.request.user
+      from = price_quote.user
+    else 
+      to   = price_quote.user
+      from = price_quote.request.user
+    end
+    UserMailer.new_comment(from,to, self).deliver
   end
 
 end

@@ -22,6 +22,7 @@ describe Comment do
     let(:comment)       { Fabricate(:comment, price_quote: price_quote) }
 
     it "Sends an email to the request owner when the expert comments on a price quote" do
+      pending
       ActionMailer::Base.deliveries.last.to.should include(request_owner.email)
       #mail.subject.should eq("New comment")
       #mail.to.should eq([request_owner.email])
