@@ -43,7 +43,11 @@ class User < ActiveRecord::Base
   end
 
   def requests_with_price_quotes
-    Request.with_price_quotes(self)
+    Request.with_price_quotes(self).to_a - self.requests_with_accepted_quotes
+  end
+
+  def requests_with_accepted_quotes
+    Request.where(status: :accepted).to_a
   end
 
 end
