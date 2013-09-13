@@ -37,8 +37,7 @@ class PriceQuotesController < ApplicationController
   def accept
     # TODO Add cancan
     @price_quote = PriceQuote.find(params[:id])
-    @price_quote.update_attribute(:status, 'accepted')
-    @price_quote.save!
+    @price_quote.status = 'accepted'
 
     @price_quote.request.contractor = @price_quote.user
     @price_quote.save
@@ -51,7 +50,7 @@ class PriceQuotesController < ApplicationController
   def reject
     # TODO Add cancan
     @price_quote = PriceQuote.find(params[:id])
-    @price_quote.update_attribute(:status, 'rejected')
+    @price_quote.status = 'rejected'
     @price_quote.save!
     UserMailer.inform_about_rejected_quote(@price_quote).deliver
     flash[:notice] = "Price quote rejected. #{@price_quote.user.name} has been notified"

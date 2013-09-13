@@ -24,5 +24,9 @@ describe PriceQuote do
     end
   end
 
+  it "Updates the Request it belongs to´s status" do
+    expect(@request.status).to eq :accepted
+  end
+
 
 end

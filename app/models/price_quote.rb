@@ -50,7 +50,7 @@ class PriceQuote < ActiveRecord::Base
 
   private
   def update_request!
-    self.request.update_attribute(:status, status)    if status == :accepted
+    self.request.update_attribute(:status, status.to_sym) rescue nil
   end
 
 end

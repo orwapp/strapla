@@ -13,6 +13,10 @@ class Request < ActiveRecord::Base
   scope :unassigned, -> { where contractor_id: nil }
   scope :in_process, -> { where( "contractor_id <> 0" ) }
   scope :assigned_not_accepted, -> { where( "delegated_to_user_id <> 0" ) }
+  #scope :mine, :conditions=>'SELECT *
+  #                      FROM requests WHERE NOT EXISTS 
+  #                      (SELECT price_quotes.request_id 
+  #                      FROM price_quotes WHERE price_quotes.request_id = requests.id)'
 
   def self.awaiting_response(user)
     # Select all requests where we can't find any PriceQuotes with that request_id
