@@ -1,40 +1,55 @@
 - url =  "/requests/?wizard=#{@wizard}"  if @wizard
 - remote ||= false
+
+- if @request.errors.any?
+  #error_explanation
+    h2 = "#{pluralize(@request.errors.count, "error")} prohibited this request from being saved:"
+    ul
+      - @request.errors.full_messages.each do |message|
+        li = message
+
 .row
-  = simple_form_for(@request, url: url, remote: remote,  :html => { :class => 'form-inline span10' }) do |f|
-    - if @request.errors.any?
-      #error_explanation
-        h2 = "#{pluralize(@request.errors.count, "error")} prohibited this request from being saved:"
-        ul
-          - @request.errors.full_messages.each do |message|
-            li = message
+  = simple_form_for(@request, url: url, remote: true,  :html => { :class => 'form-inline span10 form1' }) do |f|
   
     .form-inputs
       - @title_placeholder = @wizard.present? ? 'E.g. Build Facebook for businesses or iPhone app for single mothers' :  'E.g.  Fix bug in code, make API work, etc'
       = f.input :title,           input_html: { class: 'span10', placeholder: @title_placeholder }
       = f.input :goal,            input_html: { class: 'span10', placeholder: 'Should be clear and measureable. E.g. "We need a beta with feature 1-3 completed within 1 week. You can review this page and update the goal after' } unless @wizard
+      = f.button :submit,  'Next', :class => 'btn btn-primary pull-right next_btn', :data => { current: :form1, next: :form2}
+
+  = simple_form_for(@request, url: url, remote: true,  :html => { :class => 'form-inline span10 form2 hide' }) do |f|
+    .form-inputs
       = f.input :description,     input_html: { class: 'span10' }  
       = f.input :repository_url,  input_html: { class: 'span10', placeholder: 'github.com/username/repository' }   unless @wizard
+      = f.button :submit,  'Next', :class => 'btn btn-primary pull-right', :data => { current: :form2, next: :form3}
 
-      - if @wizard or @request.type_of == 'big'
-        hr
-        = f.input :elevator_pitch, 
-          input_html: { class: 'span10', placeholder: 'If we had thirty seconds and two sentences to describe our project, what would we say?' }
-        br
-        = f.input :background_information, 
-          input_html: { class: 'span10', placeholder: 'Who are our customers? Which problem are we trying to solve? What\'s our solution?' }
-        br
-        = f.input :no_list, label: 'Create a NOT list', 
-          input_html: { class: 'span10', placeholder: 'It’s pretty clear what we want to do on this project. Let’s be even clearer and show what we are not doing.'  }
-        br
-        = f.input :what_can_go_wrong, input_html: { class: 'span10', placeholder: 'What should we be particular carefull about? What can go wrong?' }
-        br
-        = f.input :what_is_it_going_to_give,
-          input_html: { class: 'span10', placeholder: 'Projects have levers like time, scope, budget, and quality. What’s most and least important for this project at this time?' }
-        br
-        = f.input :what_is_the_frame, 
-          input_html: { class: 'span10', placeholder: 'Is this thing a three-, six-, or nine-month project?  What´s the financial frame? And what kind of team are we going to need to pull this off?' }
-        br
+  = simple_form_for(@request, url: url, remote: true,  :html => { :class => 'form-inline span10 form3 hide' }) do |f|
+      hr
+      = f.input :elevator_pitch, 
+        input_html: { class: 'span10', placeholder: 'If we had thirty seconds and two sentences to describe our project, what would we say?' }
+      = f.button :submit,  'Next', :class => 'btn btn-primary pull-right', :data => { current: :form3, next: :form4}
+
+
+  = simple_form_for(@request, url: url, remote: true,  :html => { :class => 'form-inline span10 form4 hide' }) do |f|
+      br
+      = f.input :background_information, 
+        input_html: { class: 'span10', placeholder: 'Who are our customers? Which problem are we trying to solve? What\'s our solution?' }
+      br
+      = f.button :submit,  'Next', :class => 'btn btn-primary pull-right', :data => { current: :form4, next: :form5}
+
+
+      = f.input :no_list, label: 'Create a NOT list', 
+        input_html: { class: 'span10', placeholder: 'It’s pretty clear what we want to do on this project. Let’s be even clearer and show what we are not doing.'  }
+      br
+      = f.input :what_can_go_wrong, input_html: { class: 'span10', placeholder: 'What should we be particular carefull about? What can go wrong?' }
+      br
+      = f.input :what_is_it_going_to_give,
+        input_html: { class: 'span10', placeholder: 'Projects have levers like time, scope, budget, and quality. What’s most and least important for this project at this time?' }
+      br
+      = f.input :what_is_the_frame, 
+        input_html: { class: 'span10', placeholder: 'Is this thing a three-, six-, or nine-month project?  What´s the financial frame? And what kind of team are we going to need to pull this off?' }
+      br
+      = f.button :submit,  'Next', :class => 'btn btn-primary pull-right', :data => { current: :form3, next: :form4}
   
   
       br
@@ -44,4 +59,3 @@
           RequestGroup.all.collect {|p| [ p.title, p.id ] }, { :include_blank => false })
       .pull-right
         br
-        = f.button :submit,  'Next', :class => 'btn btn-primary pull-right'

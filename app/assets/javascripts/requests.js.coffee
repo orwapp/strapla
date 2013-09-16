@@ -14,3 +14,12 @@ $ ->
   $(document).on 'click', '.show_price_quote_form', (e) => 
     e.preventDefault()
     $('.price_quote_form').slideToggle()
+
+
+  $('.next_btn').on "click", (e) ->
+    e.preventDefault()
+    console.log 'clicked'
+    current_form = $(this).closest('form')
+    current_form.hide()
+    next_form = $(current_form).next('form')
+    $(next_form).show()

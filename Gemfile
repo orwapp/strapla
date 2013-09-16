@@ -3,7 +3,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 ruby '2.0.0'
 
-gem 'pg'
+#gem 'pg'
+gem 'sqlite3'
 gem 'slim'
 gem 'slim-rails'
 gem 'fabrication'
@@ -45,8 +46,8 @@ end
 group :test do
   gem 'email_spec'
   gem 'launchy'
-  gem 'capybara-webkit'
-  gem 'capybara'
+  #gem 'capybara-webkit'
+  #gem 'capybara'
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
   gem 'email_spec'
