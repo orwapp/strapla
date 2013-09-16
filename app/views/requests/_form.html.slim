@@ -10,9 +10,9 @@
 
 .row
   .span12.progress.progress-striped.active
-    .bar data-percent="10" style="width: 10%;"
+    .bar data-percent="20" style="width: 20%;"
   
-  = simple_form_for(@request, url: url, remote: true,  :html => { :class => 'form-inline span10' }) do |f|
+  = simple_form_for(@request, url: url, remote: remote,  :html => { :class => 'form-inline span10' }) do |f|
   
     .form-inputs
       .part

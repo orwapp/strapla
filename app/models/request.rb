@@ -4,7 +4,7 @@ class Request < ActiveRecord::Base
   has_many :price_quotes, dependent: :destroy
   has_many :features
 
-  validates_presence_of :title, :request_group, :description
+  #validates_presence_of :title, :request_group, :description
   
   attr_accessor :repository_url
 
