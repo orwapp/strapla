@@ -47,7 +47,7 @@ class RequestsController < ApplicationController
     @request = Request.new(request_params)
     @request.user = current_user
     @request.type_of = @wizard.present? ? 'big' : 'small'
-    if @request.save 
+    if @request.save!
       if @wizard
         redirect_to request_create_many_path(@request) 
       else
