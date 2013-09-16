@@ -16,9 +16,9 @@ $ ->
     $('.price_quote_form').slideToggle()
 
 
-  $('.next_btn').on "click", (e) ->
+  $(document).on 'click', '.next_btn', (e) -> 
     e.preventDefault()
-    console.log 'clicked'
+    console.log 'kh'
     current_form = $(this).closest('form')
     current_form.hide()
     next_form = $(current_form).next('form')

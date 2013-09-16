@@ -21,13 +21,13 @@
     .form-inputs
       = f.input :description,     input_html: { class: 'span10' }  
       = f.input :repository_url,  input_html: { class: 'span10', placeholder: 'github.com/username/repository' }   unless @wizard
-      = f.button :submit,  'Next', :class => 'btn btn-primary pull-right', :data => { current: :form2, next: :form3}
+      = f.button :submit,  'Next', :class => 'btn btn-primary pull-right next_btn', :data => { current: :form2, next: :form3}
 
   = simple_form_for(@request, url: url, remote: true,  :html => { :class => 'form-inline span10 form3 hide' }) do |f|
       hr
       = f.input :elevator_pitch, 
         input_html: { class: 'span10', placeholder: 'If we had thirty seconds and two sentences to describe our project, what would we say?' }
-      = f.button :submit,  'Next', :class => 'btn btn-primary pull-right', :data => { current: :form3, next: :form4}
+      = f.button :submit,  'Next', :class => 'btn btn-primary pull-right next_btn', :data => { current: :form3, next: :form4}
 
 
   = simple_form_for(@request, url: url, remote: true,  :html => { :class => 'form-inline span10 form4 hide' }) do |f|
@@ -35,7 +35,7 @@
       = f.input :background_information, 
         input_html: { class: 'span10', placeholder: 'Who are our customers? Which problem are we trying to solve? What\'s our solution?' }
       br
-      = f.button :submit,  'Next', :class => 'btn btn-primary pull-right', :data => { current: :form4, next: :form5}
+      = f.button :submit,  'Next', :class => 'btn btn-primary pull-right next_btn', :data => { current: :form4, next: :form5}
 
 
       = f.input :no_list, label: 'Create a NOT list', 
@@ -49,7 +49,7 @@
       = f.input :what_is_the_frame, 
         input_html: { class: 'span10', placeholder: 'Is this thing a three-, six-, or nine-month project?  What´s the financial frame? And what kind of team are we going to need to pull this off?' }
       br
-      = f.button :submit,  'Next', :class => 'btn btn-primary pull-right', :data => { current: :form3, next: :form4}
+      = f.button :submit,  'Next', :class => 'btn btn-primary pull-right next_btn', :data => { current: :form3, next: :form4}
   
   
       br
