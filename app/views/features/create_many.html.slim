@@ -1,40 +1,31 @@
 .page-header
   h1 Describe which features you want
+  .well
+    p
+      | Could be Facbook login, Paypal subscription, etc.
 
-/.well
-  h3 User stories 
-  | One of the benefits of agile user stories is that they can be written at varying levels of detail. 
-  | We can write a user story to cover large amounts of functionality. These large user stories are generally known as epics. Here is an epic agile user story example from a desktop backup product:
-  br
-  br
- 
-  h3 Epics
-  br
-  blockquote
-    strong As a user, I can backup my entire hard drive.
-    br
-  = "Because an epic is generally too large for an agile team to complete in one iteration, it is split into multiple smaller user stories before it is worked on."
-  br
-  br
- 
-  | The epic above could be split into dozens (or possibly hundreds), including these two:
-  br
-  br
- 
-  blockquote
-    ="As a power user, I can specify files or folders to backup based on file size, date created and date modified."
-  blockquote
-    ="As a user, I can indicate folders not to backup so that my backup drive isn't filled up with things I don't need saved."
-
-
-
-
-- 2.times do |n|
-  .span5
-    = render 'form',n: n, remote: true, hide_submit: false
 
 .row
+  .span6
+    - n = 1
+    = simple_form_for([@request, @feature], remote: true, disabled: true, 
+      html: {class: "form-inline new_feature" }) do |f|
+        .form-inputs
+          = f.input :title, required: true, input_html: { class: 'input-xxlarge' }
+          = f.input :text,  required: true, input_html: { class: 'input-xxlarge' }
+
+        .form-actions
+          = f.button :submit, :class => "btn-info save_feature", value: "Save"
+
+
   .span12
-    /= button_to "Add more features", '#', class: 'btn btn-success'
-    = link_to "Next", request_review_path(@request), class: 'btn btn-primary continue_from_the_create_many_page pull-right', 
+    h3 Drag the features in the order you want them implemented
+
+    ol.features.simple_with_animation.vertical
+    
+
+  
+.row
+  .span12
+    = link_to "Next", request_review_path(@request), class: 'btn btn-info continue_from_the_create_many_page pull-right', 
       data: {navigate_to: request_review_path(@request) }
