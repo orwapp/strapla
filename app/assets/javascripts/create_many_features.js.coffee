@@ -3,7 +3,8 @@ $ ->
 
   post_features = (values, id) ->
     target = {}
-    request_id = JSON.parse('{"request_id": 46}')
+    #request_id = JSON.parse("{'request_id': eval(id) }")
+    request_id = JSON.parse('{"request_id": ' + id + '}');
     merged_data = $.extend(target, values, request_id)
     console.log "Posting: #{merged_data}"
     
@@ -19,6 +20,9 @@ $ ->
         alert "failure"
         #$("body").html "There is error while submit"
   
+
+
+
   $.fn.serializeObject = ->
     o = {}
     a = @serializeArray()
@@ -29,6 +33,8 @@ $ ->
       else
         o[@name] = @value or ""
     o
+
+
   
   $('.save_feature').on "click", (e) ->
     e.preventDefault()
