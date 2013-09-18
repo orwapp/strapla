@@ -4,6 +4,7 @@ table.table.table-striped.table-hover
     th Description
     th Goal
     th Delegated to
+    th  
 
   - requests.each do |request|
     tr
@@ -11,5 +12,7 @@ table.table.table-striped.table-hover
       td = request.description
       td = request.goal
       td = request.delegated_to.present? ? link_to(request.delegated_to.name, user_profile_path(request.delegated_to)) : request.request_group.title
+      td = link_to 'Edit', edit_request_path(request)
+      td = link_to 'Delete', request_path(request), method: :delete
 
 br
