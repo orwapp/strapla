@@ -1,5 +1,4 @@
 $ ->
-
   post_features = (values, id) ->
     target = {}
     request_id = JSON.parse('{"request_id": ' + id + '}');
@@ -10,14 +9,10 @@ $ ->
       type: "post"
       data: merged_data
       success: ->
-        #alert "success"
-        #$("body").html "Submitted successfully"
+        alert "success"
     
       error: ->
-        #alert "failure"
-        #$("body").html "There is error while submit"
-  
-
+        alert "failure"
 
 
   $.fn.serializeObject = ->
@@ -43,19 +38,27 @@ $ ->
 
     feature_list.prepend(element)
     feature_list.find('li').first().data('form-content', form_content)
-    feature_list.find('li').first().fadeIn(500)
     title.val('')
     text.val('')
+    $('.features_added').fadeIn()
 
 
 
   $('.continue_from_the_create_many_page').on "click", (e) ->
+    e.preventDefault()
     id = $(this).data('request-id')
-    $('ol.features li').each (f) ->
+    #console.log 'click'
+    size = $('ol.features li.feature').size()
+    i = 0
+    $('ol.features li.feature').each (f) ->
+      i +=1
+      #console.log 'each li'
       form_content = $(this).data('form-content')
       setTimeout (->
-        #form_content = $(this).data('form-content')
+        #console.log 'posting li'
         post_features(form_content, id)
       ), 30
-    window.location.href= $(this).data('navigate-to')
+      #console.log  "DONE"  if i == size
+      #console.log 'after each'
+    #window.location.href= $(this).data('navigate-to')
     
