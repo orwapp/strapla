@@ -60,5 +60,4 @@
           = label_tag 'request_group', 'Chose which group to sent the request to'
           = select("request", "request_group_id", 
             RequestGroup.all.collect {|p| [ p.title, p.id ] }, { :include_blank => false })
-        .pull-right
-          = f.button :submit,  'Finish - Submit', :class => 'btn btn-primary pull-right'
+          = f.button :submit,  'Next', :class => 'btn btn-info'
