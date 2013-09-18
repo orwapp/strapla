@@ -61,4 +61,5 @@ $ ->
         console.log "id is #{id}"
         post_features(form_content, id)
       ), 30
+    window.location.href= $(this).data('navigate-to')
     
