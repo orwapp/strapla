@@ -3,8 +3,6 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 ruby '2.0.0'
 
-#gem 'pg'
-gem 'sqlite3'
 gem 'slim'
 gem 'slim-rails'
 gem 'fabrication'
@@ -27,7 +25,12 @@ gem 'haml'
 gem 'haml-rails'
 
 
+group :production do
+  gem 'pg'
+end
+
 group :development do
+  gem 'sqlite3'
   gem 'growl'
   gem 'foreman'
   gem 'better_errors'
