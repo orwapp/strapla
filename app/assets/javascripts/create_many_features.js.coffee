@@ -3,10 +3,8 @@ $ ->
 
   post_features = (values, id) ->
     target = {}
-    #request_id = JSON.parse("{'request_id': eval(id) }")
     request_id = JSON.parse('{"request_id": ' + id + '}');
     merged_data = $.extend(target, values, request_id)
-    console.log "Posting: #{merged_data}"
     
     $.ajax
       url: "/features"
@@ -42,17 +40,25 @@ $ ->
     title        = $(this).closest('form').find('#feature_title')
     text         = $(this).closest('form').find('#feature_text')
     form_content = $('form.new_feature').serializeObject()
-    element      = "<li class='feature'> #{title.val()} – #{text.val()} </li>"
+    element      = "<li class='feature' data-form-content='#{form_content}'> #{title.val()} – #{text.val()} </li>"
 
     feature_list.prepend(element)
     feature_list.find('li').first().data('form-content', form_content)
     feature_list.find('li').first().fadeIn(500)
     title.val('')
     text.val('')
+    console.log "data-form-content: " + form_content
+
+
 
   $('.continue_from_the_create_many_page').on "click", (e) ->
-    # Legg inn en each loop her som går over all elementene
-    form_content = $('li.feature').data('form-content')
-    id = $(this).data('id')
-    console.log "id is #{id}"
-    post_features(form_content, id)
+    id = $(this).data('request-id')
+    $('ol.features li').each (f) ->
+      console.log $(this).data('form-content')
+      form_content = $(this).data('form-content')
+      setTimeout (->
+        #form_content = $(this).data('form-content')
+        console.log "id is #{id}"
+        post_features(form_content, id)
+      ), 30
+    

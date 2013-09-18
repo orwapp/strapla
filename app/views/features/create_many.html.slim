@@ -27,5 +27,4 @@
   
 .row
   .span12
-    //= link_to "Next", request_review_path(@request), class: 'btn btn-info continue_from_the_create_many_page pull-right', 
-    = link_to "Next", '#', class: 'btn btn-info continue_from_the_create_many_page pull-right', data: {navigate_to: request_review_path(@request), id: @request.id }
+    = link_to "Next", '#', class: 'btn btn-info continue_from_the_create_many_page pull-right', data: {navigate_to: request_review_path(@request), request_id: @request.id }
