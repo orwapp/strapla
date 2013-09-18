@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20130912185924) do
     t.datetime "updated_at"
   end
 
-  add_index "background_informations", ["request_id"], name: "index_background_informations_on_request_id"
+  add_index "background_informations", ["request_id"], name: "index_background_informations_on_request_id", using: :btree
 
   create_table "comments", force: true do |t|
     t.text     "text"
@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(version: 20130912185924) do
     t.datetime "updated_at"
   end
 
-  add_index "comments", ["price_quote_id"], name: "index_comments_on_price_quote_id"
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+  add_index "comments", ["price_quote_id"], name: "index_comments_on_price_quote_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "elevator_pitches", force: true do |t|
     t.text     "text"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20130912185924) do
     t.datetime "updated_at"
   end
 
-  add_index "elevator_pitches", ["request_id"], name: "index_elevator_pitches_on_request_id"
+  add_index "elevator_pitches", ["request_id"], name: "index_elevator_pitches_on_request_id", using: :btree
 
   create_table "feature_requests", force: true do |t|
     t.integer  "user_id"
@@ -56,8 +56,8 @@ ActiveRecord::Schema.define(version: 20130912185924) do
     t.datetime "updated_at"
   end
 
-  add_index "feature_requests", ["request_id"], name: "index_feature_requests_on_request_id"
-  add_index "feature_requests", ["user_id"], name: "index_feature_requests_on_user_id"
+  add_index "feature_requests", ["request_id"], name: "index_feature_requests_on_request_id", using: :btree
+  add_index "feature_requests", ["user_id"], name: "index_feature_requests_on_user_id", using: :btree
 
   create_table "features", force: true do |t|
     t.integer  "request_id"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20130912185924) do
     t.datetime "updated_at"
   end
 
-  add_index "features", ["request_id"], name: "index_features_on_request_id"
+  add_index "features", ["request_id"], name: "index_features_on_request_id", using: :btree
 
   create_table "price_quotes", force: true do |t|
     t.integer  "user_id"
@@ -80,8 +80,8 @@ ActiveRecord::Schema.define(version: 20130912185924) do
     t.string   "status"
   end
 
-  add_index "price_quotes", ["request_id"], name: "index_price_quotes_on_request_id"
-  add_index "price_quotes", ["user_id"], name: "index_price_quotes_on_user_id"
+  add_index "price_quotes", ["request_id"], name: "index_price_quotes_on_request_id", using: :btree
+  add_index "price_quotes", ["user_id"], name: "index_price_quotes_on_user_id", using: :btree
 
   create_table "request_groups", force: true do |t|
     t.string   "title"
@@ -116,7 +116,7 @@ ActiveRecord::Schema.define(version: 20130912185924) do
     t.string   "status"
   end
 
-  add_index "requests", ["request_group_id"], name: "index_requests_on_request_group_id"
+  add_index "requests", ["request_group_id"], name: "index_requests_on_request_group_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -139,7 +139,7 @@ ActiveRecord::Schema.define(version: 20130912185924) do
     t.string   "phone"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

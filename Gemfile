@@ -24,13 +24,13 @@ gem 'bootstrap-generators', '~> 2.3'
 gem 'haml'
 gem 'haml-rails'
 
+  gem 'pg'
 
 group :production do
-  gem 'pg'
 end
 
 group :development do
-  gem 'sqlite3'
+  #gem 'sqlite3'
   gem 'growl'
   gem 'foreman'
   gem 'better_errors'
