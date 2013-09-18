@@ -1,6 +1,5 @@
 $ ->
 
-
   post_features = (values, id) ->
     target = {}
     request_id = JSON.parse('{"request_id": ' + id + '}');
@@ -11,11 +10,11 @@ $ ->
       type: "post"
       data: merged_data
       success: ->
-        alert "success"
+        #alert "success"
         #$("body").html "Submitted successfully"
     
       error: ->
-        alert "failure"
+        #alert "failure"
         #$("body").html "There is error while submit"
   
 
