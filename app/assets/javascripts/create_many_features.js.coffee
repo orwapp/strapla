@@ -47,18 +47,15 @@ $ ->
     feature_list.find('li').first().fadeIn(500)
     title.val('')
     text.val('')
-    console.log "data-form-content: " + form_content
 
 
 
   $('.continue_from_the_create_many_page').on "click", (e) ->
     id = $(this).data('request-id')
     $('ol.features li').each (f) ->
-      console.log $(this).data('form-content')
       form_content = $(this).data('form-content')
       setTimeout (->
         #form_content = $(this).data('form-content')
-        console.log "id is #{id}"
         post_features(form_content, id)
       ), 30
     window.location.href= $(this).data('navigate-to')
