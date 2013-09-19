@@ -16,19 +16,24 @@ $ ->
     current_part.hide()
     $(next_part).show()
     increment_status_bar()
-    disable_next_btn()
+    #disable_next_btn()
 
 
-  # Disable Next button untill text is entered
-  disable_next_btn = ->
-    $(document).on 'keyup', 'input.required', (e) -> 
-      $(".next_btn.required").attr "disabled", true  if $("input.required").val() is ""
-      
-      $("input.required").keyup ->
-        unless $("input.required").val() is ""
-          $(".next_btn").not(':hidden').attr "disabled", false
-        else
-          $(".next_btn").not(':hidden').attr "disabled", true
+  ## Disable Next button untill text is entered
+  #disable_next_btn = ->
+  #  $(document).on 'keyup', 'input.required', (e) -> 
+  #    $(".next_btn.required").attr "disabled", true  if $("input.required").val() is ""
+  #    
+  #    $("input.required").keyup ->
+  #      unless $("input.required").val() is ""
+  #        $(".next_btn").not(':hidden').attr "disabled", false
+  #      else
+  #        $(".next_btn").not(':hidden').attr "disabled", true
 
-  disable_next_btn()
+  #disable_next_btn()
    
+
+  $('.required').focus (e) ->
+    e.stopPropagation()
+    text = $(this).data('hint')
+    $('#info-box').html(text)
