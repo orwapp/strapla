@@ -19,15 +19,17 @@
         = f.input :title, required: true, placeholder: 'Provide a title...',
           input_html: { 'data-hint' => 'A web calculator for all the disiplines', class: 'span8' }
         = f.input :goal,  required: true, 
-          input_html: { 'data-hint' => 'Should be clear and measureable. "I need a beta with feature 1-3 completed within 1 week. ', class: 'span8' }
+          input_html: { 'data-hint' => 'Should be clear and measureable. "I need a beta with feature 1-3 completed within 1 week.', class: 'span8' }
         = f.input :description,   required: true, 
           input_html: { 'data-hint' => 'Everyone has a web browser at hand. Either on their phone or computer. I want to build the best calculator ever',   class: 'span8'}  
-        button.btn.btn-info.next_btn.required[disabled="disabled"] Next
+        #theButton theButton
+        button.btn.btn-info.next_btn.required Next
 
 
       .part[class="#{'hide' unless body_id == 'requests_edit'}"]
         = f.input :elevator_pitch, 
-          input_html: { 'data-hint' => 'If we had thirty seconds and two sentences to describe our project, what would we say?',class: 'span8'}
+          input_html: { 'data-hint' => 'If we had thirty seconds and two sentences to describe our project, what would we say?', class: 'span8'}
+        #theButton theButton
         button[class="btn btn-info next_btn #{'hide' if body_id == 'requests_edit'}"] Next
 
       .part[class="#{'hide' unless body_id == 'requests_edit'}"]
@@ -68,3 +70,5 @@
     strong.span2.offset1 Example
     #info-box.alert.alert-info.span2.offset1
       | In this box you'll see examples on what data to provide.
+
+#container
