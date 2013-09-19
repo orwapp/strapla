@@ -1,27 +1,57 @@
 #user_profile_partial.item(class="#{'active' if index == 0}" )
-  .offset1
+  .offset1XX
     .image.pull-left
-      = image_tag user.image_url, size: '150x150'
+      = image_tag user.image_url, size: '250x250'
 
     .right.span8
-      h4= user.name 
+      h3= user.name 
+      strong Member since August 08, 2010
+      br
+      br
+      h2.badge.badge-success Ruby
+      h2.badge.badge-success Java
+      h2.badge.badge-success C+
+      h2.badge.badge-success C#
+      h2.badge.badge-success Unix
+      br
+      br
       .row
-        .span3.bio= user.bio
-        .span3.previously_answered
-          = "Have answered questions matching the words "
+        /.span3.bio= user.bio
+        .span8.bio= "#{user.name} is a top Architect/Engineer/Developer with proven ability to understand, optimize, enhance, and create from scratch significant software tools and workflows with large user bases that greatly magnify productivity for large groups of engineers."
+    .row
+      .span4
+        h4 Porfolio
+        ul
+          li Implemened core functionality at Telenor Mobile
+          li Designed an made Stabstr customer reach more than 1 million users within a year.
+      .span4
+        h4 Experience
+        ul
+          li Consultant at Redpill-Linpro
+          li 10 years of system administation in a Unix environment.
+      .span3
+        h4 Quote from customer
+        h4
+          blockquote.muted= "#{user.name.split.first} just gets it. Sometimes I wonder if he can read my mind!"
+
+    .row
+      br
+      br
+      .span10
+        .span3
+          strong= "Average price / hour: "
+          = "$ #{user.average_price}"
+          br
+          strong="Nr of assignments: "
+          ="1259"
+          br
+          strong="Percent happy clients: "
+          ="99.9%"
+        .span5.previously_answered
+          = "Has answered questions matching words keywords in your description: "
           strong RSpec
           |  and 
           strong OpenGraph
-          |  previously.
-      .clearfix
-      strong= "Average price / hour: "
-      = "$ #{user.average_price}"
-      br
-      strong="Antall oppdrag: "
-      ="1259"
-      br
-      strong="Prosent fornøyde kunder: "
-      ="99.9"
 
 
 
@@ -30,3 +60,5 @@
       = f.hidden_field :expert_id,  value: user.id
       = f.hidden_field :request_id, value: @request.id
       = f.submit "Send the question to #{user.name.split.first}", class: 'btn btn-info send_question pull-right'
+
+  = link_to 'Edit', edit_user_registration_path, class: 'btn pull-right btn-info' if @current_user == user
