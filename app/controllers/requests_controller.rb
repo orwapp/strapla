@@ -12,9 +12,10 @@ class RequestsController < ApplicationController
   end
 
   def my_requests
-    @awaiting_response             = @current_user.requests.unassigned.to_a
-    @new_price_quotes              =  PriceQuote.unprocessed_belonging_to_user(@current_user)
+    @awaiting_response = @current_user.requests.published.unassigned.to_a
+    @new_price_quotes  =  PriceQuote.unprocessed_belonging_to_user(@current_user)
     @requests_with_accepted_quotes = @current_user.requests_with_accepted_quotes
+    @unpublished_requests = @current_user.requests.unpublished.to_a
   end
 
   def delegated_to_me

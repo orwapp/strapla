@@ -1,6 +1,6 @@
 - price_quote ||= false
 
-h2.label.label-info.big_font= request.request_group.title
+h2.label.label-info.big_font= request.request_group.title rescue nil
 .container.border.small_padding
 
   .row
@@ -121,10 +121,13 @@ h2.label.label-info.big_font= request.request_group.title
     .span11
       - if user_signed_in?
         = link_to 'Edit', edit_request_path(request), class: 'pull-right btn '   if (request.user == current_user) and request.status != :accepted
-        - if request.published
-          = button_to 'Unpublish', request_unpublish_path(request), class: 'pull-right btn  btn-warning'   if request.user == current_user
-        - else
-          = button_to 'Publish', request_publish_path(request), class: 'pull-right btn btn-success '   if request.user == current_user
+
+        = link_to 'Next', select_recipient_path(request), class: 'pull-right btn  btn-info'   if request.user == current_user
+        
+        /- if request.published
+        /  = button_to 'Unpublish', request_unpublish_path(request), class: 'pull-right btn  btn-warning'   if request.user == current_user
+        /- else
+        /  = button_to 'Publish', request_publish_path(request), class: 'pull-right btn btn-success '   if request.user == current_user
 
 br
 

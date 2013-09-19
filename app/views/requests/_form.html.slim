@@ -16,49 +16,46 @@
   
     .form-inputs
       .part
-        /.example.alert.alert-info
-        /  .pull-right=  "[Hide]"
-        /  h5 In this example box you will see how a description for a calculator would look like
-        /  = f.input :title,  disabled: true,       input_html: {  value: 'A web calculator for all the disiplines', class: 'span9' }
-        /br
-        /br
-        /br
-        = f.input :title,           input_html: { class: 'span10', placeholder: 'e.g.    A web calculator for all the disiplines' }
-        = f.input :goal,            input_html: { class: 'span10', placeholder: 'Should be clear and measureable. E.g. "We need a beta with feature 1-3 completed within 1 week. ' }
-        button.btn.btn-info.next_btn Next
+        = f.input :title, input_html: { class: 'span10', placeholder: 'e.g.    A web calculator for all the disiplines' }
+        = f.input :goal,  input_html: { class: 'span10', placeholder: 'Should be clear and measureable. E.g. "We need a beta with feature 1-3 completed within 1 week. ' }
+        = f.input :description, input_html: { class: 'span10', placeholder: 'e.g Everyone has a web browser at hand. Either on their phone or computer. I want to build the best calculator ever'}  
+        button[class="btn btn-info next_btn #{'hide' if body_id == 'requests_edit'}"] Next
 
-      .part.hide
-        = f.input :description,     input_html: { class: 'span10', placeholder: 'e.g Everyone has a web browser at hand. Either on their phone or computer. I want to build the best calculator ever'}  
-        button.btn.btn-info.next_btn Next
 
-      .part.hide
+      .part[class="#{'hide' unless body_id == 'requests_edit'}"]
         = f.input :elevator_pitch, 
           input_html: { class: 'span10', placeholder: 'If we had thirty seconds and two sentences to describe our project, what would we say?' }
-        button.btn.btn-info.next_btn Next
-      .part.hide
+        button[class="btn btn-info next_btn #{'hide' if body_id == 'requests_edit'}"] Next
+
+      .part[class="#{'hide' unless body_id == 'requests_edit'}"]
         = f.input :background_information, 
           input_html: { class: 'span10', placeholder: 'Who are our customers? Which problem are we trying to solve? What\'s our solution?' }
-        button.btn.btn-info.next_btn Next
-      .part.hide
+        button[class="btn btn-info next_btn #{'hide' if body_id == 'requests_edit'}"] Next
+
+      .part[class="#{'hide' unless body_id == 'requests_edit'}"]
         = f.input :no_list, label: 'Create a NOT list', 
           input_html: { class: 'span10', placeholder: 'It’s pretty clear what we want to do on this project. Let’s be even clearer and show what we are not doing.'  }
-        button.btn.btn-info.next_btn Next
-      .part.hide
+        button[class="btn btn-info next_btn #{'hide' if body_id == 'requests_edit'}"] Next
+
+      .part[class="#{'hide' unless body_id == 'requests_edit'}"]
         = f.input :what_can_go_wrong, input_html: { class: 'span10', placeholder: 'What should we be particular carefull about? What can go wrong?' }
-        button.btn.btn-info.next_btn Next
-      .part.hide
+        button[class="btn btn-info next_btn #{'hide' if body_id == 'requests_edit'}"] Next
+
+      .part[class="#{'hide' unless body_id == 'requests_edit'}"]
         = f.input :what_is_it_going_to_give,
           input_html: { class: 'span10', placeholder: 'Projects have levers like time, scope, budget, and quality. What’s most and least important for this project at this time?' }
-        button.btn.btn-info.next_btn Next
-      .part.hide
+        button[class="btn btn-info next_btn #{'hide' if body_id == 'requests_edit'}"] Next
+
+      .part[class="#{'hide' unless body_id == 'requests_edit'}"]
         = f.input :what_is_the_frame, 
           input_html: { class: 'span10', placeholder: 'Is this thing a three-, six-, or nine-month project?  What´s the financial frame? And what kind of team are we going to need to pull this off?' }
-        button.btn.btn-info.next_btn Next
+        button[class="btn btn-info next_btn #{'hide' if body_id == 'requests_edit'}"] Next
   
-      .part.hide
-        .pull-left
-          = label_tag 'request_group', 'Chose which group to sent the request to'
-          = select("request", "request_group_id", 
-            RequestGroup.all.collect {|p| [ p.title, p.id ] }, { :include_blank => false })
-        .pull-right
-          = f.button :submit,  'Finish - Submit', :class => 'btn btn-primary pull-right'
+      .part[class="#{'hide' unless body_id == 'requests_edit'}"]
+        = label_tag 'request_group', 'Select target group'
+        br
+        = select("request", "request_group_id", 
+          RequestGroup.all.collect {|p| [ p.title, p.id ] }, { :include_blank => false })
+        br
+        br
+        = f.button :submit,  'Next', :class => 'btn btn-info'

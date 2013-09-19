@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "robot@CodeRunner.co"
+  default from: "robot@Stabstr.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -8,7 +8,7 @@ class UserMailer < ActionMailer::Base
   #
   def send_price_quote(price_quote)
     @price_quote = price_quote
-    mail to: @price_quote.request.user.email, subject: 'New price quote on CodeRunner'
+    mail to: @price_quote.request.user.email, subject: 'New price quote on Stabstr'
   end
 
   def accepted_price_quote(price_quote)
