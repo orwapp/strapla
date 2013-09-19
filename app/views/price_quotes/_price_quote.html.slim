@@ -23,7 +23,8 @@ h2.label.label-success.big_font= price_quote.status.titleize if price_quote.stat
   hr
   .span11
     = render price_quote.comments
-    = render :partial => 'comments/on_price_quote_form', locals: {price_quote: price_quote, comment: price_quote.comments.new}
+    - if price_quote.present?
+      = render :partial => 'comments/on_price_quote_form', locals: {price_quote: price_quote, comment: price_quote.comments.new}
     .row
       .span11
         - if price_quote.request.user == current_user
