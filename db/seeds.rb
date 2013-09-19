@@ -8,8 +8,8 @@ User.create(
   image_url: 'http://upload.wikimedia.org/wikipedia/commons/7/70/Vixie.jpg',
   role: :expert,
   phone: '555-22323-232',
-  password: 'lkjljklj',
-  password_confirmation:  'lkjljklj',
+  password: 'expert@expert.com',
+  password_confirmation:  'expert@expert.com',
   email: 'expert@expert.com'
 )
 

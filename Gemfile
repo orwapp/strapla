@@ -33,9 +33,6 @@ group :development do
   #gem 'sqlite3'
   gem 'growl'
   gem 'foreman'
-  gem 'better_errors'
-  gem 'binding_of_caller'
-  gem 'meta_request'
   gem 'zeus'
   gem 'quiet_assets'
   gem 'guard-cucumber'
@@ -66,3 +63,9 @@ gem 'unicorn'
 gem 'resque'
 gem 'resque_mailer'
 gem 'newrelic_rpm'
+
+# PUT BACK IN DEVELOPMENT
+gem 'better_errors'
+gem 'binding_of_caller'
+gem 'meta_request'
+# PUT BACK IN DEVELOPMENT
