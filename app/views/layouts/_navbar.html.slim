@@ -1,6 +1,6 @@
-.navbar
+.navbar.navbar-fixed-top
   .navbar-inner
-    a.brand href="/" CodeRunner
+    = link_to image_tag('logo.png', size: "110"), root_path, class: :brand
     ul.nav
       - if user_signed_in?
         - if @current_user.requests.present?
