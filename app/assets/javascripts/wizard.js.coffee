@@ -22,8 +22,7 @@ $ ->
   # Disable Next button untill text is entered
   disable_next_btn = ->
     $(document).on 'keyup', 'input.required', (e) -> 
-      console.log 'khj'
-      $(".next_btn").attr "disabled", true  if $("input.required").val() is ""
+      $(".next_btn.required").attr "disabled", true  if $("input.required").val() is ""
       
       $("input.required").keyup ->
         unless $("input.required").val() is ""
