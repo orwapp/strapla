@@ -23,13 +23,13 @@
         /br
         /br
         /br
-        = f.input :title,           input_html: { class: 'span10', placeholder: 'e.g.    A web calculator for all the disiplines' }
-        = f.input :goal,            input_html: { class: 'span10', placeholder: 'Should be clear and measureable. E.g. "We need a beta with feature 1-3 completed within 1 week. ' }
-        button.btn.btn-info.next_btn Next
+        = f.input :title, required: true, input_html: { class: 'span10', placeholder: 'e.g.    A web calculator for all the disiplines' }
+        = f.input :goal,  required: true, input_html: { class: 'span10', placeholder: 'Should be clear and measureable. E.g. "We need a beta with feature 1-3 completed within 1 week. ' }
+        button.btn.btn-info.next_btn[disabled="disabled"] Next
 
       .part.hide
-        = f.input :description,     input_html: { class: 'span10', placeholder: 'e.g Everyone has a web browser at hand. Either on their phone or computer. I want to build the best calculator ever'}  
-        button.btn.btn-info.next_btn Next
+        = f.input :description,   required: true,   input_html: { class: 'span10', placeholder: 'e.g Everyone has a web browser at hand. Either on their phone or computer. I want to build the best calculator ever'}  
+        button.btn.btn-info.next_btn[disabled="disabled"] Next
 
       .part.hide
         = f.input :elevator_pitch, 
