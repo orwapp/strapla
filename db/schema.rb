@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20130912185924) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "background_informations", force: true do |t|
     t.text     "elevator_pitch"
     t.text     "background_information"
@@ -103,7 +106,6 @@ ActiveRecord::Schema.define(version: 20130912185924) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.integer  "delegated_to_user_id"
     t.integer  "contractor_id"
     t.text     "elevator_pitch"
     t.text     "background_information"
@@ -112,6 +114,7 @@ ActiveRecord::Schema.define(version: 20130912185924) do
     t.text     "what_is_it_going_to_give"
     t.text     "what_is_the_frame"
     t.boolean  "published"
+    t.integer  "delegated_to_user_id"
     t.string   "type_of"
     t.string   "status"
   end
