@@ -86,7 +86,11 @@ class PriceQuotesController < ApplicationController
     end
 
     def set_request
-      @request = Request.find params[:request_id]
+      if params[:request_id].present?
+        @request = Request.find params[:request_id]
+      else
+        @request = Request.find params[:id]
+      end
     end
 
     def price_quote_params
