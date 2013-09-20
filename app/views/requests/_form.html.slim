@@ -9,8 +9,10 @@
         li = message
 
 .row#wizard
-  .span12.progress.progress-striped.active
-    .bar data-percent="20" style="width: 20%;"
+  .span12
+    .progress
+      .bar.completed.bar-success data-percent="12.5" style="width: 12.5%;"
+      .bar.remaining.bar-warning data-percent="87.5" style="width: 87.5%;"
   
   = simple_form_for(@request, url: url, remote: remote,  :html => { :class => 'form-inline span8 help_text' }) do |f|
   

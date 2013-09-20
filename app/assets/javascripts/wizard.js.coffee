@@ -1,11 +1,17 @@
 $ ->
 
   increment_status_bar = -> 
-    bar = $('.progress .bar') 
-    current_percent = bar.data('percent')
-    new_percent = eval(current_percent + 10)
-    $(bar).attr('style', "width: #{new_percent}%;")
-    $(bar).data('percent', new_percent)
+    completed_bar = $('.bar.completed') 
+    remaining_bar = $('.bar.remaining') 
+    current_completed_percent = completed_bar.data('percent')
+    current_remaining_percent = remaining_bar.data('percent')
+    new_completed_percent = eval(current_completed_percent + 12.5)
+    new_remaining_percent = eval(current_remaining_percent - 12.5)
+
+    $(completed_bar).attr('style', "width: #{new_completed_percent}%;")
+    $(completed_bar).data('percent', new_completed_percent)
+    $(remaining_bar).attr('style', "width: #{new_remaining_percent}%;")
+    $(remaining_bar).data('percent', new_remaining_percent)
   
 
   # Guided the user through the wizard
