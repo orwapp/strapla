@@ -21,7 +21,7 @@
         = f.input :goal,  required: true, 
           input_html: { 'data-hint' => 'Should be clear and measureable. "I need a beta with feature 1-3 completed within 1 week.', class: 'span8 help_text' }
         = f.input :description,   required: true, 
-          input_html: { 'data-hint' => 'If we had thirty seconds and two sentences to describe our project, what would we say?',   class: 'span8 help_text'}  
+          input_html: { 'data-hint' => 'If you had thirty seconds and two sentences to describe our project, what would you say?',   class: 'span8 help_text'}  
         button.btn.btn-info.next_btn.required Next
 
 
@@ -38,7 +38,7 @@
         br
         br
         = f.input :no_list, label: 'Create a NOT list', 
-          input_html: { :rows => '8', 'data-hint' => 'It’s pretty clear what we want to do on this project. Let’s be even clearer and show what we are not doing.',class: 'span8 help_text' }
+          input_html: { :rows => '8', 'data-hint' => 'It’s pretty clear what you want to do on this project. Let’s be even clearer and show what you are not doing.',class: 'span8 help_text' }
 
         = f.input :what_can_go_wrong, label: 'What can go wrong?',
           input_html: { :rows => '8', 'data-hint' => 'What should we be particular carefull about? What can go wrong?' , class: 'span8 help_text'}
