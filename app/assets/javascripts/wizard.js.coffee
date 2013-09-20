@@ -10,7 +10,6 @@ $ ->
 
   # Guided the user through the wizard
   $(document).on 'click', '.next_btn', (e) -> 
-    console.log 'clieck'
     e.preventDefault()
     current_part = $(this).closest('.part')
     next_part    = $(current_part).next('.part')
@@ -18,6 +17,17 @@ $ ->
     $(next_part).show()
     increment_status_bar()
     #disable_next_btn()
+
+
+
+  #$('.required').focus (e) ->
+  $(document).on 'focus', '#wizard .help_text', (e) ->
+    e.stopPropagation()
+    text = $(this).data('hint')
+    $('#info-box').html(text)
+
+  $('.next_btn').click (e) ->
+    $('#info-box').html("In this box you'll see examples on what data to provide.")
 
 
   ## Disable Next button untill text is entered
@@ -32,14 +42,7 @@ $ ->
 #          $(".next_btn").not(':hidden').attr "disabled", true
 #
   #disable_next_btn()
-   
 
-  #$('.required').focus (e) ->
-  $(document).on 'focus', '#wizard .help_text', (e) ->
-    e.stopPropagation()
-    text = $(this).data('hint')
-    $('#info-box').html(text)
-
-  $('.next_btn').click (e) ->
-    $('#info-box').html("In this box you'll see examples on what data to provide.")
   $('[data-behaviour=datepicker]').datepicker()
+  
+   
