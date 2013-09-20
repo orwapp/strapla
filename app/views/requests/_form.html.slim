@@ -17,43 +17,43 @@
     .form-inputs
       .part
         = f.input :title, required: true, placeholder: 'Provide a title...',
-          input_html: { 'data-hint' => 'A web calculator for all the disiplines', class: 'span8 help_text' }
+          input_html: { 'data-hint' => 'e.g. A web calculator for all the disiplines', class: 'span8 help_text' }
         = f.input :goal,  required: true, 
           input_html: { 'data-hint' => 'Should be clear and measureable. "I need a beta with feature 1-3 completed within 1 week.', class: 'span8 help_text' }
         = f.input :description,   required: true, 
-          input_html: { 'data-hint' => 'Everyone has a web browser at hand. Either on their phone or computer. I want to build the best calculator ever',   class: 'span8 help_text'}  
+          input_html: { 'data-hint' => 'If we had thirty seconds and two sentences to describe our project, what would we say?',   class: 'span8 help_text'}  
         button.btn.btn-info.next_btn.required Next
 
 
       .part[class="#{'hide' unless body_id == 'requests_edit'}"]
-        = f.input :elevator_pitch, 
-          input_html: { 'data-hint' => 'If we had thirty seconds and two sentences to describe our project, what would we say?', class: 'span8 help_text'}
-        button[class="btn btn-info next_btn #{'hide' if body_id == 'requests_edit'}"] Next
-
-      .part[class="#{'hide' unless body_id == 'requests_edit'}"]
+        em Optional
+        br
+        br
         = f.input :background_information, 
-          input_html: { 'data-hint' => 'Who are our customers? Which problem are we trying to solve? What\'s our solution?', class: 'span8 help_text' }
+          input_html: { :rows => '10', 'data-hint' => 'Who are your customers? Which problem are you trying to solve? What\'s your solution?', class: 'span8 help_text' }
         button[class="btn btn-info next_btn #{'hide' if body_id == 'requests_edit'}"] Next
 
       .part[class="#{'hide' unless body_id == 'requests_edit'}"]
+        em Optional
+        br
+        br
         = f.input :no_list, label: 'Create a NOT list', 
-          input_html: { 'data-hint' => 'It’s pretty clear what we want to do on this project. Let’s be even clearer and show what we are not doing.',class: 'span8 help_text' }
+          input_html: { :rows => '8', 'data-hint' => 'It’s pretty clear what we want to do on this project. Let’s be even clearer and show what we are not doing.',class: 'span8 help_text' }
+
+        = f.input :what_can_go_wrong, label: 'What can go wrong?',
+          input_html: { :rows => '8', 'data-hint' => 'What should we be particular carefull about? What can go wrong?' , class: 'span8 help_text'}
         button[class="btn btn-info next_btn #{'hide' if body_id == 'requests_edit'}"] Next
 
-      .part[class="#{'hide' unless body_id == 'requests_edit'}"]
-        = f.input :what_can_go_wrong, 
-          input_html: { 'data-hint' => 'What should we be particular carefull about? What can go wrong?' , class: 'span8 help_text'}
-        button[class="btn btn-info next_btn #{'hide' if body_id == 'requests_edit'}"] Next
 
       .part[class="#{'hide' unless body_id == 'requests_edit'}"]
-        = f.input :what_is_it_going_to_give, 
-          input_html: { 'data-hint' => 'Projects have levers like time, scope, budget, and quality. What’s most and least important for this project at this time?',class: 'span8 help_text' }
-        button[class="btn btn-info next_btn #{'hide' if body_id == 'requests_edit'}"] Next
+        strong What's the frame?
+        = f.input :budget, hint: 'Optional, you don\'t have to provide this information.',
+          input_html: { 'data-hint' => 'What´s the financial frame?', class: 'span8 help_text'}
 
-      .part[class="#{'hide' unless body_id == 'requests_edit'}"]
-        = f.input :what_is_the_frame, 
-          input_html: { 'data-hint' => 'Is this thing a three-, six-, or nine-month project?  What´s the financial frame? And what kind of team are we going to need to pull this off?', class: 'span8 help_text'}
+        = f.input :due_date, as: :string, 
+          input_html: { 'data-hint' => 'When do you need the project ready?', 'data-behaviour' => 'datepicker', class: 'span8 help_text'}
         button[class="btn btn-info next_btn #{'hide' if body_id == 'requests_edit'}"] Next
+  
   
       .part[class="#{'hide' unless body_id == 'requests_edit'}"]
         = label_tag 'request_group', 'Select target group'
@@ -65,6 +65,5 @@
         = f.button :submit,  'Next', :class => 'btn btn-info'
 
   .span2
-    strong.span2.offset1 Example
     #info-box.alert.alert-info.span2.offset1
       | In this box you'll see examples on what data to provide.
