@@ -42,3 +42,4 @@ $ ->
 
   $('.next_btn').click (e) ->
     $('#info-box').html("In this box you'll see examples on what data to provide.")
+  $('[data-behaviour=datepicker]').datepicker()

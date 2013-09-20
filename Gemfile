@@ -23,6 +23,7 @@ gem 'bootstrap-generators', '~> 2.3'
 #gem 'bootstrap-generators', :github => 'stabenfeldt/bootstrap-generators'
 gem 'haml'
 gem 'haml-rails'
+gem 'bootstrap-datepicker-rails'
 
   gem 'pg'
 
