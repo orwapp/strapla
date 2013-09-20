@@ -6,7 +6,6 @@ class Request < ActiveRecord::Base
 
   #validates_presence_of :title, :request_group, :description
   
-  attr_accessor :repository_url
 
   scope :published,  -> { where published: true }
   scope :unpublished,  -> { where published: nil }
