@@ -46,6 +46,9 @@ User.create(
   email: 'martin@stabenfeldt.net'
 )
 
-RequestGroup.create(title: 'iOS')
-RequestGroup.create(title: 'Java')
-RequestGroup.create(title: 'Ruby')
+RequestGroup.create(title: 'Desktop application - Windows')
+RequestGroup.create(title: 'Desktop application - Mac')
+RequestGroup.create(title: 'Android app')
+RequestGroup.create(title: 'iOS app')
+RequestGroup.create(title: 'Integration')
+RequestGroup.create(title: 'Linux / UNIX scripting')
