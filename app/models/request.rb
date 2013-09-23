@@ -34,10 +34,6 @@ class Request < ActiveRecord::Base
                         price_quotes .request_id = requests.id AND requests.user_id = #{user.id};")
   end
 
-  def budget
-    self.budget || nil
-  end
-
   def contractor
     return unless self.contractor_id
     User.find(self.contractor_id)
