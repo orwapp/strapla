@@ -24,6 +24,8 @@ gem 'bootstrap-generators', '~> 2.3'
 gem 'haml'
 gem 'haml-rails'
 gem 'bootstrap-datepicker-rails'
+gem 'wicked'
+
 
   gem 'pg'
 
