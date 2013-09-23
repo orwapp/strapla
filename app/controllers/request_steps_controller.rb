@@ -1,0 +1,2 @@
+class RequestStepsController < ApplicationController
+end
