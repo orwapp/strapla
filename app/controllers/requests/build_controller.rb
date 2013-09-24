@@ -4,23 +4,20 @@ class Requests::BuildController < ApplicationController
   steps :background_information, 
     :no_list_what_can_go_wrong,
     :the_frame,
-    :add_features,
     :select_group,
+    :add_features,
     :select_recipient
 
   def show
     @request = Request.find(params[:request_id])
     case params[:id]
-    when 'wicked_finish'
-      #flash[:notice] = 'Request created'
-      #redirect_to select_recipient(@request)
-      render_wizard
+    when 'add_features'
+      @feature = Feature.new
     when 'select_recipient'
       @experts = User.where(role: :expert).load
-      render_wizard
     else
-      render_wizard
     end
+      render_wizard
   end
 
 

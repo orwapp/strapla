@@ -48,7 +48,6 @@ class RequestsController < ApplicationController
     @request = Request.new(request_params)
     @request.user = current_user
     @request.type_of = @wizard.present? ? 'big' : 'small'
-    @request.background_information = 'prefilled'
     if @request.save
       redirect_to "/requests/#{@request.id}/build"
     else
