@@ -2,6 +2,7 @@ CodeRunner::Application.routes.draw do
 
   #match "request_steps/title_goal", to: "request_steps#title_goal", via: "post"
   resources :request_steps
+
   
 
   resources :comments
@@ -30,6 +31,7 @@ CodeRunner::Application.routes.draw do
 
   resources :features
   resources :requests do
+    resources :build, controller: 'requests/build'
     resources :price_quotes do
       resources :comments
     end

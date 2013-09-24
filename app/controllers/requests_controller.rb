@@ -50,9 +50,8 @@ class RequestsController < ApplicationController
     @request.type_of = @wizard.present? ? 'big' : 'small'
     @request.background_information = 'prefilled'
     if @request.save
-      redirect_to request_steps_path(:request => @request.id)
+      redirect_to "/requests/#{@request.id}/build"
     else
-      raise "in create"
       respond_with(@request)
     end
   end

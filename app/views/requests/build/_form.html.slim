@@ -12,7 +12,7 @@ h4 = "ID: #{@request.id}"
         ul
           - @request.errors.full_messages.each do |msg|
             li= msg
-    = simple_form_for(@request, url: wizard_path(@request), method: :put, :html => { :class => 'form-inline span8 help_text' }) do |f|
+    = simple_form_for(@request, url: wizard_path, method: :put, :html => { :class => 'form-inline span8 help_text' }) do |f|
       = yield f
       .actions
         = f.submit "Continue"
