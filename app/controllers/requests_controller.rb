@@ -48,13 +48,11 @@ class RequestsController < ApplicationController
     @request = Request.new(request_params)
     @request.user = current_user
     @request.type_of = @wizard.present? ? 'big' : 'small'
-    if @request.save!
-      if @wizard
-        redirect_to request_create_many_path(@request) 
-      else
-        redirect_to select_recipient_path(@request)
-      end
+    @request.background_information = 'prefilled'
+    if @request.save
+      redirect_to request_steps_path(:request => @request.id)
     else
+      raise "in create"
       respond_with(@request)
     end
   end
@@ -117,15 +115,15 @@ class RequestsController < ApplicationController
 
   def request_params
     params.require(:request).permit(:title, :description, :goal, 
-                                    :request_group_id, 
-                                    :repository_url, 
-                                    :elevator_pitch,
-                                    :background_information,
-                                    :no_list,
-                                    :what_can_go_wrong,
-                                    :what_is_it_going_to_give,
-                                    :what_is_the_frame
-                                   )
+      :request_group_id, 
+      :repository_url, 
+      :elevator_pitch,
+      :background_information,
+      :no_list,
+      :what_can_go_wrong,
+      :what_is_it_going_to_give,
+      :what_is_the_frame
+    )
   end
 
 

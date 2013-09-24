@@ -1,0 +1,8 @@
+strong What's the frame?
+
+= render :layout => 'form', locals: {optional: true} do |f|
+  = f.input :budget, hint: 'Optional, you don\'t have to provide this information.',
+    input_html: { 'data-hint' => 'What´s the financial frame?', class: 'span8 help_text'}
+  
+  = f.input :due_date, as: :string, 
+    input_html: { 'data-hint' => 'When do you need the project ready?', 'data-behaviour' => 'datepicker', class: 'span8 help_text'}

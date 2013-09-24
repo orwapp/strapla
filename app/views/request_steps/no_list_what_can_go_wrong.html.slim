@@ -1,0 +1,6 @@
+= render :layout => 'form', locals: {optional: false} do |f|
+  = f.input :no_list, label: 'Create a NOT list', 
+    input_html: { :rows => '8', 'data-hint' => 'It’s pretty clear what you want to do on this project. Let’s be even clearer and show what you are not doing.',class: 'span8 help_text' }
+  
+  = f.input :what_can_go_wrong, label: 'What can go wrong?',
+    input_html: { :rows => '8', 'data-hint' => 'What should we be particular carefull about? What can go wrong?' , class: 'span8 help_text'}

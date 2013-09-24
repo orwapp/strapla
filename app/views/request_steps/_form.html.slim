@@ -1,0 +1,27 @@
+- optional ||= false
+
+h4 = "ID: #{@request.id}"
+
+.row#wizard
+  .span10
+    - if @request.errors.any?
+      .error_messages
+        h2
+          = pluralize(@request.errors.count, "error")
+          | prohibited this request from being saved:
+        ul
+          - @request.errors.full_messages.each do |msg|
+            li= msg
+    = simple_form_for(@request, url: wizard_path(@request), method: :put, :html => { :class => 'form-inline span8 help_text' }) do |f|
+      = yield f
+      .actions
+        = f.submit "Continue"
+        = nbsp
+        = nbsp
+        = nbsp
+        = link_to 'skip', next_wizard_path  if optional
+
+    
+  .span2
+    #info-box.alert.alert-info.span2.offset1
+      | In this box you'll see examples on what data to provide.

@@ -1,5 +1,8 @@
 CodeRunner::Application.routes.draw do
 
+  #match "request_steps/title_goal", to: "request_steps#title_goal", via: "post"
+  resources :request_steps
+  
 
   resources :comments
 
@@ -37,6 +40,7 @@ CodeRunner::Application.routes.draw do
     resources :features
     resources :background_informations
   end
+
   get  'my_requests/'         => 'requests#my_requests',         as: :my_requests
   get  'unassigned_requests/' => 'requests#unassigned_requests', as: :unassigned_requests
   get  'delegated_to_me/'     => 'requests#delegated_to_me',     as: :delegated_to_me

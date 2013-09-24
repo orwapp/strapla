@@ -1,0 +1,8 @@
+= render :layout => 'form' do |f|
+
+  = f.input :title, required: true, placeholder: 'Provide a title...',
+    input_html: { 'data-hint' => 'e.g. A web calculator for all the disiplines', class: 'span8 help_text' }
+  = f.input :goal,  required: true, 
+    input_html: { 'data-hint' => 'Should be clear and measureable. "I need a beta with feature 1-3 completed within 1 week.', class: 'span8 help_text' }
+  = f.input :description,   required: true, 
+    input_html: { 'data-hint' => 'If you had thirty seconds and two sentences to describe our project, what would you say?',   class: 'span8 help_text'}  
