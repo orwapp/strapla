@@ -4,6 +4,7 @@ class Requests::BuildController < ApplicationController
   steps :background_information, 
     :no_list_what_can_go_wrong,
     :the_frame,
+    :add_features,
     :select_group,
     :select_recipient
 
