@@ -1,10 +1,21 @@
-.navbar.navbar-fixed-top
+new_user_registration_path.navbar.navbar-fixed-top
   .navbar-inner
     = link_to image_tag('logo.png', size: "110"), root_path, class: :brand
-    ul.nav
+    ul.nav[role="navigation"]
       - if user_signed_in?
         - if @current_user.requests.present?
-          li[class="#{'active' if current_page?(my_requests_path)}"]=  link_to 'My requests', my_requests_path
+          //li[class="#{'active' if current_page?(my_requests_path)}"]=  link_to 'Requests', my_requests_path
+
+          li.dropdown
+            a.dropdown-toggle[data-toggle="dropdown" role="button"] 
+              | Requests
+              b.caret
+            ul.dropdown-menu
+              li[role="menu"]=  link_to 'Pending quotes',      my_requests_path(anchor: :awaiting_response)
+              li[role="menu"]=  link_to 'Received quotes',     my_requests_path(anchor: :requests_with_price_quotes)
+              li[role="menu"]=  link_to 'Projects started',    my_requests_path(anchor: :requests_with_accepted_quotes)
+              - if @unpublished_requests.present?
+                li[role="menu"]=  link_to 'Unpublised requests', my_requests_path(anchor: :unpublished_requests)  
 
         - if @current_user.price_quotes.present?
           li[class="#{'active' if current_page?(price_quotes_path)}"]=  link_to 'Price quotes I\'ve sent', price_quotes_path
