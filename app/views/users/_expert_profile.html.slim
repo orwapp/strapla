@@ -4,20 +4,28 @@
       = image_tag user.image_url, size: '230x230'
 
     .right.span8
-      h3= user.name 
-      strong Member since August 08, 2010
-      br
-      br
-      = link_to(image_tag('linkedin.gif'), user.linkedin_url, :target => "_blank")   if user.linkedin_url.present?
-      br
-      br
-      h2.badge.badge-success Ruby
-      h2.badge.badge-success Java
-      h2.badge.badge-success C+
-      h2.badge.badge-success C#
-      h2.badge.badge-success Unix
-      br
-      br
+      .span4
+        h3= user.name 
+        strong Member since August 08, 2010
+        br
+        br
+        = link_to(image_tag('linkedin.gif'), user.linkedin_url, :target => "_blank")   if user.linkedin_url.present?
+        br
+        br
+        h2.badge.badge-success Ruby
+        h2.badge.badge-success Java
+        h2.badge.badge-success C+
+        h2.badge.badge-success C#
+        h2.badge.badge-success Unix
+        br
+        br
+      .span3.pull-right
+        .score.border.text-center
+          h2 737
+          strong.lead 
+            | Stabstr.com 
+            br
+            | Score
       .row
         /.span3.bio= user.bio
         .span8.bio= "#{user.name} is a top Architect/Engineer/Developer with proven ability to understand, optimize, enhance, and create from scratch significant software tools and workflows with large user bases that greatly magnify productivity for large groups of engineers."
