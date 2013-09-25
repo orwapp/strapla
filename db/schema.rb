@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130920082518) do
+ActiveRecord::Schema.define(version: 20130925112757) do
 
   create_table "background_informations", force: true do |t|
     t.text     "elevator_pitch"
@@ -139,6 +139,7 @@ ActiveRecord::Schema.define(version: 20130920082518) do
     t.string   "title"
     t.string   "name"
     t.string   "phone"
+    t.string   "linkedin_url"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
