@@ -1,5 +1,7 @@
 $ ->
 
+  $('[data-behaviour=datepicker]').datepicker()
+
   increment_status_bar = -> 
     completed_bar = $('.bar.completed') 
     remaining_bar = $('.bar.remaining') 
@@ -36,19 +38,6 @@ $ ->
     $('#info-box').html("In this box you'll see examples on what data to provide.")
 
 
-  ## Disable Next button untill text is entered
-#  disable_next_btn = ->
-#    $(document).on 'keyup', 'input.required', (e) -> 
-#      $(".next_btn.required").attr "disabled", true  if $("input.required").val() is ""
-#      
-#      $("input.required").keyup ->
-#        unless $("input.required").val() is ""
-#          $(".next_btn").not(':hidden').attr "disabled", false
-#        else
-#          $(".next_btn").not(':hidden').attr "disabled", true
-#
-  #disable_next_btn()
 
-  $('[data-behaviour=datepicker]').datepicker()
   
    
