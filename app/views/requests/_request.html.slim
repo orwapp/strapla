@@ -26,13 +26,6 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
                 br
                 br
 
-            -  if request.elevator_pitch
-              .media
-                strong Elevator pitch     
-                br
-                = request.elevator_pitch
-                br
-                br
 
             -  if request.background_information
               .media
@@ -58,13 +51,16 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
                 br
                 br
 
-            -  if request.what_is_the_frame
-              .media
-                strong What's the frame?   
-                br
-                = request.what_is_the_frame
-                br
-                br
+            .media
+              strong What's the frame?   
+              br
+              span Due date: 
+              = request.due_date
+              br
+              span Budget: 
+              = request.budget
+              br
+              br
 
 
 
@@ -119,9 +115,7 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
 
   .row
     .span11
-      - if user_signed_in?
         = link_to 'Edit', edit_request_path(request), class: 'pull-right btn '   if (request.user == current_user) and request.status != :accepted
-
         = link_to 'Next', select_recipient_path(request), class: 'pull-right btn  btn-info'   if request.user == current_user
         
         /- if request.published
