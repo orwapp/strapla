@@ -1,6 +1,6 @@
 = render :partial => 'requests/request', locals: {request: @request}
 
-- if (current_user == @request.user) && @request.price_quotes.present?
+- if (current_user == @request.user) and @request.price_quotes.present?
   br
   br
   h3.lead Price Quotes
