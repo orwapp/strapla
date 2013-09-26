@@ -1,7 +1,7 @@
 - optional ||= false
 
 .row#wizard
-  .span10
+  .span8
     - if @request.errors.any?
       .error_messages
         h2
@@ -10,7 +10,7 @@
         ul
           - @request.errors.full_messages.each do |msg|
             li= msg
-    = simple_form_for(@request, url: wizard_path, method: :put, :html => { :class => 'form-inline span8 help_text' }) do |f|
+    = simple_form_for(@request, url: wizard_path, method: :put, :html => { :class => 'form-inline  help_text' }) do |f|
       = yield f
       .actions
         = f.submit "Continue"
@@ -20,6 +20,5 @@
         = link_to 'skip', next_wizard_path  if optional
 
     
-  .span2
-    #info-box.alert.alert-info.span2.offset1
-      | In this box you'll see examples on what data to provide.
+  .span3
+    = render :partial => 'requests/shared/help_text'

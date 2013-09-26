@@ -1,5 +1,6 @@
 $ ->
 
+  # Initialize the datepicker
   $('[data-behaviour=datepicker]').datepicker()
 
   increment_status_bar = -> 
@@ -16,28 +17,25 @@ $ ->
     $(remaining_bar).data('percent', new_remaining_percent)
   
 
-  # Guided the user through the wizard
-  $(document).on 'click', '.next_btn', (e) -> 
-    e.preventDefault()
-    current_part = $(this).closest('.part')
-    next_part    = $(current_part).next('.part')
-    current_part.hide()
-    $(next_part).show()
-    increment_status_bar()
-    #disable_next_btn()
 
-
-
-  #$('.required').focus (e) ->
+  # Populate the example box
   $(document).on 'focus', '#wizard .help_text', (e) ->
     e.stopPropagation()
-    text = $(this).data('hint')
-    $('#info-box').html(text)
+    # The description box
+    hint_text = $(this).data('hint')
+    title     = $(this).closest('div').siblings('label').text()
+    $('#info-box .content').html(hint_text)
+    $('#info-box strong').html(title)
+    $('#info-box').show()
+    if hint_text and title
+      $('#info-box').show() 
+    else 
+      $('#info-box').hide() 
 
-  $('.next_btn').click (e) ->
-    $('#info-box').html("In this box you'll see examples on what data to provide.")
-
-
-
-  
-   
+    # The example box
+    example_text = $(this).data('example')
+    $('#example-box .content').html(example_text)
+    if example_text
+      $('#example-box').show() 
+    else 
+      $('#example-box').hide() 
