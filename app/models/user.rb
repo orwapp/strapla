@@ -14,8 +14,7 @@ class User < ActiveRecord::Base
 
 
   def average_price
-    prng = Random.new
-    prng.rand(15.0..90.0).round(2)
+    0
   end
 
   def profile
