@@ -1,3 +1,6 @@
 = render :layout => 'form', locals: {optional: false} do |f|
+
   = f.input :what_can_go_wrong, label: 'What can go wrong?',
-    input_html: { :rows => '8', 'data-hint' => 'What should we be particular carefull about? What can go wrong?' , class: 'span8 help_text'}
+    input_html: { :rows => '8', 'data-hint' => 'What should we be particular carefull about? What can go wrong?', 
+      'data-example' => 'WebCalc need to work on all web browsers. The programmer that implements the app need to test carefully from his mobile so we´re sure all the functionallity works. The buttons can´t be to small',
+    class: 'span8 help_text'}

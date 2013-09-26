@@ -16,14 +16,19 @@
     .form-inputs
       .part
         = f.input :title, required: true, placeholder: 'Provide a title...',
-          input_html: { 'data-hint' => 'e.g. A web calculator for all the disiplines', class: 'span8 help_text' }
+          input_html: { 'data-hint' => 'The title of the project', 
+            'data-example' => 'WebCalc - calculating through the web',
+            class: 'span8 help_text' }
         = f.input :goal,  required: true, 
-          input_html: { 'data-hint' => 'Should be clear and measureable. "I need a beta with feature 1-3 completed within 1 week.', class: 'span8 help_text' }
+          input_html: { 'data-hint' => 'Should be clear and measureable.', 
+          'data-example' => 'I need a beta that can addition and subtracktion completed within 1 week.',
+          class: 'span8 help_text' }
         = f.input :description,   required: true, 
-          input_html: { 'data-hint' => 'If you had thirty seconds and two sentences to describe our project, what would you say?',   class: 'span8 help_text'}  
+          input_html: { 'data-hint' => 'If you had thirty seconds and two sentences to describe our project, what would you say?',
+          'data-example' => 'Why look for a pysical calculator, when you can access one on your through your browser on the mobile and on your desktop? WebCalc can calculate everything!',
+          class: 'span8 help_text'}  
 
         = f.button :submit,  'Next', :class => 'btn btn-info'
 
   .span2
-    #info-box.alert.alert-info.span2.offset1
-      | In this box you'll see examples on what data to provide.
+    = render :partial => 'requests/shared/help_text'
