@@ -14,15 +14,6 @@ $ ->
     $(remaining_bar).data('percent', new_remaining_percent)
   
 
-  # Guided the user through the wizard
-  $(document).on 'click', '.next_btn', (e) -> 
-    e.preventDefault()
-    current_part = $(this).closest('.part')
-    next_part    = $(current_part).next('.part')
-    current_part.hide()
-    $(next_part).show()
-    increment_status_bar()
-
 
   # Populate the example box
   $(document).on 'focus', '#wizard .help_text', (e) ->
@@ -38,9 +29,6 @@ $ ->
     # The example box
     example_text = $(this).data('example')
     $('#example-box .content').html(example_text)
-  $('.next_btn').click (e) ->
-    $('#info-box').html("In this box you'll see examples on what data to provide.")
-    $('#example-box').html("Examples describing a web caluclator")
     if example_text
       $('#example-box').show() 
     else 
@@ -50,5 +38,3 @@ $ ->
 
   # Initialize the datepicker.
   $('[data-behaviour=datepicker]').datepicker()
-  
-   
