@@ -9,17 +9,26 @@
       | Could be Facbook login, Paypal subscription, etc.
 
 
-.row
-  .span6
+.row#wizard
+  .span9
     - n = 1
     = simple_form_for([@request, @feature], remote: true, disabled: true, 
       html: {class: "form-inline new_feature" }) do |f|
         .form-inputs
-          = f.input :title, required: true, input_html: { class: 'input-xxlarge' }
-          = f.input :text,  required: true, input_html: { class: 'input-xxlarge' }
+          = f.input :title, 
+            required: true, 
+            input_html: { 'data-hint' => 'An application is built of many different parts. Try to describe these on a high level.', 
+            'data-example' => 'Addition',
+            class: 'help_text input-xxlarge' }
+          = f.input :text,  required: true,
+            input_html: { 'data-example' => 'Must support addition of numbers.', 'data-hint' => 'An application is built of many different parts. Try to describe these on a high level.', 
+            class: 'help_text input-xxlarge' }
 
           = f.button :submit, :class => "btn-success save_feature", value: "Add"
 
+  .span3
+    br
+    = render :partial => 'requests/shared/help_text'
 
   
 .row[class="features_added #{'hide' if @request.features.blank?}"]
@@ -36,5 +45,3 @@
     = link_to "Next", request_review_path(@request), class: 'btn btn-info pull-right', data: {navigate_to: request_review_path(@request), request_id: @request.id }
 
     
-  .span3
-    = render :partial => 'requests/shared/help_text'
