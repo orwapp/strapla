@@ -43,16 +43,18 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
                 br
                 br
 
-            .media
-              strong What's the frame?   
-              br
-              span Due date: 
-              = request.due_date
-              br
-              span Budget: 
-              = request.budget
-              br
-              br
+            - if (request.due_date or request.budget)
+              .media
+                strong What's the frame?   
+                br
+                - if request.due_date 
+                  span Due date: 
+                  = request.due_date
+                  br
+                - if request.budget 
+                  span Budget: 
+                  = request.budget
+                  br
 
 
 
