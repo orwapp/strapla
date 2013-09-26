@@ -15,13 +15,15 @@
     = simple_form_for([@request, @feature], remote: true, disabled: true, 
       html: {class: "form-inline new_feature" }) do |f|
         .form-inputs
+
           = f.input :title, 
             required: true, 
             input_html: { 'data-hint' => 'An application is built of many different parts. Try to describe these on a high level.', 
-            'data-example' => 'Addition',
             class: 'help_text input-xxlarge' }
+
           = f.input :text,  required: true,
-            input_html: { 'data-example' => 'Must support addition of numbers.', 'data-hint' => 'An application is built of many different parts. Try to describe these on a high level.', 
+            input_html: { 'data-hint' => 'An application is built of many different parts. Try to describe these on a high level.', 
+            'data-example' => 'A user must be able to share his calculations on Facebook. E.g. " I just calculated that 2*291 / 19 equals 30.631 on WebCalc',
             class: 'help_text input-xxlarge' }
 
           = f.button :submit, :class => "btn-success save_feature", value: "Add"
