@@ -27,23 +27,28 @@ $ ->
   # Populate the example box
   $(document).on 'focus', '#wizard .help_text', (e) ->
     e.stopPropagation()
+
+    # The description box
     hint_text = $(this).data('hint')
-    title = $(this).closest('div').siblings('label').text()
+    title     = $(this).closest('div').siblings('label').text()
     $('#info-box .content').html(hint_text)
     $('#info-box strong').html(title)
     $('#info-box').show()
 
+    # The example box
     example_text = $(this).data('example')
     $('#example-box .content').html(example_text)
-    $('#example-box').show()
-
-
   $('.next_btn').click (e) ->
     $('#info-box').html("In this box you'll see examples on what data to provide.")
     $('#example-box').html("Examples describing a web caluclator")
+    if example_text
+      $('#example-box').show() 
+    else 
+      $('#example-box').hide() 
 
 
 
+  # Initialize the datepicker.
   $('[data-behaviour=datepicker]').datepicker()
   
    
