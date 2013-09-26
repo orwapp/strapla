@@ -117,6 +117,9 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
   .row
     .span11
         = link_to 'Edit', edit_request_path(request), class: 'pull-right btn '   if (request.user == current_user) and request.status != :accepted
+        = nbsp
+        = nbsp
+        = nbsp
         = link_to 'Next', select_recipient_path(request), class: 'pull-right btn  btn-info'   if request.user == current_user
         
         /- if request.published
