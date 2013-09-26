@@ -24,7 +24,6 @@ class RequestStepsController < ApplicationController
        :repository_url, 
        :elevator_pitch,
        :background_information,
-       :no_list,
        :what_can_go_wrong,
        :what_is_it_going_to_give,
        :what_is_the_frame
