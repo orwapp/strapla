@@ -6,7 +6,7 @@ class PriceQuote < ActiveRecord::Base
   has_many :features
 
   after_save :update_status!
-  after_create :save_features
+  after_initialize :save_features
 
   scope :unprocessed, -> { where status: nil }
   scope :accepted, -> { where status: 'accepted' }
@@ -27,8 +27,9 @@ class PriceQuote < ActiveRecord::Base
     puts "Saving features on the PriceQuote (#{id})"
     request.features.each do |f|
       feature = f.dup
-      feature.price_quote = self
-      feature.save
+      feature.request_id = nil
+      feature.price_quote_id = self.id
+      feature.save!
       puts "One feature saved is #{feature.inspect}"
     end
   end

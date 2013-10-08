@@ -4,6 +4,21 @@ h1= "Send #{@request.user.name} a price quote"
   locals: {request: @request, price_quote: true}
 
 
+h1 ="Title: #{@price_quote.title}"
+
+span =  @price_quote.features.all
+
+
+h2 Suggested features
+
+table.table.table-striped
+  thead
+    tr
+      th Title
+      th Description
+  tbody
+    span =  @price_quote.features.all
+
 br
 br
 br

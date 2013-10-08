@@ -102,12 +102,12 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
         - elsif (user_signed_in? and request.price_quotes.where(user: current_user).present?)
           /strong.text-success You have sent a price quote.
         - elsif @current_user != request.user
-          - if user_signed_in?
+          = link_to 'Quote a price', new_request_price_quote_path(request), class: 'btn btn-info'
+          /- if user_signed_in?
             = link_to 'Quote a price', '#', class: 'btn btn-info show_price_quote_form'
-          - else
-            = link_to 'Quote a price', new_request_price_quote_path(request), class: 'btn btn-info'
+          /- else
 
-        - if user_signed_in? and (current_user != request.user) 
+        /- if user_signed_in? and (current_user != request.user) 
           = nbsp
           .btn Contact the client
           .price_quote_form.hide
