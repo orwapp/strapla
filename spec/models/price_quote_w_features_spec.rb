@@ -9,7 +9,6 @@ describe PriceQuote do
 
       @price_quote = Fabricate(:price_quote, request: @request)
       @feature.reload
-      @price_quote.features.reload
       @price_quote.reload
     end
 

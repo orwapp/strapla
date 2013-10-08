@@ -26,9 +26,8 @@ gem 'haml'
 gem 'haml-rails'
 gem 'bootstrap-datepicker-rails'
 gem 'wicked'
-
-
-  gem 'pg'
+gem 'activerecord-postgres-hstore'
+gem 'pg'
 
 group :production do
 end
@@ -40,6 +39,9 @@ group :development do
   gem 'zeus'
   gem 'quiet_assets'
   gem 'guard-cucumber'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
 end
 
 group :development, :test do
@@ -68,8 +70,3 @@ gem 'resque'
 gem 'resque_mailer'
 gem 'newrelic_rpm'
 
-# PUT BACK IN DEVELOPMENT
-gem 'better_errors'
-gem 'binding_of_caller'
-gem 'meta_request'
-# PUT BACK IN DEVELOPMENT

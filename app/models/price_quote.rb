@@ -3,10 +3,9 @@ class PriceQuote < ActiveRecord::Base
   belongs_to :request
   validates_presence_of :user, :hours_estimated, :request_id, :price
   has_many :comments, dependent: :destroy
-  has_many :features
 
   after_save :update_status!
-  after_initialize :save_features
+  after_create :save_features
 
   scope :unprocessed, -> { where status: nil }
   scope :accepted, -> { where status: 'accepted' }
@@ -25,13 +24,12 @@ class PriceQuote < ActiveRecord::Base
 
   def save_features
     puts "Saving features on the PriceQuote (#{id})"
-    request.features.each do |f|
-      feature = f.dup
-      feature.request_id = nil
-      feature.price_quote_id = self.id
-      feature.save!
-      puts "One feature saved is #{feature.inspect}"
+    features = []
+    request.features.all.each do |f|
+      puts "saving {feature_id: #{f.id}, hour_estimated: nil}"
+      features << {feature_id: f.id, hour_estimated: nil}
     end
+    self.save!
   end
 
   def notify_owner_about_new_quote

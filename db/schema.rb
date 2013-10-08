@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131008181809) do
+ActiveRecord::Schema.define(version: 20131008193633) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
   create_table "background_informations", force: true do |t|
     t.text     "elevator_pitch"
@@ -83,6 +84,7 @@ ActiveRecord::Schema.define(version: 20131008181809) do
     t.datetime "updated_at"
     t.text     "comment"
     t.string   "status"
+    t.hstore   "features"
   end
 
   add_index "price_quotes", ["request_id"], name: "index_price_quotes_on_request_id", using: :btree
