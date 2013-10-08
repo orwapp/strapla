@@ -6,7 +6,7 @@
         li = message
 
 .row#wizard
-  .span12
+  .span8
     .progress
       .bar.completed.bar-success data-percent="12.5" style="width: 12.5%;"
       .bar.remaining.bar-warning data-percent="87.5" style="width: 87.5%;"
@@ -30,5 +30,5 @@
 
         = f.button :submit,  'Next', :class => 'btn btn-info'
 
-  .span2
+  .span3
     = render :partial => 'requests/shared/help_text'

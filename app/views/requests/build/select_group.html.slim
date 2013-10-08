@@ -1,3 +1,6 @@
+.progress
+  .bar.completed.bar-success data-percent="22.5" style="width: 52.5%;"
+  .bar.remaining.bar-warning data-percent="77.5" style="width: 47.5%;"
 = render :layout => 'form' do |f|
   = label_tag 'request_group', 'Select target group'
   = select("request", "request_group_id", 

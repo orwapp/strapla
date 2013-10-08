@@ -1,5 +1,8 @@
 $ ->
 
+  # Initialize the datepicker
+  $('[data-behaviour=datepicker]').datepicker()
+
   increment_status_bar = -> 
     completed_bar = $('.bar.completed') 
     remaining_bar = $('.bar.remaining') 
@@ -18,13 +21,16 @@ $ ->
   # Populate the example box
   $(document).on 'focus', '#wizard .help_text', (e) ->
     e.stopPropagation()
-
     # The description box
     hint_text = $(this).data('hint')
     title     = $(this).closest('div').siblings('label').text()
     $('#info-box .content').html(hint_text)
     $('#info-box strong').html(title)
     $('#info-box').show()
+    if hint_text and title
+      $('#info-box').show() 
+    else 
+      $('#info-box').hide() 
 
     # The example box
     example_text = $(this).data('example')
@@ -33,8 +39,3 @@ $ ->
       $('#example-box').show() 
     else 
       $('#example-box').hide() 
-
-
-
-  # Initialize the datepicker.
-  $('[data-behaviour=datepicker]').datepicker()

@@ -43,16 +43,18 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
                 br
                 br
 
-            .media
-              strong What's the frame?   
-              br
-              span Due date: 
-              = request.due_date
-              br
-              span Budget: 
-              = request.budget
-              br
-              br
+            - if (request.due_date or request.budget)
+              .media
+                strong What's the frame?   
+                br
+                - if request.due_date 
+                  span Due date: 
+                  = request.due_date
+                  br
+                - if request.budget 
+                  span Budget: 
+                  = request.budget
+                  br
 
 
 
@@ -85,29 +87,39 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
         = image_tag 'code_preview.png'
         hr
 
-    - unless price_quote
-      .row
-        .pull-right
-          - if user_signed_in? and request.contractor == current_user
-            strong.text-success You won this assignment! Do your best and make the client happy.
-          - elsif (user_signed_in? and request.price_quotes.where(user: current_user).present?)
-            /strong.text-success You have sent a price quote.
-          - elsif @current_user != request.user
-            - if not user_signed_in?
-              = link_to 'Quote a price', new_request_price_quote_path(request), class: 'btn btn-info'
-            - else
-              = link_to 'Quote a price', '#', class: 'btn btn-info show_price_quote_form'
+  - if request.features.present?
+    .row
+      .span11
+        h3 Features
+        ul.features
+          = render request.features
 
-          - if user_signed_in? and (current_user != request.user) 
-            = nbsp
-            .btn Contact the client
-            .price_quote_form.hide
-              == render '/price_quotes/form'
+  - unless price_quote
+    .row
+      .pull-right
+        - if user_signed_in? and request.contractor == current_user
+          strong.text-success You won this assignment! Do your best and make the client happy.
+        - elsif (user_signed_in? and request.price_quotes.where(user: current_user).present?)
+          /strong.text-success You have sent a price quote.
+        - elsif @current_user != request.user
+          - if user_signed_in?
+            = link_to 'Quote a price', '#', class: 'btn btn-info show_price_quote_form'
+          - else
+            = link_to 'Quote a price', new_request_price_quote_path(request), class: 'btn btn-info'
+
+        - if user_signed_in? and (current_user != request.user) 
+          = nbsp
+          .btn Contact the client
+          .price_quote_form.hide
+            == render '/price_quotes/form'
 
 
   .row
     .span11
         = link_to 'Edit', edit_request_path(request), class: 'pull-right btn '   if (request.user == current_user) and request.status != :accepted
+        = nbsp
+        = nbsp
+        = nbsp
         = link_to 'Next', select_recipient_path(request), class: 'pull-right btn  btn-info'   if request.user == current_user
         
         /- if request.published
