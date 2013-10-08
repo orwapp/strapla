@@ -13,16 +13,7 @@ describe PriceQuote do
   specify { @accepted_price_quote.should be_valid }
 
 
-  #it "Returns unprocessed price quotes made on a user's Request" do
-  #  PriceQuote.unprocessed_belonging_to_user(@request_owner).should     include @price_quote
-  #end
-
-  #it "should not return quotes that has been accepted" do
-  #  PriceQuote.unprocessed_belonging_to_user(@request_owner).should_not include @accepted_price_quote
-  #end
-
   describe "Queries" do
-
     describe "accepted" do
       it "Return all accepted price quotes on the requests owned by Request Owner" do
         PriceQuote.accepted_belonging_to_request_owner(@request_owner).should include @accepted_price_quote
@@ -58,5 +49,19 @@ describe PriceQuote do
     end
   end
 
+
+  context "Estimating features" do
+    describe "When creating a new PriceQuote, the user can estimate each belonging feature" do
+      @feature = Fabricate(:feature, title: 'yey', request: @request)
+
+      @feature.reload
+      @price_quote.features.reload
+      @price_quote.reload
+      @price_quote.reload
+      it "hs lkj" do
+        @price_quote.features.first.title.should == 'yey'
+      end
+    end
+  end
 
 end

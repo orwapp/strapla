@@ -35,6 +35,7 @@ CodeRunner::Application.routes.draw do
     resources :price_quotes do
       resources :comments
     end
+    get  '/quote'    => 'requests#quote',  as: :quote,  format: false
     get  'features/create_many/' => 'features#create_many', as: :create_many 
     get  'features/review'       => 'features#review',  as: :review,  format: false
     post '/publish'   => 'requests#publish',     as: :publish,   format: false

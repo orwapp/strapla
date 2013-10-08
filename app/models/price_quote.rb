@@ -3,13 +3,35 @@ class PriceQuote < ActiveRecord::Base
   belongs_to :request
   validates_presence_of :user, :hours_estimated, :request_id, :price
   has_many :comments, dependent: :destroy
+  has_many :features
 
-  after_save :update_request!
+  after_save :update_status!
+  after_create :save_features
 
   scope :unprocessed, -> { where status: nil }
   scope :accepted, -> { where status: 'accepted' }
   scope :rejected, -> { where status: 'rejected' }
 
+  delegate :goal,                   :to => :request 
+  delegate :title,                  :to => :request 
+  delegate :description,            :to => :request 
+  delegate :background_information, :to => :request 
+  delegate :what_is_it_going_to_give, :to => :request 
+  delegate :what_can_go_wrong, :to => :request 
+  delegate :due_date, :to => :request 
+  delegate :budget, :to => :request 
+  delegate :due_date, :to => :request 
+  
+
+  def save_features
+    puts "Saving features on the PriceQuote (#{id})"
+    request.features.each do |f|
+      feature = f.dup
+      feature.price_quote = self
+      feature.save
+      puts "One feature saved is #{feature.inspect}"
+    end
+  end
 
   def notify_owner_about_new_quote
     UserMailer.send_price_quote(self).deliver
@@ -52,7 +74,7 @@ class PriceQuote < ActiveRecord::Base
   end
 
   private
-  def update_request!
+  def update_status!
     self.request.update_attribute(:status, status)
   end
 

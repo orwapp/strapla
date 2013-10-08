@@ -91,7 +91,7 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
     .row
       .span11
         h3 Features
-        ul.features
+        table.table.table-bordered.features
           = render request.features
 
   - unless price_quote

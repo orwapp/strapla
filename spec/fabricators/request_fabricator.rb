@@ -1,5 +1,6 @@
 Fabricator(:request) do
-  title     "MyString"
+  title  { Faker::Lorem.sentence(5) }
+  #title  "khk2"
   description "MyText"
   goal        "MyText"
   request_group  { Fabricate(:request_group) }

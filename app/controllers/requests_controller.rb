@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
   respond_to :html
-  before_action :set_request, only: [:show, :edit, :update, :destroy]
+  before_action :set_request, only: [:quote, :show, :edit, :update, :destroy]
   before_action :find_requests
   before_filter :set_wizard
   before_filter :authenticate_user!, except: [:index, :show, :unassigned_requests]
@@ -9,6 +9,11 @@ class RequestsController < ApplicationController
   end
 
   def unassigned_requests
+  end
+
+  def quote
+    @quote = @current_user.price_quotes.new
+    @quote.request = @request
   end
 
   def my_requests
@@ -108,7 +113,11 @@ class RequestsController < ApplicationController
 
   private
   def set_request
-    @request = Request.find(params[:id])
+    if params[:request_id]
+      @request = Request.find(params[:request_id])
+    else
+      @request = Request.find(params[:id])
+    end
   end
 
   def request_params
