@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 ruby '2.0.0'
 
-gem 'dali'
 gem 'slim'
 gem 'slim-rails'
 gem 'fabrication'
