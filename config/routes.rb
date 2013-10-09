@@ -29,7 +29,9 @@ CodeRunner::Application.routes.draw do
   resources :background_informations
 
 
-  resources :features
+  resources :features do
+    resources :comments
+  end
   resources :requests do
     resources :build, controller: 'requests/build'
     resources :price_quotes do

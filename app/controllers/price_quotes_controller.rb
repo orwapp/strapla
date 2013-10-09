@@ -16,6 +16,7 @@ class PriceQuotesController < ApplicationController
 
   def new
     @price_quote = PriceQuote.new(request: @request)
+    @comment = Comment.new
   end
 
   def edit

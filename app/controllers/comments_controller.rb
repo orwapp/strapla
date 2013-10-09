@@ -25,7 +25,8 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @comment = @current_user.comments.new(comment_params)
-    @comment.price_quote_id = params[:price_quote_id]
+    @comment.price_quote_id = params[:price_quote_id] if params[:price_quote_id].present?
+    @comment.feature_id = params[:feature_id] if params[:feature_id].present?
 
     respond_to do |format|
       if @comment.save!

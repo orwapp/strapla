@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131008193633) do
+ActiveRecord::Schema.define(version: 20131009133302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,8 +37,10 @@ ActiveRecord::Schema.define(version: 20131008193633) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "feature_id"
   end
 
+  add_index "comments", ["feature_id"], name: "index_comments_on_feature_id", using: :btree
   add_index "comments", ["price_quote_id"], name: "index_comments_on_price_quote_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
@@ -50,6 +52,17 @@ ActiveRecord::Schema.define(version: 20131008193633) do
   end
 
   add_index "elevator_pitches", ["request_id"], name: "index_elevator_pitches_on_request_id", using: :btree
+
+  create_table "feature_estimations", force: true do |t|
+    t.integer  "feature_id"
+    t.integer  "price_quote_id"
+    t.float    "hours_estimated"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "feature_estimations", ["feature_id"], name: "index_feature_estimations_on_feature_id", using: :btree
+  add_index "feature_estimations", ["price_quote_id"], name: "index_feature_estimations_on_price_quote_id", using: :btree
 
   create_table "feature_requests", force: true do |t|
     t.integer  "user_id"
