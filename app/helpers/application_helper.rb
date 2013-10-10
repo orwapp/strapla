@@ -9,7 +9,7 @@ module ApplicationHelper
 
 
 	def show_hours_estimated?
-		body_id != 'requests_show'
+		body_id == 'price_quotes_new'
 	end
 
 	
