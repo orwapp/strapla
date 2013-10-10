@@ -6,3 +6,30 @@ br
 
 // List all price quotes for the request owner
 // = render :partial => 'price_quote', locals: {price_quote: @price_quote}
+
+- if (body_id == 'price_quotes_new')
+  = render 'form' 
+
+.row
+  .pull-right
+    - if user_signed_in? and @price_quote.request.contractor == current_user
+      strong.text-success You won this assignment! Do your best and make the client happy.
+    - elsif (user_signed_in? and @price_quote.request.price_quotes.where(user: current_user).present?)
+      /strong.text-success You have sent a price quote.
+    - elsif @current_user != request.user
+      = link_to 'Quote a price', new_request_price_quote_path(request), class: 'btn btn-info'
+
+.row
+  .span11
+      = link_to 'Edit', edit_request_path(request), class: 'pull-right btn '   if (@price_quote.request.user == current_user) and @price_quote.request.status != :accepted
+      = nbsp
+      = nbsp
+      = nbsp
+      = link_to 'Next', select_recipient_path(@price_quote.request), class: 'pull-right btn  btn-info'   if @price_quote.request.user == current_user
+      
+
+br
+
+- if user_signed_in?
+  hr
+  = render partial: 'price_quotes/seen_by_sender', collection: @price_quote.request.price_quotes.where(user_id: @current_user.id), as: :price_quote

@@ -1,6 +1,6 @@
 class PriceQuotesController < ApplicationController
   before_action :set_price_quote, only: [:show, :edit, :update, :destroy]
-  before_action :set_request, only: [:new, :show]
+  before_action :set_request, only: [:new]
   respond_to :html
   before_filter :authenticate_user!
   before_action :find_requests
@@ -12,10 +12,13 @@ class PriceQuotesController < ApplicationController
   end
 
   def show
+		@price_quote = PriceQuote.find(params[:id])
     @comment = Comment.new
   end
 
   def new
+		@existing_price_quote = current_user.price_quotes.where(request_id: params[:request_id]).first
+		redirect_to @existing_price_quote if @existing_price_quote.present?
     @price_quote = PriceQuote.new(request: @request)
     @comment = Comment.new
   end

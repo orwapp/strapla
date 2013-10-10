@@ -9,7 +9,8 @@ module ApplicationHelper
 
 
 	def show_hours_estimated?
-		body_id == 'price_quotes_new'
+		body_id == 'price_quotes_new' or
+			current_user == @price_quote.user
 	end
 
 	

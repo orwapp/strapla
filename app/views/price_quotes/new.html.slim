@@ -4,19 +4,4 @@ h1= "Send #{@request.user.name} a price quote"
   locals: {request: @request, price_quote: true}
 
 
-/- if @price_quote.features.present?
-  h2 Wanted features
-  
-  table.table.table-striped
-    thead
-      tr
-        th Title
-        th Description
-    tbody
-      span =  @price_quote.features.all
-
-br
-br
-br
-
 = link_to 'Back', new_request_price_quote_path(@request)
