@@ -50,20 +50,4 @@ describe PriceQuote do
   end
 
 
-  context "Estimating features" do
-    describe "When creating a new PriceQuote, the user can estimate each belonging feature" do
-      @request = Fabricate(:request, user: @request_owner)
-      @feature = Fabricate(:feature, title: 'yey', request: @request)
-
-      @price_quote = Fabricate(:price_quote, request: @request)
-      @feature.reload
-      @price_quote.features.reload
-      @price_quote.reload
-      @price_quote.reload
-      it "hs lkj" do
-        @price_quote.features.first.title.should == 'yey'
-      end
-    end
-  end
-
 end

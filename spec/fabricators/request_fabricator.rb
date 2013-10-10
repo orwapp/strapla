@@ -1,5 +1,6 @@
 Fabricator(:request) do
   title  { Faker::Lorem.sentence(5) }
+	user	 { Fabricate(:user) }
   #title  "khk2"
   description "MyText"
   goal        "MyText"
