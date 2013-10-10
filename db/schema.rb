@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131010064940) do
+ActiveRecord::Schema.define(version: 20131010084116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,17 @@ ActiveRecord::Schema.define(version: 20131010064940) do
   end
 
   add_index "elevator_pitches", ["request_id"], name: "index_elevator_pitches_on_request_id", using: :btree
+
+  create_table "estimated_hours", force: true do |t|
+    t.float    "hours"
+    t.integer  "feature_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "estimated_hours", ["feature_id"], name: "index_estimated_hours_on_feature_id", using: :btree
+  add_index "estimated_hours", ["user_id"], name: "index_estimated_hours_on_user_id", using: :btree
 
   create_table "feature_requests", force: true do |t|
     t.integer  "user_id"

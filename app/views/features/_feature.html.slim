@@ -5,8 +5,9 @@ tr
     em= feature.text
 
   td
-    = render feature.comments.to_a
-    = simple_form_for([feature, @comment], :html => { :class => 'form-inline' } ) do |f|
+    = render feature.estimated_hours.to_a
+
+    = simple_form_for([feature, feature.estimated_hours.new], :html => { :class => 'form-inline' } ) do |f|
       = f.error_notification
-      = f.input_field :text, label: 'Time estimated', class: 'small-input'
+      = f.input_field :hours, label: 'Time estimated', class: 'small-input'
       = f.button :submit, :class => "btn", value: 'Save', class: 'input-small'

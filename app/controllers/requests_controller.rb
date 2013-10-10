@@ -33,6 +33,7 @@ class RequestsController < ApplicationController
     @request = Request.new(user: current_user)
   end
 
+	
 
   def show
     @price_quote = current_user.price_quotes.new  if user_signed_in?
