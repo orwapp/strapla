@@ -10,14 +10,12 @@ br
 - if (body_id == 'price_quotes_new')
   = render 'form' 
 
-.row
-  .pull-right
-    - if user_signed_in? and @price_quote.request.contractor == current_user
-      strong.text-success You won this assignment! Do your best and make the client happy.
-    - elsif (user_signed_in? and @price_quote.request.price_quotes.where(user: current_user).present?)
-      /strong.text-success You have sent a price quote.
-    - elsif @current_user != request.user
-      = link_to 'Quote a price', new_request_price_quote_path(request), class: 'btn btn-info'
+- if user_signed_in?
+  .row
+    .pull-right
+      - if (@price_quote.request.contractor == current_user)
+        strong.text-success You won this assignment! Do your best and make the client happy.
+
 
 .row
   .span11

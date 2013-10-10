@@ -37,8 +37,10 @@ class RequestsController < ApplicationController
 
   def show
 		# Redirect the user to the request show page if he has made one.
-		@existing_price_quote = current_user.price_quotes.where(request_id: @request.id).first
-		redirect_to @existing_price_quote if @existing_price_quote.present?
+		if user_signed_in?
+			@existing_price_quote = current_user.price_quotes.where(request_id: @request.id).first
+			redirect_to @existing_price_quote if @existing_price_quote.present?
+		end
 		
 		@price_quote = current_user.price_quotes.new  if user_signed_in?
 		@comment = @price_quote.comments.new          if user_signed_in?

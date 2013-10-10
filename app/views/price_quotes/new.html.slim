@@ -3,5 +3,8 @@ h1= "Send #{@request.user.name} a price quote"
 = render :partial => 'requests/request', 
   locals: {request: @request, price_quote: true}
 
+br
+br
+= render 'form'
 
-= link_to 'Back', new_request_price_quote_path(@request)
+
