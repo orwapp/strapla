@@ -89,6 +89,12 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
       .span11
         h3 Features
         table.table.table-bordered.features
+          thead
+            tr
+              th Title
+              th Description
+              - unless request.user == current_user
+                th Hours estimated
           = render request.features
 
   - unless price_quote
