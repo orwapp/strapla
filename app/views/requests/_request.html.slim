@@ -93,8 +93,13 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
             tr
               th Title
               th Description
+              - if show_hours_estimated?
+                th Hours estimated
               
           = render request.features
+
+  - if (body_id == 'price_quotes_new')
+    = render 'form' 
 
   - unless price_quote
     .row
