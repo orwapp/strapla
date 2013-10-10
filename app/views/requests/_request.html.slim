@@ -56,9 +56,6 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
                   = request.budget
                   br
 
-
-
-
           - unless @review
             p
               strong Project status
@@ -103,16 +100,6 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
           /strong.text-success You have sent a price quote.
         - elsif @current_user != request.user
           = link_to 'Quote a price', new_request_price_quote_path(request), class: 'btn btn-info'
-          /- if user_signed_in?
-            = link_to 'Quote a price', '#', class: 'btn btn-info show_price_quote_form'
-          /- else
-
-        /- if user_signed_in? and (current_user != request.user) 
-          = nbsp
-          .btn Contact the client
-          .price_quote_form.hide
-            == render '/price_quotes/form'
-
 
   .row
     .span11
@@ -122,10 +109,6 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
         = nbsp
         = link_to 'Next', select_recipient_path(request), class: 'pull-right btn  btn-info'   if request.user == current_user
         
-        /- if request.published
-        /  = button_to 'Unpublish', request_unpublish_path(request), class: 'pull-right btn  btn-warning'   if request.user == current_user
-        /- else
-        /  = button_to 'Publish', request_publish_path(request), class: 'pull-right btn btn-success '   if request.user == current_user
 
 br
 
