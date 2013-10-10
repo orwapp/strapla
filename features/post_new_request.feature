@@ -29,7 +29,7 @@ Feature: Get code help
     And  I press "Next"
 
 		# Review page
-    And  I press "Publish"
+		And  I press "Next"
 
     Then I should see "Who shall we send the question to"
     And  I should see at least one expert

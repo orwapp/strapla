@@ -12,4 +12,10 @@ p
 br
 br
 br
-= button_to 'Publish', request_publish_path(@request), class: 'btn btn-primary pull-right'
+/= button_to 'Publish', request_publish_path(@request), class: 'btn btn-primary pull-right'
+ 
+= link_to 'Edit', edit_request_path(request), class: 'pull-right btn '   if (@request.user == current_user) and @request.status != :accepted
+= nbsp
+= nbsp
+= nbsp
+= link_to 'Next', select_recipient_path(@request), class: 'pull-right btn  btn-info'   if @request.user == current_user
