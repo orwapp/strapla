@@ -1,5 +1,7 @@
 CodeRunner::Application.routes.draw do
 
+  resources :estimated_hours
+
   #match "request_steps/title_goal", to: "request_steps#title_goal", via: "post"
   resources :request_steps
 

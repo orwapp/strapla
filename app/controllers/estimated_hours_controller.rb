@@ -1,0 +1,2 @@
+class EstimatedHoursController < ApplicationController
+end

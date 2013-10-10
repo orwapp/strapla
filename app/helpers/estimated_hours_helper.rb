@@ -1,0 +1,2 @@
+module EstimatedHoursHelper
+end
