@@ -8,15 +8,28 @@ Feature: Get code help
     And we have the expert group named Ruby on Rails
     And we have one expert user in our database, named Paul
 
+	@javascript
   Scenario: Post new request
     When I go to the frontpage
-    Then I press "Get someone to help you"
-    When I press "Code help"
+    Then I press "Start your project"
     Then I fill in "Title" with "Need help with searching all Facebook posts for Sony"
     And  I fill in "Goal" with "I want an array of IDs to the matching posts returned"
     And  I fill in "Description" with "The syntax of the array should be [POST_ID, POST_ID]"
-    And  I select "Ruby" as the group
-    When I press "Next"
+    And  I press "Next"
+    And  I press "Continue"
+    And  I press "Continue"
+    And  I press "Continue"
+		And  I select "Ruby on Rails" as the group
+    And  I press "Continue"
+
+		Then I should see "Describe which features you want"
+    And  I fill in "Title" with "login"
+    And  I fill in "Text" with "login with face and twitter"
+    And  I press "Add"
+    And  I press "Next"
+
+		# Review page
+    And  I press "Publish"
 
     Then I should see "Who shall we send the question to"
     And  I should see at least one expert
