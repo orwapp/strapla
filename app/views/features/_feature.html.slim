@@ -1,12 +1,13 @@
+
 tr
   td 
     span= feature.title
   td 
     span= feature.text
 
-  - unless feature.request.user == current_user
+  - if show_hours_estimated?
     td
-      - old_val =  feature.estimated_hours.last.hours rescue nil
+      - old_val = current_user.estimated_hours.where(feature: feature).first.hours rescue nil
 
       = simple_form_for([feature, feature.estimated_hours.new], :html => { :class => 'form-inline' } ) do |f|
         = f.error_notification
