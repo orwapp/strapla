@@ -12,6 +12,7 @@ class PriceQuotesController < ApplicationController
   end
 
   def show
+    # TODO Add cancan
 		@price_quote = PriceQuote.find(params[:id])
     @comment = Comment.new
   end
@@ -25,7 +26,7 @@ class PriceQuotesController < ApplicationController
 
   def edit
     @price_quote = PriceQuote.find params[:id]
-    @request     = Request.find params[:request_id]
+    @request     = @price_quote.request
   end
 
   def create

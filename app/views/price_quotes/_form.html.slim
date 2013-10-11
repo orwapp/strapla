@@ -6,8 +6,9 @@
         - @price_quote.errors.full_messages.each do |message|
           li = message
   
-  = f.hidden_field :request_id, value: @request.id
-  = f.input :comment
+  - if @price_quote.comments.blank?
+    = f.input :comment
   = f.input :price, label: 'Total price in USD'
   = f.input :hours_estimated
-  = f.submit 'Send', class: 'btn btn-primary', disable_with: "Saving..."
+  - submit_text = @price_quote.new_record? ? 'Update quote' : 'Save'
+  = f.submit submit_text, class: 'btn btn-primary', disable_with: "Saving..."

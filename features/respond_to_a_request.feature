@@ -29,10 +29,10 @@ Feature: Respond to a request - Send a Price Quote
     Given I am signed in as "noob@noob.no"
     And I follow "Open price quote at Stabstr" in the email
     #Then I should be on the page where I can negotiate terms with the developer
-    And I fill in "Comment" with "I think you are both slow and expensive. Can we reduce the price to $100"
+    And I fill in "Comment" with "martin"
     And I press "Create Comment"
     And "expert@coder.com" should receive an email with the following body:
-      | I think you are both slow and expensive. Can we reduce the price to $100? |
+      |martin|
     When "expert@coder.com" follow "Open price quote at Stabstr" in the email
     And he fill in "Total price in USD" with "100"
     And he press "Update"

@@ -21,7 +21,8 @@ class UserMailer < ActionMailer::Base
     mail to: @price_quote.request.user.email, cc: @price_quote.user.email 
   end
 
-  def new_comment(from='kh', to='lkj', comment='comment')
+  def new_comment(from, to, comment)
+		puts "In new_comment:"
     puts "GOT #{from.inspect} " 
     puts "GOT #{to.inspect}" 
     puts "GOT #{comment.inspect}"

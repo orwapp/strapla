@@ -1,5 +1,3 @@
-- price_quote ||= false
-
 h2.label.label-success.big_font= price_quote.status.titleize if price_quote.status
 
 .container.border.small_padding
@@ -12,25 +10,23 @@ h2.label.label-success.big_font= price_quote.status.titleize if price_quote.stat
   =nbsp
   span.muted= "<#{price_quote.user.email}>"
   br
-  strong= "Price: "
-  span= price_quote.price
-  br
-  strong= "Hours estimated: "
-  span= price_quote.hours_estimated
-  br
-  strong= "Comment: "
-  span= price_quote.comment
+  = render 'form'
+
   hr
-  .span11
-    = render price_quote.comments
-    - if price_quote.present?
-      = render :partial => 'comments/on_price_quote_form', locals: {price_quote: price_quote, comment: price_quote.comments.new}
-    .row
-      .span11
-        - if price_quote.request.user == current_user
-          - unless price_quote.accepted?
-            .pull-right
-               = link_to 'Accept', accept_price_quote_path(price_quote.id), class: 'btn btn-small btn-success', method: :post
-               = nbsp
-               = link_to 'Reject', reject_price_quote_path(price_quote.id), class: 'btn btn-small btn-danger', method: :post
-               = nbsp
+  .row
+    .span11.comments_list
+      = render price_quote.comments
+      - if price_quote.present?
+        = render :partial => 'comments/on_price_quote_form', 
+          locals: {price_quote: price_quote, comment: price_quote.comments.new}
+      .row
+        .span11
+          - if price_quote.request.user == current_user
+            - unless price_quote.accepted?
+              .pull-right
+                = link_to 'Accept', accept_price_quote_path(price_quote.id),
+                 class: 'btn btn-small btn-success', method: :post
+                = nbsp
+                = link_to 'Reject', reject_price_quote_path(price_quote.id), 
+                 class: 'btn btn-small btn-danger', method: :post
+                = nbsp

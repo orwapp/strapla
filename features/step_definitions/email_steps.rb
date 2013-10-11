@@ -66,6 +66,9 @@ end
 
 Then /^(?:I|they|"([^"]*?)") should receive an email with the following body:$/ do |address, expected_body|
   body = expected_body.raw.flatten.join(' ')
+	puts "\n\n"
+	puts "Looking for email body: #{body}"
+	puts "\n\n"
   open_email(address, :with_text => body)
 end
 
