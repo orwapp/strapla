@@ -8,9 +8,10 @@ module ApplicationHelper
   end
 
 
-	def show_hours_estimated?
-		body_id == 'price_quotes_new' or
-			current_user == @price_quote.user
+	def show_hours_estimated?(user=nil)
+		return false if current_user.blank?
+		return true  if body_id == 'price_quotes_new'
+		return true  if	current_user == @price_quote.user rescue false
 	end
 
 	
