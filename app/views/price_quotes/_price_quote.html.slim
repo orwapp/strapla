@@ -16,7 +16,7 @@ h2.label.label-success.big_font= price_quote.status.titleize if price_quote.stat
   .row
     .span11.comments_list
       = render price_quote.comments
-      - if price_quote.present?
+      - unless price_quote.comments.blank?
         = render :partial => 'comments/on_price_quote_form', 
           locals: {price_quote: price_quote, comment: price_quote.comments.new}
       .row
