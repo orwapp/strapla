@@ -47,3 +47,7 @@ end
 Then(/^I should be on the page where I can negotiate terms with the developer$/) do
   #current_path.should eq request_price_quote(
 end
+
+Then(/^show me the page$/) do
+	save_and_open_page
+end

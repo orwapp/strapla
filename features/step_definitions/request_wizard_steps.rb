@@ -5,11 +5,17 @@ end
 Given(/^I have completed the first part of the wizard$/) do
   steps %{
     When I go to the frontpage
-    Then I press "Get someone to help you"
-    When I press "Build something new"
+    Then I press "Start your project"
+		Then I fill in "Title" with "lkjlkj"
+		Then I fill in "Goal" with "lkjlkj"
+		Then I fill in "Description" with "lkjlkj"
+    When I press "Next"
+    When I press "Continue"
+    When I press "Continue"
+    When I press "Continue"
     And I select "Ruby on Rails" as the technology I want the this application build in.
-    And I fill in all the mandatory fields with the necessary background information.
-    And I press "Next"
+    When I press "Continue"
+    Then we should have one Request object saved
   }
   @request = Request.last
   @request.request_group.should be_valid

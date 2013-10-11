@@ -16,18 +16,28 @@ Feature: Use the wizard to create a new request
 
   Scenario: Complete the first page of the wizard, the background information
     When I go to the frontpage
-    Then I press "Get someone to help you"
-    When I press "Build something new"
-    Then I fill in all the mandatory fields with the necessary background information.
-    And I select "Ruby on Rails" as the technology I want the this application build in.
+    Then I press "Start your project"
+		Then I fill in "Title" with "lkjlkj"
+		Then I fill in "Goal" with "lkjlkj"
+		Then I fill in "Description" with "lkjlkj"
     When I press "Next"
+		# Background information 
+    When I press "Continue"
+    When I press "Continue"
+    When I press "Continue"
+    And I select "Ruby on Rails" as the technology I want the this application build in.
+    When I press "Continue"
     Then we should have one Request object saved
 
+	@javascript
   Scenario: Create two features
     Given I have completed the first part of the wizard
     Then I should see "Describe which features you want"
-    Then I fill in and submit the first New feature form
-    And I fill in and submit the second New feature form
+		And I fill in "Title" with "Facebook likes"
+    When I press "Add"
+    When I press "Save"
+		And I fill in "Title" with "Twitter signin"
+    When I press "Save"
     When I press "Next"
     Then I should have 2 features stored in the database
 
