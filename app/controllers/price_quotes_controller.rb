@@ -100,7 +100,7 @@ class PriceQuotesController < ApplicationController
     end
 
     def price_quote_params
-      params.require(:price_quote).permit(:price, :hours_estimated, :comment, :request_id)
+      params.require(:price_quote).permit(:price, :hours_estimated, :description, :request_id)
     end
 
 
