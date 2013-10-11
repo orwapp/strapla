@@ -9,10 +9,10 @@ $ ->
       type: "post"
       data: merged_data
       success: ->
-        alert "success"
+        #alert "success"
     
       error: ->
-        alert "failure"
+        #alert "failure"
 
 
   $.fn.serializeObject = ->
