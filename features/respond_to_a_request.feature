@@ -28,7 +28,7 @@ Feature: Respond to a request - Send a Price Quote
 
     Given I am signed in as "noob@noob.no"
     And I follow "Open price quote at Stabstr" in the email
-		Then show me the page
+		#Then show me the page
     #Then I should be on the page where I can negotiate terms with the developer
     And I fill in "Comment" with "martin"
     And I press "Create Comment"

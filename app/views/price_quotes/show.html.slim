@@ -5,6 +5,7 @@ br
 
 
 // List all price quotes for the request owner
+span price_quote partial:
 = render :partial => 'price_quote', locals: {price_quote: @price_quote}
 
 
@@ -26,6 +27,10 @@ br
 
 br
 
-- if user_signed_in?
+= render @price_quote.comments || ''
+= render :partial => 'comments/on_price_quote_form', locals: {price_quote: @price_quote, comment: @comment}
+
+/- if user_signed_in?
   hr
+  span price_quotes/seen_by_sender:
   = render partial: 'price_quotes/seen_by_sender', collection: @price_quote.request.price_quotes.where(user_id: @current_user.id), as: :price_quote

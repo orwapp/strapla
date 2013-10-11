@@ -1,6 +1,6 @@
 class PriceQuotesController < ApplicationController
   before_action :set_price_quote, only: [:show, :edit, :update, :destroy]
-  before_action :set_request, only: [:new]
+  before_action :set_request, only: [:new, :create]
   respond_to :html
   before_filter :authenticate_user!
   before_action :find_requests
@@ -32,6 +32,7 @@ class PriceQuotesController < ApplicationController
   def create
     @price_quote = PriceQuote.new(price_quote_params)
     @price_quote.user = current_user
+		@price_quote.request = @request
     if @price_quote.save!
       flash[:notice] = 'Price quote sent to client' 
       @price_quote.notify_owner_about_new_quote
