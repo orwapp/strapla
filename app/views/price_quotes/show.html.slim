@@ -28,7 +28,7 @@ span price_quote partial:
 br
 
 = render @price_quote.comments || ''
-= render :partial => 'comments/on_price_quote_form', locals: {price_quote: @price_quote, comment: @comment}
+/= render :partial => 'comments/on_price_quote_form', locals: {price_quote: @price_quote, comment: @comment}
 
 /- if user_signed_in?
   hr

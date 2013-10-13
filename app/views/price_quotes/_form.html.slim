@@ -1,9 +1,10 @@
-- if @price_quote.errors.any?
-  #error_explanation
-    h2 = "#{pluralize(@price_quote.errors.count, "error")} prohibited this price_quote from being saved:"
-    ul
-      - @price_quote.errors.full_messages.each do |message|
-        li = message
+- if @price_quote.present?
+  - if @price_quote.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@price_quote.errors.count, "error")} prohibited this price_quote from being saved:"
+      ul
+        - @price_quote.errors.full_messages.each do |message|
+          li = message
 
 = simple_form_for [price_quote.request, price_quote] do |f|
   
