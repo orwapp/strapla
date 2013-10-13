@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_filter :set_current_user
 
-  rescue_from Exception, :with => :error_render_method
 
   if Rails.env.production?
     http_basic_authenticate_with name: ENV['HTTP_USERNAME'] || 'funky_admin' , password: ENV['HTTP_PASSWORD'] || 'top_secret'
@@ -28,14 +27,7 @@ class ApplicationController < ActionController::Base
   end
 
 
-  def error_render_method
-    respond_to do |type|
-      #type.html { render :template => "errors/error_404", :status => 404 }
-      type.html { redirect_to root_path, notice: 'Could not find that, please start looking from here.' }
-      type.all  { render :nothing => true, :status => 404 }
-    end
-    true
-  end
+
 
 
   protected
