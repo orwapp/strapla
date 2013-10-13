@@ -66,7 +66,7 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
     .span4
       p.pull-right
         span Client: 
-        span= request.user.name
+        span= request.user.name rescue nil
         br
         span.muted= "<#{request.user.email}>"
         em= request.user.title if request.user.title
