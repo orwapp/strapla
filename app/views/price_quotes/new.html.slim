@@ -5,4 +5,4 @@ h1= "Send #{@request.user.name} a price quote"
 
 br
 br
-= render 'form'
+= render :partial => 'form', locals: { price_quote: @request.price_quotes.new }

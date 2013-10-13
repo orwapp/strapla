@@ -20,8 +20,8 @@ class PriceQuotesController < ApplicationController
   def new
 		@existing_price_quote = current_user.price_quotes.where(request_id: params[:request_id]).first
 		redirect_to @existing_price_quote if @existing_price_quote.present?
-    @price_quote = PriceQuote.new(request: @request)
-    @comment = Comment.new
+    #@price_quote = PriceQuote.new(request: @request)
+    #@comment = Comment.new
   end
 
   def edit
@@ -33,12 +33,13 @@ class PriceQuotesController < ApplicationController
     @price_quote = PriceQuote.new(price_quote_params)
     @price_quote.user = current_user
 		@price_quote.request = @request
-    if @price_quote.save!
+    if @price_quote.save
       flash[:notice] = 'Price quote sent to client' 
       @price_quote.notify_owner_about_new_quote
       respond_with(@price_quote.request)
     else
-      redirect_to :back, warning: 'Failed to save'
+      respond_with(@price_quote)
+      #redirect_to :back, warning: 'Failed to save'
     end
   end
 
