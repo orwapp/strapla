@@ -12,7 +12,7 @@ class Request < ActiveRecord::Base
   scope :published,  -> { where published: true }
   scope :unpublished,  -> { where published: nil }
   scope :published_and_unassigned, -> { published.where(delegated_to_user_id: nil).where(contractor_id: nil)}
-  scope :unassigned, -> { where contractor_id: nil }
+  #scope :unassigned, -> { where contractor_id: nil }
   scope :in_process, -> { where( "contractor_id <> 0" ) }
   scope :assigned_not_accepted, -> { where( "delegated_to_user_id <> 0" ) }
   #scope :mine, :conditions=>'SELECT *
