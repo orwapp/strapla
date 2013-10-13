@@ -21,8 +21,7 @@ Feature: Respond to a request - Send a Price Quote
     When I press "Send"
     Then "noob@noob.no" should be notified that I have sent a price quote
 
-  Scenario: The owner of the request receives an email telling him that someone wants to do his assignment
-    He communicates back to the expert that made the request by creating a comment.
+  Scenario: An expert creates a price quote that the requst owner replies to.
     Given "expert@coder.com" has sent a price quote to the request owner "noob@noob.no" 
     Then "noob@noob.no" should receive an email
     And "noob@noob.no" opens the email with subject "New price quote on Stabstr"
