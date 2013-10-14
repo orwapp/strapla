@@ -6,7 +6,7 @@ h2.label.label-success.big_font= price_quote.status.titleize if price_quote.stat
   hr
 
   - if price_quote.user == @current_user
-    = render 'form'
+    = render :partial => 'form', locals: {price_quote: price_quote}
   - else
     strong= "From: "
     span= price_quote.user.name
