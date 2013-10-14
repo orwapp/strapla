@@ -1,13 +1,14 @@
-= simple_form_for [@request, @price_quote] do |f|
-  - if @price_quote.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@price_quote.errors.count, "error")} prohibited this price_quote from being saved:"
-      ul
-        - @price_quote.errors.full_messages.each do |message|
-          li = message
-  
+- if @price_quote.present? and @price_quote.errors.any?
+  #error_explanation
+    h2 = "#{pluralize(@price_quote.errors.count, "error")} prohibited this price_quote from being saved:"
+    ul
+      - @price_quote.errors.full_messages.each do |message|
+        li = message
+
+
+= simple_form_for [price_quote.request, price_quote] do |f|
   = f.input :description
   = f.input :price, label: 'Total price in USD'
   = f.input :hours_estimated
-  - submit_text = @price_quote.new_record? 
+  - submit_text = price_quote.new_record? 
   = f.submit submit_text, class: 'btn btn-primary', disable_with: "Saving..."
