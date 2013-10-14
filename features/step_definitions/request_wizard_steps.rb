@@ -38,19 +38,17 @@ Then(/^I fill in all the mandatory fields with the necessary background informat
 end
 
 Then(/^I fill in and submit the first New feature form$/) do
-  within(:css, '.feature1') do
-    fill_in 'Title', with: 'Post requests for help'
-    fill_in 'Text', with: 'Post requests for help'
-    click_on 'Save'
-  end
+  fill_in 'Title', with: 'Post requests for help'
+  fill_in 'Text', with: 'Post requests for help'
+  click_on 'Add'
+  click_on 'Save'
 end
 
 Then(/^I fill in and submit the second New feature form$/) do
-  within(:css, '.feature2') do
-    fill_in 'Title', with: 'Post requests for help'
-    fill_in 'Text', with: 'Post requests for help'
-    click_on 'Save'
-  end
+  fill_in 'Title', with: 'Post requests for help'
+  fill_in 'Text', with: 'Post requests for help'
+  click_on 'Add'
+  click_on 'Save'
 end
 
 Given(/^I have created two features and pressed Next$/) do

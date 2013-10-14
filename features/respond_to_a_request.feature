@@ -15,13 +15,13 @@ Feature: Respond to a request - Send a Price Quote
     Then I should see "You need to sign in or sign up before continuing"
     And I sign up as "expert@coder.com"
 
-    Then I fill in "Comment" with "I can do this next week"
+    Then I fill in "Description" with "I can do this next week"
     And  I fill in "Total price in USD" with "120"
     And  I fill in "Hours estimated" with "30"
     When I press "Send"
     Then "noob@noob.no" should be notified that I have sent a price quote
 
-  Scenario: The owner of the request receives an email telling him that someone wants to do his assignment
+  Scenario: An expert creates a price quote that the requst owner replies to.
     Given "expert@coder.com" has sent a price quote to the request owner "noob@noob.no" 
     Then "noob@noob.no" should receive an email
     And "noob@noob.no" opens the email with subject "New price quote on Stabstr"
@@ -29,7 +29,7 @@ Feature: Respond to a request - Send a Price Quote
     Given I am signed in as "noob@noob.no"
     And I follow "Open price quote at Stabstr" in the email
     #Then I should be on the page where I can negotiate terms with the developer
-    And I fill in "Comment" with "martin"
+    And I fill in "Description" with "martin"
     And I press "Create Comment"
     And "expert@coder.com" should receive an email with the following body:
       |martin|

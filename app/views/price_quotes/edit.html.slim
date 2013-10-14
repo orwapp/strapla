@@ -1,6 +1,6 @@
 h1 Editing price_quote
 
-== render 'form'
+= render :partial => 'form', locals: { price_quote: @price_quote }
 
 = link_to 'Show', @price_quote
 '|

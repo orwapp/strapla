@@ -27,6 +27,14 @@ h2.label.label-success.big_font= price_quote.status.titleize if price_quote.stat
     span= price_quote.description
     br
 
+  hr
+
+  = render price_quote.comments
+  br
+  br
+  br
+  strong= "Reply to #{price_quote.user.name}"
+  = render :partial => 'comments/on_price_quote_form', locals: {price_quote: price_quote, comment: price_quote.comments.new}
 
   hr
   .row

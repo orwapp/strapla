@@ -36,7 +36,7 @@ Feature: Use the wizard to create a new request
 		And I fill in "Title" with "Facebook likes"
     When I press "Add"
     When I press "Save"
-		And I fill in "Title" with "Twitter signin"
+		And  I fill in "Title" with "Twitter signin"
     When I press "Save"
     When I press "Next"
     Then I should have 2 features stored in the database
@@ -44,6 +44,6 @@ Feature: Use the wizard to create a new request
   Scenario: Review the feature before submitting
     Given I have created two features
     Then I should see "Please review your request"
-    When I press "Publish"
+    When I press "Next"
     Then we should have a new request available for consultants to give a price quote on.
     # Provide a select menu for the keywords /Given|And|Then|Or|etc../

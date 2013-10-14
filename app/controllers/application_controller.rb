@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
       @my_requests_in_progress = current_user.requests.in_process.to_a
       @my_requests_assigned_not_accepted = current_user.requests.assigned_not_accepted.to_a
     else
-      @unassigned_requests = Request.published.unassigned
+      @unassigned_requests = Request.published_and_unassigned
     end
     @groups = @unassigned_requests.load.collect(&:request_group).uniq if @unassigned_requests
   end

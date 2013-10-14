@@ -2,7 +2,8 @@
 
 br
 br
-= link_to 'Quote a price', new_request_price_quote_path(@request), class: 'btn btn-info pull-right'
+- unless @current_user == @request.user
+  = link_to 'Quote a price', new_request_price_quote_path(@request), class: 'btn btn-info pull-right'
 
 - if (current_user == @request.user) and @request.price_quotes.present?
   br
