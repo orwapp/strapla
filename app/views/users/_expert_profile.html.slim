@@ -9,7 +9,14 @@
         strong Member since August 08, 2010
         br
         br
-        = link_to(image_tag('linkedin.gif'), user.linkedin_url, :target => "_blank")   if user.linkedin_url.present?
+        .pull-left
+          = link_to(content_tag(:i, "", class: "icon-github large-icon"), "github.com/#{user.github_username}") + "github"   if user.github_username.present?
+          = nbsp
+          = nbsp
+          = nbsp
+        .pull-left
+          = link_to(content_tag(:i, "", class: "icon-linkedin-sign large-icon"), user.linkedin_url, :target => "_blank") + "linkedin"   if user.linkedin_url.present?
+        br
         br
         br
         h2.badge.badge-success Ruby
@@ -26,10 +33,24 @@
             | Stabstr.com 
             br
             | Score
-      .row
-        /.span3.bio= user.bio
-        .span8.bio= "#{user.name} is a top Architect/Engineer/Developer with proven ability to understand, optimize, enhance, and create from scratch significant software tools and workflows with large user bases that greatly magnify productivity for large groups of engineers."
+
     .row
+      .span10
+        strong Bio
+        br
+        = user.bio
+        br
+        br
+
+        strong Dream project
+        br
+        = user.describe_your_dream_project
+        br
+        br
+
+
+
+    /.row
       .span4
         h4 Portfolio
         ul
@@ -40,7 +61,7 @@
         ul
           li Consultant at Redpill-Linpro
           li 10 years of system administation in a Unix environment.
-      .span3
+      /.span3
         h4 Quote from customer
         h4
           blockquote.muted= "#{user.name.split.first} just gets it. Sometimes I wonder if he can read my mind!"
