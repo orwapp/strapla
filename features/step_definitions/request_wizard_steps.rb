@@ -113,3 +113,9 @@ Then(/^the request titled "(.*)" should be marked as delegated to "(.*?)"$/) do 
   @request = Request.find_by_title(title)
   @request.contractor.should eq User.find_by_email(email)
 end
+
+Then(/^"(.*?)" should be on the price quote page$/) do |email|
+	@user				 = User.find_by_email email
+	@price_quote = @user.price_quotes.last
+	current_path.should eq request_path(@price_quote)
+end

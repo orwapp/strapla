@@ -7,6 +7,7 @@ class Request < ActiveRecord::Base
 
   validates_presence_of :title, :description
   #validates_presence_of :request_group
+	# TODO use the pattern Wicked describes
   
 
   scope :published,  -> { where published: true }

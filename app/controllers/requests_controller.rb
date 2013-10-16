@@ -3,7 +3,7 @@ class RequestsController < ApplicationController
   before_action :set_request, only: [:quote, :show, :edit, :update, :destroy]
   before_action :find_requests
   before_filter :set_wizard
-  before_filter :authenticate_user!, except: [:index, :show, :unassigned_requests]
+  before_filter :authenticate_user!, except: [:index,  :unassigned_requests]
 
   def index
   end
@@ -37,10 +37,16 @@ class RequestsController < ApplicationController
 	
 
   def show
+		@request = Request.find(params[:id])
+		#raise "found request: #{@request.id}"
 		# Redirect the user to the request show page if he has made one.
 		if user_signed_in?
+			#raise "he is signed in"
 			@existing_price_quote = current_user.price_quotes.where(request_id: @request.id).first
+			#raise "found existing_price_quote: #{@existing_price_quote}"
 			redirect_to @existing_price_quote if @existing_price_quote.present?
+		else
+			#raise "he is NOT signed in"
 		end
 		
 		@price_quote = current_user.price_quotes.new  if user_signed_in?

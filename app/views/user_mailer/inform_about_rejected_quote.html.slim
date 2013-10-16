@@ -11,7 +11,7 @@ br
 hr
  
 p
-  = "#{@price_quote.comment}".html_safe if @price_quote.comment
+  = "#{@price_quote.description}".html_safe if @price_quote.description
   = "#{@price_quote.price}".html_safe
   = "#{@price_quote.hours_estimated}".html_safe
 
