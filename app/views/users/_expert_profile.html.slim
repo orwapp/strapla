@@ -80,7 +80,5 @@
       = f.hidden_field :expert_id,  value: user.id
       = f.hidden_field :request_id, value: @request.id
       = f.submit "Send the question to #{user.name.split.first}", class: 'btn btn-info send_question pull-right'
-    - else 
-      a.btn.btn-info.pull-right= "Send a question to #{user.name.split.first}"
-
-  = link_to 'Edit', edit_user_registration_path, class: 'btn pull-right btn-info' if @current_user == user
+  - else 
+    a.btn.btn-info.pull-right= "Send a question to #{user.name.split.first}"
