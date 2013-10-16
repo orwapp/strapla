@@ -1,7 +1,6 @@
 CodeRunner::Application.routes.draw do
 
 
-  resources :experiences
 
   #match "request_steps/title_goal", to: "request_steps#title_goal", via: "post"
   resources :request_steps
@@ -16,9 +15,12 @@ CodeRunner::Application.routes.draw do
   resources :feature_requests do
   end
 
-  devise_for :users
+  #devise_for :users
+	devise_for :users, :controllers => {:registrations => "users/registrations"}
+	
 
   resources :users do
+		resources :experiences
     get  'new_price_quotes' => 'price_quotes#new_price_quotes', as: :new_price_quotes 
   end
 
