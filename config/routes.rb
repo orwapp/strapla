@@ -21,6 +21,7 @@ CodeRunner::Application.routes.draw do
 	devise_for :users, :controllers => {:registrations => "users/registrations"}
 	
 
+
   resources :users do
 		resources :experiences
     get  'new_price_quotes' => 'price_quotes#new_price_quotes', as: :new_price_quotes 
@@ -69,6 +70,7 @@ CodeRunner::Application.routes.draw do
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
+	get  'experts' => 'users#browse_experts', as: :browse_experts 
   get  'user/:id' => 'users#profile', as: :user_profile
   get  'select_recipient/:request_id' => 'requests#select_recipient', as: :select_recipient
   post 'delegate_to_expert/:request_id' => 'requests#delegate_to_expert',  as: :delegate_to_expert

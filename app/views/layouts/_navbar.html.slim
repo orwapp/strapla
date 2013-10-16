@@ -2,6 +2,9 @@
   .navbar-inner
     = link_to image_tag('logo.png', size: "110"), root_path, class: :brand
     ul.nav[role="navigation"]
+
+      li[class="#{'active' if current_page?(browse_experts_path)}"]=  link_to 'Our experts', browse_experts_path  
+
       - if user_signed_in?
         - if @current_user.requests.present?
           //li[class="#{'active' if current_page?(my_requests_path)}"]=  link_to 'Requests', my_requests_path
@@ -28,6 +31,8 @@
           = link_to (content_tag(:span, "Unassigned requests ") +  \
             content_tag(:strong, "#{@unassigned_requests.size}", class: "badge badge-success")).html_safe,
             unassigned_requests_path
+
+                                                                                                                                              
                                                                                                                                               
     - if user_signed_in?
       ul.nav.pull-right

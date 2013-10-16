@@ -36,6 +36,7 @@
 
     .row
       .span10
+        br
         strong Bio
         br
         = user.bio
@@ -92,10 +93,12 @@
 
 
 
-  - if show_form
+  - if show_form and @request.present?
     = simple_form_for :delegate_to_expert, url: delegate_to_expert_path(@request) do |f|
       = f.hidden_field :expert_id,  value: user.id
       = f.hidden_field :request_id, value: @request.id
       = f.submit "Send the question to #{user.name.split.first}", class: 'btn btn-info send_question pull-right'
+    - else 
+      a.btn.btn-info.pull-right= "Send a question to #{user.name.split.first}"
 
   = link_to 'Edit', edit_user_registration_path, class: 'btn pull-right btn-info' if @current_user == user
