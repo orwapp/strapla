@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131011114219) do
+ActiveRecord::Schema.define(version: 20131016053946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,20 @@ ActiveRecord::Schema.define(version: 20131011114219) do
 
   add_index "estimated_hours", ["feature_id"], name: "index_estimated_hours_on_feature_id", using: :btree
   add_index "estimated_hours", ["user_id"], name: "index_estimated_hours_on_user_id", using: :btree
+
+  create_table "experiences", force: true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "company"
+    t.date     "from_datee"
+    t.date     "to_date"
+    t.boolean  "current_job"
+    t.string   "summary"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "experiences", ["user_id"], name: "index_experiences_on_user_id", using: :btree
 
   create_table "feature_requests", force: true do |t|
     t.integer  "user_id"
@@ -123,6 +137,7 @@ ActiveRecord::Schema.define(version: 20131011114219) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "delegated_to_user_id"
     t.integer  "contractor_id"
     t.text     "elevator_pitch"
     t.text     "background_information"
@@ -131,7 +146,6 @@ ActiveRecord::Schema.define(version: 20131011114219) do
     t.text     "what_is_it_going_to_give"
     t.text     "what_is_the_frame"
     t.boolean  "published"
-    t.integer  "delegated_to_user_id"
     t.string   "type_of"
     t.string   "status"
     t.date     "due_date"
