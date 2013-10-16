@@ -6,7 +6,8 @@
 
   .carousel-inner
     - @experts.each_with_index do |expert, index|
-      = render partial: "requests/expert", locals: { expert: expert, index: index }
+      /= render partial: "requests/expert", locals: { expert: expert, index: index }
+      = render :partial => "users/expert_profile", locals: { user: expert, index: index, show_form: false }
 
   a.left.carousel-control data-slide="prev" href="#expert_carousel"  &lsaquo;
   a.right.carousel-control data-slide="next" href="#expert_carousel" &rsaquo;
