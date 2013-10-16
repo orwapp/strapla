@@ -1,6 +1,7 @@
 br
 br
 .container.border.border-muted
+  br
   .span6
     strong Title: 
     = experience.title
@@ -11,5 +12,10 @@ br
     strong Summary: 
     = experience.summary
     br
-  .span2
-    = link_to 'Edit', edit_user_experience_path(@current_user, experience)
+    br
+  .span2.pull-right
+    = link_to 'Edit',   edit_user_experience_path(@current_user, experience)
+    = nbsp
+    = "|"
+    = nbsp
+    = link_to 'Delete', user_experience_path(@current_user, experience), method: :delete
