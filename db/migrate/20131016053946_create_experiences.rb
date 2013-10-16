@@ -4,7 +4,7 @@ class CreateExperiences < ActiveRecord::Migration
       t.references :user, index: true
       t.string :title
       t.string :company
-      t.date :from_datee
+      t.date :from_date
       t.date :to_date
       t.boolean :current_job
       t.string :summary

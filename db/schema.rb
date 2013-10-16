@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20131016053946) do
     t.integer  "user_id"
     t.string   "title"
     t.string   "company"
-    t.date     "from_datee"
+    t.date     "from_date"
     t.date     "to_date"
     t.boolean  "current_job"
     t.string   "summary"
@@ -155,12 +155,12 @@ ActiveRecord::Schema.define(version: 20131016053946) do
   add_index "requests", ["request_group_id"], name: "index_requests_on_request_group_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                                       default: "", null: false
+    t.string   "encrypted_password",                          default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0
+    t.integer  "sign_in_count",                               default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -174,6 +174,9 @@ ActiveRecord::Schema.define(version: 20131016053946) do
     t.string   "name"
     t.string   "phone"
     t.string   "linkedin_url"
+    t.string   "github_username"
+    t.text     "describe_your_dream_project"
+    t.integer  "how_many_hours_to_you_typical_work_per_week"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
