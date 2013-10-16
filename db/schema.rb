@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131011114219) do
+ActiveRecord::Schema.define(version: 20131015084420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(version: 20131011114219) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "delegated_to_user_id"
     t.integer  "contractor_id"
     t.text     "elevator_pitch"
     t.text     "background_information"
@@ -131,7 +132,6 @@ ActiveRecord::Schema.define(version: 20131011114219) do
     t.text     "what_is_it_going_to_give"
     t.text     "what_is_the_frame"
     t.boolean  "published"
-    t.integer  "delegated_to_user_id"
     t.string   "type_of"
     t.string   "status"
     t.date     "due_date"
@@ -141,12 +141,12 @@ ActiveRecord::Schema.define(version: 20131011114219) do
   add_index "requests", ["request_group_id"], name: "index_requests_on_request_group_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                                       default: "", null: false
+    t.string   "encrypted_password",                          default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0
+    t.integer  "sign_in_count",                               default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -160,6 +160,9 @@ ActiveRecord::Schema.define(version: 20131011114219) do
     t.string   "name"
     t.string   "phone"
     t.string   "linkedin_url"
+    t.string   "github_username"
+    t.text     "describe_your_dream_project"
+    t.integer  "how_many_hours_to_you_typical_work_per_week"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
