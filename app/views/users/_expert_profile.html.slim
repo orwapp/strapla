@@ -10,7 +10,7 @@
         br
         br
         .pull-left
-          = link_to(content_tag(:i, "", class: "icon-github large-icon"), "github.com/#{user.github_username}") + "github"   if user.github_username.present?
+          = link_to(content_tag(:i, "", class: "icon-github large-icon"), "http://github.com/#{user.github_username}", :target => "_blank") + "github"   if user.github_username.present?
           = nbsp
           = nbsp
           = nbsp
@@ -84,3 +84,5 @@
     = link_to "Send a question to #{user.name.split.first}", new_request_path, class: 'btn btn-info pull-right'
   - else 
     a.btn.btn-info.pull-right= "Send a question to #{user.name.split.first}"
+
+  = link_to 'Edit', edit_user_registration_path, class: 'btn pull-right' if @current_user == user
