@@ -1,3 +1,6 @@
+= render @current_user.experiences
+
+
 = simple_form_for( [@current_user, @experience]) do |f|
   = f.error_notification
   .form-inputs

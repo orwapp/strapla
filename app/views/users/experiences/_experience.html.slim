@@ -1,0 +1,15 @@
+br
+br
+.container.border.border-muted
+  .span6
+    strong Title: 
+    = experience.title
+    br
+    strong Company: 
+    = experience.company
+    br
+    strong Summary: 
+    = experience.summary
+    br
+  .span2
+    = link_to 'Edit', edit_user_experience_path(@current_user, experience)
