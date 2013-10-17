@@ -60,14 +60,15 @@
       .span10
         .span3
           strong= "Average price / hour: "
-          = "$ #{user.average_price}"
+          = "N/A"
+          /= "$ #{user.average_price}"
           br
           strong="Nr of assignments: "
           ="0"
           br
           strong="Percent happy clients: "
           ="N/A"
-        .span5.previously_answered
+        /.span5.previously_answered
           = "Has answered questions matching words keywords in your description: "
           strong RSpec
           |  and 
