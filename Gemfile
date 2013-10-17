@@ -33,7 +33,6 @@ group :production do
 end
 
 group :development do
-  #gem 'sqlite3'
   gem 'growl'
   gem 'foreman'
   gem 'zeus'
@@ -42,6 +41,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
+	gem 'metric_fu'
 end
 
 group :development, :test do
@@ -52,8 +52,6 @@ end
 group :test do
   gem 'email_spec'
   gem 'launchy'
-  #gem 'capybara-webkit'
-  #gem 'capybara'
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
   gem 'email_spec'
