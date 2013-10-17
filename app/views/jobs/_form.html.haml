@@ -1,7 +1,7 @@
-= simple_form_for(@experience, :defaults => { :input_html => { :class => 'input-xxlarge' } }) do |f|
+= simple_form_for(@job, :defaults => { :input_html => { :class => 'input-xxlarge' } }) do |f|
   = f.error_notification
 
-  = simple_form_for( [@current_user, @experience]) do |f|
+  = simple_form_for( [@current_user, @job]) do |f|
     = f.error_notification
     .form-inputs
       = f.input :title,     :autofocus => true

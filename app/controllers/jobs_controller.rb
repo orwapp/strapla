@@ -1,74 +1,74 @@
 class JobsController < ApplicationController
-  before_action :set_experience, only: [:show, :edit, :update, :destroy]
+  before_action :set_job, only: [:show, :edit, :update, :destroy]
 
-  # GET /experiences
-  # GET /experiences.json
+  # GET /jobs
+  # GET /jobs.json
   def index
-    @experiences = Experience.all
+    @jobs = Job.all
   end
 
-  # GET /experiences/1
-  # GET /experiences/1.json
+  # GET /jobs/1
+  # GET /jobs/1.json
   def show
   end
 
-  # GET /experiences/new
+  # GET /jobs/new
   def new
-    @experience = Experience.new
+    @job = Job.new
   end
 
-  # GET /experiences/1/edit
+  # GET /jobs/1/edit
   def edit
   end
 
-  # POST /experiences
-  # POST /experiences.json
+  # POST /jobs
+  # POST /jobs.json
   def create
-    @experience = Experience.new(experience_params)
+    @job = Job.new(job_params)
 
     respond_to do |format|
-      if @experience.save
-        format.html { redirect_to @experience, notice: 'Experience was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @experience }
+      if @job.save
+        format.html { redirect_to @job, notice: 'Job was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @job }
       else
         format.html { render action: 'new' }
-        format.json { render json: @experience.errors, status: :unprocessable_entity }
+        format.json { render json: @job.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /experiences/1
-  # PATCH/PUT /experiences/1.json
+  # PATCH/PUT /jobs/1
+  # PATCH/PUT /jobs/1.json
   def update
     respond_to do |format|
-      if @experience.update(experience_params)
-        format.html { redirect_to edit_user_registration_path(@current_user), notice: 'Experience was successfully updated.' }
+      if @job.update(job_params)
+        format.html { redirect_to edit_user_registration_path(@current_user), notice: 'Job was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @experience.errors, status: :unprocessable_entity }
+        format.json { render json: @job.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /experiences/1
-  # DELETE /experiences/1.json
+  # DELETE /jobs/1
+  # DELETE /jobs/1.json
   def destroy
-    @experience.destroy
+    @job.destroy
     respond_to do |format|
-      format.html { redirect_to experiences_url }
+      format.html { redirect_to jobs_url }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_experience
-      @experience = Experience.find(params[:id])
+    def set_job
+      @job = Job.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def experience_params
-			params.require(:experience).permit(:title, :company, :summary, :from_date, :to_date)
+    def job_params
+			params.require(:job).permit(:title, :company, :summary, :from_date, :to_date)
     end
 end

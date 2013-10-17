@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20131016053946) do
-=======
-ActiveRecord::Schema.define(version: 20131015084420) do
->>>>>>> master
+ActiveRecord::Schema.define(version: 20131017105834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,20 +64,6 @@ ActiveRecord::Schema.define(version: 20131015084420) do
   add_index "estimated_hours", ["feature_id"], name: "index_estimated_hours_on_feature_id", using: :btree
   add_index "estimated_hours", ["user_id"], name: "index_estimated_hours_on_user_id", using: :btree
 
-  create_table "experiences", force: true do |t|
-    t.integer  "user_id"
-    t.string   "title"
-    t.string   "company"
-    t.date     "from_date"
-    t.date     "to_date"
-    t.boolean  "current_job"
-    t.string   "summary"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "experiences", ["user_id"], name: "index_experiences_on_user_id", using: :btree
-
   create_table "feature_requests", force: true do |t|
     t.integer  "user_id"
     t.text     "user_story"
@@ -105,6 +87,20 @@ ActiveRecord::Schema.define(version: 20131015084420) do
   end
 
   add_index "features", ["request_id"], name: "index_features_on_request_id", using: :btree
+
+  create_table "jobs", force: true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "company"
+    t.date     "from_date"
+    t.date     "to_date"
+    t.boolean  "current_job"
+    t.string   "summary"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "jobs", ["user_id"], name: "index_jobs_on_user_id", using: :btree
 
   create_table "price_quotes", force: true do |t|
     t.integer  "user_id"

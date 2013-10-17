@@ -4,13 +4,13 @@ h2.page-header Your profile
 .tabbable
   ul.nav.nav-tabs
     li.active: a data-toggle="tab" href="#basic" Basic information
-    li: a data-toggle="tab" href="#experience" Experience
+    li: a data-toggle="tab" href="#job" Job
         
 
   .tab-content
     .tab-pane.active#basic
       = render :partial => 'users/basic'
         
-    .tab-pane#experience
-      = render :partial => 'users/experience_form'
+    .tab-pane#job
+      = render :partial => 'users/job_form'
 

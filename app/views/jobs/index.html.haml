@@ -1,8 +1,8 @@
 .page-header
-  = link_to new_experience_path, :class => 'btn btn-primary' do
+  = link_to new_job_path, :class => 'btn btn-primary' do
     %i.icon-plus.icon-white
-    New Experience
-  %h1 Listing experiences
+    New Job
+  %h1 Listing jobs
 
 %table.table.table-bordered.table-striped
   %thead
@@ -12,8 +12,8 @@
       %th
 
   %tbody
-    - @experiences.each do |experience|
+    - @jobs.each do |job|
       %tr
-        %td= link_to 'Show', experience
-        %td= link_to 'Edit', edit_experience_path(experience)
-        %td= link_to 'Destroy', experience, :confirm => 'Are you sure?', :method => :delete
+        %td= link_to 'Show', job
+        %td= link_to 'Edit', edit_job_path(job)
+        %td= link_to 'Destroy', job, :confirm => 'Are you sure?', :method => :delete

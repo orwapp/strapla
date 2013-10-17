@@ -1,0 +1,21 @@
+br
+br
+.container.border.border-muted
+  br
+  .span6
+    strong Title: 
+    = job.title
+    br
+    strong Company: 
+    = job.company
+    br
+    strong Summary: 
+    = job.summary
+    br
+    br
+  .span2.pull-right
+    = link_to 'Edit',   edit_user_job_path(@current_user, job)
+    = nbsp
+    = "|"
+    = nbsp
+    = link_to 'Delete', user_job_path(@current_user, job), method: :delete
