@@ -2,7 +2,7 @@ CodeRunner::Application.routes.draw do
 
 
 
-  resources :experiences
+  resources :jobs
 
   #match "request_steps/title_goal", to: "request_steps#title_goal", via: "post"
   resources :request_steps
@@ -23,7 +23,7 @@ CodeRunner::Application.routes.draw do
 
 
   resources :users do
-		resources :experiences
+		resources :jobs
     get  'new_price_quotes' => 'price_quotes#new_price_quotes', as: :new_price_quotes 
   end
 
