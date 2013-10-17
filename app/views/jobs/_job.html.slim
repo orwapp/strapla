@@ -1,10 +1,22 @@
-.span3.border.border-muted
-  strong Title: 
-  = job.title
-  br
-  strong Company: 
-  = job.company
-  br
-  strong Summary: 
-  = job.summary
+.span3.well.well-small
 
+	 h5= job.company
+	 em="#{job.from_date} - #{job.to_date}"
+	 br
+	                  
+	 strong Title: 
+	 = job.title
+	 br
+	                  
+	 strong From: 
+	 = job.from_date
+	 br
+	                  
+	 strong To: 
+	 = job.to_date
+	 br
+	                  
+	 strong Summary: 
+	 = job.summary
+	 br
+	 br
