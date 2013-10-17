@@ -1,0 +1,10 @@
+.page-header
+  = link_to certifications_path, :class => 'btn' do
+    %i.icon-list-alt
+    Back
+  = link_to @certification, :class => 'btn btn-primary' do
+    %i.icon-info-sign.icon-white
+    Show
+  %h1 Editing certification
+
+= render 'form'
