@@ -28,11 +28,14 @@ class RequestGroupsController < ApplicationController
 
     respond_to do |format|
       if @request_group.save
-        format.html { redirect_to @request_group, notice: 'Request group was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @request_group }
+        format.html { redirect_to @request_group, 
+											notice: 'Request group was successfully created.' }
+        format.json { render action: 'show', status: :created, 
+											location: @request_group }
       else
         format.html { render action: 'new' }
-        format.json { render json: @request_group.errors, status: :unprocessable_entity }
+        format.json { render json: @request_group.errors, 
+											status: :unprocessable_entity }
       end
     end
   end
@@ -42,11 +45,13 @@ class RequestGroupsController < ApplicationController
   def update
     respond_to do |format|
       if @request_group.update(request_group_params)
-        format.html { redirect_to @request_group, notice: 'Request group was successfully updated.' }
+        format.html { redirect_to @request_group, 
+											notice: 'Request group was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @request_group.errors, status: :unprocessable_entity }
+        format.json { render json: @request_group.errors, 
+											status: :unprocessable_entity }
       end
     end
   end
@@ -67,7 +72,8 @@ class RequestGroupsController < ApplicationController
       @request_group = RequestGroup.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    # Never trust parameters from the scary internet, 
+		# only allow the white list through.
     def request_group_params
       params.require(:request_group).permit(:title, :description)
     end
