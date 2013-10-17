@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :estimated_hours, dependent: :destroy
   has_many :jobs, dependent: :destroy
+  has_many :certifications, dependent: :destroy
   has_and_belongs_to_many :request_groups
 
   devise :database_authenticatable, :registerable,
