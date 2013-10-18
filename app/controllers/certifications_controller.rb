@@ -27,8 +27,8 @@ class CertificationsController < ApplicationController
     @certification = Certification.new(certification_params)
 
     respond_to do |format|
-      if @certification.save
-        format.html { redirect_to @certification, notice: 'Certification was successfully created.' }
+      if @certification.save!
+        format.html { redirect_to :back, notice: 'Certification was successfully created.' }
         format.json { render action: 'show', status: :created, location: @certification }
       else
         format.html { render action: 'new' }

@@ -2,15 +2,18 @@ h2.page-header Your profile
 
 
 .tabbable
-  ul.nav.nav-tabs
-    li.active: a data-toggle="tab" href="#basic" Basic information
-    li: a data-toggle="tab" href="#job" Job
-        
+	ul.nav.nav-tabs
+		li.active: a data-toggle="tab" href="#basic" Basic information
+		li: a data-toggle="tab" href="#job" Job
+		li: a data-toggle="tab" href="#certifications" Certifications
+				
 
-  .tab-content
-    .tab-pane.active#basic
-      = render :partial => 'users/basic'
-        
-    .tab-pane#job
-      = render :partial => 'users/job_form'
+	.tab-content
+		.tab-pane.active#basic
+			= render :partial => 'users/basic'
+				
+		.tab-pane#certifications
+			strong Certifications
+			= render @current_user.certifications.all
+			= render :partial => 'certifications/form'
 
