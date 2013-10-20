@@ -30,6 +30,7 @@ gem 'activerecord-postgres-hstore'
 gem 'pg'
 
 group :production do
+  gem 'exception_notification'
 end
 
 group :development do

@@ -1,4 +1,11 @@
 CodeRunner::Application.configure do
+
+  CodeRunner::Application.config.middleware.use ExceptionNotification::Rack,
+    :email => {
+      :email_prefix => "[BUG] ",
+      :sender_address => %{"notifier" <bug@stabstr.com>},
+      :exception_recipients => %w{martin@stabenfeldt.net}
+    } 
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
