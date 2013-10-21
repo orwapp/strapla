@@ -10,12 +10,14 @@
         br
         br
         .pull-left
-          = link_to(content_tag(:i, "", class: "icon-github large-icon"), "http://github.com/#{user.github_username}", :target => "_blank") + "github"   if user.github_username.present?
+          = link_to(content_tag(:i, "", class: "icon-github large-icon"), 
+						"http://github.com/#{user.github_username}", :target => "_blank") + "github"   if user.github_username.present?
           = nbsp
           = nbsp
           = nbsp
         .pull-left
-          = link_to(content_tag(:i, "", class: "icon-linkedin-sign large-icon"), user.linkedin_url, :target => "_blank") + "linkedin"   if user.linkedin_url.present?
+          = link_to(content_tag(:i, "", class: "icon-linkedin-sign large-icon"), user.linkedin_url, 
+						:target => "_blank") + "linkedin"   if user.linkedin_url.present?
         br
         br
         br
@@ -37,23 +39,25 @@
     .row
       .span10
         br
-        strong Bio
-        br
+        h4 Bio
         = user.bio
         br
         br
 
-        strong Dream project
-        br
+        h4 Dream project
         = user.describe_your_dream_project
         br
         br
-
-        strong Jobs
         br
+
+        h4 Jobs
         .row
           = render user.jobs
 
+        h4 Certifications
+        br
+        .row
+          = render user.certifications
     .row
       br
       br
