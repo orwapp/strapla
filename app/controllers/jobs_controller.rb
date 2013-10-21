@@ -1,4 +1,5 @@
 class JobsController < ApplicationController
+	require 'DateConverter'
   before_action :set_job, only: [:show, :edit, :update, :destroy]
 
   # GET /jobs
@@ -24,11 +25,13 @@ class JobsController < ApplicationController
   # POST /jobs
   # POST /jobs.json
   def create
-    @job = Job.new(job_params)
+    @job = @current_user.jobs.new(job_params)
+    @job.from_date = DateConverter.us_to_european( params[:job][:from_date] )
+    @job.to_date   = DateConverter.us_to_european( params[:job][:to_date] )
 
     respond_to do |format|
-      if @job.save
-        format.html { redirect_to @job, notice: 'Job was successfully created.' }
+      if @job.save!
+        format.html { redirect_to :back, notice: 'Job was successfully created.' }
         format.json { render action: 'show', status: :created, location: @job }
       else
         format.html { render action: 'new' }
@@ -42,7 +45,8 @@ class JobsController < ApplicationController
   def update
     respond_to do |format|
       if @job.update(job_params)
-        format.html { redirect_to edit_user_registration_path(@current_user), notice: 'Job was successfully updated.' }
+        format.html { redirect_to edit_user_registration_path(@current_user), 
+					notice: 'Job was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

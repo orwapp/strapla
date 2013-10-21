@@ -4,7 +4,7 @@ h2.page-header Your profile
 .tabbable
 	ul.nav.nav-tabs
 		li.active: a data-toggle="tab" href="#basic" Basic information
-		li: a data-toggle="tab" href="#job" Job
+		li: a data-toggle="tab" href="#jobs" Job
 		li: a data-toggle="tab" href="#certifications" Certifications
 				
 
@@ -12,8 +12,12 @@ h2.page-header Your profile
 		.tab-pane.active#basic
 			= render :partial => 'users/basic'
 				
+		.tab-pane#jobs
+			h4 Jobs
+			= render @current_user.jobs.all
+			= render :partial => 'jobs/form'
+
 		.tab-pane#certifications
-			strong Certifications
+			h4 Certifications
 			= render @current_user.certifications.all
 			= render :partial => 'certifications/form'
-

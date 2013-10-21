@@ -26,6 +26,7 @@ CodeRunner::Application.routes.draw do
 
   resources :users do
 		resources :jobs
+		resources :certifications
     get  'new_price_quotes' => 'price_quotes#new_price_quotes', as: :new_price_quotes 
   end
 
