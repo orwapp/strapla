@@ -6,7 +6,7 @@
     .right.span8
       .span4
         h3= user.name 
-        strong Member since August 08, 2010
+        strong= "Member since #{I18n.l( user.created_at, format: :without_time)}"
         br
         br
         .pull-left
