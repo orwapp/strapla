@@ -8,13 +8,13 @@
     RequestGroup.all.collect {|p| [ p.title, p.id ] }, { :include_blank => false })
 
 
-
+= @software_groups.each do |g| 
+  h5 g.title
+  = link_to((image_tag "#{g.image_url}", size: '150x150'), 
+    next_wizard_path)
+  
 
 javascript:
   $('#info-box').html("Please select what kind of project this is.").show()
   $('#example-box').html("The first version of WebCalc will be a Web application.").show()
 h1.lead Select what kind of software you want to build
-
-h5 Web application
-= link_to((image_tag 'webapp.png', size: '150x150', alt: 'Web application'), 
-  next_wizard_path)

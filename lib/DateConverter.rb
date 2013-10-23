@@ -1,6 +1,6 @@
-class DateConverter
+class String
 
-	def self.us_to_european(date)
+	def normalize
 		Date.strptime(date, "%m/%d/%Y")
 	end
 

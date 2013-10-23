@@ -17,6 +17,8 @@ class Requests::BuildController < ApplicationController
       @feature = Feature.new
     when 'select_recipient'
       @experts = User.where(role: :expert).load
+    when 'select_what_kind_of_software'
+      @software_groups = RequestGroup.all
     else
     end
       render_wizard
@@ -34,6 +36,7 @@ class Requests::BuildController < ApplicationController
     @request = Request.create
     redirect_to wizard_path(steps.first, :request_id => @request.id)
   end
+
 
 
   def request_params
