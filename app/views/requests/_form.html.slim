@@ -19,14 +19,17 @@
           input_html: { 'data-hint' => 'The title of the project', 
             'data-example' => 'WebCalc - calculating through the web',
             class: 'span8 help_text' }
-        = f.input :goal,  required: true, 
-          input_html: { 'data-hint' => 'Should be clear and measureable.', 
-          'data-example' => 'I need a beta that can addition and subtracktion completed within 1 week.',
-          class: 'span8 help_text' }
+
         = f.input :description,   required: true, 
           input_html: { 'data-hint' => 'If you had thirty seconds and two sentences to describe our project, what would you say?',
           'data-example' => 'Why look for a pysical calculator, when you can access one on your through your browser on the mobile and on your desktop? WebCalc can calculate everything!',
           class: 'span8 help_text'}  
+
+        = f.input :background_information,  required: true, 
+          input_html: { 'data-hint' => 'Why do we need this software / app?', 
+          'data-example' => 'We need a web based calculator because not everyone carries a casio calculator with them. This will make it easy to do advanced calculations outdoor.',
+          class: 'span8 help_text' }
+
 
         = f.button :submit,  'Next', :class => 'btn btn-info'
 

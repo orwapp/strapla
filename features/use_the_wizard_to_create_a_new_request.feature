@@ -21,15 +21,18 @@ Feature: Use the wizard to create a new request
 		# The user can choose from extend existing app, fix bug and..
     And I press "Build something new"
 
+    # Request new
 		Then I fill in "Title" with "Calculator"
-		And  I fill in "Which problem are you solving?" with "Complex calculations"
+		And  I fill in "Description" with "Complex calculations"
 		And  I fill in "Background information" with "People need help to calculate"
     And  I press "Next"
 
-    #Then I should see a list of things that can be built
+    # Then I should see a list of things that can be built
+    # :select_what_kind_of_software,
 		And I press "Web Application"
 
     #Then I should see a list of programming languages and framework
+    # :preferred_technology
     Then I should see "Do you have any preferences regarding programming language or framework?"
 		And  I press "Yes, let me decide"
 		And  I press "Ruby on Rails"

@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(version: 20131017121754) do
     t.integer  "user_id"
     t.string   "title"
     t.string   "company"
-    t.date     "from_datee"
+    t.date     "from_date"
     t.date     "to_date"
     t.boolean  "current_job"
     t.string   "summary"

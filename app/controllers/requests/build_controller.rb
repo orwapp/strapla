@@ -1,12 +1,13 @@
 class Requests::BuildController < ApplicationController
   include Wicked::Wizard
 
-  steps :init, 
-		:background_information, 
-    :no_list_what_can_go_wrong,
+  steps  \
+    :select_what_kind_of_software,
+    :select_language_or_framework,
     :the_frame,
+    :create_a_test,
     :select_group,
-    :add_features,
+    :review,
     :select_recipient
 
 	# All the steps are handled here
