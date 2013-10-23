@@ -119,3 +119,8 @@ Then(/^"(.*?)" should be on the price quote page$/) do |email|
 	@price_quote = @user.price_quotes.last
 	current_path.should eq request_path(@price_quote)
 end
+
+Then(/^the "(.*?)" group should have one new unassigned request$/) do |group|
+  @group = RequstGroup.find_by_name(group)
+  @group.requests.size.should eq 1
+end

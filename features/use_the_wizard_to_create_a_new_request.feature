@@ -17,17 +17,38 @@ Feature: Use the wizard to create a new request
   Scenario: Complete the first page of the wizard, the background information
     When I go to the frontpage
     Then I press "Start your project"
-		Then I fill in "Title" with "lkjlkj"
-		Then I fill in "Goal" with "lkjlkj"
-		Then I fill in "Description" with "lkjlkj"
-    When I press "Next"
-		# Background information 
-    When I press "Continue"
-    When I press "Continue"
-    When I press "Continue"
-    And I select "Ruby on Rails" as the technology I want the this application build in.
-    When I press "Continue"
-    Then we should have one Request object saved
+
+		# The user can choose from extend existing app, fix bug and..
+    And I press "Build something new"
+
+		Then I fill in "Title" with "Calculator"
+		And  I fill in "Which problem are you solving?" with "Complex calculations"
+		And  I fill in "Background information" with "People need help to calculate"
+    And  I press "Next"
+
+    #Then I should see a list of things that can be built
+		And I press "Web Application"
+
+    #Then I should see a list of programming languages and framework
+    Then I should see "Do you have any preferences regarding programming language or framework?"
+		And  I press "Yes, let me decide"
+		And  I press "Ruby on Rails"
+
+    Then I should see "What is the frame?"
+		And  I fill in "Due date" with "01.01.2014"
+    And  I press "Next"
+
+    Then I should see "Create a test"
+    And  I press "Skip"
+
+    Then I should see "Review"
+    And  I press "Next"
+
+		# Select recipient
+    Then I should see "Who shall we send the request to?"
+		And  I press "Send to the 'Ruby' group"
+		Then the "Ruby" group should have one new unassigned request
+
 
 	@javascript
   Scenario: Create two features

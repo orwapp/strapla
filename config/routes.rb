@@ -44,12 +44,14 @@ CodeRunner::Application.routes.draw do
 		resources :estimated_hours
     resources :comments
   end
+
+	get  'requests/init'   => 'requests#init',  as: :init_request,  format: false
   resources :requests do
     resources :build, controller: 'requests/build'
     resources :price_quotes do
       resources :comments
     end
-    get  '/quote'    => 'requests#quote',  as: :quote,  format: false
+    get  '/quote'  => 'requests#quote',  as: :quote,  format: false
     get  'features/create_many/' => 'features#create_many', as: :create_many 
     get  'features/review'       => 'features#review',  as: :review,  format: false
     post '/publish'   => 'requests#publish',     as: :publish,   format: false

@@ -1,4 +1,4 @@
-Fabricator(:experience) do
+Fabricator(:job) do
   user        nil
   title       "MyString"
   company     "MyString"

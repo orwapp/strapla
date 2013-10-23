@@ -1,13 +1,15 @@
 class Requests::BuildController < ApplicationController
   include Wicked::Wizard
 
-  steps :background_information, 
+  steps :init, 
+		:background_information, 
     :no_list_what_can_go_wrong,
     :the_frame,
     :select_group,
     :add_features,
     :select_recipient
 
+	# All the steps are handled here
   def show
     @request = Request.find(params[:request_id])
     case params[:id]

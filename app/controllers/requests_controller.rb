@@ -8,6 +8,9 @@ class RequestsController < ApplicationController
   def index
   end
 
+	def init
+	end
+
   def unassigned_requests
     @unassigned_requests = Request.published_and_unassigned.to_a
   end
