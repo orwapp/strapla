@@ -1,11 +1,20 @@
 .progress
   .bar.completed.bar-success data-percent="22.5" style="width: 52.5%;"
   .bar.remaining.bar-warning data-percent="77.5" style="width: 47.5%;"
+
 = render :layout => 'form' do |f|
   = label_tag 'request_group', 'Select target group'
   = select("request", "request_group_id", 
     RequestGroup.all.collect {|p| [ p.title, p.id ] }, { :include_blank => false })
 
+
+
+
 javascript:
   $('#info-box').html("Please select what kind of project this is.").show()
   $('#example-box').html("The first version of WebCalc will be a Web application.").show()
+h1.lead Select what kind of software you want to build
+
+h5 Web application
+= link_to((image_tag 'webapp.png', size: '150x150', alt: 'Web application'), 
+  next_wizard_path)

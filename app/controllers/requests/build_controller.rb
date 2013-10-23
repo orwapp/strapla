@@ -5,8 +5,7 @@ class Requests::BuildController < ApplicationController
     :select_what_kind_of_software,
     :select_language_or_framework,
     :the_frame,
-    :create_a_test,
-    :select_group,
+    #:create_a_test,
     :review,
     :select_recipient
 

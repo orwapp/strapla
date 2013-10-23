@@ -41,8 +41,8 @@ Feature: Use the wizard to create a new request
 		And  I fill in "Due date" with "01.01.2014"
     And  I press "Next"
 
-    Then I should see "Create a test"
-    And  I press "Skip"
+    #Then I should see "Create a test"
+    #And  I press "Skip"
 
     Then I should see "Review"
     And  I press "Next"
