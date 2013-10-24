@@ -3,18 +3,21 @@
   .bar.remaining.bar-warning data-percent="77.5" style="width: 47.5%;"
 
 = render :layout => 'form' do |f|
-  = label_tag 'request_group', 'Select target group'
-  = select("request", "request_group_id", 
-    RequestGroup.all.collect {|p| [ p.title, p.id ] }, { :include_blank => false })
 
 
-= @software_groups.each do |g| 
-  h5 g.title
-  = link_to((image_tag "#{g.image_url}", size: '150x150'), 
-    next_wizard_path)
-  
+  ul.thumbnails.margin-erase
+    - @software_groups.each_with_index do |group, index|
+      = raw '</ul><ul class="thumbnails margin-erase">' if index % 3 == 0 && index != 0
+      li.span2
+        .thumbnail
+          = link_to((image_tag "#{group.image_url}", size: '100x100'), 
+            next_wizard_path)
+          br
+          em=  group.title
+
+
+    
 
 javascript:
   $('#info-box').html("Please select what kind of project this is.").show()
   $('#example-box').html("The first version of WebCalc will be a Web application.").show()
-h1.lead Select what kind of software you want to build

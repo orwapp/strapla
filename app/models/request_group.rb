@@ -7,6 +7,7 @@ class RequestGroup < ActiveRecord::Base
   has_and_belongs_to_many :users
 
   def image_url
+    self.title.gsub!(/[^0-9a-z ]/i, '')
     self.title.downcase.normalize + ".png"
   end
 
