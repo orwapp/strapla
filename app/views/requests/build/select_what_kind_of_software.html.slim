@@ -4,8 +4,20 @@
 
 = render :layout => 'form' do |f|
 
+  = f.collection_radio_buttons(:request_group_id, RequestGroup.all, :id, :title) do |b|
+    b.label data-value=b.value  
+    = b.radio_button + image_tag(b.object.image_url, size: '100x100') + b.text 
+    
+    
+    /li.span2
+      .thumbnail
+        = image_tag "#{b.object.image_url}", size: '100x100'
+        /= link_to((image_tag "#{b.object.image_url}", size: '100x100'), 
+          next_wizard_path)
+        br
+        em=  b.object.title
 
-  ul.thumbnails.margin-erase
+  /ul.thumbnails.margin-erase
     - @software_groups.each_with_index do |group, index|
       = raw '</ul><ul class="thumbnails margin-erase">' if index % 3 == 0 && index != 0
       li.span2
