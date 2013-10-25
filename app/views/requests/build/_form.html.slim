@@ -12,6 +12,7 @@
             li= msg
     = simple_form_for(@request, url: wizard_path, method: :put, :html => { :class => 'form-inline  help_text' }) do |f|
       = yield f
+      .row
       .actions
         = f.submit "Continue"
         = nbsp

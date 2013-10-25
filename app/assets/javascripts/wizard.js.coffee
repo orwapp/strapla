@@ -39,3 +39,6 @@ $ ->
       $('#example-box').show() 
     else 
       $('#example-box').hide() 
+
+
+  $('body#build_show input[type=radio]').hide()
