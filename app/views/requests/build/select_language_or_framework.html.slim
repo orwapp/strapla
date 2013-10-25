@@ -16,23 +16,12 @@ br
 .alternatives.hide
   hr
   br
+  = render :layout => 'form' do |f|
+    = f.collection_radio_buttons(:request_group_id, PreferredLanguage.all, :id, :title) do |b|
+        = b.radio_button + image_tag(b.object.image_url, size: '100x100') + "<br>".html_safe +  "<span class='icon_text'>#{b.text} </span>".html_safe
 
-  .span2
-    strong Web application
-    br
-    = link_to((image_tag 'webapp.png', size: '100x100', alt: 'Web application'), 
-        next_wizard_path)
 
-  
-  .span2
-    strong Android
-    br
-    = link_to((image_tag 'androidapp.png', size: '100x100', alt: 'Android'), 
-        next_wizard_path)
-    
-  .span2
-    strong iOS
-    br
-    = link_to((image_tag 'iosapp.png', size: '100x100', alt: 'iOS'), 
-        next_wizard_path)
-  
+javascript:
+  // Disable the continue button untill something is chosen.
+  $('body#build_show input[type=radio]').hide()
+  $('.actions input[type="submit"]').hide()

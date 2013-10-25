@@ -1,8 +1,9 @@
 class Request < ActiveRecord::Base
-  belongs_to :request_group
   belongs_to :user
   has_many :price_quotes, dependent: :destroy
   has_many :features
+  belongs_to :preferred_language
+  belongs_to :request_group
 	validates_presence_of :user
 
   validates_presence_of :title, :description
@@ -12,7 +13,8 @@ class Request < ActiveRecord::Base
 
   scope :published,  -> { where published: true }
   scope :unpublished,  -> { where published: nil }
-  scope :published_and_unassigned, -> { published.where(delegated_to_user_id: nil).where(contractor_id: nil)}
+  scope :published_and_unassigned, -> { 
+    published.where(delegated_to_user_id: nil).where(contractor_id: nil)}
   #scope :unassigned, -> { where contractor_id: nil }
   scope :in_process, -> { where( "contractor_id <> 0" ) }
   scope :assigned_not_accepted, -> { where( "delegated_to_user_id <> 0" ) }
@@ -24,17 +26,17 @@ class Request < ActiveRecord::Base
   def self.awaiting_response(user)
     # Select all requests where we can't find any PriceQuotes with that request_id
     Request.find_by_sql("
-                        SELECT *
-                        FROM requests WHERE user_id = #{user.id} AND NOT EXISTS 
-                        (SELECT price_quotes.request_id 
-                        FROM price_quotes WHERE price_quotes.request_id = requests.id );")
+      SELECT *
+      FROM requests WHERE user_id = #{user.id} AND NOT EXISTS 
+      (SELECT price_quotes.request_id 
+      FROM price_quotes WHERE price_quotes.request_id = requests.id );")
   end
 
   def self.with_price_quotes(user)
     # Select all requests that have a price quote
     Request.find_by_sql("SELECT * FROM price_quotes 
-                        INNER JOIN requests ON 
-                        price_quotes .request_id = requests.id AND requests.user_id = #{user.id};")
+      INNER JOIN requests ON 
+      price_quotes .request_id = requests.id AND requests.user_id = #{user.id};")
   end
 
   def contractor

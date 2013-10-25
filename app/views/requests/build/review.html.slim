@@ -1,0 +1,21 @@
+
+.progress
+  .bar.remaining.bar-success data-percent="87.5" style="width: 87.5%;"
+  .bar.completed.bar-warning data-percent="12.5" style="width: 12.5%;"
+
+
+h1.lead Please review your request
+p 
+
+= render :partial => 'requests/request', locals: {request: @request}
+
+
+br
+br
+br
+ 
+= link_to 'Edit', edit_request_path(@request), class: 'pull-right btn '   if (@request.user == current_user) and @request.status != :accepted
+= nbsp
+= nbsp
+= nbsp
+= link_to 'Next', select_recipient_path(@request), class: 'pull-right btn  btn-info'   if @request.user == current_user

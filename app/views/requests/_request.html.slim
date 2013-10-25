@@ -7,7 +7,12 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
     .span7
       .media
         a.pull-left href="#"
-          = image_tag 'request_iphone.png', size: '150x150', class: 'media-object'
+          /= image_tag 'request_iphone.png', size: '150x150', class: 'media-object'
+          - if request.request_group.present?
+            = image_tag(request.request_group.image_url, size: '80x80')
+          - if request.preferred_language.present?
+            p
+              = image_tag request.preferred_language.image_url
 
         .media-body
           h4.lead.lead-pull-up= request.title
@@ -16,6 +21,8 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
             strong Description
             br
             = request.description
+
+
           p
             -  if request.goal
               .media
@@ -62,10 +69,15 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
               br
               em Tests running
 
+          /p
+            h5 Kind of software
+            = image_tag(request.request_group.image_url, size: '80x80')
+            br
+            em= request.request_group.title
 
     .span4
       p.pull-right
-        span Client: 
+        span Client:
         span= request.user.name rescue nil
         br
         span.muted= "<#{request.user.email}>"
