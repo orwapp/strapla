@@ -5,7 +5,7 @@
 #select_what_kind_of_software
   = render :layout => 'form' do |f|
     = f.collection_radio_buttons(:request_group_id, RequestGroup.all, :id, :title) do |b|
-      = b.radio_button + image_tag(b.object.image_url, size: '100x100') + "<br>".html_safe +  "<em class='icon_text'>#{b.text} </em>".html_safe
+        = b.radio_button + image_tag(b.object.image_url, size: '100x100') + "<br>".html_safe +  "<span class='icon_text'>#{b.text} </span>".html_safe
     
     
     

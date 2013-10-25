@@ -41,4 +41,8 @@ $ ->
       $('#example-box').hide() 
 
 
+  # The select_what_kind_of_software page
   $('body#build_show input[type=radio]').hide()
+
+  $(document).on 'click', '#wizard form span', (e) ->
+    $(this).first().find('input[type="radio"]').prop("checked", true)
