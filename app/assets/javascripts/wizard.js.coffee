@@ -45,4 +45,6 @@ $ ->
   $('body#build_show input[type=radio]').hide()
 
   $(document).on 'click', '#wizard form span', (e) ->
+    $(this).siblings().removeClass('selected')
+    $(this).addClass('selected')
     $(this).first().find('input[type="radio"]').prop("checked", true)
