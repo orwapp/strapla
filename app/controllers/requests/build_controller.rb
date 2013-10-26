@@ -42,6 +42,7 @@ class Requests::BuildController < ApplicationController
   def request_params
     params.require(:request).permit(:title, :description, :goal, 
        :request_group_id, 
+       :preferred_language_id,
        :repository_url, 
        :elevator_pitch,
        :background_information,

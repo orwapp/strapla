@@ -17,7 +17,7 @@ br
   hr
   br
   = render :layout => 'form' do |f|
-    = f.collection_radio_buttons(:request_group_id, PreferredLanguage.all, :id, :title) do |b|
+    = f.collection_radio_buttons(:preferred_language_id, PreferredLanguage.all, :id, :title) do |b|
         = b.radio_button + image_tag(b.object.image_url, size: '100x100') + "<br>".html_safe +  "<span class='icon_text'>#{b.text} </span>".html_safe
 
 
