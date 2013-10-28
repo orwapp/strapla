@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_current_user
 
 
-  if Rails.env.production?
+  if ENV['DOMAIN'] == 'stabstr.com'
     http_basic_authenticate_with name: ENV['HTTP_USERNAME'] || 'funky_admin' , password: ENV['HTTP_PASSWORD'] || 'top_secret'
   end
   
