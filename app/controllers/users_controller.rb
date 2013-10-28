@@ -7,6 +7,11 @@ class UsersController < ApplicationController
 	def edit
 	end
 
+  def show
+    @user = User.find(params[:id])
+    render :profile
+  end
+
 	def	browse_experts
     @experts = User.where(role: :expert).load
 	end
