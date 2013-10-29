@@ -9,7 +9,12 @@
     = f.input :image_url,  :autofocus => true
     br
 
-    = f.input :skill_list
+    /= f.input :skill_list, :input_html => { :data => {:load => @current_user.skill_list} }
+    /= f.text_field :skill_list, data: {load: @current_user.skill_list}
+    /= f.input :tag_list, :label => "Skills", :input_html => { :class => "text_field short", "data-load" => @current_user.skill_list.to_json }, :hint  => "separate tags by a space"
+    = f.input :skill_list, :label => "Skills", :input_html => { :class => "text_field short", "data-load" => @current_user.skill_list.to_json }, :hint  => "separate tags by a space"
+    
+    
 
     br
     hr
@@ -21,6 +26,7 @@
     = f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true
   .form-actions
     = f.button :submit, "Update"
+
 h3 Cancel my account
 p
   | Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}

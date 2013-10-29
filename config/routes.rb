@@ -5,6 +5,7 @@ CodeRunner::Application.routes.draw do
   resources :certifications
 
   resources :jobs
+  resources :skills
 
   #match "request_steps/title_goal", to: "request_steps#title_goal", via: "post"
   resources :request_steps
