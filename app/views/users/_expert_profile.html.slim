@@ -21,13 +21,9 @@
         br
         br
         br
-        h2.badge.badge-success Ruby
-        h2.badge.badge-success Java
-        h2.badge.badge-success C+
-        h2.badge.badge-success C#
-        h2.badge.badge-success Unix
-        br
-        br
+        - user.skill_list.each do |skill|
+          h2.badge.badge-success= skill
+
       .span3.pull-right
         .score.border.text-center
           h2 737
