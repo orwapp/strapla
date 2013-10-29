@@ -5,8 +5,7 @@ class SkillsController < ApplicationController
     #raise "Searching for #{params[:q]}"
     respond_to do |format|
       format.html
-      #format.json { render json: Skill.where("title like ?", "%#{params[:q]}%") }
-      format.json { render json: Skill.where("title like ?", '%R%').select(:id, :title).to_json }
+      format.json { render json: Skill.where("name like ?", '%R%').select(:id, :name).to_json }
     end
   end
 

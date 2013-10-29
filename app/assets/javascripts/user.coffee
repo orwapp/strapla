@@ -11,7 +11,6 @@ $ ->
     prePopulate: $("#user_skill_list").data("load")
     preventDuplicates: true
     crossDomain: false
-    propertyToSearch: 'title'
     theme: "facebook"
 
   
