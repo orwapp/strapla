@@ -67,4 +67,5 @@ gem 'foreman'
 gem 'unicorn'
 gem 'resque'
 gem 'resque_mailer'
-gem 'newrelic_rpm'
+gem 'acts-as-taggable-on'
+
