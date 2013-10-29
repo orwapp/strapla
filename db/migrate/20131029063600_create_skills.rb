@@ -1,6 +1,6 @@
 class CreateSkills < ActiveRecord::Migration
   def change
-    create_table :skills do |t|
+    create_table :skills, force: true do |t|
       t.string :title
 
       t.timestamps
