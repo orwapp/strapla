@@ -55,4 +55,8 @@ class User < ActiveRecord::Base
     Request.where(status: 'accepted').to_a
   end
 
+  def skill_tokens=(tokens)
+    self.skill_ids = skill.ids_from_tokens(tokens)
+  end
+
 end
