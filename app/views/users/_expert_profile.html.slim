@@ -21,7 +21,7 @@
         br
         br
         br
-        - user.skill_list.each do |skill|
+        - user.skills.each do |skill|
           h2.badge.badge-success= skill
 
       .span3.pull-right
@@ -54,25 +54,6 @@
         br
         .row
           = render user.certifications
-    /.row
-      br
-      br
-      .span10
-        .span3
-          strong= "Average price / hour: "
-          = "N/A"
-          /= "$ #{user.average_price}"
-          br
-          strong="Nr of assignments: "
-          ="0"
-          br
-          strong="Percent happy clients: "
-          ="N/A"
-        /.span5.previously_answered
-          = "Has answered questions matching words keywords in your description: "
-          strong RSpec
-          |  and 
-          strong OpenGraph
 
 
 

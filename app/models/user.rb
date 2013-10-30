@@ -15,8 +15,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  acts_as_ordered_taggable
-  acts_as_ordered_taggable_on :skills
+  acts_as_taggable
+  acts_as_taggable_on :skills
 
 
   def average_price
