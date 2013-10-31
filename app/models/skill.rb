@@ -14,7 +14,7 @@ class Skill < ActiveRecord::Base
     r = tokens.split(',').collect { |name| 
       name.gsub!(/\s/,'')
       name.downcase!
-      name.gsub('New skill: ')
+      name.gsub!('newskill:', '')
       Skill.find_or_create_by!(name: name).id 
     }
     puts "Skill#ids_from_tokens returns: #{r}"

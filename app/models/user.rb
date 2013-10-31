@@ -21,8 +21,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
 
-  #def self.skill_tokens=
-  #end
+  def self.skill_tokens=(tokens)
+    self.skill_ids = Skill.ids_from_tokens 
+    self.save
+  end
 
   #def skill_tokens
   #end
