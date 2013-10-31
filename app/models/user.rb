@@ -56,7 +56,7 @@ class User < ActiveRecord::Base
   end
 
   def skill_tokens=(tokens)
-    self.skill_ids = skill.ids_from_tokens(tokens)
+    self.skill_ids = Skill.ids_from_tokens(tokens)
   end
 
 end
