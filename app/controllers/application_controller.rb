@@ -40,14 +40,14 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update) { |u| 
       u.permit(:password, :password_confirmation, :current_password, :email, :phone, 
                :bio, :image_url, :name, :linkedin_url, :github_username, 
-               :describe_your_dream_project, :how_many_hours_to_you_typical_work_per_week, :skill_list 
+               :describe_your_dream_project, :how_many_hours_to_you_typical_work_per_week, :skill_tokens 
               ) 
     }
 
     devise_parameter_sanitizer.for(:sign_up) { |u| 
       u.permit(:password, :password_confirmation, :current_password, :email, :phone, 
                :bio, :image_url, :name, :linkedin_url, :github_username, :describe_your_dream_project, 
-               :how_many_hours_to_you_typical_work_per_week, :skill_list
+               :how_many_hours_to_you_typical_work_per_week, :skill_tokens
               ) 
     }
   end

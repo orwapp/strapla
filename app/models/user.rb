@@ -2,7 +2,11 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
+  #
+  attr_reader :skill_tokens
   
+  
+
   validates_presence_of :name, :bio, :phone, :email
   has_many :requests, dependent: :destroy
   has_many :price_quotes, dependent: :destroy
@@ -10,13 +14,19 @@ class User < ActiveRecord::Base
   has_many :estimated_hours, dependent: :destroy
   has_many :jobs, dependent: :destroy
   has_many :certifications, dependent: :destroy
+  has_and_belongs_to_many :skills
   has_and_belongs_to_many :request_groups
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
 
+  #def self.skill_tokens=
+  #end
 
+  #def skill_tokens
+  #end
+ 
   def average_price
     0
   end
@@ -53,8 +63,9 @@ class User < ActiveRecord::Base
     Request.where(status: 'accepted').to_a
   end
 
-  def skill_tokens=(tokens)
-    self.skill_ids = Skill.ids_from_tokens(tokens)
+  def skill_tokens=(ids)
+    self.skill_ids = Skill.ids_from_tokens(ids)
+    #self.skill_ids = Skill.ids_from_tokens(tokens)
   end
 
 end

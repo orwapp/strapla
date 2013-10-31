@@ -10,7 +10,7 @@
     = f.input :image_url,  :autofocus => true
     br
 
-    = f.input :skill_list, :label => "Skills", 
+    = f.input :skill_tokens, :label => "Skills", 
       :input_html => { :class => "text_field short", "data-load" => @current_user.skills.map(&:attributes).to_json  }, 
       :hint  => "separate skills by a space"
     

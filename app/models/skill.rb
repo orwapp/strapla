@@ -3,7 +3,7 @@ class Skill < ActiveRecord::Base
   def self.tokens(query)
     skills = where("name iLIKE ?", "%#{query}%").select(:id, :name)
     if skills.empty?
-      [ id: "#{query}", name: "New skill: #{query}" ]
+      [ id: "<<<#{query}>>>", name: "New skill: #{query}" ]
     else
       skills
     end
@@ -14,6 +14,7 @@ class Skill < ActiveRecord::Base
     r = tokens.split(',').collect { |name| 
       name.gsub!(/\s/,'')
       name.downcase!
+      name.gsub('New skill: ')
       Skill.find_or_create_by!(name: name).id 
     }
     puts "Skill#ids_from_tokens returns: #{r}"
