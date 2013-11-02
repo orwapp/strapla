@@ -21,8 +21,8 @@
         br
         br
         br
-        - user.skills.each do |skill|
-          h2.badge.badge-success= skill
+        - user.skills.all.each do |skill|
+          h2.badge.badge-success= skill.name
 
       .span3.pull-right
         .score.border.text-center
