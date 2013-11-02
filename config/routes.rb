@@ -20,9 +20,16 @@ CodeRunner::Application.routes.draw do
   resources :feature_requests do
   end
 
-  #devise_for :users
 	devise_for :users, :controllers => {:registrations => "users/registrations"}
-	
+
+  get  '/users/complete_your_profile' => 'users#complete_your_profile', 
+    as: :complete_your_profile 
+
+  get  '/users/edit_developer_profile' => 'users#edit_developer_profile', 
+    as: :edit_developer_profile
+
+  get  '/users/edit_employer_profile' => 'users#edit_employer_profile', 
+    as: :edit_employer_profile
 
 
   resources :users do
