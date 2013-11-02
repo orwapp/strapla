@@ -12,9 +12,9 @@ class Skill < ActiveRecord::Base
   def self.ids_from_tokens(tokens)
     puts "Skill#ids_from_tokens got: #{tokens}"
     r = tokens.split(',').collect { |name| 
-      name.strip!
+      name.gsub!('New skill:', '')
       name.downcase!
-      name.gsub!('newskill:', '')
+      name.strip!
       Skill.find_or_create_by!(name: name).id 
     }
     puts "Skill#ids_from_tokens returns: #{r}"
