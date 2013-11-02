@@ -35,25 +35,29 @@
     .row
       .span10
         br
-        h4 Bio
-        = user.bio
-        br
-        br
+        - if user.bio.present?
+          h4 Bio
+          = user.bio
+          br
+          br
 
-        h4 Dream project
-        = user.describe_your_dream_project
-        br
-        br
-        br
+        - if user.describe_your_dream_project.present?
+          h4 Dream project
+          = user.describe_your_dream_project
+          br
+          br
+          br
 
-        h4 Jobs
-        .row
-          = render user.jobs
+        - if user.jobs.present?
+          h4 Jobs
+          .row
+            = render user.jobs
 
-        h4 Certifications
-        br
-        .row
-          = render user.certifications
+        - if user.certifications.present?
+          h4 Certifications
+          br
+          .row
+            = render user.certifications
 
 
 
@@ -61,10 +65,13 @@
     = simple_form_for :delegate_to_expert, url: delegate_to_expert_path(@request) do |f|
       = f.hidden_field :expert_id,  value: user.id
       = f.hidden_field :request_id, value: @request.id
-      = f.submit("Send the question to #{user.name.split.first}", class: 'btn btn-info send_question pull-right') unless @current_user == user
+      = f.submit("Send the question to #{user.name.split.first}", 
+        class: 'btn btn-info send_question pull-right') unless @current_user == user
   - elsif body_id == 'users_browse_experts'
-    = link_to "Send a question to #{user.name.split.first}", new_request_path, class: 'btn btn-info pull-right' unless @current_user == user
+    = link_to "Send a question to #{user.name.split.first}", new_request_path, 
+      class: 'btn btn-info pull-right' unless @current_user == user
   - else 
     a.btn.btn-info.pull-right= "Send a question to #{user.name.split.first}"
 
-  = link_to 'Edit', edit_user_registration_path, class: 'btn pull-right' if @current_user == user
+  = link_to 'Edit', edit_user_registration_path, 
+    class: 'btn pull-right' if @current_user == user

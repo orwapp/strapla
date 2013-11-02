@@ -1,11 +1,18 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 
+  before_filter :set_job_and_certification
+
 	def	edit
-		@job = @current_user.jobs.new
-		@certification = @current_user.certifications.new
 	end
 
 
+	def	set_job_and_certification
+    begin
+		  @job = @current_user.jobs.new
+		  @certification = @current_user.certifications.new
+    rescue
+    end
+	end
 
   protected
 
