@@ -3,12 +3,8 @@ h2 Sign up
   = f.error_notification
   .form-inputs
     = f.input :name,  :required => true, :autofocus => true
-    = f.input :email, :required => true, :autofocus => true
-    = f.input :phone, :required => true, :autofocus => true
-    = f.input :bio,   :required => true, :autofocus => true
-    = f.input :title,                    :autofocus => true
-    = f.input :image_url,                :autofocus => true
-    = f.input :password, :required => true
+    = f.input :email, :required => true
+    = f.input :password
     = f.input :password_confirmation, :required => true
   .form-actions
     = f.button :submit, "Sign up"

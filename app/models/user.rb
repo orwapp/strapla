@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   
   
 
-  validates_presence_of :name, :bio, :phone, :email
+  validates_presence_of :name, :email
   has_many :requests, dependent: :destroy
   has_many :price_quotes, dependent: :destroy
   has_many :comments, dependent: :destroy
