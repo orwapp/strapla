@@ -4,6 +4,9 @@ h4 Employer profile
   :html => { :method => :put }) do |f|
   = f.error_notification
   .form-inputs
+    = f.input :developer, label: 'Active Employer profile'
+    br
+    br
     br
     = f.input :company_name
 

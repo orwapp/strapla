@@ -14,9 +14,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def after_sign_up_path_for(resource)
+    complete_your_profile_path
+  end
+
+
   protected
 
   def after_update_path_for(resource)
     user_path(resource)
   end
+
 end
