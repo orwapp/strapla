@@ -62,17 +62,8 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
                   = request.budget
                   br
 
-          - unless @review
-            p
-              strong Project status
-              br
-              em Tests running
 
-          /p
-            h5 Kind of software
-            = image_tag(request.request_group.image_url, size: '80x80')
-            br
-            em= request.request_group.title
+
 
     .span4
       p.pull-right

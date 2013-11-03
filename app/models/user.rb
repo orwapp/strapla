@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   #
   attr_reader :skill_tokens
+  attr_reader :developer
+  attr_reader :employer
   
   
 
@@ -26,8 +28,13 @@ class User < ActiveRecord::Base
     self.save
   end
 
-  #def skill_tokens
-  #end
+  def developer?
+    !!(self.role.match 'developer') rescue nil
+  end
+
+  def employer?
+    !!(self.role.match 'employer') rescue nil
+  end
  
   def average_price
     0

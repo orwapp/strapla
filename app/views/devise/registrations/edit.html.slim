@@ -2,27 +2,36 @@ h2.page-header Your profile
 
 
 .tabbable
-	ul.nav.nav-tabs
-		li.active: a data-toggle="tab" href="#basic" Basic information
-		li: a data-toggle="tab" href="#jobs" Jobs
-		li: a data-toggle="tab" href="#certifications" Certifications
-				
+  ul.nav.nav-tabs
+    li.active: a data-toggle="tab" href="#basic" Basic information
+    li: a data-toggle="tab" href="#developer_profile" Developer profile
+    li: a data-toggle="tab" href="#employer_profile"  Employer profile
+    li: a data-toggle="tab" href="#jobs" Jobs
+    li: a data-toggle="tab" href="#certifications" Certifications
+        
 
-	.tab-content
-		.tab-pane.active#basic
-			= render :partial => 'users/basic'
-				
-		.tab-pane#jobs
-			h4 Jobs
-			= render @current_user.jobs.all
+  .tab-content
+    .tab-pane.active#basic
+      = render :partial => 'users/basic'
+        
+    .tab-pane#developer_profile
+      = render :partial => 'users/developer_profile'
 
-			hr
-			h5 Add a new job
-			= render :partial => 'jobs/form'
 
-		.tab-pane#certifications
-			h4 Certifications
-			= render @current_user.certifications.all
+    .tab-pane#employer_profile
+      = render :partial => 'users/employer_profile'
 
-			h5 Add a new certification
-			= render :partial => 'certifications/form'
+    .tab-pane#jobs
+      h4 Jobs
+      = render @current_user.jobs.all
+
+      hr
+      h5 Add a new job
+      = render :partial => 'jobs/form'
+
+    .tab-pane#certifications
+      h4 Certifications
+      = render @current_user.certifications.all
+
+      h5 Add a new certification
+      = render :partial => 'certifications/form'
