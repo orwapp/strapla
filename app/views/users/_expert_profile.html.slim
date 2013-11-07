@@ -9,15 +9,21 @@
         strong= "Member since #{I18n.l( user.created_at, format: :without_time)}"
         br
         br
-        .pull-left
-          = link_to(content_tag(:i, "", class: "icon-github large-icon"), 
-						"http://github.com/#{user.github_username}", :target => "_blank") + "github"   if user.github_username.present?
-          = nbsp
-          = nbsp
-          = nbsp
-        .pull-left
-          = link_to(content_tag(:i, "", class: "icon-linkedin-sign large-icon"), user.linkedin_url, 
-						:target => "_blank") + "linkedin"   if user.linkedin_url.present?
+        - if user.github_username.present?
+          .pull-left
+            = content_tag(:i, "", class: "icon-github large-icon")
+            = nbsp
+            = link_to( 'Me on Github', "http://github.com/#{user.github_username}", :target => "_blank")
+
+            = nbsp
+            = nbsp
+            = nbsp
+        - if user.linkedin_url.present?
+          .pull-left
+            = content_tag(:i, "", class: "icon-linkedin-sign large-icon")
+            = nbsp
+            = link_to( 'My LinkedIn profile', user.linkedin_url, 
+				  		:target => "_blank")
         br
         br
         br
