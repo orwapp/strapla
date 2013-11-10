@@ -60,7 +60,8 @@ class JobsController < ApplicationController
   def destroy
     @job.destroy
     respond_to do |format|
-      format.html { redirect_to jobs_url }
+      format.html { redirect_to edit_user_registration_path( anchor: "jobs"), 
+        notice: 'Job removed' }
       format.json { head :no_content }
     end
   end
