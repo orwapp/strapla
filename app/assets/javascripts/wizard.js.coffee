@@ -50,3 +50,7 @@ $ ->
     $(this).addClass('selected')
     $(this).first().find('input[type="radio"]').prop("checked", true)
     $('.actions input[type="submit"]').show()
+
+
+  $(document).on 'click', '#job_current', (e) ->
+    $('#job_to_date').toggle()
