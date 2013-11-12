@@ -23,6 +23,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
 
+  scope :developer,  -> { where developer: true }
+  scope :employer,  -> { where employer: true }
+
   def self.skill_tokens=(tokens)
     self.skill_ids = Skill.ids_from_tokens 
     self.save
