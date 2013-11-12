@@ -5,6 +5,7 @@ class Requests::BuildController < ApplicationController
     :select_what_kind_of_software,
     :select_language_or_framework,
     :the_frame,
+    :features,
     #:create_a_test,
     :review,
     :select_recipient
@@ -13,8 +14,11 @@ class Requests::BuildController < ApplicationController
   def show
     @request = Request.find(params[:request_id])
     case params[:id]
-    when 'add_features'
-      @feature = Feature.new
+    when 'features'
+      @new_feature = Feature.new
+      #@features = []
+      @features = @request.features.load
+      @features << Feature.new #@request.features.new
     when 'select_recipient'
       @experts = User.where(role: :expert).load
     when 'select_what_kind_of_software'

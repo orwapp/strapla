@@ -7,8 +7,10 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
     .span7
       .media
         a.pull-left href="#"
-          /- if request.request_group.present?
+          - if request.request_group.present?
             = image_tag(request.request_group.image_url, size: '80x80')
+            br
+            br
           - if request.preferred_language.present?
             p
               = image_tag(request.preferred_language.image_url, size: '80x80')
