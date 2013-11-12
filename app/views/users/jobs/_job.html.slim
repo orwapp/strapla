@@ -17,7 +17,7 @@ br
     br
 
     strong To: 
-    = job.to_date
+    = job.current ? 'present' : job.to_date
     br
 
     strong Summary: 

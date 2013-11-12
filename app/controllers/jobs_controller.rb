@@ -60,7 +60,8 @@ class JobsController < ApplicationController
   def destroy
     @job.destroy
     respond_to do |format|
-      format.html { redirect_to jobs_url }
+      format.html { redirect_to edit_user_registration_path( anchor: "jobs"), 
+        notice: 'Job removed' }
       format.json { head :no_content }
     end
   end
@@ -73,6 +74,6 @@ class JobsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_params
-			params.require(:job).permit(:title, :company, :summary, :from_date, :to_date)
+			params.require(:job).permit(:title, :company, :summary, :from_date, :to_date, :current)
     end
 end
