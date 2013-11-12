@@ -108,6 +108,7 @@ ActiveRecord::Schema.define(version: 20131112062007) do
     t.string   "summary"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "current"
   end
 
   add_index "jobs", ["user_id"], name: "index_jobs_on_user_id", using: :btree
