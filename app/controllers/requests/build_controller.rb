@@ -15,10 +15,10 @@ class Requests::BuildController < ApplicationController
     @request = Request.find(params[:request_id])
     case params[:id]
     when 'features'
-      @new_feature = Feature.new
-      #@features = []
+      #@new_feature = Feature.new
+      @features = []
+      @features << @request.features.new
       @features = @request.features.load
-      @features << Feature.new #@request.features.new
     when 'select_recipient'
       @experts = User.where(role: :expert).load
     when 'select_what_kind_of_software'

@@ -18,11 +18,9 @@ br
     html: {class: "form-inline new_feature feature#{n+1}" }) do |f|
     .border.padding10
       = f.error_notification
-  
       .form-inputs
-        = f.hidden_field :form_id, name: 'form_id', :value => "feature#{n+1}"
-        = f.input :title, required: true, input_html: { :value => "feat#{n+1}", class: 'input-medium' }
-        = f.input :description,  required: true, input_html: { :value => "feat#{n+1}", class: 'input-medium' }
+        = f.input :title, required: true 
+        = f.input :description,  required: true 
   
       .form-actions[class="#{'hide' if hide_submit}"]
         = f.button :submit, :class => "btn-primary", value: "Save"
@@ -35,21 +33,3 @@ br
   = nbsp
   = nbsp
   = link_to 'skip', next_wizard_path
-
-
-
-//= render :layout => 'form', locals: {optional: true} do |f|
-//
-//  = f.input :title,
-//    input_html: { 'data-hint' => 'Which feature do you want?', 
-//    'data-example' => 'Addition. WebCalc should be able to summarize numbers.',
-//    class: 'span8 help_text'}
-//  
-//  = f.input :description,
-//    input_html: { 'data-hint' => 'Webcalc should add the last number I´ve added to the previous one every time I press +.  "1+1+" should equal 2. "1+1=" should equal 2',
-//    class: 'span8 help_text'}
-//
-//  = f.submit 'Save'
-//  br
-//  br
-//  br

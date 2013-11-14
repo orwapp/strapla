@@ -70,6 +70,7 @@ class RequestsController < ApplicationController
     @request = Request.new(request_params)
     @request.user = current_user
     @request.type_of = @wizard.present? ? 'big' : 'small'
+    @form_id = "#edit_feature_#{@request.id}"
     if @request.save
       redirect_to "/requests/#{@request.id}/build"
     else

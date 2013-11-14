@@ -100,4 +100,4 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
               - if show_hours_estimated?
                 th Hours estimated
               
-          = render request.features
+          = render partial: "/features/feature", collection: request.features
