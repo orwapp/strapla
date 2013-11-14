@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery.turbolinks
+//= require jquery.ui.effect-highlight
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap

@@ -10,6 +10,8 @@ gem 'rails_12factor'   # Needed for Rails4 on Heroku
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
+
 gem 'turbolinks'
 gem 'jquery-turbolinks'
 gem 'simple_form' #, :github => 'plataformatec/simple_form'
