@@ -19,6 +19,7 @@ class Requests::BuildController < ApplicationController
       @features = []
       @features << @request.features.new
       @features = @request.features.load
+      @features.reverse!
     when 'select_recipient'
       @experts = User.where(role: :expert).load
     when 'select_what_kind_of_software'

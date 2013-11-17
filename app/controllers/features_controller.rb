@@ -1,6 +1,11 @@
 class FeaturesController < ApplicationController
+  include Wicked::Wizard
   #before_action :set_feature, only: [:show, :edit, :update, :destroy]
   before_action :set_feature, only: [:show, :edit, :update, :destroy]
+
+
+  steps
+
 
   def index
     @features = Feature.load.to_a
@@ -34,8 +39,8 @@ class FeaturesController < ApplicationController
 
     respond_to do |format|
       if @feature.save
-        format.html { redirect_to @feature, notice: 'Feature was successfully created.' }
-        #format.json { render action: 'show', status: :created, location: @feature }
+        format.html { redirect_to "/requests/#{params[:request_id]}/build/features",
+          notice: 'Feature was successfully created.' }
         format.js
       else
         format.html { render action: 'new' }
@@ -49,7 +54,7 @@ class FeaturesController < ApplicationController
     respond_to do |format|
     @form_id = "#edit_feature_#{params[:id]}"
       if @feature.update(feature_params)
-        format.html { redirect_to request_review_path(@feature.request), 
+        format.html { redirect_to "/requests/#{params[:request_id]}/build/features",
           notice: 'Feature was successfully updated.' }
         format.json { head :no_content }
         format.js

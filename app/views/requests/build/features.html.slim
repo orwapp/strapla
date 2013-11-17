@@ -11,7 +11,7 @@ br
 
 - n           ||= 0
 - hide_submit ||= false
-- remote      ||= true
+- remote      ||= false
 
 - @features.each do |feature|
   = simple_form_for([@request, feature], remote: remote, 
@@ -23,7 +23,7 @@ br
         = f.input :description,  required: true 
   
       .form-actions[class="#{'hide' if hide_submit}"]
-        = f.button :submit, :class => "btn-primary", value: "Save"
+        = f.button :submit, :class => "btn-primary", value: (feature.new_record? ? "Save new feature" : "Update")
 
 
 .row
