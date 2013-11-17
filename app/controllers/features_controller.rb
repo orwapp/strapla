@@ -3,12 +3,12 @@ class FeaturesController < ApplicationController
   #before_action :set_feature, only: [:show, :edit, :update, :destroy]
   before_action :set_feature, only: [:show, :edit, :update, :destroy]
 
-
   steps
 
 
   def index
-    @features = Feature.load.to_a
+    @request = Request.find(params[:request_id])
+    @features = @request.features.load
   end
 
   def create_many

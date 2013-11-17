@@ -1,0 +1,23 @@
+.page-header
+  = link_to new_feature_path, :class => 'btn btn-primary' do
+    i.icon-plus.icon-white
+    | New Feature
+  h1=  "Features for # @request.title "
+
+table.table.table-bordered.table-striped
+  thead
+    tr
+      th Description
+      th Title
+      th
+      th
+      th
+
+  tbody
+    - @features.each do |feature|
+      tr
+        td= feature.description
+        td= feature.title
+        td= link_to 'Show', feature
+        td= link_to 'Edit', edit_feature_path(feature)
+        td= link_to 'Destroy', feature, :confirm => 'Are you sure?', :method => :delete
