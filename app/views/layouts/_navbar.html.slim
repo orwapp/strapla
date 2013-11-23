@@ -14,11 +14,21 @@
               | Requests
               b.caret
             ul.dropdown-menu
-              li[role="menu"]=  link_to 'Pending quotes',      my_requests_path(anchor: :awaiting_response)
-              li[role="menu"]=  link_to 'Received quotes',     my_requests_path(anchor: :requests_with_price_quotes)
-              li[role="menu"]=  link_to 'Projects started',    my_requests_path(anchor: :requests_with_accepted_quotes)
-              - if @unpublished_requests.present?
+              - case
+              - when @awaiting_response.present?
+                li[role="menu"]=  link_to "Pending quotes (#{@awaiting_response.size })",      my_requests_path(anchor: :awaiting_response)
+
+              - when @new_price_quotes.present?
+                li[role="menu"]=  link_to "Received quotes",     my_requests_path(anchor: :requests_with_price_quotes)
+
+              - when @requests_with_accepted_quotes.present?
+                li[role="menu"]=  link_to "Projects started",    my_requests_path(anchor: :requests_with_accepted_quotes)
+
+              - when @unpublished_requests.present?
                 li[role="menu"]=  link_to 'Unpublised requests', my_requests_path(anchor: :unpublished_requests)  
+              - else
+                li[role="menu"]=  link_to 'Create a new request', new_request_path
+                
 
         - if @current_user.price_quotes.present?
           li[class="#{'active' if current_page?(price_quotes_path)}"]=  link_to 'Price quotes I\'ve sent', price_quotes_path

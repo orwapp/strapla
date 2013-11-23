@@ -66,6 +66,7 @@ CodeRunner::Application.routes.draw do
     post '/unpublish' => 'requests#unpublish',   as: :unpublish, format: false
     resources :features
     resources :background_informations
+    get  'select_what_kind_of_software'  => 'requests#select_what_kind_of_software',  as: :select_what_kind_of_software,  format: false
   end
 
   get  'my_requests/'         => 'requests#my_requests',         as: :my_requests

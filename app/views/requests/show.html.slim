@@ -11,3 +11,5 @@ br
   h3.lead Price Quotes
   hr
   = render @request.price_quotes.to_a
+
+= link_to 'Edit', edit_request_path(@request), class: 'pull-right btn '   if (@request.user == current_user) and @request.status != :accepted

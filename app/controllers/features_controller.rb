@@ -1,18 +1,16 @@
 class FeaturesController < ApplicationController
   include Wicked::Wizard
-  #before_action :set_feature, only: [:show, :edit, :update, :destroy]
   before_action :set_feature, only: [:show, :edit, :update, :destroy]
+  before_action :set_request, only: [:index, :create_many, :new, :create, :review]
 
   steps
 
 
   def index
-    @request = Request.find(params[:request_id])
     @features = @request.features.load
   end
 
   def create_many
-    @request = Request.find(params[:request_id])
     @feature = Feature.new
   end
 
@@ -28,18 +26,17 @@ class FeaturesController < ApplicationController
 
   def review
     @review = true
-    @request = Request.find params[:request_id]
   end
 
   def create
-    @request = Request.find(params[:request_id])
     @feature = Feature.new(feature_params)
     @feature.request = @request
-    @form_id = "#new_feature"  #params[:form_id]
+    @form_id = "#new_feature"
+    @return_to_page = params[:feature][:return_to_page].present? ? params[:feature][:return_to_page] :  "/requests/#{params[:request_id]}/build/features"
 
     respond_to do |format|
       if @feature.save
-        format.html { redirect_to "/requests/#{params[:request_id]}/build/features",
+        format.html { redirect_to @return_to_page,
           notice: 'Feature was successfully created.' }
         format.js
       else
@@ -83,6 +80,10 @@ class FeaturesController < ApplicationController
       else
         @feature = Feature.find(params[:features_id])
       end
+    end
+
+    def set_request
+      @request = Request.find(params[:request_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

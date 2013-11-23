@@ -10,6 +10,7 @@ class Request < ActiveRecord::Base
   #validates_presence_of :request_group
 	# TODO use the pattern Wicked describes
   
+  attr_reader :return_to_page
 
   scope :published,  -> { where published: true }
   scope :unpublished,  -> { where published: nil }

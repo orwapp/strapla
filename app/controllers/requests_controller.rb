@@ -11,6 +11,10 @@ class RequestsController < ApplicationController
 	def init
 	end
 
+  def select_what_kind_of_software
+    @request = Request.find(params[:request_id])
+  end
+
   def unassigned_requests
     @unassigned_requests = Request.published_and_unassigned.to_a
   end
@@ -114,7 +118,7 @@ class RequestsController < ApplicationController
   def destroy
     @request = Request.find(params[:id]) 
     @request.destroy 
-    redirect_to :back, notice: 'Request deleted'
+    redirect_to my_requests_path( anchor: 'unpublished_requests' ), notice: 'Request deleted'
   end
 
   def publish

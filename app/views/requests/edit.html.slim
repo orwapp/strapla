@@ -1,10 +1,7 @@
 h1 Editing request
 
 == render 'form'
-
-= link_to 'Show', @request
-' |
-= link_to 'Back', requests_path
-
-' |
-= link_to 'Edit features', wizard_path(:features)
+br
+.btn-group
+  = link_to 'Edit features', request_features_path(@request), class: :btn
+  = link_to 'Select what kind of software', request_select_what_kind_of_software_path(@request), class: :btn

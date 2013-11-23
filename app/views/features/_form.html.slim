@@ -2,16 +2,16 @@
 - hide_submit ||= false
 - remote      ||= false
 
-strong= "Feature #{n+1}"
 = simple_form_for([@request, @feature], remote: remote, 
   html: {class: "form-inline new_feature feature#{n+1}" }) do |f|
   .border.padding10
     = f.error_notification
 
     .form-inputs
-      = f.hidden_field :form_id, name: 'form_id', :value => "feature#{n+1}"
-      = f.input :title, required: true, input_html: { :value => "feat#{n+1}", class: 'input-medium' }
-      = f.input :text,  required: true, input_html: { :value => "feat#{n+1}", class: 'input-medium' }
+      = f.hidden_field :return_to_page, value: request_features_path(@request)
+      = f.hidden_field :form_id, name: 'form_id'
+      = f.input :title, required: true, input_html: { class: 'input-medium' }
+      = f.input :description,  required: true, input_html: { class: 'input-medium' }
 
     .form-actions[class="#{'hide' if hide_submit}"]
       = f.button :submit, :class => "btn-primary", value: "Save"

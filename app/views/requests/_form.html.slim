@@ -7,7 +7,7 @@
 
 .row#wizard
   .span8
-    .progress
+    /.progress
       .bar.completed.bar-success data-percent="12.5" style="width: 12.5%;"
       .bar.remaining.bar-warning data-percent="87.5" style="width: 87.5%;"
   
@@ -31,7 +31,7 @@
           class: 'span8 help_text' }
 
 
-        = f.button :submit,  'Next', :class => 'btn btn-info'
+        = f.button :submit, 'Save', :class => 'btn btn-info'
 
   .span3
     = render :partial => 'requests/shared/help_text'
