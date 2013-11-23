@@ -1,0 +1,14 @@
+#wizard
+  #select_what_kind_of_software
+    = simple_form_for(@request, method: :put, :html => { :class => 'form-inline  help_text' }) do |f|
+      = f.collection_radio_buttons(:request_group_id, RequestGroup.all, :id, :title) do |b|
+          = b.radio_button + image_tag(b.object.image_url, size: '100x100') + "<br>".html_safe +  "<span class='icon_text'>#{b.text} </span>".html_safe
+      .row
+      .actions
+        = f.submit "Continue"
+      
+  
+javascript:
+  $('#info-box').html("Please select what kind of project this is.").show()
+  $('#example-box').html("The first version of WebCalc will be a Web application.").show()
+  $('.actions input[type="submit"]').hide()
