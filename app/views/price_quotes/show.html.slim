@@ -1,6 +1,5 @@
 = render :partial => 'requests/request', locals: {request: @price_quote.request}
 - if @current_user.email == 'martin@stabenfeldt.net'
-  span "Price quote owner: #{@price_quote.user.email}"
 br
 br
 br
@@ -8,7 +7,6 @@ br
 
 // List all price quotes for the request owner
 - if @current_user.email == 'martin@stabenfeldt.net'
-  span price_quote partial:
 
 = render :partial => 'price_quote', locals: {price_quote: @price_quote}
 
