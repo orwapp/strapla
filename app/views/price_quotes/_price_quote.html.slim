@@ -28,7 +28,7 @@ h2.label.label-success.big_font= price_quote.status.titleize if price_quote.stat
     span= price_quote.description
     br
 
-  - if @current_user == price_quote.request.user
+  - if (@current_user == price_quote.request.user) and price_quote.request.features.present?
     hr
     .row
       .span11
