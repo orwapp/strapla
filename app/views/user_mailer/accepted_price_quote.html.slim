@@ -24,6 +24,5 @@ html
     br
     br
     
-    = link_to('Click here', request_price_quote_url(@price_quote, @price_quote.request)).html_safe
-    = " to review and accept the quote.".html_safe
-    = "Or contact #{@price_quote.user.name} by email #{@price_quote.user.email}".html_safe
+    = link_to('Click here', request_url(@price_quote.request)).html_safe
+    = " to see the request. ".html_safe
