@@ -28,25 +28,26 @@ h2.label.label-success.big_font= price_quote.status.titleize if price_quote.stat
     span= price_quote.description
     br
 
-  hr
-  .row
-    .span11
-      h3 Features
-      table.table.table-bordered.features
-        thead
-          tr
-            th Title
-            th Description
-            th Hours estimated
-        - price_quote.request.features.each do |feature|
-          - next if feature.nil?
-          tr
-            td 
-              span= feature.title
-            td 
-              span= feature.description
-            td 
-              span= feature.estimated_hours.where(user_id: price_quote.user).first.hours rescue nil
+  - if @current_user == price_quote.request.user
+    hr
+    .row
+      .span11
+        h3 Features
+        table.table.table-bordered.features
+          thead
+            tr
+              th Title
+              th Description
+              th Hours estimated
+          - price_quote.request.features.each do |feature|
+            - next if feature.nil?
+            tr
+              td 
+                span= feature.title
+              td 
+                span= feature.description
+              td 
+                span= feature.estimated_hours.where(user_id: price_quote.user).last.hours rescue nil
                 
   hr
   
