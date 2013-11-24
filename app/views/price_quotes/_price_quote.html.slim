@@ -1,9 +1,10 @@
 h2.label.label-success.big_font= price_quote.status.titleize if price_quote.status
 
 .container.border.small_padding
-  - if price_quote.request.present?
-    span = "Request: #{link_to price_quote.request.title, price_quote.request}".html_safe
-  hr
+  /- unless body_id == 'price_quotes_show'
+    - if price_quote.request.present?
+      span = "Request: #{link_to price_quote.request.title, price_quote.request}".html_safe
+  /hr
 
   - if price_quote.user == @current_user
     = render :partial => 'form', locals: { price_quote: price_quote }

@@ -75,8 +75,12 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
         span.muted= "<#{request.user.email}>"
         em= request.user.title if request.user.title
         br
+        br
         span Status:
         span= request.status
+        br
+        span Delegated to:
+        span= request.delegated_to
       br
   /.row
     .span11

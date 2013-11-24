@@ -9,7 +9,6 @@ br
       li: a data-toggle="tab" href="#rejected" Rejected price quotes
 
   .tab-content
-
     .tab-pane.active#new
       - if @unprocessed_price_quotes.present?
         - @unprocessed_price_quotes.each do |price_quote|

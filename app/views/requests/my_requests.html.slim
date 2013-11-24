@@ -3,8 +3,8 @@ h2.page-header Your requests
 
 .tabbable
   ul.nav.nav-tabs
-    li.active: a data-toggle="tab" href="#awaiting_response" Pending quotes
-    li: a data-toggle="tab" href="#requests_with_price_quotes" Received quotes 
+    li.active: a data-toggle="tab" href="#pending_quotes" Pending quotes
+    li: a data-toggle="tab" href="#received_quotes" Received quotes 
     li: a data-toggle="tab" href="#requests_with_accepted_quotes" Projects started
     - if @unpublished_requests.present?
       li: a data-toggle="tab" href="#unpublished_requests" Unpublished requests
@@ -12,13 +12,13 @@ h2.page-header Your requests
 
   .tab-content
 
-    .tab-pane.active#awaiting_response
-      - if @awaiting_response.present?
-        = render :partial => 'request_list', locals: {requests: @awaiting_response}
+    .tab-pane.active#pending_quotes
+      - if @pending_quotes.present?
+        = render :partial => 'request_list', locals: {requests: @pending_quotes}
         
-    .tab-pane#requests_with_price_quotes
-      -if @new_price_quotes.present?
-        - @new_price_quotes.each do |price_quote|
+    .tab-pane#received_quotes
+      -if @received_quotes.present?
+        - @received_quotes.each do |price_quote|
           = render price_quote
 
     .tab-pane#requests_with_accepted_quotes

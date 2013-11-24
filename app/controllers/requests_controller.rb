@@ -25,10 +25,6 @@ class RequestsController < ApplicationController
   end
 
   def my_requests
-    @awaiting_response             = @current_user.requests.published_and_unassigned.to_a
-    @new_price_quotes              = PriceQuote.unprocessed_belonging_to_user(@current_user)
-    @requests_with_accepted_quotes = @current_user.requests_with_accepted_quotes
-    @unpublished_requests          = @current_user.requests.unpublished.to_a
   end
 
   def delegated_to_me
@@ -93,6 +89,7 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:delegate_to_expert][:request_id])
     @request.update_attribute(:delegated_to_user_id, @expert.id)
     @request.update_attribute(:published, true)
+    @request.update_attribute(:status, 'delegated_to_expert')
     @request.save
 
     flash[:notice] = "Thank you! #{@expert.name} will contact you shortly." 
@@ -103,6 +100,7 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:request_id])
     flash[:notice] = "The request has been forwarded to our expert group"
     @request.update_attribute(:published, true)
+    @request.update_attribute(:status, 'delegated_to_group')
     redirect_to root_url
   end
 

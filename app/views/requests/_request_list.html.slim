@@ -4,7 +4,8 @@ table.table.table-striped.table-hover
     th Description
     th Goal
     th Delegated to
-    th Actions
+    - unless body_id == 'requests_unassigned_requests' 
+      th Actions
 
   - requests.each do |request|
     tr
@@ -12,11 +13,12 @@ table.table.table-striped.table-hover
       td = request.description
       td = request.goal
       td = request.delegated_to.present? ? link_to(request.delegated_to.name, user_profile_path(request.delegated_to)) : request.request_group.title rescue nil
-      td 
-        = link_to 'Edit', edit_request_path(request)
-        = nbsp
-        = "|"
-        = nbsp
-        = link_to 'Delete', request_path(request), method: :delete
+      - unless body_id == 'requests_unassigned_requests' 
+       td 
+         = link_to 'Edit', edit_request_path(request)
+         = nbsp
+         = "|"
+         = nbsp
+         = link_to 'Delete', request_path(request), method: :delete
 
 br

@@ -1,5 +1,5 @@
 Fabricator(:feature) do
   request nil
-  text    "MyText"
+  description    "MyText"
   title   "MyString"
 end

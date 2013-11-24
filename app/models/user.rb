@@ -63,8 +63,8 @@ class User < ActiveRecord::Base
     Request.where(delegated_to_user_id: self.id, contractor_id: self.id).load
   end
 
-  def requests_awaiting_response
-    Request.awaiting_response(self)
+  def pending_quotes
+    Request.pending_quotes(self)
   end
 
   def requests_with_price_quotes
@@ -75,9 +75,12 @@ class User < ActiveRecord::Base
     Request.where(status: 'accepted').to_a
   end
 
+
   def skill_tokens=(ids)
     self.skill_ids = Skill.ids_from_tokens(ids)
     #self.skill_ids = Skill.ids_from_tokens(tokens)
   end
+
+
 
 end

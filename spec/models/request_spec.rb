@@ -13,8 +13,8 @@ describe Request do
   describe "Queries" do
 
     context "Find Requests sent to group or expert, but has not received any quotes" do
-      it "awaiting_response" do
-        @user.requests_awaiting_response.first.should eq @request
+      it "pending_quotes" do
+        @user.pending_quotes.first.should eq @request
       end
     end
 
@@ -29,7 +29,7 @@ describe Request do
       end
 
       it "the other selectors should not find anything here" do
-        expect(@user.requests_awaiting_response.first).to_not be(@request)
+        expect(@user.pending_quotes.first).to_not be(@request)
         expect(@user.requests_with_accepted_quotes.first).to_not be(@request)
       end
     end
@@ -47,8 +47,8 @@ describe Request do
       end
 
       context "the other selectors should not find anything here" do
-        it "requests_awaiting_response" do
-          expect(@user.requests_awaiting_response).to_not include(@request)
+        it "pending_quotes" do
+          expect(@user.pending_quotes).to_not include(@request)
         end
 
         it "requests_with_price_quotes" do

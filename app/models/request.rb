@@ -12,19 +12,32 @@ class Request < ActiveRecord::Base
   
   attr_reader :return_to_page
 
+  ########################################################################
+  # The states of an request:
+  #
+  # delegated_to_user_id is set when the submitter delegates the task to an expert, 
+  # and the expert has not yet acccepted the request.
+  # When the expert accepts then the contractor_id is set
+  #
+  # If an expert picks a request from the unassigned tasks, 
+  # send a price quote which is accepted, then the contractor_id is set.
+  #
+  ########################################################################
+
   scope :published,  -> { where published: true }
   scope :unpublished,  -> { where published: nil }
   scope :published_and_unassigned, -> { 
     published.where(delegated_to_user_id: nil).where(contractor_id: nil)}
-  #scope :unassigned, -> { where contractor_id: nil }
+  scope :no_quotes_received, -> { where price_quotes: nil }
   scope :in_process, -> { where( "contractor_id <> 0" ) }
   scope :assigned_not_accepted, -> { where( "delegated_to_user_id <> 0" ) }
+
   #scope :mine, :conditions=>'SELECT *
   #                      FROM requests WHERE NOT EXISTS 
   #                      (SELECT price_quotes.request_id 
   #                      FROM price_quotes WHERE price_quotes.request_id = requests.id)'
 
-  def self.awaiting_response(user)
+  def self.pending_quotes(user)
     # Select all requests where we can't find any PriceQuotes with that request_id
     Request.find_by_sql("
       SELECT *

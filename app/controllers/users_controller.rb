@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   respond_to :html
 
+  before_filter :find_requests
+
   def profile
     @user = User.find(params[:id])
   end

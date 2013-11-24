@@ -75,7 +75,7 @@
         class: 'btn btn-primary send_question pull-right') unless @current_user == user
   - elsif body_id == 'users_browse_experts'
     = link_to "Send a question to #{user.name.split.first}", new_request_path, 
-      class: 'btn btn-info pull-right' unless @current_user == user
+      class: 'btn btn-info pull-right send_question' unless @current_user == user
   - else 
     a.btn.btn-info.pull-right= "Send a question to #{user.name.split.first}"
 
