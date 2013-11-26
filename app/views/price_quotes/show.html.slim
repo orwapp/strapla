@@ -1,12 +1,8 @@
 = render :partial => 'requests/request', locals: {request: @price_quote.request}
-- if @current_user.email == 'martin@stabenfeldt.net'
 br
 br
 br
 
-
-// List all price quotes for the request owner
-- if @current_user.email == 'martin@stabenfeldt.net'
 
 = render :partial => 'price_quote', locals: {price_quote: @price_quote}
 
@@ -17,15 +13,11 @@ br
       - if (@price_quote.request.contractor == current_user)
         strong.text-success You won this assignment! Do your best and make the client happy.
 
-
 .row
   .span11
-      = link_to 'Edit', edit_request_path(request), class: 'pull-right btn '   if (@price_quote.request.user == current_user) and @price_quote.request.status != :accepted
+      = link_to 'Edit', edit_request_path(request), class: 'pull-right btn '   if (@price_quote.request.user == current_user) and (@price_quote.request.status != :accepted)
       = nbsp
       = nbsp
       = nbsp
-      = link_to 'Next', select_recipient_path(@price_quote.request), class: 'pull-right btn  btn-info'   if @price_quote.request.user == current_user
-      
-
+      = link_to 'Next', select_recipient_path(@price_quote.request), class: 'pull-right btn  btn-info'   if (@price_quote.request.user == current_user)
 br
-
