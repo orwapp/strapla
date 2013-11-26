@@ -3,7 +3,7 @@
     .image.pull-left
       = image_tag user.image_url, size: '230x230'
 
-    .right.span8
+    .right
       .span4
         h3= user.name 
         strong= "Member since #{I18n.l( user.created_at, format: :without_time)}"
