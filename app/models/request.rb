@@ -5,10 +5,10 @@ class Request < ActiveRecord::Base
   belongs_to :preferred_language
   belongs_to :request_group
 	validates_presence_of :user
-
   validates_presence_of :title, :description
-  #validates_presence_of :request_group
-	# TODO use the pattern Wicked describes
+  
+  mount_uploader :image, ImageUploader
+  
   
   attr_reader :return_to_page
 

@@ -69,3 +69,5 @@ gem 'foreman'
 gem 'unicorn'
 gem 'resque'
 gem 'resque_mailer'
+gem 'carrierwave'
+

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131123121319) do
+ActiveRecord::Schema.define(version: 20131202062742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -170,6 +170,8 @@ ActiveRecord::Schema.define(version: 20131123121319) do
     t.date     "due_date"
     t.string   "budget"
     t.integer  "preferred_language_id"
+    t.string   "image"
+    t.text     "system_description"
   end
 
   add_index "requests", ["request_group_id"], name: "index_requests_on_request_group_id", using: :btree
