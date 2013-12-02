@@ -1,7 +1,10 @@
 class Requests::BuildController < ApplicationController
   include Wicked::Wizard
+    #:upload_images,
+    #:image_preview,
 
   steps  \
+    :system_description,
     :select_what_kind_of_software,
     :select_language_or_framework,
     :the_frame,
@@ -24,6 +27,8 @@ class Requests::BuildController < ApplicationController
       @experts = User.where(role: :expert).load
     when 'select_what_kind_of_software'
       @software_groups = RequestGroup.all
+    when 'image_preview'
+      @images = [@request.image]
     else
     end
       render_wizard
