@@ -43,7 +43,8 @@ class Request < ActiveRecord::Base
       SELECT *
       FROM requests WHERE user_id = #{user.id} AND NOT EXISTS 
       (SELECT price_quotes.request_id 
-      FROM price_quotes WHERE price_quotes.request_id = requests.id );")
+      FROM price_quotes WHERE price_quotes.request_id = requests.id )
+      AND published = true;")
   end
 
   def self.with_price_quotes(user)

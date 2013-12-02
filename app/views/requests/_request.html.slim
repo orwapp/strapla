@@ -81,6 +81,11 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
         br
         span Delegated to:
         span= request.delegated_to
+        br
+        span Published:
+        span= !!request.published
+
+      br
       br
   /.row
     .span11
