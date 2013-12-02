@@ -1,10 +1,10 @@
 class Requests::BuildController < ApplicationController
   include Wicked::Wizard
-    #:upload_images,
+    ##:upload_images,
     #:image_preview,
+    #:system_description,
 
   steps  \
-    :system_description,
     :select_what_kind_of_software,
     :select_language_or_framework,
     :the_frame,
