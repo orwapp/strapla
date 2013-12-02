@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
   respond_to :html
-  before_action :set_request, only: [:quote, :show, :edit, :update, :destroy]
+  before_action :set_request, only: [:quote, :show, :edit, :update, :destroy, :system_description]
   before_action :find_requests
   before_filter :set_wizard
   before_filter :authenticate_user!, except: [:index,  :unassigned_requests]
@@ -102,6 +102,9 @@ class RequestsController < ApplicationController
     @request.update_attribute(:published, true)
     @request.update_attribute(:status, 'delegated_to_group')
     redirect_to root_url
+  end
+
+  def system_description
   end
 
   def update

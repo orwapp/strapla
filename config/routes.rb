@@ -55,6 +55,8 @@ CodeRunner::Application.routes.draw do
 
 	get  'requests/init'   => 'requests#init',  as: :init_request,  format: false
   resources :requests do
+    get :system_description
+
     resources :build, controller: 'requests/build'
     resources :price_quotes do
       resources :comments

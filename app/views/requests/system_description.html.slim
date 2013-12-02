@@ -1,0 +1,27 @@
+- if @request.errors.any?
+  #error_explanation
+    h2 = "#{pluralize(@request.errors.count, "error")} prohibited this request from being saved:"
+    ul
+      - @request.errors.full_messages.each do |message|
+        li = message
+
+.row#wizard
+  .span8
+    /.progress
+      .bar.completed.bar-success data-percent="12.5" style="width: 12.5%;"
+      .bar.remaining.bar-warning data-percent="87.5" style="width: 87.5%;"
+  
+  = simple_form_for(@request, :html => { :class => 'form-inline span8 help_text' }) do |f|
+  
+    .form-inputs
+      .part
+        = f.input :system_description,
+          input_html: { 'data-hint' => 'System arcitechture',
+          'data-example' => 'System arcitechture',
+          class: 'span8 help_text'}  
+
+
+        = f.button :submit, 'Save', :class => 'btn btn-info'
+
+  .span3
+    = render :partial => 'requests/shared/help_text'
