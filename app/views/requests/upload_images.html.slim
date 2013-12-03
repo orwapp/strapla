@@ -1,0 +1,13 @@
+.progress
+  .bar.completed.bar-success data-percent="22.5" style="width: 42.5%;"
+  .bar.remaining.bar-warning data-percent="77.5" style="width: 57.5%;"
+
+h3 Upload images 
+
+= simple_form_for(@request) do |f|
+  = f.file_field :image, hint: '',
+    input_html: { 'data-hint' => 'What´s the financial frame?', 
+    'data-example' => 'I have $10k, when that´s spent the app should be accepted at Apple AppStore and available for all markets.',
+    class: 'span8 help_text'}
+  = f.submit
+  

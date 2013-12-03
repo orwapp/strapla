@@ -1,5 +1,8 @@
 = render :partial => 'requests/request', locals: {request: @request}
 
+h3 Image
+= image_tag(@request.image_url)
+
 br
 br
 - unless @current_user == @request.user

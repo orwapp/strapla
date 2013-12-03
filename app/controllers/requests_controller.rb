@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
   respond_to :html
-  before_action :set_request, only: [:quote, :show, :edit, :update, :destroy]
+  before_action :set_request, only: [:quote, :show, :edit, :update, :destroy, :upload_images]
   before_action :find_requests
   before_filter :set_wizard
   before_filter :authenticate_user!, except: [:index,  :unassigned_requests]
@@ -10,6 +10,10 @@ class RequestsController < ApplicationController
 
 	def init
 	end
+
+  def upload_images
+
+  end
 
   def select_what_kind_of_software
     @request = Request.find(params[:request_id])
@@ -149,7 +153,8 @@ class RequestsController < ApplicationController
       :no_list,
       :what_can_go_wrong,
       :what_is_it_going_to_give,
-      :what_is_the_frame
+      :what_is_the_frame,
+      :image
     )
   end
 
