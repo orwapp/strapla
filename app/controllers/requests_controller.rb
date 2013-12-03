@@ -12,7 +12,7 @@ class RequestsController < ApplicationController
 	end
 
   def upload_images
-
+    @image = Image.new
   end
 
   def select_what_kind_of_software

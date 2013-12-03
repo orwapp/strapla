@@ -4,10 +4,10 @@
 
 h3 Upload images 
 
-= simple_form_for(@request) do |f|
-  = f.file_field :image, hint: '',
-    input_html: { 'data-hint' => 'What´s the financial frame?', 
-    'data-example' => 'I have $10k, when that´s spent the app should be accepted at Apple AppStore and available for all markets.',
-    class: 'span8 help_text'}
+= simple_form_for(@image) do |f|
+  = f.input :title
+  = f.input :description
+
+  = f.file_field :image, input_html: { class: 'span8 help_text'}
   = f.submit
   
