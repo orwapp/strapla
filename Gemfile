@@ -30,6 +30,8 @@ gem 'bootstrap-datepicker-rails'
 gem 'wicked'
 gem 'activerecord-postgres-hstore'
 gem 'pg'
+gem "mongoid", "~> 4.0.0.alfa1", :github => 'mongoid/mongoid'
+gem 'bson_ext'
 
 group :production do
   gem 'exception_notification'
