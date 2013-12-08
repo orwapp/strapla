@@ -5,7 +5,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
   config.mailer_sender = "martin@stabstr.com"
-  config.secret_key = '615ef9401c2181eb686c281e5320fca91d7b6bfbf582463c8b1b0c7c85a38d8cb0b8700737a2b10d7f94498347bfe94253827386115385086ed1b25267b292c5'
+  config.secret_key = '1d0e45672b8dedc75b3793863764ac2cd62e82d245b07d1775062497bac6e505e8409d83415006a485efa48a181c3ae9edf8b0de548186b14973887139eb4a8e'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
@@ -14,7 +14,8 @@ Devise.setup do |config|
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
-  require 'devise/orm/active_record'
+  #require 'devise/orm/active_record'
+  require 'devise/orm/mongoid'
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
@@ -77,6 +78,12 @@ Devise.setup do |config|
   # passing :skip => :sessions to `devise_for` in your config/routes.rb
   config.skip_session_storage = [:http_auth]
 
+  # By default, Devise cleans up the CSRF token on authentication to
+  # avoid CSRF token fixation attacks. This means that, when using AJAX
+  # requests for sign in and sign up, you need to get a new CSRF token
+  # from the server. You can disable this option at your own risk.
+  # config.clean_up_csrf_token_on_authentication = true
+
   # ==> Configuration for :database_authenticatable
   # For bcrypt, this is the cost for hashing the password and defaults to 10. If
   # using other encryptors, it sets how many times you want the password re-encrypted.
@@ -87,7 +94,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = "8a979932fbab1075168192ce250f8e308b6a2d113ff30bccc8ec38014598a7d6c482b801fc3bb6bd9c24deb60f8cc2d79cbdac6d4b8dab298f149534093f380a"
+  # config.pepper = "353e2e8429f56380a0c83aa0358cf2648916f08e161a23bda6e91d0fb207ca59cba1798b09f6326264717dd4dba7dfb97b0ded19d61b6b8811e21fb8a85586a9"
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -116,7 +123,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :rememberable
   # The time the user will be remembered without asking for credentials again.
-  # config.remember_for = 2.weeks
+    # config.remember_for = 2.weeks
 
   # If true, extends the user's remember period when remembered via cookie.
   # config.extend_remember_period = false
@@ -216,8 +223,6 @@ Devise.setup do |config|
 
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete
-  config.sign_out_via = Rails.env.test? ? :get : :delete
-
 
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting

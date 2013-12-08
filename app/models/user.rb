@@ -1,6 +1,10 @@
 class User
   include Mongoid::Document
   include Mongoid::Attributes::Dynamic
+
+  embeds_many :jobs, validate: false
+
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -9,17 +13,16 @@ class User
   attr_reader :developer
   attr_reader :employer
   
-  
 
-  validates_presence_of :name, :email
-  has_many :requests, dependent: :destroy
-  has_many :price_quotes, dependent: :destroy
-  has_many :comments, dependent: :destroy
-  has_many :estimated_hours, dependent: :destroy
-  has_many :jobs, dependent: :destroy
-  has_many :certifications, dependent: :destroy
-  has_and_belongs_to_many :skills
-  has_and_belongs_to_many :request_groups
+  #  validates_presence_of :name, :email
+  #  has_many :requests, dependent: :destroy
+  #  has_many :price_quotes, dependent: :destroy
+  #  has_many :comments, dependent: :destroy
+  #  #has_many :estimated_hours, dependent: :destroy
+  #  has_many :jobs, dependent: :destroy
+  #  has_many :certifications, dependent: :destroy
+  #  has_and_belongs_to_many :skills
+  #  has_and_belongs_to_many :request_groups
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable

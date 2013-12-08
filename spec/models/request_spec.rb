@@ -1,12 +1,15 @@
 require 'spec_helper'
 
 describe Request do
-  before :each do
-    @user    = Fabricate(:user)
-    @request = Fabricate(:request, user: @user)
+    let(:user) { User.create(name: 'martin') }
+    let(:request) { Request.create(title: 'need help', description: 'very good pay') }
+
+  it "relationships" do
+    expect(user.requests.first.id).to == request.id
   end
   
   it "is valid from the Fabric" do
+    pending "WIP"
     expect(@request).to be_valid
   end
 

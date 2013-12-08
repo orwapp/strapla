@@ -1,4 +1,4 @@
-class Skill < ActiveRecord::Base
+class Skill# < ActiveRecord::Base
 
   def self.tokens(query)
     skills = where("name iLIKE ?", "%#{query}%").select(:id, :name)

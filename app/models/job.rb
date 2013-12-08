@@ -1,4 +1,9 @@
-class Job < ActiveRecord::Base
-  belongs_to :user
-	validates_presence_of :title, :company, :summary
+class Job
+  include Mongoid::Document
+  include Mongoid::Attributes::Dynamic
+
+  embedded_in :user
+
+  #belongs_to :user
+	validates_presence_of :title, :company_name, :summary
 end

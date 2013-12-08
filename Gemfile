@@ -4,7 +4,7 @@ gem 'rails', '4.0.0'
 ruby '2.0.0'
 
 gem 'slim'
-gem 'slim-rails'
+#gem 'slim-rails'
 gem 'fabrication'
 gem 'rails_12factor'   # Needed for Rails4 on Heroku
 gem 'uglifier', '>= 1.3.0'
@@ -30,8 +30,8 @@ gem 'bootstrap-datepicker-rails'
 gem 'wicked'
 gem 'activerecord-postgres-hstore'
 gem 'pg'
-gem 'mongoid', '~> 4.0.0.alpha1', github: 'rubrikkfabrikken/mongoid'
 
+gem 'mongoid', '~> 4.0.0.alpha1', github: 'rubrikkfabrikken/mongoid'
 gem 'bson_ext'
 
 group :production do
@@ -72,5 +72,5 @@ gem 'foreman'
 gem 'unicorn'
 gem 'resque'
 gem 'resque_mailer'
-gem 'carrierwave'
+#gem 'carrierwave'
 gem 'mini_magick'

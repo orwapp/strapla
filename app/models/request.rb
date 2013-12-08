@@ -1,13 +1,41 @@
-class Request < ActiveRecord::Base
-  belongs_to :user
-  has_many :price_quotes, dependent: :destroy
-  has_many :features
-  belongs_to :preferred_language
-  belongs_to :request_group
-	validates_presence_of :user
-  validates_presence_of :title, :description
+class Request
+  include Mongoid::Document
+  include Mongoid::Attributes::Dynamic
+
+  field :title
+  field :description
+  field :system_description
+
+  #field :goal
+  #field :request_group_id
+  #field :created_at
+  #field :updated_at
+  #field :user_id
+  #field :delegated_to_user_id
+  #field :contractor_id
+  #field :elevator_pitch
+  #field :background_information
+  #field :no_list
+  #field :what_can_go_wrong
+  #field :what_is_it_going_to_give
+  #field :what_is_the_frame
+  #field :published
+  #field :type_of
+  #field :status
+  #field :due_date
+  #field :budget
+  #field :preferred_language_id
+  #field :image
+
+  #belongs_to :user
+  #has_many :price_quotes, dependent: :destroy
+  #has_many :features
+  #belongs_to :preferred_language
+  #belongs_to :request_group
+	#validates_presence_of :user
+  #validates_presence_of :title, :description
   
-  mount_uploader :image, ImageUploader
+  #mount_uploader :image, ImageUploader
   
   
   attr_reader :return_to_page
@@ -24,13 +52,13 @@ class Request < ActiveRecord::Base
   #
   ########################################################################
 
-  scope :published,  -> { where published: true }
-  scope :unpublished,  -> { where published: nil }
-  scope :published_and_unassigned, -> { 
-    published.where(delegated_to_user_id: nil).where(contractor_id: nil)}
-  scope :no_quotes_received, -> { where price_quotes: nil }
-  scope :in_process, -> { where( "contractor_id <> 0" ) }
-  scope :assigned_not_accepted, -> { where( "delegated_to_user_id <> 0" ) }
+  # scope :published,  -> { where published: true }
+  # scope :unpublished,  -> { where published: nil }
+  # scope :published_and_unassigned, -> { 
+  #   published.where(delegated_to_user_id: nil).where(contractor_id: nil)}
+  # scope :no_quotes_received, -> { where price_quotes: nil }
+  # scope :in_process, -> { where( "contractor_id <> 0" ) }
+  # scope :assigned_not_accepted, -> { where( "delegated_to_user_id <> 0" ) }
 
   #scope :mine, :conditions=>'SELECT *
   #                      FROM requests WHERE NOT EXISTS 
@@ -39,19 +67,19 @@ class Request < ActiveRecord::Base
 
   def self.pending_quotes(user)
     # Select all requests where we can't find any PriceQuotes with that request_id
-    Request.find_by_sql("
-      SELECT *
-      FROM requests WHERE user_id = #{user.id} AND NOT EXISTS 
-      (SELECT price_quotes.request_id 
-      FROM price_quotes WHERE price_quotes.request_id = requests.id )
-      AND published = true;")
+    #Request.find_by_sql("
+    #  SELECT *
+    #  FROM requests WHERE user_id = #{user.id} AND NOT EXISTS 
+    #  (SELECT price_quotes.request_id 
+    #  FROM price_quotes WHERE price_quotes.request_id = requests.id )
+    #  AND published = true;")
   end
 
   def self.with_price_quotes(user)
     # Select all requests that have a price quote
-    Request.find_by_sql("SELECT * FROM price_quotes 
-      INNER JOIN requests ON 
-      price_quotes .request_id = requests.id AND requests.user_id = #{user.id};")
+    #Request.find_by_sql("SELECT * FROM price_quotes 
+    #  INNER JOIN requests ON 
+    #  price_quotes .request_id = requests.id AND requests.user_id = #{user.id};")
   end
 
   def contractor

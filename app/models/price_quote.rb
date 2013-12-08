@@ -1,25 +1,28 @@
-class PriceQuote < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :request
-  validates_presence_of :user, :hours_estimated, :request_id, :price
-  has_many :comments, dependent: :destroy
+class PriceQuote
+  include Mongoid::Document
+  include Mongoid::Attributes::Dynamic
 
-  after_save :update_status!
-  after_create :save_features
+  #belongs_to :user
+  #belongs_to :request
+  #validates_presence_of :user, :hours_estimated, :request_id, :price
+  #has_many :comments, dependent: :destroy
 
-  scope :unprocessed, -> { where status: nil }
-  scope :accepted, -> { where status: 'accepted' }
-  scope :rejected, -> { where status: 'rejected' }
+  #after_save :update_status!
+  #after_create :save_features
 
-  delegate :goal,                   :to => :request 
-  delegate :title,                  :to => :request 
-  delegate :description,            :to => :request 
-  delegate :background_information, :to => :request 
-  delegate :what_is_it_going_to_give, :to => :request 
-  delegate :what_can_go_wrong, :to => :request 
-  delegate :due_date, :to => :request 
-  delegate :budget, :to => :request 
-  delegate :due_date, :to => :request 
+  #scope :unprocessed, -> { where status: nil }
+  #scope :accepted, -> { where status: 'accepted' }
+  #scope :rejected, -> { where status: 'rejected' }
+
+  ##delegate :goal,                   :to => :request 
+  ##delegate :title,                  :to => :request 
+  ##delegate :description,            :to => :request 
+  ##delegate :background_information, :to => :request 
+  ##delegate :what_is_it_going_to_give, :to => :request 
+  #delegate :what_can_go_wrong, :to => :request 
+  #delegate :due_date, :to => :request 
+  #delegate :budget, :to => :request 
+  #delegate :due_date, :to => :request 
   
 
   def save_features
@@ -50,7 +53,7 @@ class PriceQuote < ActiveRecord::Base
 
   def unprocessed
     #connection = ActiveRecord::Base.connection
-    ActiveRecord::Base.connection.execute(" select * from price_quotes join requests on price_quotes.request_id=requests.id ")
+    #ActiveRecord::Base.connection.execute(" select * from price_quotes join requests on price_quotes.request_id=requests.id ")
     #PriceQuote.joins('LEFT OUTER JOIN addresses ON addresses.client_id = clients.id')
   end
 

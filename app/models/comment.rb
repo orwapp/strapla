@@ -1,6 +1,9 @@
-class Comment < ActiveRecord::Base
-  belongs_to :price_quote
-  belongs_to :user
+class Comment# < ActiveRecord::Base
+  include Mongoid::Document
+  include Mongoid::Attributes::Dynamic
+  
+  #belongs_to :price_quote
+  #belongs_to :user
   #validates_presence_of :price_quote
   validates_presence_of :user
 
