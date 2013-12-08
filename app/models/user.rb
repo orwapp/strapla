@@ -1,6 +1,9 @@
 class User
   include Mongoid::Document
   include Mongoid::Attributes::Dynamic
+  include Mongoid::Slug
+  slug :name
+  validates :name, :uniqueness => true
 
   embeds_many :jobs, validate: false
 

@@ -36,10 +36,6 @@ GEM
       activesupport (= 4.0.0)
       arel (~> 4.0.0)
     activerecord-deprecated_finders (1.0.3)
-    activerecord-postgres-hstore (0.7.7)
-      activerecord (>= 3.1)
-      pg-hstore (>= 1.1.5)
-      rake
     activesupport (4.0.0)
       i18n (~> 0.6, >= 0.6.4)
       minitest (~> 4.2)
@@ -234,6 +230,9 @@ GEM
       subexec (~> 0.2.1)
     mini_portile (0.5.2)
     minitest (4.7.5)
+    mongoid_slug (3.2.0)
+      mongoid (> 3.0)
+      stringex (~> 2.0)
     mono_logger (1.1.0)
     moped (2.0.0.beta4)
       bson (~> 2.0)
@@ -247,8 +246,6 @@ GEM
     origin (1.1.0)
     orm_adapter (0.5.0)
     parallel (0.9.1)
-    pg (0.17.0)
-    pg-hstore (1.2.0)
     polyglot (0.3.3)
     pry (0.9.12.4)
       coderay (~> 1.0)
@@ -373,6 +370,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
+    stringex (2.1.2)
     subexec (0.2.3)
     temple (0.6.7)
     thor (0.18.1)
@@ -409,7 +407,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord-postgres-hstore
   better_errors
   binding_of_caller
   bootstrap-datepicker-rails
@@ -443,7 +440,7 @@ DEPENDENCIES
   metric_fu
   mini_magick
   mongoid (~> 4.0.0.alpha1)!
-  pg
+  mongoid_slug
   quiet_assets
   rails (= 4.0.0)
   rails_12factor
