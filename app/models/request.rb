@@ -5,6 +5,7 @@ class Request
   field :title
   field :description
   field :system_description
+  field :background_information
 
   #field :goal
   #field :request_group_id
