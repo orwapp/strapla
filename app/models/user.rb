@@ -1,20 +1,74 @@
 class User
   include Mongoid::Document
   include Mongoid::Attributes::Dynamic
+  include Mongoid::Timestamps
+
   include Mongoid::Slug
   slug :name
   validates :name, :uniqueness => true
+  
+  
 
-  embeds_many :jobs, validate: false
+  embeds_many :jobs,   validate: false
+  embeds_many :skills, validate: false
+  embeds_many :certifications, validate: false
+  field :name
+  field :email
+  field :image_url
+  field :phone
+  field :bio
+  field :developer, type: Boolean
+  field :describe_your_dream_project
+  field :linkedin_url
+  field :github_username
+  field :company_name
+
+  ## Database authenticatable
+  field :email,              :type => String#, :null => false
+  field :encrypted_password, :type => String#, :null => false
+
+  ## Recoverable
+  field :reset_password_token,   :type => String
+  field :reset_password_sent_at, :type => Time
+
+  ## Rememberable
+  field :remember_created_at, :type => Time
+
+  ## Trackable
+  field :sign_in_count,      :type => Integer
+  field :current_sign_in_at, :type => Time
+  field :last_sign_in_at,    :type => Time
+  field :current_sign_in_ip, :type => String
+  field :last_sign_in_ip,    :type => String
+
+  ## Encryptable
+  # field :password_salt, :type => String
+
+  ## Confirmable
+  # field :confirmation_token,   :type => String
+  # field :confirmed_at,         :type => Time
+  # field :confirmation_sent_at, :type => Time
+  # field :unconfirmed_email,    :type => String # Only if using reconfirmable
+
+  ## Lockable
+  # field :failed_attempts, :type => Integer # Only if lock strategy is :failed_attempts
+  # field :unlock_token,    :type => String # Only if unlock strategy is :email or :both
+  # field :locked_at,       :type => Time
+
+  # Token authenticatable
+  # field :authentication_token, :type => String
+
+  ## Invitable
+  # field :invitation_token, :type => String
+
+
 
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   #
-  attr_reader :skill_tokens
-  attr_reader :developer
-  attr_reader :employer
+  #attr_reader :skill_tokens
   
 
   #  validates_presence_of :name, :email
@@ -32,17 +86,17 @@ class User
 
 
 
-  def self.skill_tokens=(tokens)
-    self.skill_ids = Skill.ids_from_tokens 
-    self.save
-  end
+  #def self.skill_tokens=(tokens)
+  #  self.skill_ids = Skill.ids_from_tokens 
+  #  self.save
+  #end
 
   def developer?
-    !!(self.role.match 'developer') rescue nil
+    self.developer
   end
 
   def employer?
-    !!(self.role.match 'employer') rescue nil
+    self.employer
   end
  
   def average_price
@@ -82,10 +136,10 @@ class User
   end
 
 
-  def skill_tokens=(ids)
-    self.skill_ids = Skill.ids_from_tokens(ids)
-    #self.skill_ids = Skill.ids_from_tokens(tokens)
-  end
+  #def skill_tokens=(ids)
+  #  self.skill_ids = Skill.ids_from_tokens(ids)
+  #  #self.skill_ids = Skill.ids_from_tokens(tokens)
+  #end
 
 
 

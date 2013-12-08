@@ -1,6 +1,11 @@
 class Certification #< ActiveRecord::Base
   include Mongoid::Document
-  #belongs_to :user
+  include Mongoid::Attributes::Dynamic
+
+  embedded_in :user
+  field :title
+  field :date
+
 	validates :user, :presence => true
 	validates :date, :presence => true
 	validates :title, :presence => true

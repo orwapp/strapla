@@ -2,12 +2,12 @@
   = f.error_notification
   .form-inputs
     = f.input :title,     :autofocus => true
-    = f.input :company,   :autofocus => true
+    = f.input :company_name,   :autofocus => true
     = f.input :summary, as: :text,   :autofocus => true
 
     = f.input :from_date, as: :string, input_html: { 'data-behaviour' => 'datepicker' }
     = f.input :to_date, as: :string, input_html: { 'data-behaviour' => 'datepicker' }
-    = f.input :current
+    = f.input :current, as: :boolean
     %br
     %br
 

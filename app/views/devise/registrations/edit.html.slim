@@ -23,15 +23,18 @@ h2.page-header Your profile
 
     .tab-pane#jobs
       h4 Jobs
-      = render @current_user.jobs.all
+      - @current_user.jobs.all.each do |job|
+        - next unless job.title
+        = render job 
 
       hr
       h5 Add a new job
       = render :partial => 'jobs/form'
 
     .tab-pane#certifications
-      h4 Certifications
-      = render @current_user.certifications.all
+      - if @current_user.certifications.size > 0
+        h4 Certifications
+        = render @current_user.certifications.all
 
       h5 Add a new certification
       = render :partial => 'certifications/form'
