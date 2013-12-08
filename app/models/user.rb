@@ -1,4 +1,6 @@
-class User < ActiveRecord::Base
+class User
+  include Mongoid::Document
+  include Mongoid::Attributes::Dynamic
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -23,8 +25,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
 
-  scope :developer,  -> { where developer: true }
-  scope :employer,  -> { where employer: true }
 
   def self.skill_tokens=(tokens)
     self.skill_ids = Skill.ids_from_tokens 
