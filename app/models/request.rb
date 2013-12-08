@@ -1,28 +1,37 @@
 class Request
   include Mongoid::Document
   include Mongoid::Attributes::Dynamic
+  include Mongoid::Timestamps
+  
 
   field :title
   field :description
   field :system_description
   field :background_information
+  field :budget
+  field :due_date, type: Date
+  field :status
+  field :goal
+  field :what_is_it_going_to_give
 
-  #field :goal
+  belongs_to :user
+  belongs_to :request_group
+  belongs_to :preferred_language
+  has_many :features
+
   #field :request_group_id
   #field :created_at
   #field :updated_at
   #field :user_id
-  #field :delegated_to_user_id
-  #field :contractor_id
+  field :delegated_to_user_id
+  field :contractor_id
   #field :elevator_pitch
   #field :background_information
   #field :no_list
   #field :what_can_go_wrong
-  #field :what_is_it_going_to_give
   #field :what_is_the_frame
-  #field :published
+  field :published
   #field :type_of
-  #field :status
   #field :due_date
   #field :budget
   #field :preferred_language_id

@@ -12,6 +12,8 @@ class User
   embeds_many :jobs,   validate: false
   embeds_many :skills, validate: false
   embeds_many :certifications, validate: false
+  has_many :requests, validate: false
+
   field :name
   field :email
   field :image_url
@@ -22,6 +24,7 @@ class User
   field :linkedin_url
   field :github_username
   field :company_name
+  field :title
 
   ## Database authenticatable
   field :email,              :type => String#, :null => false
@@ -107,7 +110,7 @@ class User
   end
 
   def delegated_requests
-    Request.where(delegated_to_user_id: self.id).load
+    Request.where(delegated_to_user_id: self.id).all
   end
 
   def delegated_requests_not_responded_to
@@ -120,7 +123,7 @@ class User
   end
 
   def delegated_and_accepted_requests
-    Request.where(delegated_to_user_id: self.id, contractor_id: self.id).load
+    Request.where(delegated_to_user_id: self.id, contractor_id: self.id).all
   end
 
   def pending_quotes

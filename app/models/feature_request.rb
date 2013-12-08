@@ -1,4 +1,4 @@
-class FeatureRequest #< ActiveRecord::Base
+class FeatureRequest
   #belongs_to :user
   #belongs_to :request
 end

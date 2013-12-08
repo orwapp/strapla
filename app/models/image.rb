@@ -1,3 +1,3 @@
-class Image# < ActiveRecord::Base
+class Image
   #belongs_to :request
 end

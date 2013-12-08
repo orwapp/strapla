@@ -31,9 +31,10 @@
           class: 'span8 help_text' }
 
         = f.input :system_description,
-          input_html: { 'data-hint' => 'If possible, try to describe the architecture', rows: 10, label: false,
-          'data-example' => 'We need a backend task to process all incoming calculation, it should be connected to printer',
-          class: 'span8 help_text'}
+          input_html: { 'data-hint' => 'If possible, try to describe the architecture', 
+            rows: 10, label: false,
+            'data-example' => 'We need a backend task to process all incoming calculation, it should be connected to printer',
+            class: 'span8 help_text'}
       
         = f.button :submit, 'Save', :class => 'btn btn-info'
 

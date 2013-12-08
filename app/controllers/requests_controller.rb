@@ -73,7 +73,6 @@ class RequestsController < ApplicationController
   def create
     @request = Request.new(request_params)
     @request.user = current_user
-    @request.type_of = @wizard.present? ? 'big' : 'small'
     @form_id = "#edit_feature_#{@request.id}"
     if @request.save
       redirect_to "/requests/#{@request.id}/build"
@@ -84,7 +83,7 @@ class RequestsController < ApplicationController
 
   def select_recipient
     @request = Request.find(params[:request_id])
-    @experts = User.where(role: :expert).load
+    @experts = User.where(role: :expert).all
   end
 
   def delegate_to_expert

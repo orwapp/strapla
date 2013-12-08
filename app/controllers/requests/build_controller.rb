@@ -18,13 +18,11 @@ class Requests::BuildController < ApplicationController
     @request = Request.find(params[:request_id])
     case params[:id]
     when 'features'
-      #@new_feature = Feature.new
-      @features = []
-      @features << @request.features.new
-      @features = @request.features.load
+      @new_feature = @request.features.new
+      @features    = @request.features.all
       @features.reverse!
     when 'select_recipient'
-      @experts = User.where(role: :expert).load
+      @experts = User.where(role: :expert).all
     when 'select_what_kind_of_software'
       @software_groups = RequestGroup.all
     when 'image_preview'
@@ -58,7 +56,8 @@ class Requests::BuildController < ApplicationController
        :background_information,
        :what_can_go_wrong,
        :what_is_it_going_to_give,
-       :what_is_the_frame
+       :what_is_the_frame,
+       :id
       )
   end
 

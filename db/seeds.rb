@@ -46,10 +46,11 @@ User.create(
   email: 'martin@stabenfeldt.net'
 )
 
-RequestGroup.create(title: 'Desktop application - Windows')
-RequestGroup.create(title: 'Desktop application - Mac')
-RequestGroup.create(title: 'Android app')
-RequestGroup.create(title: 'iOS app')
-RequestGroup.create(title: 'Integration')
-RequestGroup.create(title: 'Linux / UNIX scripting')
-RequestGroup.create(title: 'Web application')
+
+RequestGroup.create(title: 'Desktop application - Windows', image_url: 'language_and_frameworks/windows.png')
+RequestGroup.create(title: 'Desktop application - Mac', image_url: 'language_and_frameworks/mac.png')
+RequestGroup.create(title: 'Android app', image_url: 'language_and_frameworks/android.png')
+RequestGroup.create(title: 'iOS app', image_url: 'language_and_frameworks/ios.png')
+RequestGroup.create(title: 'Integration', image_url: 'language_and_frameworks/integration.png')
+RequestGroup.create(title: 'Linux / UNIX scripting', image_url: 'language_and_frameworks/unixscripting.png')
+RequestGroup.create(title: 'Web application', image_url: 'language_and_frameworks/webapps.png')

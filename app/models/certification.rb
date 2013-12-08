@@ -1,4 +1,4 @@
-class Certification #< ActiveRecord::Base
+class Certification
   include Mongoid::Document
   include Mongoid::Attributes::Dynamic
 

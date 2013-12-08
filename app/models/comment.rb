@@ -1,4 +1,4 @@
-class Comment# < ActiveRecord::Base
+class Comment
   include Mongoid::Document
   include Mongoid::Attributes::Dynamic
   
