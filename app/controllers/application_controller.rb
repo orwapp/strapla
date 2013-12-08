@@ -16,19 +16,19 @@ class ApplicationController < ActionController::Base
 
   def find_requests
     return
-    #if user_signed_in?
-    #  @pending_quotes                = @current_user.pending_quotes
-    #  @received_quotes               = PriceQuote.unprocessed_belonging_to_user(@current_user) - @pending_quotes
-    #  @requests_with_accepted_quotes = @current_user.requests_with_accepted_quotes
-    #  @unpublished_requests          = @current_user.requests.unpublished.to_a
-    #  @unassigned_requests     = Request.published_and_unassigned.where("user_id != #{@current_user.id}")
-    #  @my_requests_unassigned  = current_user.requests.published_and_unassigned.to_a
-    #  @my_requests_in_progress = current_user.requests.in_process.to_a
-    #  @my_requests_assigned_not_accepted = current_user.requests.assigned_not_accepted.to_a
-    #else
-    #  @unassigned_requests = Request.published_and_unassigned
-    #end
-    #@groups = @unassigned_requests.load.collect(&:request_group).uniq if @unassigned_requests
+    if user_signed_in?
+      @pending_quotes                = @current_user.pending_quotes.to_a
+      @received_quotes               = PriceQuote.unprocessed_belonging_to_user(@current_user) - @pending_quotes
+      @requests_with_accepted_quotes = @current_user.requests_with_accepted_quotes
+      @unpublished_requests          = @current_user.requests.unpublished.to_a
+      @unassigned_requests     = Request.published_and_unassigned.where("user_id != #{@current_user.id}")
+      @my_requests_unassigned  = current_user.requests.published_and_unassigned.to_a
+      @my_requests_in_progress = current_user.requests.in_process.to_a
+      @my_requests_assigned_not_accepted = current_user.requests.assigned_not_accepted.to_a
+    else
+      @unassigned_requests = Request.published_and_unassigned
+    end
+    @groups = @unassigned_requests.load.collect(&:request_group).uniq if @unassigned_requests
   end
 
 

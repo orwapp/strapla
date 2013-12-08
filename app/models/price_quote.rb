@@ -2,8 +2,8 @@ class PriceQuote
   include Mongoid::Document
   include Mongoid::Attributes::Dynamic
 
-  #belongs_to :user
-  #belongs_to :request
+  belongs_to :user
+  belongs_to :request
   #validates_presence_of :user, :hours_estimated, :request_id, :price
   #has_many :comments, dependent: :destroy
 

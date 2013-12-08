@@ -13,6 +13,7 @@ class User
   embeds_many :skills, validate: false
   embeds_many :certifications, validate: false
   has_many :requests, validate: false
+  has_many :price_quotes, validate: false
 
   field :name
   field :email
@@ -127,7 +128,7 @@ class User
   end
 
   def pending_quotes
-    Request.pending_quotes(self)
+    self.requests.where(quotes: nil).all
   end
 
   def requests_with_price_quotes

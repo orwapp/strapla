@@ -17,7 +17,8 @@ class Request
   belongs_to :user
   belongs_to :request_group
   belongs_to :preferred_language
-  has_many :features
+  has_many :features, validate: false
+  has_many :price_quotes, validate: false
 
   #field :request_group_id
   #field :created_at
