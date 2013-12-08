@@ -23,7 +23,9 @@ class Requests::BuildController < ApplicationController
       @features.reverse!
     when 'select_recipient'
       @experts = User.where(role: :expert).all
-    when 'select_what_kind_of_software'
+    #when 'select_what_kind_of_software'
+    #  @software_groups = RequestGroup.all
+    when 'select_language_or_framework'
       @software_groups = RequestGroup.all
     when 'image_preview'
       @images = [@request.image]

@@ -47,10 +47,15 @@ User.create(
 )
 
 
-RequestGroup.create(title: 'Desktop application - Windows', image_url: 'language_and_frameworks/windows.png')
-RequestGroup.create(title: 'Desktop application - Mac', image_url: 'language_and_frameworks/mac.png')
-RequestGroup.create(title: 'Android app', image_url: 'language_and_frameworks/android.png')
-RequestGroup.create(title: 'iOS app', image_url: 'language_and_frameworks/ios.png')
-RequestGroup.create(title: 'Integration', image_url: 'language_and_frameworks/integration.png')
-RequestGroup.create(title: 'Linux / UNIX scripting', image_url: 'language_and_frameworks/unixscripting.png')
-RequestGroup.create(title: 'Web application', image_url: 'language_and_frameworks/webapps.png')
+RequestGroup.where(title: 'Desktop application - Windows', image_url: 'language_and_frameworks/windows.png').first_or_create
+RequestGroup.where(title: 'Desktop application - Mac', image_url: 'language_and_frameworks/mac.png').first_or_create
+RequestGroup.where(title: 'Android app', image_url: 'language_and_frameworks/android.png').first_or_create
+RequestGroup.where(title: 'iOS app', image_url: 'language_and_frameworks/ios.png').first_or_create
+RequestGroup.where(title: 'Integration', image_url: 'language_and_frameworks/integration.png').first_or_create
+RequestGroup.where(title: 'Linux / UNIX scripting', image_url: 'language_and_frameworks/unixscripting.png').first_or_create
+RequestGroup.where(title: 'Web application', image_url: 'language_and_frameworks/webapps.png').first_or_create
+
+PreferredLanguage.where(title: 'iOS', image_url: 'language_and_frameworks/ios.png').first_or_create
+PreferredLanguage.where(title: 'Java', image_url: 'language_and_frameworks/java.png').first_or_create
+PreferredLanguage.where(title: '.Net', image_url: 'language_and_frameworks/dot_net.png').first_or_create
+PreferredLanguage.where(title: 'Ruby', image_url: 'language_and_frameworks/ruby.png').first_or_create
