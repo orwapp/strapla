@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   end
 
 	def	browse_experts
-    @experts = User.developer.load
+    @experts = User.where(developer: true).all
 	end
 
 
