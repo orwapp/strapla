@@ -1,23 +1,25 @@
 require 'spec_helper'
 
 describe Request do
-    let(:user) { User.create(name: 'martin') }
-    let(:request) { Request.create(title: 'need help', description: 'very good pay') }
+    let(:user) { Fabricate(:user) }
+    let(:request) { Fabricate(:request, user: user) }
 
   it "relationships" do
-    expect(user.requests.first.id).to == request.id
+    user.reload
+    request.reload
+    expect(user.requests.first.id).to eq request.id
   end
   
   it "is valid from the Fabric" do
-    pending "WIP"
-    expect(@request).to be_valid
+    expect(request).to be_valid
+    expect(user).to be_valid
   end
 
   describe "Queries" do
 
     context "Find Requests sent to group or expert, but has not received any quotes" do
       it "pending_quotes" do
-        @user.pending_quotes.first.should eq @request
+        user.pending_quotes.first.should eq request
       end
     end
 

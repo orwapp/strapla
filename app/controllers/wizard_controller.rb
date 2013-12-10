@@ -2,7 +2,6 @@ class WizardController < ApplicationController
   before_action :set_request
 
   def introduction
-    @elevator_pitch = ElevatorPitch.new(request: @request) 
   end
 
   def features
