@@ -1,44 +1,32 @@
 class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :edit, :update, :destroy]
 
-  # GET /images
-  # GET /images.json
   def index
     @images = Image.all
   end
 
-  # GET /images/1
-  # GET /images/1.json
   def show
   end
 
-  # GET /images/new
   def new
     @image = Image.new
   end
 
-  # GET /images/1/edit
   def edit
   end
 
-  # POST /images
-  # POST /images.json
   def create
-    @image = Image.new(image_params)
+    @request = Request.find params[:request_id]
+    @image = @request.images.new(image_params)
 
-    respond_to do |format|
-      if @image.save
-        format.html { redirect_to @image, notice: 'Image was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @image }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @image.errors, status: :unprocessable_entity }
-      end
+    if @image.save
+      redirect_to :back
+      #redirect_to @image, notice: 'Image was successfully created.'
+    else
+      render action: 'new'
     end
   end
 
-  # PATCH/PUT /images/1
-  # PATCH/PUT /images/1.json
   def update
     respond_to do |format|
       if @image.update(image_params)
@@ -51,8 +39,6 @@ class ImagesController < ApplicationController
     end
   end
 
-  # DELETE /images/1
-  # DELETE /images/1.json
   def destroy
     @image.destroy
     respond_to do |format|
