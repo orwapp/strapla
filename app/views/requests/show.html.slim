@@ -1,7 +1,8 @@
 = render :partial => 'requests/request', locals: {request: @request}
 
-h3 Image
-= image_tag(@request.image_url)
+- if @request.image.present?
+  h3 Image
+  = image_tag(@request.image_url)
 
 br
 br
