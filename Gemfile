@@ -30,6 +30,8 @@ gem 'bootstrap-datepicker-rails'
 gem 'wicked'
 gem 'activerecord-postgres-hstore'
 gem 'pg'
+gem 'fog', '~> 1.3.1'
+
 
 group :production do
   gem 'exception_notification'
