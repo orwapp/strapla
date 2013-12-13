@@ -12,6 +12,7 @@ br
   h3 Upload images and sketches of the app
   = simple_form_for([@request, @request.images.new], :html => { :class => 'form-inline span8 help_text' }) do |f|
     = f.file_field :image
+    = f.hidden_field :return_to_page, value: "/requests/#{@request.id}/build/upload_images"
     br
     br
     br

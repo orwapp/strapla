@@ -18,12 +18,18 @@ class ImagesController < ApplicationController
   def create
     @request = Request.find params[:request_id]
     @image = @request.images.new(image_params)
+    @return_to_page = params[:image][:return_to_page].present? ? params[:image][:return_to_page] : nil
 
-    if @image.save
-      redirect_to :back
-      #redirect_to @image, notice: 'Image was successfully created.'
-    else
-      render action: 'new'
+    respond_to do |format|
+      if @image.save
+        format.html { redirect_to @return_to_page,
+          notice: 'Image was successfully created.' }
+        format.js
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @image.errors, status: :unprocessable_entity }
+        format.js
+      end
     end
   end
 
