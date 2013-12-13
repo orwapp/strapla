@@ -4,7 +4,8 @@
 
 h3 Upload images 
 
-= simple_form_for(@image) do |f|
+= simple_form_for([@request, @image]) do |f|
+  = f.hidden_field :return_to_page, value: edit_request_path(@request)
   = f.input :title
   = f.input :description
 
