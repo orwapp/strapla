@@ -27,7 +27,7 @@ class Requests::BuildController < ApplicationController
     when 'select_what_kind_of_software'
       @software_groups = RequestGroup.all
     when 'upload_images'
-      @image = @request.images.new
+      #@image = @request.images.new
     when 'image_preview'
       @images = [@request.images]
     else

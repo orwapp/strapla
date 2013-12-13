@@ -1,5 +1,5 @@
-h2 Images
 - if @request.images.present?
+  h2 Images
   .container.border
     - @request.images.each do |image|
       = image_tag(image.image, size: '100x100', class: 'thumbnail pull-left')
@@ -10,7 +10,7 @@ br
 
 .container.border
   h3 Upload images and sketches of the app
-  = simple_form_for([@request, @image], :html => { :class => 'form-inline span8 help_text' }) do |f|
+  = simple_form_for([@request, @request.images.new], :html => { :class => 'form-inline span8 help_text' }) do |f|
     = f.file_field :image
     br
     br
