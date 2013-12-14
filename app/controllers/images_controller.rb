@@ -20,7 +20,6 @@ class ImagesController < ApplicationController
     @image = @request.images.new(image_params)
     @return_to_page = params[:image][:return_to_page].present? ? params[:image][:return_to_page] : nil
     @wizard = @return_to_page.match 'build'
-    Rails.logger.debug "wizard: #{@wizard}"
 
     respond_to do |format|
       if @image.save
@@ -32,7 +31,6 @@ class ImagesController < ApplicationController
         if @wizard 
           format.html { render "/requests/#{@request.id}/build/upload_images" }
         else
-          Rails.logger.debug "NOT WIZARD"
           format.html { render "/requests/upload_images"}
         end
         format.json { render json: @image.errors.full_messages, status: :unprocessable_entity }
