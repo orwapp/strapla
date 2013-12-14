@@ -10,8 +10,8 @@
     .form-inputs
       = f.hidden_field :return_to_page, value: request_features_path(@request)
       = f.hidden_field :form_id, name: 'form_id'
-      = f.input :title, required: true, input_html: { class: 'input-medium' }
-      = f.input :description,  required: true, input_html: { class: 'input-medium' }
+      = f.input :title, input_html: { class: 'input-medium' }
+      = f.input :description,  input_html: { class: 'input-medium' }
       br
       strong Image
       br
