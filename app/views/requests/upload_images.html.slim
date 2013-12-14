@@ -1,6 +1,10 @@
-.progress
-  .bar.completed.bar-success data-percent="22.5" style="width: 42.5%;"
-  .bar.remaining.bar-warning data-percent="77.5" style="width: 57.5%;"
+- if @request.images.present?
+  h2 Images
+  .container.border
+    - @request.images.each do |image|
+      = link_to image_tag( image.image_url, size: '500x500', class: 'thumbnail pull-left span4'), image.image_url, target: :blank
+
+
 
 h3 Upload images 
 
@@ -16,10 +20,5 @@ h3 Upload images
   br
   br
   = f.submit 'Upload image', class: 'btn btn-info', data: { disable_with: 'Uploading...' }
-/.row
-/.actions
-/  = f.submit "Continue"
-/  = nbsp
-/  = nbsp
-/  = nbsp
-/  = link_to 'skip', next_wizard_path  if optional
+
+= link_to '  Back to the request', @request, class: 'pull_right'
