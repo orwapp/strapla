@@ -1,10 +1,9 @@
-.page-header
-  = link_to features_path, :class => 'btn' do
-    %i.icon-list-alt
-    Back
-  = link_to @feature, :class => 'btn btn-primary' do
-    %i.icon-info-sign.icon-white
-    Show
-  %h1 Editing feature
+= link_to "Back to the request", @feature.request
+h1 Editing feature
 
 = render 'form'
+
+- if @feature.image.present?
+  h3 Images
+  .container.border
+    = link_to image_tag( @feature.image_url, size: '500x500', class: 'thumbnail pull-left span4'), @feature.image_url, target: :blank
