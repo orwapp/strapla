@@ -12,10 +12,9 @@ html
           span.muted= "Signed in as #{@current_user.email} (#{@current_user.id})" 
 
         h2= @title
-        - if notice 
-         p.notice.alert.alert-info= notice 
-        - if alert
-          p.alert= alert
+        - flash.each do |name, msg|
+          = content_tag :div, msg, class: "#{name.to_s rescue nil + notice}"
+        
   
         .row
           .span12

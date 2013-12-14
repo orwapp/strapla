@@ -19,6 +19,8 @@ class ImagesController < ApplicationController
     @request = Request.find params[:request_id]
     @image = @request.images.new(image_params)
     @return_to_page = params[:image][:return_to_page].present? ? params[:image][:return_to_page] : nil
+    @wizard = @return_to_page.match 'build'
+    Rails.logger.debug "wizard: #{@wizard}"
 
     respond_to do |format|
       if @image.save
@@ -26,8 +28,14 @@ class ImagesController < ApplicationController
           notice: 'Image was successfully created.' }
         format.js
       else
-        format.html { render action: 'new' }
-        format.json { render json: @image.errors, status: :unprocessable_entity }
+        flash.now.alert = "Could not save: #{@image.errors.full_messages.join(', ')}"
+        if @wizard 
+          format.html { render "/requests/#{@request.id}/build/upload_images" }
+        else
+          Rails.logger.debug "NOT WIZARD"
+          format.html { render "/requests/upload_images"}
+        end
+        format.json { render json: @image.errors.full_messages, status: :unprocessable_entity }
         format.js
       end
     end
@@ -61,6 +69,6 @@ class ImagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def image_params
-      params.require(:image).permit(:image, :title, :description)
+      params.require(:image).permit(:image, :title, :description, :return_to_page)
     end
 end
