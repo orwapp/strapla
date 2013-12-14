@@ -2,7 +2,7 @@
   h2 Images
   .container.border
     - @request.images.each do |image|
-      = link_to image_tag( image.image_url, size: '500x500', class: 'thumbnail pull-left'), image.image_url, target: :blank
+      = link_to image_tag( image.image_url, size: '500x500', class: 'thumbnail pull-left span4'), image.image_url, target: :blank
 
 br
 br
