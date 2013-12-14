@@ -1,2 +1,28 @@
-= render :layout => 'form', locals: {optional: true} do |f|
-  = f.file_field :image
+- if @request.images.present?
+  h2 Images
+  .container.border
+    - @request.images.each do |image|
+      = link_to image_tag( image.image_url, size: '500x500', class: 'thumbnail pull-left span4'), image.image_url, target: :blank
+
+br
+br
+.clearfix
+
+.container.border
+  h3 Upload images and sketches of the app
+  = simple_form_for([@request, @request.images.new], :html => { :class => 'form-inline span8 help_text' }) do |f|
+    = f.file_field :image
+    = f.hidden_field :return_to_page, value: "/requests/#{@request.id}/build/upload_images"
+    br
+    br
+    br
+    = f.submit 'Last opp bilde'
+
+
+br
+br
+br
+= simple_form_for(@request, url: wizard_path, method: :put, :html => { :class => 'form-inline  help_text' }) do |f|
+  .row
+  .actions
+    = link_to 'Continue', next_wizard_path, class: 'btn'

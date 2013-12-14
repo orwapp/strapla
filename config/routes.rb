@@ -2,6 +2,8 @@ CodeRunner::Application.routes.draw do
 
 
 
+  resources :images
+
   resources :certifications
 
   resources :jobs
@@ -66,6 +68,7 @@ CodeRunner::Application.routes.draw do
     post '/publish'   => 'requests#publish',     as: :publish,   format: false
     post '/unpublish' => 'requests#unpublish',   as: :unpublish, format: false
     resources :features
+    resources :images
     resources :background_informations
     get  'select_what_kind_of_software'  => 'requests#select_what_kind_of_software',  as: :select_what_kind_of_software,  format: false
   end

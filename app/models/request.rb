@@ -2,12 +2,12 @@ class Request < ActiveRecord::Base
   belongs_to :user
   has_many :price_quotes, dependent: :destroy
   has_many :features
+  has_many :images
   belongs_to :preferred_language
   belongs_to :request_group
 	validates_presence_of :user
   validates_presence_of :title, :description
   
-  mount_uploader :image, ImageUploader
   
   
   attr_reader :return_to_page

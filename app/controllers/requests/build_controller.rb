@@ -5,6 +5,7 @@ class Requests::BuildController < ApplicationController
     #:system_description,
 
   steps  \
+    :upload_images,
     :select_what_kind_of_software,
     :select_language_or_framework,
     :the_frame,
@@ -18,17 +19,17 @@ class Requests::BuildController < ApplicationController
     @request = Request.find(params[:request_id])
     case params[:id]
     when 'features'
-      #@new_feature = Feature.new
-      @features = []
-      @features << @request.features.new
-      @features = @request.features.load
+      @new_feature = @request.features.new
+      @features    = @request.features.load
       @features.reverse!
     when 'select_recipient'
       @experts = User.where(role: :expert).load
     when 'select_what_kind_of_software'
       @software_groups = RequestGroup.all
+    when 'upload_images'
+      #@image = @request.images.new
     when 'image_preview'
-      @images = [@request.image]
+      @images = [@request.images]
     else
     end
       render_wizard
