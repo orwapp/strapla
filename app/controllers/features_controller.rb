@@ -50,8 +50,9 @@ class FeaturesController < ApplicationController
   def update
     respond_to do |format|
     @form_id = "#edit_feature_#{params[:id]}"
+    @return_to_page = params[:feature][:return_to_page].present? ? params[:feature][:return_to_page] :  "/requests/#{params[:request_id]}/build/features"
       if @feature.update(feature_params)
-        format.html { redirect_to "/requests/#{params[:request_id]}/build/features",
+        format.html { redirect_to @return_to_page,
           notice: 'Feature was successfully updated.' }
         format.json { head :no_content }
         format.js
@@ -88,6 +89,6 @@ class FeaturesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def feature_params
-      params.require(:feature).permit(:request_id, :description, :title, :form_id, :image)
+      params.require(:feature).permit(:request_id, :description, :title, :form_id, :image, :return_to_page)
     end
 end
