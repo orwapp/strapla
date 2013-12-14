@@ -17,7 +17,6 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
 
         .media-body
           h4.lead.lead-pull-up= request.title
-          em= request.status
           p
             strong Description
             br
@@ -80,7 +79,7 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
         span= request.status
         br
         span Delegated to:
-        span= request.delegated_to
+        span= request.delegated_to.name rescue 'Not delegated'
         br
         span Published:
         span= !!request.published
