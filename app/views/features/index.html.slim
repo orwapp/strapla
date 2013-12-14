@@ -7,24 +7,26 @@ table.table.table-bordered.table-striped
       th Description
       th Image
       th Title
-      th Actions
+      - if @request.user == @current_user
+        th Actions
       
 
   tbody
     - @features.each do |feature|
       tr
         td= feature.description
-        td= feature.image_url if feature.image.present?
+        td= image_tag(feature.image_url) if feature.image.present?
         td= feature.title
-        td
-          = link_to 'Show', feature
-          ' 
-          = link_to 'Edit', edit_feature_path(feature)
-          ' 
-          = link_to 'Delete', feature, :confirm => 'Are you sure?', :method => :delete
+        - if @request.user == @current_user
+          td
+            = link_to 'Show', feature
+            ' 
+            = link_to 'Edit', edit_feature_path(feature)
+            ' 
+            = link_to 'Delete', feature, :confirm => 'Are you sure?', :method => :delete
 
 = link_to new_request_feature_path(@request), :class => 'btn btn-primary pull-right' do
-  i.icon-plus.icon-white= "#{nbsp} New Feature".html_safe
+  i.icon-plus.icon-white
 br
 br
 =link_to 'Back to the request', request_path(@request)
