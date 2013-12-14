@@ -1,7 +1,4 @@
 .page-header
-  = link_to features_path, :class => 'btn' do
-    %i.icon-list-alt
-    Back
-  %h1 New feature
+  h3="Describe features for #{link_to @request.title, @request}".html_safe
 
 = render 'form'
