@@ -1,9 +1,9 @@
 class FeaturesController < ApplicationController
-  include Wicked::Wizard
+  #include Wicked::Wizard
   before_action :set_feature, only: [:show, :edit, :update, :destroy]
   before_action :set_request, only: [:index, :create_many, :new, :create, :review]
 
-  steps
+  #steps
 
 
   def index
