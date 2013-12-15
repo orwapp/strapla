@@ -7,7 +7,7 @@ class FeaturesController < ApplicationController
 
 
   def index
-    @features = @request.features.load
+    @features = @request.features.order(:priority).load
   end
 
   def create_many

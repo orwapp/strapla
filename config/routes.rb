@@ -55,7 +55,7 @@ CodeRunner::Application.routes.draw do
     resources :comments
   end
 
-  post '/priority_order/:id' => 'requests#priority_order', as: :priority_order
+  post '/update_priority_order/:id' => 'requests#update_priority_order', as: :update_priority_order
 	get  'requests/init'   => 'requests#init',  as: :init_request,  format: false
   resources :requests do
     get :upload_images

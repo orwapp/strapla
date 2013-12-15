@@ -12,10 +12,10 @@ table.table.table-bordered.table-striped
         th Actions
       
 
-  tbody.sortable data-post-to-url="#{priority_order_path(@request.id)}" data-request-id="#{@request.id}"
+  tbody.sortable data-post-to-url="#{update_priority_order_path(@request.id)}" data-request-id="#{@request.id}"
     - @features.each do |feature|
       tr data-id="#{feature.id}"
-        td= feature.id
+        td= feature.priority
         td= link_to feature.title, feature
         td= feature.description
         td= image_tag(feature.image_url) if feature.image.present?
@@ -30,11 +30,3 @@ table.table.table-bordered.table-striped
 br
 br
 =link_to 'Back to the request', request_path(@request)
-
-
-ul.sortable
-  li 1
-  li 2
-  li 3
-  li 4
-

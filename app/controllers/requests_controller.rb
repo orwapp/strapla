@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
   respond_to :html
-  before_action :set_request, only: [:quote, :show, :edit, :update, :destroy, :upload_images]
+  before_action :set_request, only: [:quote, :show, :edit, :update, :destroy, :upload_images, :update_priority_order]
   before_action :find_requests
   before_filter :set_wizard
   before_filter :authenticate_user!, except: [:index,  :unassigned_requests, :show]
@@ -11,8 +11,8 @@ class RequestsController < ApplicationController
 	def init
 	end
 
-  def priority_order
-    Rails.logger.debug "GOT #{params[:priority_order]}"
+  def update_priority_order
+    @request.update_priority_on_features(params[:priority_order])
     render :nothing => true, :status => 200
   end
 
