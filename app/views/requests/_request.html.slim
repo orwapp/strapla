@@ -88,7 +88,7 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
       br
       br
 
-  - if request.features.present?
+  - if @features.present?
     .row
       .span11
         h3 Features
@@ -101,4 +101,4 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
                 th Hours estimated
               th Image
               
-          = render partial: "/features/feature", collection: request.features
+          = render partial: "/features/feature", collection: @features
