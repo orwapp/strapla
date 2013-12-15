@@ -17,6 +17,7 @@ class FeaturesController < ApplicationController
   def show
   end
 
+
   def new
     @feature = Feature.new
     @return_to_page = request_features_path(@request)

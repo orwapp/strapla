@@ -12,7 +12,7 @@ table.table.table-bordered.table-striped
         th Actions
       
 
-  tbody.sortable
+  tbody.sortable data-post-to-url="#{priority_order_path(@request.id)}" data-request-id="#{@request.id}"
     - @features.each do |feature|
       tr data-id="#{feature.id}"
         td= feature.id
@@ -32,7 +32,7 @@ br
 =link_to 'Back to the request', request_path(@request)
 
 
-/ul.sortable
+ul.sortable
   li 1
   li 2
   li 3

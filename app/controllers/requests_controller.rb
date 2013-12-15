@@ -11,6 +11,11 @@ class RequestsController < ApplicationController
 	def init
 	end
 
+  def priority_order
+    Rails.logger.debug "GOT #{params[:priority_order]}"
+    render :nothing => true, :status => 200
+  end
+
   def upload_images
     @image = Image.new
   end
