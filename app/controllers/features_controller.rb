@@ -23,6 +23,7 @@ class FeaturesController < ApplicationController
   end
 
   def edit
+    @return_to_page = request_features_path(@request)
   end
 
   def review
