@@ -4,6 +4,8 @@ class RequestsController < ApplicationController
   before_action :find_requests
   before_filter :set_wizard
   before_filter :authenticate_user!, except: [:index,  :unassigned_requests, :show]
+  skip_before_action :verify_authenticity_token, only: [:update_priority_order]
+  
 
   def index
   end
@@ -50,6 +52,7 @@ class RequestsController < ApplicationController
 
   def show
 		@request = Request.find(params[:id])
+    @features = @request.features.order(:priority)
 		if user_signed_in?
 			@existing_price_quote = current_user.price_quotes.where(request_id: @request.id).first
 			redirect_to @existing_price_quote if @existing_price_quote.present?
