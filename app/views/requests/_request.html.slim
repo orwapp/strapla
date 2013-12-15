@@ -1,0 +1,103 @@
+- price_quote ||= false
+
+h2.label.label-info.big_font= request.request_group.title rescue nil
+.container.border.small_padding
+
+  .row
+    .span7
+      .media
+        a.pull-left href="#"
+          - if request.request_group.present?
+            = image_tag(request.request_group.image_url, size: '80x80')
+            br
+            br
+          - if request.preferred_language.present?
+            p
+              = image_tag(request.preferred_language.image_url, size: '80x80')
+
+        .media-body
+          h4.lead.lead-pull-up= request.title
+          p
+            strong Description
+            br
+            = request.description
+
+
+          p
+            -  if request.goal
+              .media
+                strong Goal     
+                em Should be clear and measureable
+                br
+                = request.goal
+                br
+                br
+
+
+            -  if request.background_information
+              .media
+                strong Background information   
+                br
+                = request.background_information
+                br
+                br
+
+            -  if request.what_is_it_going_to_give
+              .media
+                strong What’s most and least important for this project at this time?
+                br
+                = request.what_is_it_going_to_give
+                br
+                br
+
+            - if (request.due_date or request.budget)
+              .media
+                strong What's the frame?   
+                br
+                - if request.due_date 
+                  span Due date: 
+                  = request.due_date
+                  br
+                - if request.budget 
+                  span Budget: 
+                  = request.budget
+                  br
+
+
+
+
+    .span4
+      p.pull-right
+        span Client:
+        span= request.user.name rescue nil
+        br
+        span.muted= "<#{request.user.email}>"
+        em= request.user.title if request.user.title
+        br
+        br
+        span Status:
+        span= request.status
+        br
+        span Delegated to:
+        span= request.delegated_to.name rescue 'Not delegated'
+        br
+        span Published:
+        span= !!request.published
+
+      br
+      br
+
+  - if request.features.present?
+    .row
+      .span11
+        h3 Features
+        table.table.table-bordered.features
+          thead
+            tr
+              th Title
+              th Description
+              - if show_hours_estimated?
+                th Hours estimated
+              th Image
+              
+          = render partial: "/features/feature", collection: request.features

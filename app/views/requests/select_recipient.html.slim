@@ -1,0 +1,33 @@
+.progress
+  .bar.completed.bar-success data-percent="90" style="width: 90%;"
+  .bar.remaining.bar-warning data-percent="10" style="width: 10%;"
+
+br
+br
+= field_set_tag "Who shall we send the question to?" do
+
+  br
+  = simple_form_for :request, url: delegate_to_group_path(@request) do |f|
+    = f.submit "Send the question to the #{@request.request_group.title} group", 
+      class: 'btn btn-primary'
+    = label_tag 'This is often fastest, as all of our experts will get the question.', 
+      nil, class: 'muted'
+  
+  br
+  br
+  
+  strong Or select one of our experts
+  br
+
+  #expert_carousel.carousel.slide.pause.border
+    ol.carousel-indicators
+      li.active data-slide-to="0" data-target="#expert_carousel"
+      li data-slide-to="1" data-target="#expert_carousel"
+      li data-slide-to="2" data-target="#expert_carousel"
+
+    .carousel-inner
+      - @experts.each_with_index do |expert, index|
+        = render partial: "requests/expert", locals: { expert: expert, index: index }
+
+    a.left.carousel-control data-slide="prev" href="#expert_carousel"  &lsaquo;
+    a.right.carousel-control data-slide="next" href="#expert_carousel" &rsaquo;

@@ -1,0 +1,72 @@
+h2.label.label-success.big_font= price_quote.status.titleize if price_quote.status
+
+.container.border.small_padding
+  /- unless body_id == 'price_quotes_show'
+    - if price_quote.request.present?
+      span = "Request: #{link_to price_quote.request.title, price_quote.request}".html_safe
+  /hr
+
+  - if price_quote.user == @current_user
+    = render :partial => 'form', locals: { price_quote: price_quote }
+  - else
+    strong= "From: "
+    span= price_quote.user.name
+    =nbsp
+    =nbsp
+    span.muted= "<#{price_quote.user.email}>"
+    br
+
+    strong= "Hours estimated: "
+    span= price_quote.hours_estimated
+    br
+
+    strong= "Price: "
+    span= price_quote.price
+    br
+
+    strong= "Description: "
+    span= price_quote.description
+    br
+
+  - if (@current_user == price_quote.request.user) and price_quote.request.features.present?
+    hr
+    .row
+      .span11
+        h3 Features
+        table.table.table-bordered.features
+          thead
+            tr
+              th Title
+              th Description
+              th Hours estimated
+          - price_quote.request.features.each do |feature|
+            - next if feature.nil?
+            tr
+              td 
+                span= feature.title
+              td 
+                span= feature.description
+              td 
+                span= feature.estimated_hours.where(user_id: price_quote.user).last.hours rescue nil
+                
+  hr
+  
+
+  = render price_quote.comments
+  br
+  br
+  br
+  = render :partial => 'comments/on_price_quote_form', locals: {price_quote: price_quote, comment: price_quote.comments.new}
+
+  hr
+  .row
+    .span11
+      - if price_quote.request.user == current_user
+        - unless price_quote.accepted?
+          .pull-right
+            = link_to 'Accept', accept_price_quote_path(price_quote.id),
+             class: 'btn btn-small btn-success', method: :post
+            = nbsp
+            = link_to 'Reject', reject_price_quote_path(price_quote.id), 
+             class: 'btn btn-small btn-danger', method: :post
+            = nbsp

@@ -1,0 +1,21 @@
+- n           ||= 0
+- hide_submit ||= false
+- remote      ||= false
+
+= simple_form_for([@request, @feature], remote: remote, 
+  html: {class: "form-inline new_feature feature#{n+1}" }) do |f|
+  .border.padding10
+    = f.error_notification
+
+    .form-inputs
+      = f.hidden_field :return_to_page, value: @return_to_page
+      = f.hidden_field :form_id, name: 'form_id'
+      = f.input :title, input_html: { class: 'input-medium span7', rows: 10 }
+      = f.input :description,  input_html: { class: 'input-medium span7', rows: 20 }
+      br
+      strong Image
+      br
+      = f.file_field :image
+
+    .form-actions[class="#{'hide' if hide_submit}"]
+      = f.button :submit, :class => "btn-primary", value: "Save"

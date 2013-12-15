@@ -1,0 +1,10 @@
+= simple_form_for(@comment, :defaults => { :input_html => { :class => 'input-xxlarge' } }) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :text
+    = f.association :price_quote
+    = f.association :user
+
+  .form-actions
+    = f.button :submit, :class => "btn-primary"

@@ -1,0 +1,25 @@
+- optional ||= false
+
+.row#wizard
+  .span9
+    - if @request.errors.any?
+      .error_messages
+        h2
+          = pluralize(@request.errors.count, "error")
+          | prohibited this request from being saved:
+        ul
+          - @request.errors.full_messages.each do |msg|
+            li= msg
+    = simple_form_for(@request, url: wizard_path, method: :put, :html => { :class => 'form-inline  help_text' }) do |f|
+      = yield f
+      .row
+      .actions
+        = f.submit "Continue"
+        = nbsp
+        = nbsp
+        = nbsp
+        = link_to 'skip', next_wizard_path  if optional
+
+    
+  .span3
+    = render :partial => 'requests/shared/help_text'

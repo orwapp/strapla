@@ -1,0 +1,13 @@
+.row-fluid
+  .span12
+    .hero-unit
+      h2.center Develop software in the cloud
+          
+
+    .center
+      = link_to 'Start your project', init_request_path, class: 'cta btn  btn-large btn-primary pull-rightX '
+      =nbsp
+      =nbsp
+      =nbsp
+      = link_to 'Find a job', unassigned_requests_path, class: 'cta btn  btn-large btn-primary pull-leftX' unless user_signed_in?
+

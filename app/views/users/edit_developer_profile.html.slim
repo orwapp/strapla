@@ -1,0 +1,25 @@
+h1.lead Edit your developer profile
+
+= simple_form_for(@current_user, url: '/users?role="developer"',) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :name,  :autofocus => true
+    = f.input :email
+    = f.input :phone
+    = f.input :image_url
+
+    = f.input :bio
+    = f.input :describe_your_dream_project
+    = f.input :linkedin_url
+    = f.input :github_username
+    br
+
+
+    = f.input :skill_tokens, :label => "Skills", 
+      :input_html => { :class => "text_field short", 
+        "data-load" => @current_user.skills.map(&:attributes).to_json  }, 
+      :hint  => "separate skills by a space"
+
+    br
+  .form-actions
+    = f.button :submit, "Update"

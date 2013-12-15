@@ -1,0 +1,50 @@
+.progress
+  .bar.completed.bar-success data-percent="22.5" style="width: 42.5%;"
+  .bar.remaining.bar-warning data-percent="77.5" style="width: 57.5%;"
+
+h3 Describe the main features
+.alert.alert-info
+  p
+    strong =" A Webcalculator would need features like: "
+    ul
+      li Addition
+      li Subtraction
+      li Division
+      li etc...
+
+
+br
+br
+br
+
+- n           ||= 0
+- hide_submit ||= false
+- remote      ||= false
+
+- @features.each do |feature|
+  = simple_form_for([@request, feature], remote: remote, 
+    html: {class: "span10 form-inline new_feature feature#{n+1}" }) do |f|
+    .border.padding10
+      = f.error_notification
+      - if feature.image.present?
+        = link_to image_tag( feature.image_url, size: '500x500'), feature.image_url, target: :blank
+
+        br
+        br
+      .form-inputs
+        = f.input :title, required: true, input_html: { rows: 10, class: 'span9' }
+        = f.input :description,  required: true, input_html: { rows: 15, class: 'span9' } 
+        strong Last opp bilde
+        = f.file_field :image
+
+      .form-actions[class="#{'hide' if hide_submit}"]
+        = f.button :submit, :class => "btn-primary", value: (feature.new_record? ? "Save new feature" : "Update")
+
+
+.row
+.actions
+  = link_to 'Continue', next_wizard_path, class: :btn
+  = nbsp
+  = nbsp
+  = nbsp
+  = link_to 'skip', next_wizard_path

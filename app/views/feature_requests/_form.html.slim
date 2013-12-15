@@ -1,0 +1,18 @@
+= form_for @feature_request do |f|
+  - if @feature_request.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@feature_request.errors.count, "error")} prohibited this feature_request from being saved:"
+      ul
+        - @feature_request.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :user
+    = f.text_field :user
+  .field
+    = f.label :user_story
+    = f.text_area :user_story
+  .field
+    = f.label :request
+    = f.text_field :request
+  .actions = f.submit 'Save'

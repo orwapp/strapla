@@ -1,0 +1,83 @@
+#user_profile_partial.item(class="#{'active' if index == 0}" )
+  .offset1XX
+    .image.pull-left
+      = image_tag user.image_url, size: '230x230'
+
+    .right
+      .span4
+        h3= user.name 
+        strong= "Member since #{I18n.l( user.created_at, format: :without_time)}"
+        br
+        br
+        - if user.github_username.present?
+          .pull-left
+            = content_tag(:i, "", class: "icon-github large-icon")
+            = nbsp
+            = link_to( 'Me on Github', "http://github.com/#{user.github_username}", :target => "_blank")
+
+            = nbsp
+            = nbsp
+            = nbsp
+        - if user.linkedin_url.present?
+          .pull-left
+            = content_tag(:i, "", class: "icon-linkedin-sign large-icon")
+            = nbsp
+            = link_to( 'My LinkedIn profile', user.linkedin_url, 
+				  		:target => "_blank")
+        br
+        br
+        br
+        - user.skills.all.each do |skill|
+          h2.badge.badge-success= skill.name
+
+      .span3.pull-right
+        .score.border.text-center
+          h2 737
+          strong.lead 
+            | Stabstr.com 
+            br
+            | Score
+
+    .row
+      .span10
+        br
+        - if user.bio.present?
+          h4 Bio
+          = user.bio
+          br
+          br
+
+        - if user.describe_your_dream_project.present?
+          h4 Dream project
+          = user.describe_your_dream_project
+          br
+          br
+          br
+
+        - if user.jobs.present?
+          h4 Jobs
+          .row
+            = render user.jobs
+
+        - if user.certifications.present?
+          h4 Certifications
+          br
+          .row
+            = render user.certifications
+
+
+
+  - if show_form and @request.present?
+    = simple_form_for :delegate_to_expert, url: delegate_to_expert_path(@request) do |f|
+      = f.hidden_field :expert_id,  value: user.id
+      = f.hidden_field :request_id, value: @request.id
+      = f.submit("Send the question to #{user.name.split.first}", 
+        class: 'btn btn-primary send_question pull-right') unless @current_user == user
+  - elsif body_id == 'users_browse_experts'
+    = link_to "Send a question to #{user.name.split.first}", new_request_path, 
+      class: 'btn btn-info pull-right send_question' unless @current_user == user
+  - else 
+    a.btn.btn-info.pull-right= "Send a question to #{user.name.split.first}"
+
+  = link_to 'Edit', edit_user_registration_path, 
+    class: 'btn pull-right' if @current_user == user

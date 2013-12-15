@@ -1,0 +1,31 @@
+/= simple_form_for(@current_user) do |f|
+= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :name,  :autofocus => true
+    = f.input :email
+    = f.input :phone
+    br
+
+
+
+    br
+    hr
+    = link_to 'Change password...', '#', 
+      class: '', :'data-toggle-class' => 'change_password'
+    br
+    br
+
+    .change_password.hide
+      = f.input :password, :autocomplete => "off", :required => false
+      = f.input :password_confirmation, :required => false
+      hr
+
+    = f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true
+  .form-actions
+    = f.button :submit, "Update"
+
+//h3 Cancel my account
+//p
+//  | Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}
+//= link_to "Back", :back

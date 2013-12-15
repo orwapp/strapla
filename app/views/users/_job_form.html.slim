@@ -1,0 +1,19 @@
+h3 Listing your jobs
+= render @current_user.jobs
+
+
+br
+hr
+br
+
+h3 Add a new job
+
+= simple_form_for( [@current_user, @job]) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :title,     :autofocus => true
+    = f.input :company,   :autofocus => true
+    = f.input :from_date, :autofocus => true
+    = f.input :to_date, :autofocus => true
+    = f.submit 'Save', class: 'btn btn-info'
+    

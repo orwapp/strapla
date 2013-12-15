@@ -1,0 +1,12 @@
+.progress
+  .bar.completed.bar-success data-percent="22.5" style="width: 42.5%;"
+  .bar.remaining.bar-warning data-percent="77.5" style="width: 57.5%;"
+
+/h3 System description
+
+= render :layout => 'form', locals: {optional: true} do |f|
+
+  = f.input :system_description,
+    input_html: { 'data-hint' => 'If possible, try to describe the architecture', rows: 10, label: false,
+    'data-example' => 'We need a backend task to process all incoming calculation, it should be connected to printer',
+    class: 'span8 help_text'}

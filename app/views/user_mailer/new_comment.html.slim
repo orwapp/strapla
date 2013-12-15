@@ -1,0 +1,9 @@
+= "Hi #{@to.name},"
+br
+br
+= "#{@from.name} has added a comment:"
+blockquote= @comment.text
+br
+br
+
+= link_to "Open price quote at Stabstr", request_url(@comment.price_quote.request)

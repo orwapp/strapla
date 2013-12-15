@@ -1,0 +1,6 @@
+en:
+  time:
+    formats:
+      oral_long: "kl %H:%M den %d. %B"
+      oral_short: "%d. %B"
+      without_time: "%d. %B, %Y"

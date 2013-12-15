@@ -1,0 +1,6 @@
+h2 Images illustrating the app
+
+= image_tag(@request.image_url) if @request.image?
+
+/- @images.each do |image|
+  = image_tag image

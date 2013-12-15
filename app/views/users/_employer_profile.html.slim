@@ -1,0 +1,15 @@
+h4 Employer profile 
+
+= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), 
+  :html => { :method => :put }) do |f|
+  = f.error_notification
+  .form-inputs
+    /= f.input :developer, label: 'Active Employer profile'
+    br
+    br
+    br
+    = f.input :company_name
+
+    = f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true
+  .form-actions
+    = f.button :submit, "Update"

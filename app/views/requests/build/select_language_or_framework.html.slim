@@ -1,0 +1,27 @@
+h3 Select programming language or framework
+
+.alert.alert-info
+  p
+    |
+      Do you have any preferences regarding programming language or framework?
+
+= link_to 'No, let the developer pick what he thinks is best', next_wizard_path, class: 'btn btn-info btn-big'
+br
+br
+= link_to 'Yes, let me decide', '#', 
+  class: 'btn btn-info btn-big', :'data-toggle-class' =>  'alternatives'
+br
+br
+
+.alternatives.hide
+  hr
+  br
+  = render :layout => 'form' do |f|
+    = f.collection_radio_buttons(:preferred_language_id, PreferredLanguage.all, :id, :title) do |b|
+        = b.radio_button + image_tag(b.object.image_url, size: '100x100') + "<br>".html_safe +  "<span class='icon_text'>#{b.text} </span>".html_safe
+
+
+javascript:
+  // Disable the continue button untill something is chosen.
+  $('body#build_show input[type=radio]').hide()
+  $('.actions input[type="submit"]').hide()

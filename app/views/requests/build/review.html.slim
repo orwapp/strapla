@@ -1,0 +1,26 @@
+
+.progress
+  .bar.remaining.bar-success data-percent="87.5" style="width: 87.5%;"
+  .bar.completed.bar-warning data-percent="12.5" style="width: 12.5%;"
+
+
+h1.lead Please review your request
+p 
+
+= render :partial => '/requests/request', locals: {request: @request}
+
+- if @request.images.present?
+  h3 Images
+  .container.border
+    - @request.images.each do |image|
+      = link_to image_tag( image.image_url, size: '500x500', class: 'thumbnail pull-left span4'), image.image_url, target: :blank
+
+br
+br
+br
+ 
+= link_to 'Edit', edit_request_path(@request), class: 'pull-right btn '   if (@request.user == current_user) and @request.status != :accepted
+= nbsp
+= nbsp
+= nbsp
+= link_to 'Next', select_recipient_path(@request), class: 'pull-right btn  btn-info'   if @request.user == current_user

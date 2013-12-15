@@ -1,0 +1,17 @@
+tr
+  td 
+    span= feature.title
+  td 
+    span= feature.description
+  td 
+    = image_tag(feature.image_url) || ''
+
+
+  - if show_hours_estimated?
+    td
+      - old_val = current_user.estimated_hours.where(feature: feature).last.hours rescue nil
+
+      = simple_form_for([feature, feature.estimated_hours.new], :html => { :class => 'form-inline' } ) do |f|
+        = f.error_notification
+        = f.input_field :hours, label: 'Time estimated', class: 'small-input', value: old_val
+        = f.button :submit, :class => "btn", value: 'Save', class: 'input-small'

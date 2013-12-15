@@ -1,0 +1,10 @@
+.page-header
+  = link_to images_path, :class => 'btn' do
+    i.icon-list-alt
+    | Back
+  = link_to edit_image_path(@image), :class => 'btn btn-primary' do
+    i.icon-pencil.icon-white
+    | Edit
+  h1 Listing images
+
+dl

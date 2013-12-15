@@ -1,0 +1,14 @@
+h1.lead Edit your employer profile
+= simple_form_for(@current_user) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :name,  :autofocus => true
+    = f.input :email
+    = f.input :company_name
+    = f.input :phone
+    = f.input :image_url, label: 'Link to company logo'
+    = f.input :role = 'developer'
+    // Finn en måte å gi flere roller på. Developer og Emplopyer
+    br
+  .form-actions
+    = f.button :submit, "Update"

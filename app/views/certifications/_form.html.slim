@@ -1,0 +1,9 @@
+= simple_form_for(@certification, :defaults => { :input_html => { :class => 'input-xxlarge' } }) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title
+    = f.input :date, as: :string, input_html: { 'data-behaviour' => 'datepicker' }
+
+  .form-actions
+    = f.button :submit, :class => "btn-primary"

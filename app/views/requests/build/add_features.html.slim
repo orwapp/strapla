@@ -1,0 +1,49 @@
+// 3. siste
+.progress
+  .bar.completed.bar-success data-percent="22.5" style="width: 62.5%;"
+  .bar.remaining.bar-warning data-percent="77.5" style="width: 37.5%;"
+.page-header
+  h1 Describe which features you want
+  .alert.alert-info
+    p
+      | Could be Facbook login, Paypal subscription, etc.
+
+
+.row#wizard
+  .span9
+    - n = 1
+    = simple_form_for([@request, @feature], remote: true, disabled: true, 
+      html: {class: "form-inline new_feature" }) do |f|
+        .form-inputs
+
+          = f.input :title, 
+            required: true, 
+            input_html: { 'data-hint' => 'An application is built of many different parts. Try to describe these on a high level.', 
+            class: 'help_text input-xxlarge' }
+
+          = f.input :text,  required: true,
+            input_html: { 'data-hint' => 'An application is built of many different parts. Try to describe these on a high level.', 
+            'data-example' => 'A user must be able to share his calculations on Facebook. E.g. " I just calculated that 2*291 / 19 equals 30.631 on WebCalc',
+            class: 'help_text input-xxlarge' }
+
+          = f.button :submit, :class => "btn-success save_feature", value: "Add"
+
+  .span3
+    br
+    = render :partial => 'requests/shared/help_text'
+
+  
+.row[class="features_added #{'hide' if @request.features.blank?}"]
+  .span12
+
+    h3 Drag the features in the order you want them implemented
+
+    ol.features.simple_with_animation.vertical
+      - if @request.features.present?
+        -  @request.features.to_a.each do |f|
+          = "<li class='existing_feature'> #{f.title} – #{f.text} </li>".html_safe
+
+    = link_to "Save", '#', class: 'btn btn-primary continue_from_the_create_many_page pull-left', data: {navigate_to: request_review_path(@request), request_id: @request.id }
+    = link_to "Next", request_review_path(@request), class: 'btn btn-info pull-right', data: {navigate_to: request_review_path(@request), request_id: @request.id }
+
+    

@@ -1,0 +1,54 @@
+//#= render :partial => '@quotes/@quote', locals: {@quote: @@quote}
+
+h1= @quote.title
+
+em= @quote.status
+p
+  strong Description
+  br
+  = @quote.description
+p
+  -  if @quote.goal
+    .media
+      strong Goal     
+      em Should be clear and measureable
+      br
+      = @quote.goal
+
+
+  -  if @quote.background_information
+    .media
+      strong Background information   
+      br
+      = @quote.background_information
+
+  -  if @quote.what_is_it_going_to_give
+    .media
+      strong What’s most and least important for this project at this time?
+      br
+      = @quote.what_is_it_going_to_give
+
+  - if (@quote.due_date or @quote.budget)
+    .media
+      strong What's the frame?   
+      br
+      - if @quote.due_date 
+        span Due date: 
+        = @quote.due_date
+        br
+      - if @quote.budget 
+        span Budget: 
+        = @quote.budget
+        br
+
+
+h2 Suggested features
+
+table.table.table-striped
+  thead
+    tr
+      th Title
+      th Description
+  tbody
+    span =  @quote.features.all
+
