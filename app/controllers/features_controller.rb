@@ -23,7 +23,8 @@ class FeaturesController < ApplicationController
   end
 
   def edit
-    @return_to_page = request_features_path(@request)
+    #Rails.logger.debug  "request is #{@request}"
+    @return_to_page = request_features_path(@feature.request)
   end
 
   def review
@@ -80,6 +81,7 @@ class FeaturesController < ApplicationController
     def set_feature
       if params[:id].present?
         @feature = Feature.find(params[:id])
+        Rails.logger.debug  "id is #{@feature}"
       else
         @feature = Feature.find(params[:features_id])
       end
