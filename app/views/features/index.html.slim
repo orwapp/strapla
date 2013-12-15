@@ -14,7 +14,7 @@ table.table.table-bordered.table-striped
 
   tbody.sortable
     - @features.each do |feature|
-      tr
+      tr data-id="#{feature.id}"
         td= feature.id
         td= link_to feature.title, feature
         td= feature.description
