@@ -8,7 +8,7 @@ $ ->
   $(".sortable").sortable 
     stop: (event, ui) ->
       console.log ui.item[0]
-      console.log $(ui.item[0]).attr('class')
+      console.log $(ui.item[0]).attr('data-id')
   
   #  containerSelector: "table"
   #  itemPath: "> tbody"
