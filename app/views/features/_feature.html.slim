@@ -3,9 +3,8 @@ tr
     span= feature.title
   td 
     span= feature.description
-  - if feature.image_url.present?
-    td 
-      = image_tag feature.image_url
+  td 
+    = image_tag(feature.image_url) || ''
 
 
   - if show_hours_estimated?

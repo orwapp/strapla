@@ -80,25 +80,13 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
         span= request.status
         br
         span Delegated to:
-        span= request.delegated_to
+        span= request.delegated_to.name rescue 'Not delegated'
         br
         span Published:
         span= !!request.published
 
       br
       br
-  /.row
-    .span11
-      hr
-      a.browse_code.clickable
-        ="Browse code... &nbsp;".html_safe 
-        i.icon-collapse
-      br
-
-      /.code_details.hide
-        p I got a running test here, but it fails on line 15.
-        = image_tag 'code_preview.png'
-        hr
 
   - if request.features.present?
     .row

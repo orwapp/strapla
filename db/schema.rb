@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20131212193417) do
+=======
+ActiveRecord::Schema.define(version: 20131215120515) do
+>>>>>>> feature/recovering_from_rm
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,6 +99,10 @@ ActiveRecord::Schema.define(version: 20131212193417) do
     t.integer  "price_quote_id"
     t.float    "hours_estimated"
     t.string   "image"
+<<<<<<< HEAD
+=======
+    t.integer  "priority"
+>>>>>>> feature/recovering_from_rm
   end
 
   add_index "features", ["request_id"], name: "index_features_on_request_id", using: :btree

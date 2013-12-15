@@ -72,4 +72,8 @@ class Request < ActiveRecord::Base
     self.update_attribute(:delegated_to_user_id, user.id)
   end
 
+  def update_priority_on_features(order)
+    order.each_with_index { |id, order| Feature.where(id: id).first.update_attribute(:priority, order+1) }
+  end
+
 end

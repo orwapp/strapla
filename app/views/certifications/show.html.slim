@@ -1,0 +1,16 @@
+.page-header
+  = link_to certifications_path, :class => 'btn' do
+    i.icon-list-alt
+    | Back
+  = link_to edit_certification_path(@certification), :class => 'btn btn-primary' do
+    i.icon-pencil.icon-white
+    | Edit
+  h1 Listing certifications
+
+dl
+  dt User:
+  dd= @certification.user
+  dt Title:
+  dd= @certification.title
+  dt Date:
+  dd= @certification.date
