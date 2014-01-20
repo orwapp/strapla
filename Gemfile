@@ -19,7 +19,7 @@ gem 'bootstrap-sass', '~> 2.3.2.0'
 gem 'font-awesome-rails'
 gem 'devise'
 gem 'compass'
-gem 'compass-rails', :github => 'roderickvd/compass-rails'
+gem 'compass-rails' #, :github => 'roderickvd/compass-rails'
 gem 'bootstrap-generators', '~> 2.3'
 gem 'haml'
 gem 'haml-rails'
@@ -28,6 +28,7 @@ gem 'wicked'
 gem 'activerecord-postgres-hstore'
 gem 'pg'
 gem 'fog', '~> 1.3.1'
+gem 'color_routes'
 
 
 group :production do
