@@ -65,7 +65,6 @@ end
 gem 'mail_form'
 gem 'redis'
 gem 'split', :require => 'split/dashboard'
-gem 'foreman'
 gem 'unicorn'
 gem 'resque'
 gem 'resque_mailer'
