@@ -61,7 +61,7 @@
         li[class="#{'active' if current_page?(user_profile_path(current_user.id))}"]
           = link_to 'My profile', user_profile_path(current_user.id)
         li
-          = link_to "Sign out", destroy_user_session_path, class: 'pull-right'
+          = link_to "Sign out", destroy_user_session_path, method: :delete, class: 'pull-right'
     - else
       ul.nav.pull-right
         li[class="#{'active' if current_page?(new_user_session_path)}"]
