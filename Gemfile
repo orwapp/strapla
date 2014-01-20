@@ -57,7 +57,6 @@ group :test do
   gem 'launchy'
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
-  gem 'email_spec'
   gem 'guard-rspec'
   gem 'selenium-webdriver'
 end
