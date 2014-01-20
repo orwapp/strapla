@@ -10,8 +10,12 @@ gem 'rails_12factor'   # Needed for Rails4 on Heroku
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 
+# Use jquery as the JavaScript library
+gem 'jquery-rails'
+
+# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
-gem 'jquery-turbolinks'
+
 gem 'simple_form' #, :github => 'plataformatec/simple_form'
 gem 'jbuilder', '~> 1.2'
 gem 'sass-rails', '~> 4.0.0'
