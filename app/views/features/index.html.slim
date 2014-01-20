@@ -1,10 +1,13 @@
 .page-header
   h1=  "Features belonging to #{ link_to @request.title, @request} ".html_safe
 
-= render 'features/sortable_list', locals: { request: { @request } }
+.alert.alert-info
+  |
+    Drag the features in prioritized order.
+= render :partial => '/features/sortable_list', locals: { request: @request }
 
 = link_to new_request_feature_path(@request), :class => 'btn btn-primary pull-right' do
-  i.icon-plus.icon-white
+   | Add a new feature
 br
 br
 =link_to 'Back to the request', request_path(@request)
