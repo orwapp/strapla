@@ -1,11 +1,10 @@
 CodeRunner::Application.routes.draw do
 
 
+	devise_for :users, :controllers => {:registrations => "users/registrations"}
 
   resources :images
-
   resources :certifications
-
   resources :jobs
   resources :skills
 
@@ -22,7 +21,6 @@ CodeRunner::Application.routes.draw do
   resources :feature_requests do
   end
 
-	devise_for :users, :controllers => {:registrations => "users/registrations"}
 
   get  '/users/complete_your_profile' => 'users#complete_your_profile', 
     as: :complete_your_profile 
