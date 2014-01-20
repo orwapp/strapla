@@ -1,0 +1,23 @@
+table.table.table-bordered.table-striped
+  thead
+    tr
+      th Priority
+      th Title
+      th Description
+      th Image
+      - if request.user == @current_user
+        th Actions
+      
+
+  tbody.sortable data-post-to-url="#{update_priority_order_path(request.id)}" data-request-id="#{request.id}"
+    - request.features.each do |feature|
+      tr data-id="#{feature.id}"
+        td= feature.priority
+        td= link_to feature.title, feature
+        td= feature.description
+        td= image_tag(feature.image_url) if feature.image.present?
+        - if request.user == @current_user
+          td
+            = link_to 'Edit', edit_feature_path(feature)
+            ' 
+            = link_to 'Delete', feature, :confirm => 'Are you sure?', :method => :delete

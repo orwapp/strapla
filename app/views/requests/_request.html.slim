@@ -88,17 +88,12 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
       br
       br
 
-  - if @features.present?
+  - if request.features.present?
     .row
       .span11
         h3 Features
-        table.table.table-bordered.features
-          thead
-            tr
-              th Title
-              th Description
-              - if show_hours_estimated?
-                th Hours estimated
-              th Image
-              
-          = render partial: "/features/feature", collection: @features
+        .alert.alert-info
+          |
+            Drag the features in the prioritized order.
+        = render :partial => '/features/sortable_list', locals: { request: @request }
+
