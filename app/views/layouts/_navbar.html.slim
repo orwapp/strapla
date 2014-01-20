@@ -3,7 +3,8 @@
     = link_to image_tag('logo.png', size: "110"), root_path, class: :brand
     ul.nav[role="navigation"]
 
-      li[class="#{'active' if current_page?(browse_experts_path)}"]=  link_to 'Our experts', browse_experts_path  
+      li[class="#{'active' if current_page?(browse_experts_path)}"]
+        =  link_to 'Our experts', browse_experts_path  
 
       - if user_signed_in?
         - if @current_user.requests.present?
@@ -15,31 +16,42 @@
               b.caret
             ul.dropdown-menu
               - if @pending_quotes.present?
-                li[role="menu"]=  link_to "Pending quotes (#{@pending_quotes.size })",      my_requests_path(anchor: :pending_quotes)
+                li[role="menu"]
+                  = link_to "Pending quotes (#{@pending_quotes.size })",
+                    my_requests_path(anchor: :pending_quotes)
 
               - if @received_quotes.present?
-                li[role="menu"]=  link_to "Received quotes (#{@received_quotes.size })",     my_requests_path(anchor: :requests_with_price_quotes)
+                li[role="menu"]
+                  = link_to "Received quotes (#{@received_quotes.size })",
+                    my_requests_path(anchor: :requests_with_price_quotes)
 
               - if @requests_with_accepted_quotes.present?
-                li[role="menu"]=  link_to "Projects started (#{@requests_with_accepted_quotes.size })",    my_requests_path(anchor: :requests_with_accepted_quotes)
+                li[role="menu"]
+                  = link_to "Projects started (#{@requests_with_accepted_quotes.size })",    
+                    my_requests_path(anchor: :requests_with_accepted_quotes)
 
               - if @unpublished_requests.present?
-                li[role="menu"]=  link_to 'Unpublised requests', my_requests_path(anchor: :unpublished_requests)  
+                li[role="menu"]
+                  = link_to "Unpublised requests (#{@unpublished_requests.size })", 
+                    my_requests_path(anchor: :unpublished_requests)  
 
-              li[role="menu"]=  link_to 'Create a new request', new_request_path
+              li[role="menu"]
+                = link_to 'Create a new request', new_request_path
 
-                
 
         - if @current_user.price_quotes.present?
-          li[class="#{'active' if current_page?(price_quotes_path)}"]=  link_to 'Price quotes I\'ve sent', price_quotes_path
+          li[class="#{'active' if current_page?(price_quotes_path)}"]
+            = link_to 'Price quotes I\'ve sent', price_quotes_path
 
         - if @current_user.delegated_requests.present?
-          li[class="#{'active' if current_page?(delegated_to_me_path)}"]=  link_to 'Delegated to me', delegated_to_me_path  
+          li[class="#{'active' if current_page?(delegated_to_me_path)}"]
+            = link_to 'Delegated to me', delegated_to_me_path  
                                                                                                                                               
       - if @unassigned_requests.present?
         li[class="#{'active' if current_page?(unassigned_requests_path)}"]
           = link_to (content_tag(:span, "Unassigned requests ") +  \
-            content_tag(:strong, "#{@unassigned_requests.size}", class: "badge badge-success")).html_safe,
+            content_tag(:strong, "#{@unassigned_requests.size}", 
+            class: "badge badge-success")).html_safe,
             unassigned_requests_path
 
                                                                                                                                               
@@ -52,7 +64,9 @@
           = link_to "Sign out", destroy_user_session_path, class: 'pull-right'
     - else
       ul.nav.pull-right
-        li[class="#{'active' if current_page?(new_user_session_path)}"]=       link_to 'Sign in', new_user_session_path
-        li[class="#{'active' if current_page?(new_user_registration_path)}"]=  link_to 'Sign up', new_user_registration_path
+        li[class="#{'active' if current_page?(new_user_session_path)}"]
+          = link_to 'Sign in', new_user_session_path
+        li[class="#{'active' if current_page?(new_user_registration_path)}"]
+          = link_to 'Sign up', new_user_registration_path
         
   .color-stripe
