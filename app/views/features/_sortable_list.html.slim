@@ -10,7 +10,7 @@ table.table.table-bordered.table-striped
       
 
   tbody.sortable data-post-to-url="#{update_priority_order_path(request.id)}" data-request-id="#{request.id}"
-    - request.features.each do |feature|
+    - request.features.order(:priority).each do |feature|
       tr data-id="#{feature.id}"
         td= feature.priority
         td= link_to feature.title, feature
