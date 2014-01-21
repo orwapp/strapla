@@ -5,6 +5,8 @@ table.table.table-bordered.table-striped
       th Title
       th Description
       th Image
+      - if show_hours_estimated?
+        th Hours estimated
       - if request.user == @current_user
         th Actions
       
@@ -16,6 +18,17 @@ table.table.table-bordered.table-striped
         td= link_to feature.title, feature
         td= feature.description
         td= image_tag(feature.image_url) if feature.image.present?
+        - if show_hours_estimated?
+          td
+            - old_val = current_user.estimated_hours.where(feature: feature).last.hours rescue nil
+            = simple_form_for([feature, feature.estimated_hours.new], :html => { :class => 'form-inline' } ) do |f|
+              = f.error_notification
+              = f.input_field :hours, label: 'Time estimated', class: 'small-input', value: old_val
+              = f.button :submit, :class => "btn", value: 'Save', class: 'input-small'       
+
+        /- if show_hours_estimated?
+           td
+
         - if request.user == @current_user
           td
             = link_to 'Edit', edit_feature_path(feature)
