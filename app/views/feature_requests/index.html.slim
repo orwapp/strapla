@@ -16,8 +16,28 @@ table
       td = feature_request.request
       td = link_to 'Show', feature_request
       td = link_to 'Edit', edit_feature_request_path(feature_request)
-      td = link_to 'Delete', feature_request, :confirm => 'Are you sure?', :method => :delete
+      td = link_to 'Delete', feature_request, 
+        :confirm => 'Are you sure?', :method => :delete
 
 br
 
 = link_to 'New Feature request', new_feature_request_path
+
+= simple_form_for([@request, @request.features.new],
+  html: {class: "form-inline new_feature feature#{n+1}" }) do |f|
+  .border.padding10
+    = f.error_notification
+
+    .form-inputs
+      = f.hidden_field :return_to_page, 
+        value: "#{request_features_path(@request)}"
+      = f.hidden_field :form_id, name: 'form_id'
+      = f.input :title, input_html: { class: 'input-medium span7', rows: 10 }
+      = f.input :description,  input_html: { class: 'input-medium span7', rows: 20 }
+      br
+      strong Image
+      br
+      = f.file_field :image
+
+    .form-actions[class="#{'hide' if hide_submit}"]
+      = f.button :submit, :class => "btn-primary", value: "Save"
