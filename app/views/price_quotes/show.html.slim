@@ -13,9 +13,11 @@ br
       - if (@price_quote.request.contractor == current_user)
         strong.text-success You won this assignment! Do your best and make the client happy.
 
-.row
+/.row
   .span11
-      = link_to 'Edit', edit_request_path(request), class: 'pull-right btn '   if (@price_quote.request.user == current_user) and (@price_quote.request.status != :accepted)
+      - if (@price_quote.request.user == current_user) and  \
+        (@price_quote.request.status != :accepted)
+        = link_to 'Edit', edit_request_path(request), class: 'pull-right btn '   
       = nbsp
       = nbsp
       = nbsp
