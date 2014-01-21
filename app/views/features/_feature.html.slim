@@ -7,7 +7,7 @@ tr
     = image_tag(feature.image_url) || ''
 
 
-  - if show_hours_estimated?
+  - if show_hours_estimated? && feature.user != @current_user
     td
       - old_val = current_user.estimated_hours.where(feature: feature).last.hours rescue nil
 

@@ -5,7 +5,7 @@ table.table.table-bordered.table-striped
       th Title
       th Description
       th Image
-      - if show_hours_estimated?
+      - if show_hours_estimated? && (request.user != @current_user)
         th Hours estimated
       - if request.user == @current_user
         th Actions
@@ -18,7 +18,7 @@ table.table.table-bordered.table-striped
         td= link_to feature.title, feature
         td= feature.description
         td= image_tag(feature.image_url) if feature.image.present?
-        - if show_hours_estimated?
+        - if show_hours_estimated? && (request.user != @current_user)
           td
             - old_val = current_user.estimated_hours.where(feature: feature).last.hours rescue nil
             = simple_form_for([feature, feature.estimated_hours.new], :html => { :class => 'form-inline' } ) do |f|
