@@ -12,6 +12,7 @@ module ApplicationHelper
 		return false if current_user.blank?
 		return false if body_id == 'requests_show'
 		return true  if body_id == 'price_quotes_new'
+		return true  if body_id == 'price_quotes_show'
 		return true  if	current_user == @price_quote.user rescue false
 	end
 
