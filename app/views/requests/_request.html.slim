@@ -92,9 +92,10 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
     .row
       .span11
         h3 Features
-        .alert.alert-info
-          |
-            Drag the features in prioritized order.
+        - if @request.user == @current_user
+          .alert.alert-info
+            |
+              Drag the features in prioritized order.
         = render :partial => '/features/sortable_list', locals: { request: request }
 
   = link_to 'Edit', edit_request_path(@request), class: 'pull-right btn '   if (@request.user == current_user) and @request.status != :accepted
