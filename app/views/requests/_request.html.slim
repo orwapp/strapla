@@ -97,3 +97,4 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
             Drag the features in prioritized order.
         = render :partial => '/features/sortable_list', locals: { request: request }
 
+  = link_to 'Edit', edit_request_path(@request), class: 'pull-right btn '   if (@request.user == current_user) and @request.status != :accepted
