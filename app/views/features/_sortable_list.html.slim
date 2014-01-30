@@ -15,7 +15,10 @@ table.table.table-bordered.table-striped
     - request.features.order(:priority).each do |feature|
       tr data-id="#{feature.id}"
         td= feature.priority
-        td= link_to feature.title, feature
+        - if (request.user == @current_user)
+          td= link_to feature.title, feature  
+        - else
+          td= feature.title
         td= feature.description
         td= image_tag(feature.image_url) if feature.image.present?
         - if show_hours_estimated? && (request.user != @current_user)
