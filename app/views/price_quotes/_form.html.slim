@@ -8,7 +8,7 @@
 = simple_form_for [price_quote.request, price_quote] do |f|
   
   = f.input :description
-  = f.input :price, label: 'Total price in USD'
+  = f.input :price, label: 'Price total in USD'
   = f.input :hours_estimated
   - submit_text = price_quote.new_record? ? 'Send' : 'Update Price Quote'
   = f.submit submit_text, class: 'btn btn-primary', disable_with: "Saving..."
