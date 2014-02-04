@@ -11,7 +11,8 @@ table.table.table-bordered.table-striped
         th Actions
       
 
-  tbody.sortable data-post-to-url="#{update_priority_order_path(request.id)}" data-request-id="#{request.id}"
+  tbody.sortable data-post-to-url="#{update_priority_order_path(request.id)}" 
+    data-request-id="#{request.id}"
     - request.features.order(:priority).each do |feature|
       tr data-id="#{feature.id}"
         td= feature.priority
@@ -20,20 +21,23 @@ table.table.table-bordered.table-striped
         - else
           td= feature.title
         td= feature.description
-        td= image_tag(feature.image_url) if feature.image.present?
+        td
+          = link_to( image_tag(feature.image.thumb.url), feature.image_url, 
+            target: :blank)  if feature.image.present?
         - if show_hours_estimated? && (request.user != @current_user)
           td
             - old_val = current_user.estimated_hours.where(feature: feature).last.hours rescue nil
-            = simple_form_for([feature, feature.estimated_hours.new], :html => { :class => 'form-inline' } ) do |f|
+            = simple_form_for([feature, feature.estimated_hours.new], 
+              :html => { :class => 'form-inline' } ) do |f|
               = f.error_notification
-              = f.input_field :hours, label: 'Time estimated', class: 'small-input', value: old_val
-              = f.button :submit, :class => "btn", value: 'Save', class: 'input-small'       
-
-        /- if show_hours_estimated?
-           td
+              = f.input_field :hours, label: 'Time estimated', 
+                class: 'small-input', value: old_val
+              = f.button :submit, :class => "btn", value: 'Save', 
+                class: 'input-small'       
 
         - if request.user == @current_user
           td
             = link_to 'Edit', edit_feature_path(feature)
             ' 
-            = link_to 'Delete', feature, :confirm => 'Are you sure?', :method => :delete
+            = link_to 'Delete', feature, 
+              :confirm => 'Are you sure?', :method => :delete

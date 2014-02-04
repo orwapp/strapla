@@ -4,12 +4,14 @@
   h3 Images
   .container.border
     - @request.images.each do |image|
-      = link_to image_tag( image.image_url, size: '500x500', class: 'thumbnail pull-left span4'), image.image_url, target: :blank
+      = link_to image_tag( image.image.big_thumb.url, size: '500x500', 
+        class: 'thumbnail pull-left span4'), image.image_url, target: :blank
 
 br
 br
 - unless @current_user == @request.user
-  = link_to 'Quote a price', new_request_price_quote_path(@request), class: 'btn btn-info pull-right'
+  = link_to 'Quote a price', new_request_price_quote_path(@request), 
+    class: 'btn btn-info pull-right'
 
 - if (current_user == @request.user) and @request.price_quotes.present?
   br
@@ -18,6 +20,9 @@ br
   hr
   = render @request.price_quotes.to_a
 
-= link_to 'Select recipient', select_recipient_path(@request), class: 'pull-right btn btn-info'   if (@request.user == current_user) and @request.status == "unpublished"
+- if (@request.user == current_user) and @request.status == "unpublished"
+  = link_to 'Select recipient', select_recipient_path(@request), 
+    class: 'pull-right btn btn-info'   
+
 //= link_to 'Edit', edit_request_path(@request), class: 'pull-right btn '   if (@request.user == current_user) and @request.status != :accepted
 = link_to 'Back', :back
