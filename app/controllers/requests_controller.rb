@@ -157,6 +157,7 @@ class RequestsController < ApplicationController
       :what_can_go_wrong,
       :what_is_it_going_to_give,
       :what_is_the_frame,
+      :system_description,
       :image
     )
   end
