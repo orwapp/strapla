@@ -30,7 +30,6 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
                 br
                 = request.goal
                 br
-                br
 
 
             -  if request.background_information
@@ -38,6 +37,14 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
                 strong Background information   
                 br
                 = request.background_information
+                br
+                br
+
+            -  if request.system_description
+              .media
+                strong System description
+                br
+                = request.system_description
                 br
                 br
 
