@@ -36,7 +36,7 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
               .media
                 strong Background information   
                 br
-                = request.background_information
+                = request.background_information.html_safe
                 br
                 br
 
@@ -44,7 +44,7 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
               .media
                 strong System description
                 br
-                = request.system_description
+                = request.system_description.html_safe
                 br
                 br
 
@@ -52,7 +52,7 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
               .media
                 strong What’s most and least important for this project at this time?
                 br
-                = request.what_is_it_going_to_give
+                = request.what_is_it_going_to_give.html_safe
                 br
                 br
 
