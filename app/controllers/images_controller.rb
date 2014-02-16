@@ -16,9 +16,13 @@ class ImagesController < ApplicationController
   end
 
   def create
-    @request = Request.find params[:request_id]
-    @image = @request.images.new(image_params)
-    @return_to_page = params[:image][:return_to_page].present? ? params[:image][:return_to_page] : nil
+    @request = Request.find params[:request_id] rescue nil 
+    @feature = Feature.find params[:feature_id] rescue nil
+
+    @image = @request.images.new(image_params) if @requests.present?
+    @image = @feature.images.new(image_params) if @feature.present?
+
+    @return_to_page = params[:image][:return_to_page]
     @wizard = @return_to_page.match 'build'
 
     respond_to do |format|

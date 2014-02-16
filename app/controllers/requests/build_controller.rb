@@ -31,8 +31,8 @@ class Requests::BuildController < ApplicationController
     when 'image_preview'
       @images = [@request.images]
     else
-    end
       render_wizard
+    end
   end
 
 

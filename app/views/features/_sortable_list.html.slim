@@ -21,9 +21,22 @@ table.table.table-bordered.table-striped
         - else
           td= feature.title
         td= feature.description
+
         td
-          = link_to( image_tag(feature.image.thumb.url), feature.image_url, 
-            target: :blank)  if feature.image.present?
+          - if feature.images.present?
+            - feature.images.each do |image|
+              br
+              = link_to( image_tag(image.image.thumb.url), image.image.url, 
+                target: :blank) 
+              = link_to('Remove', image, :confirm => 'Are you sure?', 
+                :method => :delete, :remote => true)
+
+          = simple_form_for([feature, feature.images.new], 
+            :html => { :class => 'form-inline' }) do |f|
+              = f.file_field :image
+              = f.hidden_field :return_to_page, value: request_path(request)
+              = f.submit 'Last opp valgt bilde'
+
         - if show_hours_estimated? && (request.user != @current_user)
           td
             - old_val = current_user.estimated_hours.where(feature: feature).last.hours rescue nil

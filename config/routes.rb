@@ -51,6 +51,7 @@ CodeRunner::Application.routes.draw do
   resources :features do
 		resources :estimated_hours
     resources :comments
+    resources :images
   end
 
   post '/update_priority_order/:id' => 'requests#update_priority_order', as: :update_priority_order

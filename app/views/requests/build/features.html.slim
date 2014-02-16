@@ -26,7 +26,7 @@ br
     html: {class: "span10 form-inline new_feature feature#{n+1}" }) do |f|
     .border.padding10
       = f.error_notification
-      - if feature.image.present?
+      - if feature.image.present? rescue nil
         = link_to image_tag( feature.image_url, size: '500x500'), feature.image_url, target: :blank
 
         br
