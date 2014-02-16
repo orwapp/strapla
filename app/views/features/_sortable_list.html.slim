@@ -29,7 +29,7 @@ table.table.table-bordered.table-striped
               = link_to( image_tag(image.image.thumb.url), image.image.url, 
                 target: :blank) 
               = link_to('Remove', image, :confirm => 'Are you sure?', 
-                :method => :delete, :remote => true)
+                :method => :delete)
 
           = simple_form_for([feature, feature.images.new], 
             :html => { :class => 'form-inline' }) do |f|
