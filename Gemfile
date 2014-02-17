@@ -73,3 +73,5 @@ gem 'resque'
 gem 'resque_mailer'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'newrelic_rpm'
+

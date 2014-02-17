@@ -232,6 +232,7 @@ GEM
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-ssh (2.7.0)
+    newrelic_rpm (3.6.7.152)
     nokogiri (1.5.11)
     orm_adapter (0.5.0)
     parallel (0.9.1)
@@ -436,6 +437,7 @@ DEPENDENCIES
   meta_request
   metric_fu
   mini_magick
+  newrelic_rpm
   pg
   quiet_assets
   rails (= 4.0.0)
