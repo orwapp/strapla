@@ -1,6 +1,9 @@
 CodeRunner::Application.routes.draw do
 
 
+
+  resources :request_attachments
+
 	devise_for :users, :controllers => {:registrations => "users/registrations"}
 
   resources :images
@@ -51,7 +54,8 @@ CodeRunner::Application.routes.draw do
   resources :features do
 		resources :estimated_hours
     resources :comments
-    resources :images
+    resources :images, :controller => "features/images"
+    resources :attachments, :controller => "features/attachments"
   end
 
   post '/update_priority_order/:id' => 'requests#update_priority_order', as: :update_priority_order
@@ -71,6 +75,7 @@ CodeRunner::Application.routes.draw do
     resources :images
     resources :background_informations
     get  'select_what_kind_of_software'  => 'requests#select_what_kind_of_software',  as: :select_what_kind_of_software,  format: false
+    resources :attachments, :controller => "requests/attachments"
   end
 
   get  'my_requests/'         => 'requests#my_requests',         as: :my_requests

@@ -23,7 +23,9 @@ describe ImagesController do
   # This should return the minimal set of attributes required to create a valid
   # Image. As you add validations to Image, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { {  } }
+  let(:valid_attributes) { {  
+    "image" => Image.new
+    } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -143,6 +145,7 @@ describe ImagesController do
   end
 
   describe "DELETE destroy" do
+    before { request.env["HTTP_REFERER"] = "/images" }
     it "destroys the requested image" do
       image = Image.create! valid_attributes
       expect {

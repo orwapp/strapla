@@ -11,11 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140204174032) do
+ActiveRecord::Schema.define(version: 20140223080330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
+
+  create_table "attachments", force: true do |t|
+    t.integer  "feature_id"
+    t.integer  "request_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "attachments", ["feature_id"], name: "index_attachments_on_feature_id", using: :btree
+  add_index "attachments", ["request_id"], name: "index_attachments_on_request_id", using: :btree
 
   create_table "background_informations", force: true do |t|
     t.text     "elevator_pitch"
@@ -146,6 +156,15 @@ ActiveRecord::Schema.define(version: 20140204174032) do
   add_index "price_quotes", ["request_id"], name: "index_price_quotes_on_request_id", using: :btree
   add_index "price_quotes", ["user_id"], name: "index_price_quotes_on_user_id", using: :btree
 
+  create_table "request_attachments", force: true do |t|
+    t.integer  "request_id"
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "request_attachments", ["request_id"], name: "index_request_attachments_on_request_id", using: :btree
+
   create_table "request_groups", force: true do |t|
     t.string   "title"
     t.string   "description"
@@ -186,6 +205,14 @@ ActiveRecord::Schema.define(version: 20140204174032) do
   end
 
   add_index "requests", ["request_group_id"], name: "index_requests_on_request_group_id", using: :btree
+
+  create_table "restaurants", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "restaurants", ["name"], name: "index_restaurants_on_name", unique: true, using: :btree
 
   create_table "skills", force: true do |t|
     t.string   "name"

@@ -16,14 +16,15 @@ class ImagesController < ApplicationController
   end
 
   def create
-    @request = Request.find params[:request_id] rescue nil 
-    @feature = Feature.find params[:feature_id] rescue nil
+    #@request = Request.find params[:request_id] rescue nil 
+    #@feature = Feature.find params[:feature_id] rescue nil
 
-    @image = @request.images.new(image_params) if @request.present?
-    @image = @feature.images.new(image_params) if @feature.present?
+    @image = Images.new(image_params) 
+    #@image = @request.images.new(image_params) if @request.present?
+    #@image = @feature.images.new(image_params) if @feature.present?
 
     @return_to_page = params[:image][:return_to_page]
-    @wizard = @return_to_page.match 'build'
+    #@wizard = @return_to_page.match 'build'
 
     respond_to do |format|
       if @image.save
