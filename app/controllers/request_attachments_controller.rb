@@ -25,6 +25,7 @@ class RequestAttachmentsController < ApplicationController
   # POST /request_attachments.json
   def create
     @request_attachment = RequestAttachment.new(request_attachment_params)
+    @request_attachment.request_id = params[:request_id]
 
     respond_to do |format|
       if @request_attachment.save
