@@ -2,11 +2,9 @@ CodeRunner::Application.routes.draw do
 
 
 
-  resources :request_attachments
 
 	devise_for :users, :controllers => {:registrations => "users/registrations"}
 
-  resources :images
   resources :certifications
   resources :jobs
   resources :skills
@@ -38,12 +36,15 @@ CodeRunner::Application.routes.draw do
   resources :users do
 		resources :jobs
 		resources :certifications
-    get  'new_price_quotes' => 'price_quotes#new_price_quotes', as: :new_price_quotes 
+    get  'new_price_quotes' => 
+      'price_quotes#new_price_quotes', as: :new_price_quotes 
   end
 
-  post 'accept_price_quote/:id'  => 'price_quotes#accept', as: :accept_price_quote 
-  post 'reject_price_quote/:id'  => 'price_quotes#reject', as: :reject_price_quote 
-  get  'requests/select_type_of_problem/' => 'requests#select_type_of_problem', as: :select_type_of_problem 
+  post 'accept_price_quote/:id' => 'price_quotes#accept', as: :accept_price_quote 
+  post 'reject_price_quote/:id' => 'price_quotes#reject', as: :reject_price_quote 
+
+  get  'requests/select_type_of_problem/' => 
+    'requests#select_type_of_problem', as: :select_type_of_problem 
 
   resources :price_quotes
   resources :elevator_pitches
@@ -58,21 +59,24 @@ CodeRunner::Application.routes.draw do
     resources :attachments, :controller => "features/attachments"
   end
 
-  post '/update_priority_order/:id' => 'requests#update_priority_order', as: :update_priority_order
+  post '/update_priority_order/:id' => 
+    'requests#update_priority_order', as: :update_priority_order
+
 	get  'requests/init'   => 'requests#init',  as: :init_request,  format: false
   resources :requests do
+    resources :request_attachments
     get :upload_images
+    #resources :images, :controller => "features/images"
     resources :build, controller: 'requests/build'
     resources :price_quotes do
       resources :comments
     end
     get  '/quote'  => 'requests#quote',  as: :quote,  format: false
     get  'features/create_many/' => 'features#create_many', as: :create_many 
-    get  'features/review'       => 'features#review',  as: :review,  format: false
+    get  'features/review'  => 'features#review',  as: :review,  format: false
     post '/publish'   => 'requests#publish',     as: :publish,   format: false
     post '/unpublish' => 'requests#unpublish',   as: :unpublish, format: false
     resources :features
-    resources :images
     resources :background_informations
     get  'select_what_kind_of_software'  => 'requests#select_what_kind_of_software',  as: :select_what_kind_of_software,  format: false
     resources :attachments, :controller => "requests/attachments"

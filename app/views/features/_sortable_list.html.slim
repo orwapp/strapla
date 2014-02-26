@@ -10,7 +10,8 @@ table.table.table-bordered.table-striped
       - if request.user == @current_user
         th Actions
       
-  tbody.sortable data-post-to-url="#{update_priority_order_path(request.id)}"  data-request-id="#{request.id}"
+  tbody.sortable(data-post-to-url="#{update_priority_order_path(request.id)}"  
+    data-request-id="#{request.id}")
     - request.features.order(:priority).each do |feature|
       tr data-id="#{feature.id}"
         td= feature.priority
