@@ -19,3 +19,4 @@
 *.swo
 
 /public/uploads/image
+/public/uploads
