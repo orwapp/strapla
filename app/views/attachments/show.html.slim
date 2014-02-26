@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Request:
+  = @attachment.request_id
+p
+  strong Title:
+  = @attachment.title
+p
+  strong Image:
+  = @attachment.image
+
+= link_to 'Edit', edit_attachment_path(@attachment)
+'|
+= link_to 'Back', attachments_path

@@ -3,6 +3,8 @@ CodeRunner::Application.routes.draw do
 
 
 
+
+
 	devise_for :users, :controllers => {:registrations => "users/registrations"}
 
   resources :certifications
@@ -55,18 +57,18 @@ CodeRunner::Application.routes.draw do
   resources :features do
 		resources :estimated_hours
     resources :comments
-    resources :images, :controller => "features/images"
-    resources :attachments, :controller => "features/attachments"
   end
 
   post '/update_priority_order/:id' => 
     'requests#update_priority_order', as: :update_priority_order
 
+  resources :requests do
+    resources :attachments, controller: 'requests/attachments'
+  end
+
 	get  'requests/init'   => 'requests#init',  as: :init_request,  format: false
   resources :requests do
-    resources :request_attachments
     get :upload_images
-    #resources :images, :controller => "features/images"
     resources :build, controller: 'requests/build'
     resources :price_quotes do
       resources :comments
@@ -79,7 +81,6 @@ CodeRunner::Application.routes.draw do
     resources :features
     resources :background_informations
     get  'select_what_kind_of_software'  => 'requests#select_what_kind_of_software',  as: :select_what_kind_of_software,  format: false
-    resources :attachments, :controller => "requests/attachments"
   end
 
   get  'my_requests/'         => 'requests#my_requests',         as: :my_requests

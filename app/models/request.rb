@@ -2,8 +2,7 @@ class Request < ActiveRecord::Base
   belongs_to :user
   has_many :price_quotes, dependent: :destroy
   has_many :features
-  has_many :images
-  has_many :request_attachments
+  has_many :attachments
   belongs_to :preferred_language
   belongs_to :request_group
 	validates_presence_of :user

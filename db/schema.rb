@@ -11,11 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140226064602) do
+ActiveRecord::Schema.define(version: 20140226093812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
+
+  create_table "attachments", force: true do |t|
+    t.integer  "request_id"
+    t.string   "title"
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "background_informations", force: true do |t|
     t.text     "elevator_pitch"
@@ -145,17 +153,6 @@ ActiveRecord::Schema.define(version: 20140226064602) do
 
   add_index "price_quotes", ["request_id"], name: "index_price_quotes_on_request_id", using: :btree
   add_index "price_quotes", ["user_id"], name: "index_price_quotes_on_user_id", using: :btree
-
-  create_table "request_attachments", force: true do |t|
-    t.integer  "request_id"
-    t.string   "image"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "title"
-    t.string   "description"
-  end
-
-  add_index "request_attachments", ["request_id"], name: "index_request_attachments_on_request_id", using: :btree
 
   create_table "request_groups", force: true do |t|
     t.string   "title"
