@@ -25,14 +25,26 @@ class Requests::AttachmentsController < ApplicationController
   # POST /attachments.json
   def create
     @attachment = Attachment.new(attachment_params)
+    @attachment.request_id = params[:request_id]
+    @return_to_page = 
+      params[:attachment][:return_to_page].present?  ? 
+      params[:attachment][:return_to_page] :
+      request_upload_images_path(@attachment.request_id)
+
 
     respond_to do |format|
-      if @attachment.save
-        format.html { redirect_to request_upload_images_path(@attachment.request_id), notice: 'Attachment was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @attachment }
+      if @attachment.save!
+        format.html { 
+          redirect_to request_upload_images_path(@attachment.request_id), 
+          notice: 'Attachment was successfully created.' }
+        format.json { 
+          render action: 'show', status: :created, location: @attachment 
+        }
       else
-        format.html { render action: 'new' }
-        format.json { render json: @attachment.errors, status: :unprocessable_entity }
+        format.html { redirect_to @return_to_page}
+        format.json { 
+          render json: @attachment.errors, status: :unprocessable_entity 
+        }
       end
     end
   end
@@ -43,11 +55,15 @@ class Requests::AttachmentsController < ApplicationController
     respond_to do |format|
       if @attachment.update(attachment_params)
         puts "- path: #{request_upload_images_path(@attachment.request_id)}"
-        format.html { redirect_to request_upload_images_path(@attachment.request_id), notice: 'Attachment was successfully updated.' }
+        format.html { 
+          redirect_to request_upload_images_path(@attachment.request_id), 
+          notice: 'Attachment was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @attachment.errors, status: :unprocessable_entity }
+        format.json { 
+          render json: @attachment.errors, status: :unprocessable_entity 
+        }
       end
     end
   end
@@ -57,7 +73,9 @@ class Requests::AttachmentsController < ApplicationController
   def destroy
     @attachment.destroy
     respond_to do |format|
-      format.html { redirect_to request_upload_images_path(@attachment.request) }
+      format.html { 
+        redirect_to request_upload_images_path(@attachment.request) 
+      }
       format.json { head :no_content }
     end
   end
@@ -68,8 +86,8 @@ class Requests::AttachmentsController < ApplicationController
       @attachment = Attachment.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def attachment_params
-      params.require(:attachment).permit(:request_id, :title, :image)
+      params.require(:attachment).permit(:request_id, 
+        :title, :image, :return_to_page)
     end
 end

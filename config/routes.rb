@@ -62,11 +62,11 @@ CodeRunner::Application.routes.draw do
   post '/update_priority_order/:id' => 
     'requests#update_priority_order', as: :update_priority_order
 
+	get  'requests/init'   => 'requests#init',  as: :init_request,  format: false
   resources :requests do
     resources :attachments, controller: 'requests/attachments'
   end
 
-	get  'requests/init'   => 'requests#init',  as: :init_request,  format: false
   resources :requests do
     get :upload_images
     resources :build, controller: 'requests/build'

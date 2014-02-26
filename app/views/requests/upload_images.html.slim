@@ -1,16 +1,16 @@
-- if @request.images.present?
+- if @request.attachments.present?
   h2 Images
   .container.border
-    - @request.images.each do |image|
-      = link_to image_tag( image.image_url, size: '500x500', 
-        class: 'thumbnail pull-left span4'), image.image_url, target: :blank
+    - @request.attachments.each do |a|
+      = link_to image_tag( a.image.url, size: '500x500', 
+        class: 'thumbnail pull-left span4'), a.image.url, target: :blank
 
 
 
 h3 Upload images 
 
 /= simple_form_for([@request, @request.images.new]) do |f|
-= simple_form_for([@request, @request.request_attachments.new]) do |f|
+= simple_form_for([@request, @request.attachments.new]) do |f|
   /= f.hidden_field :return_to_page, 
     value: "/requests/#{@request.id}/upload_images"
   = f.input :title
