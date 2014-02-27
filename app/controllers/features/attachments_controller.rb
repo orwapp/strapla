@@ -35,7 +35,7 @@ class Features::AttachmentsController < ApplicationController
     respond_to do |format|
       if @attachment.save!
         format.html { 
-          redirect_to request_features_path(@attachment.feature_id),
+          redirect_to @return_to_page,
           notice: 'Attachment was successfully created.' }
         format.json { 
           render action: 'show', status: :created, location: @attachment 
