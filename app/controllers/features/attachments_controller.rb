@@ -33,7 +33,7 @@ class Features::AttachmentsController < ApplicationController
 
 
     respond_to do |format|
-      if @attachment.save!
+      if @attachment.save
         format.html { 
           redirect_to @return_to_page,
           notice: 'Attachment was successfully created.' }
@@ -55,7 +55,7 @@ class Features::AttachmentsController < ApplicationController
     respond_to do |format|
       if @attachment.update(attachment_params)
         format.html { 
-          redirect_to request_upload_images_path(@attachment.request_id), 
+          redirect_to @attachment.feature.request,
           notice: 'Attachment was successfully updated.' }
         format.json { head :no_content }
       else
@@ -73,7 +73,7 @@ class Features::AttachmentsController < ApplicationController
     @attachment.destroy
     respond_to do |format|
       format.html { 
-        redirect_to request_upload_images_path(@attachment.request) 
+        redirect_to @attachment.feature.request
       }
       format.json { head :no_content }
     end

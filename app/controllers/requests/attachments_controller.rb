@@ -33,7 +33,7 @@ class Requests::AttachmentsController < ApplicationController
 
 
     respond_to do |format|
-      if @attachment.save!
+      if @attachment.save
         format.html { 
           redirect_to request_upload_images_path(@attachment.request_id), 
           notice: 'Attachment was successfully created.' }
@@ -74,7 +74,7 @@ class Requests::AttachmentsController < ApplicationController
     @attachment.destroy
     respond_to do |format|
       format.html { 
-        redirect_to request_upload_images_path(@attachment.request) 
+        redirect_to request_upload_images_path(@attachment.request_id) 
       }
       format.json { head :no_content }
     end

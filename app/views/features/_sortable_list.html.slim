@@ -39,7 +39,8 @@ table.table.table-bordered.table-striped
               br
               = link_to( image_tag(a.image.thumb.url, class: :thumbnail), 
                 a.image.url, target: :blank) 
-              /= link_to('Remove', a, :confirm => 'Are you sure?', 
+              h1= request_path(a.feature_id) 
+              = link_to('Remove', feature_attachment_path(feature, a), :confirm => 'Are you sure?', 
                 :method => :delete)
 
 
