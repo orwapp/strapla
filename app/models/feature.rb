@@ -7,7 +7,7 @@ class Feature < ActiveRecord::Base
   belongs_to :price_quote
   validates_presence_of :title
   has_many :estimated_hours, dependent: :destroy
-  has_many :images
+  has_many :attachments
 
 
 end

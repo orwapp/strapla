@@ -9,10 +9,7 @@
 
 h3 Upload images 
 
-/= simple_form_for([@request, @request.images.new]) do |f|
 = simple_form_for([@request, @request.attachments.new]) do |f|
-  /= f.hidden_field :return_to_page, 
-    value: "/requests/#{@request.id}/upload_images"
   = f.input :title
   = f.input :description
 

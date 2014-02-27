@@ -55,6 +55,7 @@ CodeRunner::Application.routes.draw do
 
 
   resources :features do
+    resources :attachments, controller: 'features/attachments'
 		resources :estimated_hours
     resources :comments
   end

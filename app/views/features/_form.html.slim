@@ -12,10 +12,6 @@
       = f.hidden_field :form_id, name: 'form_id'
       = f.input :title, input_html: { class: 'input-medium span7', rows: 10 }
       = f.input :description,  input_html: { class: 'input-medium span7', rows: 20 }
-      br
-      strong Image
-      br
-      = f.file_field :image
 
     .form-actions[class="#{'hide' if hide_submit}"]
       = f.button :submit, :class => "btn-primary", value: "Save"
