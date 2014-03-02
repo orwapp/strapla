@@ -5,9 +5,10 @@
       - @price_quote.errors.full_messages.each do |message|
         li = message
 
-= simple_form_for [price_quote.request, price_quote] do |f|
+/= simple_form_for [price_quote.request, price_quote] do |f|
+= simple_form_for([price_quote.request, price_quote], :defaults => { :input_html => { :class => 'input-xxlarge', rows: 10 } }) do |f|
   
-  = f.input :description
+  = f.input :description, class: 'input-xlarge'
   = f.input :price, label: 'Price total in USD'
   = f.input :hours_estimated
   - submit_text = price_quote.new_record? ? 'Send' : 'Update Price Quote'
