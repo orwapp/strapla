@@ -47,16 +47,19 @@ h2.label.label-success.big_font= price_quote.status.titleize if price_quote.stat
               td 
                 span= feature.description
               td 
-                span= feature.estimated_hours.where(user_id: price_quote.user).last.hours rescue nil
+                span
+                  = feature.estimated_hours.where( user_id: price_quote.user).last.hours rescue nil
                 
   hr
   
 
-  = render price_quote.comments
+  ul.comments
+    = render price_quote.comments.each { |c| render c }
   br
   br
   br
-  = render :partial => 'comments/on_price_quote_form', locals: {price_quote: price_quote, comment: price_quote.comments.new}
+  = render :partial => 'comments/on_price_quote_form', 
+    locals: {price_quote: price_quote, comment: price_quote.comments.new}
 
   hr
   .row

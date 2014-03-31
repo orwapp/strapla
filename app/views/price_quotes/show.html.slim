@@ -15,9 +15,10 @@ br
 
 .row
   .span11
-      = link_to 'Edit', edit_request_path(request), class: 'pull-right btn '   if (@price_quote.request.user == current_user) and (@price_quote.request.status != :accepted)
-      = nbsp
-      = nbsp
-      = nbsp
-      = link_to 'Next', select_recipient_path(@price_quote.request), class: 'pull-right btn  btn-info'   if (@price_quote.request.user == current_user)
+    - if (@price_quote.request.user == current_user) && (@price_quote.request.status != :accepted)
+        = link_to 'Edit', edit_request_path(request), class: 'pull-right btn '   
+        = nbsp
+        = nbsp
+        = nbsp
+        = link_to 'Next', select_recipient_path(@price_quote.request), class: 'pull-right btn  btn-info'   if (@price_quote.request.user == current_user)
 br
