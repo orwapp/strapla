@@ -1,13 +1,27 @@
-.progress
-  .bar.completed.bar-success data-percent="22.5" style="width: 42.5%;"
-  .bar.remaining.bar-warning data-percent="77.5" style="width: 57.5%;"
+- if @request.attachments.present?
+  h2 Images
+  .container.border
+    - @request.attachments.each do |a|
+      = link_to image_tag( a.image.url, size: '500x500', 
+        class: 'thumbnail pull-left span4'), a.image.url, target: :blank
+
+
 
 h3 Upload images 
 
-= simple_form_for(@request) do |f|
-  = f.file_field :image, hint: '',
-    input_html: { 'data-hint' => 'What´s the financial frame?', 
-    'data-example' => 'I have $10k, when that´s spent the app should be accepted at Apple AppStore and available for all markets.',
-    class: 'span8 help_text'}
-  = f.submit
-  
+= simple_form_for([@request, @request.attachments.new]) do |f|
+  = f.input :title
+  = f.input :description
+
+  = f.file_field :image, input_html: { class: 'span8 help_text'}
+  br
+  br
+  br
+  br
+  br
+  = f.submit 'Upload image', class: 'btn btn-info', 
+    data: { disable_with: 'Uploading...' }
+
+= link_to '  Back to the request', @request, class: 'pull_right'
+
+

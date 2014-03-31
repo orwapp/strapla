@@ -4,25 +4,25 @@
       = image_tag user.image_url, size: '230x230'
 
     .right
-      .span4
+      .span6
         h3= user.name 
         strong= "Member since #{I18n.l( user.created_at, format: :without_time)}"
         br
         br
         - if user.github_username.present?
           .pull-left
-            = content_tag(:i, "", class: "icon-github large-icon")
+            .big_font.inline=fa_icon "github"
             = nbsp
-            = link_to( 'Me on Github', "http://github.com/#{user.github_username}", :target => "_blank")
+            = link_to( 'Github', "http://github.com/#{user.github_username}", :target => "_blank")
 
             = nbsp
             = nbsp
             = nbsp
         - if user.linkedin_url.present?
           .pull-left
-            = content_tag(:i, "", class: "icon-linkedin-sign large-icon")
+            .big_font.inline= fa_icon "linkedin"
             = nbsp
-            = link_to( 'My LinkedIn profile', user.linkedin_url, 
+            = link_to( 'LinkedIn profile', user.linkedin_url, 
 				  		:target => "_blank")
         br
         br
@@ -30,7 +30,7 @@
         - user.skills.all.each do |skill|
           h2.badge.badge-success= skill.name
 
-      .span3.pull-right
+      .span2.pull-right
         .score.border.text-center
           h2 737
           strong.lead 

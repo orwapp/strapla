@@ -11,7 +11,7 @@ Feature: Respond to a request - Send a Price Quote
     Then I click "Unassigned requests 1"
     And  I click "Need help to build an iOS app"
 
-    When  I press "Quote a price"
+    When I press "Quote a price"
     Then I should see "You need to sign in or sign up before continuing"
     And I sign up as "expert@coder.com"
 

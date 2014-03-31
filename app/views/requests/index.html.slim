@@ -5,9 +5,11 @@
           
 
     .center
-      = link_to 'Start your project', init_request_path, class: 'cta btn  btn-large btn-primary pull-rightX '
+      = link_to 'Start your project', init_request_path, 
+        class: 'cta btn  btn-large btn-primary pull-rightX '
       =nbsp
       =nbsp
       =nbsp
-      = link_to 'Find a job', unassigned_requests_path, class: 'cta btn  btn-large btn-primary pull-leftX' unless user_signed_in?
+      = link_to 'Find a job', unassigned_requests_path, 
+        class: 'cta btn  btn-large btn-primary pull-leftX'
 

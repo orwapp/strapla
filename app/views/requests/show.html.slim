@@ -1,12 +1,24 @@
 = render :partial => 'requests/request', locals: {request: @request}
 
-h3 Image
-= image_tag(@request.image_url)
+
+- if @request.attachments.present?
+  h3 Images
+  ul
+    - @request.attachments.each do |a|
+      li
+        = link_to image_tag( a.image.big_thumb.url, size: '500x500', 
+          class: 'thumbnail pull-left span4'), a.image_url, target: :blank
+      .clearfix= link_to('Remove', request_attachment_path(@request, a), :confirm => 'Are you sure?', 
+        :method => :delete)
+      br
+      br
+  br
 
 br
 br
 - unless @current_user == @request.user
-  = link_to 'Quote a price', new_request_price_quote_path(@request), class: 'btn btn-info pull-right'
+  = link_to 'Quote a price', new_request_price_quote_path(@request), 
+    class: 'btn btn-info pull-right'
 
 - if (current_user == @request.user) and @request.price_quotes.present?
   br
@@ -15,5 +27,9 @@ br
   hr
   = render @request.price_quotes.to_a
 
-= link_to 'Select recipient', select_recipient_path(@request), class: 'pull-right btn btn-info'   if (@request.user == current_user) and @request.status == "unpublished"
+- if (@request.user == current_user) and @request.status == "unpublished"
+  = link_to 'Select recipient', select_recipient_path(@request), 
+    class: 'pull-right btn btn-info'   
+
 = link_to 'Edit', edit_request_path(@request), class: 'pull-right btn '   if (@request.user == current_user) and @request.status != :accepted
+= link_to 'Back', :back

@@ -2,12 +2,12 @@ class Request < ActiveRecord::Base
   belongs_to :user
   has_many :price_quotes, dependent: :destroy
   has_many :features
+  has_many :attachments
   belongs_to :preferred_language
   belongs_to :request_group
 	validates_presence_of :user
   validates_presence_of :title, :description
   
-  mount_uploader :image, ImageUploader
   
   
   attr_reader :return_to_page
@@ -70,6 +70,10 @@ class Request < ActiveRecord::Base
 
   def delegated_to=(user)
     self.update_attribute(:delegated_to_user_id, user.id)
+  end
+
+  def update_priority_on_features(order)
+    order.each_with_index { |id, order| Feature.where(id: id).first.update_attribute(:priority, order+1) }
   end
 
 end

@@ -5,19 +5,17 @@ html
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
-    body{id="#{body_id}"}
-      .container
-        = render :partial => 'layouts/navbar'
-        - if @current_user.present?
-          span.muted= "Signed in as #{@current_user.email} (#{@current_user.id})" 
+  body{id="#{body_id}"}
+    .container
+      = render :partial => 'layouts/navbar'
+      - if @current_user.present?
+        span.muted= "Signed in as #{@current_user.email} (#{@current_user.id})" 
 
-        h2= @title
-        - if notice 
-         p.notice.alert.alert-info= notice 
-        - if alert
-          p.alert= alert
+      h2= @title
+      - flash.each do |name, msg|
+        = content_tag :div, msg, class: "#{name.to_s rescue nil + notice}"
+      
   
-        .row
-          .span12
-            = yield 
-
+      .row
+        .span12
+          = yield 

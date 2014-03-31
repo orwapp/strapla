@@ -1,0 +1,10 @@
+h1= @feature.title
+
+strong Description
+p= @feature.description.present? || "No description provided"
+br
+=image_tag @feature.image_url
+
+
+= link_to 'Edit', edit_feature_path(@feature), class: 'btn'
+= link_to 'Back to the feature list', request_features_path(@feature.request.id), class: 'btn'

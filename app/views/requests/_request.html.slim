@@ -17,11 +17,9 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
 
         .media-body
           h4.lead.lead-pull-up= request.title
-          em= request.status
-          p
-            strong Description
-            br
-            = request.description
+          strong Description
+          br
+          = request.description
 
 
           p
@@ -32,14 +30,21 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
                 br
                 = request.goal
                 br
-                br
 
 
             -  if request.background_information
               .media
                 strong Background information   
                 br
-                = request.background_information
+                = request.background_information.html_safe
+                br
+                br
+
+            -  if request.system_description
+              .media
+                strong System description
+                br
+                = request.system_description.html_safe
                 br
                 br
 
@@ -47,7 +52,7 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
               .media
                 strong What’s most and least important for this project at this time?
                 br
-                = request.what_is_it_going_to_give
+                = request.what_is_it_going_to_give.html_safe
                 br
                 br
 
@@ -68,7 +73,7 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
 
 
     .span4
-      p.pull-right
+      p.pull-right.muted
         span Client:
         span= request.user.name rescue nil
         br
@@ -80,36 +85,24 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
         span= request.status
         br
         span Delegated to:
-        span= request.delegated_to
+        span= request.delegated_to.name rescue 'Not delegated'
         br
         span Published:
         span= !!request.published
 
       br
       br
-  /.row
-    .span11
-      hr
-      a.browse_code.clickable
-        ="Browse code... &nbsp;".html_safe 
-        i.icon-collapse
-      br
-
-      /.code_details.hide
-        p I got a running test here, but it fails on line 15.
-        = image_tag 'code_preview.png'
-        hr
 
   - if request.features.present?
     .row
       .span11
         h3 Features
-        table.table.table-bordered.features
-          thead
-            tr
-              th Title
-              th Description
-              - if show_hours_estimated?
-                th Hours estimated
-              
-          = render partial: "/features/feature", collection: request.features
+        - if request.user == @current_user
+          .alert.alert-info
+            |
+              Drag the features in prioritized order.
+        = render :partial => '/features/sortable_list', 
+          locals: { request: request }
+
+  - if (request.user == current_user) && request.status != :accepted
+    = link_to 'Edit', edit_request_path(request), class: 'pull-right btn '   

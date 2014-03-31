@@ -1,33 +1,22 @@
-$ ->
-  adjustment = undefined
-  $("ol.simple_with_animation").sortable
-    group: "simple_with_animation"
-    pullPlaceholder: false
-    
-    # animation on drop
-    onDrop: (item, targetContainer, _super) ->
-      clonedItem = $("<li/>").css(height: 0)
-      item.before clonedItem
-      clonedItem.animate height: item.height()
-      item.animate clonedItem.position(), ->
-        clonedItem.detach()
-        _super item
-  
-  
-    
-    # set item relative to cursor position
-    onDragStart: ($item, container, _super) ->
-      offset = $item.offset()
-      pointer = container.rootGroup.pointer
-      adjustment =
-        left: pointer.left - offset.left
-        top: pointer.top - offset.top
-  
-      _super $item, container
-  
-    onDrag: ($item, position) ->
-      $item.css
-        left: position.left - adjustment.left
-        top: position.top - adjustment.top
-  
+calculateOrderOfFeatures = () ->
+  sorted = []
+  url = $("tbody.sortable").data('post-to-url')
+  request_id = $("tbody.sortable").data('request-id')
 
+  $("tbody.sortable tr").each ->
+    $this = $(this)
+    sorted.push $this.attr("data-id")
+
+    $.ajax(
+      url: url
+      type: "post"
+      data: {id: request_id, priority_order: sorted}
+    )
+
+
+$ ->
+
+  # Sortable rows
+  $(".sortable").sortable 
+    stop: (event, ui) ->
+      calculateOrderOfFeatures()

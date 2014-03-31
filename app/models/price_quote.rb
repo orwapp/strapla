@@ -49,13 +49,12 @@ class PriceQuote < ActiveRecord::Base
   end
 
   def unprocessed
-    #connection = ActiveRecord::Base.connection
-    ActiveRecord::Base.connection.execute(" select * from price_quotes join requests on price_quotes.request_id=requests.id ")
-    #PriceQuote.joins('LEFT OUTER JOIN addresses ON addresses.client_id = clients.id')
+    ActiveRecord::Base.connection.execute(" 
+      SELECT * FROM price_quotes JOIN requests ON 
+      price_quotes.request_id=requests.id ")
   end
 
   def self.belonging_to_users_requests(user)
-    # Foo.includes(:bar).where(Bar.arel_table[:id].not_eq(nil))
     price_quotes = []
     user.requests.each do |request|
       price_quotes << request.price_quotes.to_a

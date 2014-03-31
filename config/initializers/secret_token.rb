@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-CodeRunner::Application.config.secret_key_base = 'acf7eb93a36e96bb7d6d8ee5fa8ce9b29a55436b6e50ed80b77023b5b859c5d0f6bdd114c53f14a963a367a75a13f35f8da73deb4f09ab2a85623f8f33ac53e7'
+CodeRunner::Application.config.secret_key_base = 'acf7eb93a36e96bb7d6d8ee5fa8ce9b29a55436b6e50ed80b77023b5b859c5d0f6bdd114c53f14a963a367a75a13f35f8da73deb4f09ab2a85623f8f33ac53exx7'

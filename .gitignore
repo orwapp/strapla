@@ -17,3 +17,6 @@
 .smartgf_tags
 .smartgf_tags_date
 *.swo
+
+/public/uploads/image
+/public/uploads

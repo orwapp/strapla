@@ -1,0 +1,21 @@
+h1 Listing request_attachments
+
+table
+  tr
+    th Request
+    th Image
+    th
+    th
+    th
+
+  - @request_attachments.each do |request_attachment|
+    tr
+      td = request_attachment.request
+      td = request_attachment.image
+      td = link_to 'Show', request_attachment
+      td = link_to 'Edit', edit_request_attachment_path(request_attachment)
+      td = link_to 'Destroy', request_attachment, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Request attachment', new_request_attachment_path

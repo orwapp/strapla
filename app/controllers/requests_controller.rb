@@ -1,9 +1,11 @@
 class RequestsController < ApplicationController
   respond_to :html
-  before_action :set_request, only: [:quote, :show, :edit, :update, :destroy, :upload_images]
+  before_action :set_request, only: [:quote, :show, :edit, :update, :destroy, :upload_images, :update_priority_order]
   before_action :find_requests
   before_filter :set_wizard
-  before_filter :authenticate_user!, except: [:index,  :unassigned_requests]
+  before_filter :authenticate_user!, except: [:index,  :unassigned_requests, :show]
+  skip_before_action :verify_authenticity_token, only: [:update_priority_order]
+  
 
   def index
   end
@@ -11,8 +13,13 @@ class RequestsController < ApplicationController
 	def init
 	end
 
-  def upload_images
+  def update_priority_order
+    @request.update_priority_on_features(params[:priority_order])
+    render :nothing => true, :status => 200
+  end
 
+  def upload_images
+    @image = Image.new
   end
 
   def select_what_kind_of_software
@@ -45,15 +52,11 @@ class RequestsController < ApplicationController
 
   def show
 		@request = Request.find(params[:id])
-		#raise "found request: #{@request.id}"
-		# Redirect the user to the request show page if he has made one.
+    @features = @request.features.order(:priority)
 		if user_signed_in?
-			#raise "he is signed in"
 			@existing_price_quote = current_user.price_quotes.where(request_id: @request.id).first
-			#raise "found existing_price_quote: #{@existing_price_quote}"
 			redirect_to @existing_price_quote if @existing_price_quote.present?
 		else
-			#raise "he is NOT signed in"
 		end
 		
 		@price_quote = current_user.price_quotes.new  if user_signed_in?
@@ -154,6 +157,7 @@ class RequestsController < ApplicationController
       :what_can_go_wrong,
       :what_is_it_going_to_give,
       :what_is_the_frame,
+      :system_description,
       :image
     )
   end

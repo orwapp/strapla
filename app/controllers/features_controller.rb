@@ -1,13 +1,13 @@
 class FeaturesController < ApplicationController
-  include Wicked::Wizard
+  #include Wicked::Wizard
   before_action :set_feature, only: [:show, :edit, :update, :destroy]
   before_action :set_request, only: [:index, :create_many, :new, :create, :review]
 
-  steps
+  #steps
 
 
   def index
-    @features = @request.features.load
+    @features = @request.features.order(:priority).load
   end
 
   def create_many
@@ -19,9 +19,12 @@ class FeaturesController < ApplicationController
 
   def new
     @feature = Feature.new
+    @return_to_page = request_features_path(@request)
   end
 
   def edit
+    #Rails.logger.debug  "request is #{@request}"
+    @return_to_page = request_features_path(@feature.request)
   end
 
   def review
@@ -50,8 +53,9 @@ class FeaturesController < ApplicationController
   def update
     respond_to do |format|
     @form_id = "#edit_feature_#{params[:id]}"
+    @return_to_page = params[:feature][:return_to_page].present? ? params[:feature][:return_to_page] :  "/requests/#{params[:request_id]}/build/features"
       if @feature.update(feature_params)
-        format.html { redirect_to "/requests/#{params[:request_id]}/build/features",
+        format.html { redirect_to @return_to_page,
           notice: 'Feature was successfully updated.' }
         format.json { head :no_content }
         format.js
@@ -77,6 +81,7 @@ class FeaturesController < ApplicationController
     def set_feature
       if params[:id].present?
         @feature = Feature.find(params[:id])
+        Rails.logger.debug  "id is #{@feature}"
       else
         @feature = Feature.find(params[:features_id])
       end
@@ -88,6 +93,6 @@ class FeaturesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def feature_params
-      params.require(:feature).permit(:request_id, :description, :title, :form_id)
+      params.require(:feature).permit(:request_id, :description, :title, :form_id, :image, :return_to_page)
     end
 end

@@ -1,0 +1,19 @@
+.page-header
+  = link_to new_job_path, :class => 'btn btn-primary' do
+    i.icon-plus.icon-white
+    | New Job
+  h1 Listing jobs
+
+table.table.table-bordered.table-striped
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @jobs.each do |job|
+      tr
+        td= link_to 'Show', job
+        td= link_to 'Edit', edit_job_path(job)
+        td= link_to 'Delete', job, :confirm => 'Are you sure?', :method => :delete

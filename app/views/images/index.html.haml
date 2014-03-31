@@ -1,0 +1,19 @@
+.page-header
+  = link_to new_image_path, :class => 'btn btn-primary' do
+    %i.icon-plus.icon-white
+    New Image
+  %h1 Listing images
+
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @images.each do |image|
+      %tr
+        %td= link_to 'Show', image
+        %td= link_to 'Edit', edit_image_path(image)
+        %td= link_to 'Delete', image, :confirm => 'Are you sure?', :method => :delete

@@ -9,11 +9,13 @@ gem 'fabrication'
 gem 'rails_12factor'   # Needed for Rails4 on Heroku
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
-gem 'jquery-rails'
-gem 'jquery-ui-rails'
 
+# Use jquery as the JavaScript library
+gem 'jquery-rails'
+
+# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
-gem 'jquery-turbolinks'
+
 gem 'simple_form' #, :github => 'plataformatec/simple_form'
 gem 'jbuilder', '~> 1.2'
 gem 'sass-rails', '~> 4.0.0'
@@ -21,15 +23,17 @@ gem 'bootstrap-sass', '~> 2.3.2.0'
 gem 'font-awesome-rails'
 gem 'devise'
 gem 'compass'
-gem 'compass-rails', :github => 'roderickvd/compass-rails'
+gem 'compass-rails' #, :github => 'roderickvd/compass-rails'
 gem 'bootstrap-generators', '~> 2.3'
-#gem 'bootstrap-generators', :github => 'stabenfeldt/bootstrap-generators'
 gem 'haml'
 gem 'haml-rails'
 gem 'bootstrap-datepicker-rails'
 gem 'wicked'
 gem 'activerecord-postgres-hstore'
 gem 'pg'
+gem 'fog', '~> 1.3.1'
+gem 'color_routes'
+
 
 group :production do
   gem 'exception_notification'
@@ -57,7 +61,6 @@ group :test do
   gem 'launchy'
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
-  gem 'email_spec'
   gem 'guard-rspec'
   gem 'selenium-webdriver'
 end
@@ -65,9 +68,10 @@ end
 gem 'mail_form'
 gem 'redis'
 gem 'split', :require => 'split/dashboard'
-gem 'foreman'
 gem 'unicorn'
 gem 'resque'
 gem 'resque_mailer'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'newrelic_rpm'
+

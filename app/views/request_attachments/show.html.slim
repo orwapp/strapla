@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Request:
+  = @request_attachment.request
+p
+  strong Image:
+  = @request_attachment.image
+
+= link_to 'Edit', edit_request_attachment_path(@request_attachment)
+'|
+= link_to 'Back', request_attachments_path

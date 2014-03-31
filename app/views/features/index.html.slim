@@ -1,26 +1,27 @@
 .page-header
-  h1=  "Features for #{@request.title} "
+  h1=  "Features belonging to #{ link_to @request.title, @request} ".html_safe
 
-table.table.table-bordered.table-striped
-  thead
-    tr
-      th Description
-      th Title
-      th
-      th
-      th
+- if @request.user == @current_user
+  .alert.alert-info
+    |
+      Drag the features in prioritized order.
+= render :partial => '/features/sortable_list', locals: { request: @request }
 
-  tbody
-    - @features.each do |feature|
-      tr
-        td= feature.description
-        td= feature.title
-        td= link_to 'Show', feature
-        td= link_to 'Edit', edit_feature_path(feature)
-        td= link_to 'Delete', feature, :confirm => 'Are you sure?', :method => :delete
 
-= link_to new_request_feature_path(@request), :class => 'btn btn-primary pull-right' do
-  i.icon-plus.icon-white= "#{nbsp} New Feature".html_safe
+= simple_form_for([@request, @request.features.new],
+  html: {class: "form-inline new_feature" }) do |f|
+  .border.padding10
+    = f.error_notification
+
+    .form-inputs
+      = f.hidden_field :return_to_page, value: "#{request_features_path(@request)}"
+      = f.hidden_field :form_id, name: 'form_id'
+      = f.input :title, input_html: { class: 'input-medium span11', rows: 10 }
+      = f.input :description,  input_html: { class: 'input-medium span11', rows: 15 }
+
+    .form-actions
+      = f.button :submit, :class => "btn-primary", value: "Save"
+
 br
 br
 =link_to 'Back to the request', request_path(@request)
