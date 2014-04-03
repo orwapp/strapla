@@ -3,7 +3,7 @@ h1= @feature.title
 strong Description
 p= @feature.description.present? || "No description provided"
 br
-=image_tag @feature.image_url
+=image_tag @feature.try(:image_url)
 
 
 = link_to 'Edit', edit_feature_path(@feature), class: 'btn'
