@@ -1,7 +1,7 @@
 h1= @feature.title
 
 strong Description
-p= @feature.description.present? || "No description provided"
+p= @feature.description || "No description provided"
 br
 =image_tag @feature.try(:image_url)
 
