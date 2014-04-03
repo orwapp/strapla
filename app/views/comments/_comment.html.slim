@@ -1,4 +1,5 @@
 li.comment_container
-  span= "#{I18n.l comment.created_at} #{comment.user.name} wrote: " rescue nil
+  span(class="#{i}")
+    = "#{I18n.l comment.created_at} #{comment.user.name} wrote: " rescue nil
   blockquote= " #{comment.text}"
 
