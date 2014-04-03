@@ -9,17 +9,21 @@ p
 
 = render :partial => '/requests/request', locals: {request: @request}
 
-- if @request.images.present?
+- if @request.attachments.present?
   h3 Images
   .container.border
-    - @request.images.each do |image|
-      = link_to image_tag( image.image_url, size: '500x500', class: 'thumbnail pull-left span4'), image.image_url, target: :blank
+    - @request.attachments.each do |attachment|
+      = link_to image_tag( attachment.image.url, 
+        size: '500x500', class: 'thumbnail pull-left span4'), 
+        attachment.image.url, target: :blank
 
 br
 br
 br
  
-= link_to 'Edit', edit_request_path(@request), class: 'pull-right btn '   if (@request.user == current_user) and @request.status != :accepted
+- if (@request.user == current_user) and @request.status != :accepted
+  = link_to 'Edit', edit_request_path(@request), class: 'pull-right btn '   
+
 = nbsp
 = nbsp
 = nbsp
