@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.0.0'
-ruby '2.0.0'
+ruby '2.1.2'
 
 gem 'slim'
 gem 'slim-rails'
@@ -44,7 +44,6 @@ group :development do
   gem 'foreman'
   gem 'zeus'
   gem 'quiet_assets'
-  gem 'guard-cucumber'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
@@ -59,7 +58,6 @@ end
 group :test do
   gem 'email_spec'
   gem 'launchy'
-  gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
   gem 'guard-rspec'
   gem 'selenium-webdriver'
