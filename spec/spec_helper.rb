@@ -4,7 +4,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 require 'capybara/rails'
-require 'capybara/rspec'
+
 #require 'email_spec'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -19,7 +19,6 @@ RSpec.configure do |config|
   config.include(EmailSpec::Helpers)
   config.include(EmailSpec::Matchers)
   config.include Warden::Test::Helpers
-  config.include Capybara::DSL
 
   config.include(MailerMacros)
   config.before(:each) { reset_email }

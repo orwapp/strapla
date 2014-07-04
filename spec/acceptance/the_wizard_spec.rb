@@ -1,3 +1,4 @@
+require 'spec_helper'
 require 'acceptance/acceptance_helper'
 
 feature 'The wizard', %q{
