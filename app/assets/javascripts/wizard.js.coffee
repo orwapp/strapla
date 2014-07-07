@@ -36,9 +36,9 @@ $ ->
     example_text = $(this).data('example')
     $('#example-box .content').html(example_text)
     if example_text
-      $('#example-box').show() 
-    else 
-      $('#example-box').hide() 
+      $('#example-box').show()
+    else
+      $('#example-box').hide()
 
 
   # The select_what_kind_of_software page
