@@ -20,7 +20,7 @@ table.table.table-bordered.table-striped
       tr data-id="#{feature.id}"
         td
           h4= feature.title
-        td.trucated_description= truncate(feature.description) { link_to "more", "#", class: 'expand_feature' }
+        td.trucated_description= truncate(feature.description, length: 200) { link_to "show more.", "#", class: 'expand_feature' }
         td.description.hide
           = feature.description
           br
