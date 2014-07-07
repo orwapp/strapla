@@ -20,3 +20,10 @@ $ ->
   $(".sortable").sortable 
     stop: (event, ui) ->
       calculateOrderOfFeatures()
+
+  $(document).on 'click', '.expand_feature', (e) ->
+    e.preventDefault()
+    $(this).first().parents('tr').find('.hide').toggle()
+    $(this).first().parents('tr').find('.trucated_description').toggle()
+    
+

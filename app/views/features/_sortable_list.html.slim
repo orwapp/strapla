@@ -6,10 +6,9 @@ javascript:
 table.table.table-bordered.table-striped
   thead
     tr
-      th Priority
       th Title
       th Description
-      th Image
+      th.hide Image
       - if show_hours_estimated? && (request.user != @current_user)
         th Hours estimated
       - if request.user == @current_user
@@ -19,14 +18,16 @@ table.table.table-bordered.table-striped
     data-request-id="#{request.id}")
     - request.features.order(:priority).each do |feature|
       tr data-id="#{feature.id}"
-        td= feature.priority
-        - if (request.user == @current_user)
-          td= link_to feature.title, feature  
-        - else
-          td= feature.title
-        td= feature.description
-
         td
+          h4= feature.title
+        td.trucated_description= truncate(feature.description) { link_to "more", "#", class: 'expand_feature' }
+        td.description.hide
+          = feature.description
+          br
+          = link_to "show less..", "#", class: 'expand_feature' 
+        
+
+        td.images.hide
           = simple_form_for([feature, feature.attachments.new],
             :html => { :class => 'form-inline' }) do |f|
               = f.file_field :image
@@ -57,7 +58,7 @@ table.table.table-bordered.table-striped
 
         - if request.user == @current_user
           td
-            = link_to 'Edit', edit_feature_path(feature), class: 'btn btn-small'
+            = link_to 'Edit', edit_feature_path(feature)
             ' 
-            = link_to 'Delete', feature, class: 'btn btn-small',
+            = link_to 'Delete', feature,
               :confirm => 'Are you sure?', :method => :delete
