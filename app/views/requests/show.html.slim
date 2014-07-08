@@ -27,6 +27,8 @@ br
   hr
   = render @request.price_quotes.to_a
 
+- if (@request.user == current_user) 
+  = link_to 'Add features', request_features_path(@request), class: 'btn pull-right'
 - if (@request.user == current_user) and @request.status == "unpublished"
   = link_to 'Select recipient', select_recipient_path(@request), 
     class: 'pull-right btn btn-info'   
