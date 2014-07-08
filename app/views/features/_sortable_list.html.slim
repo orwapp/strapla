@@ -29,12 +29,13 @@ table.table.table-bordered.table-striped
         
 
         td.images.hide
-          = simple_form_for([feature, feature.attachments.new],
-            :html => { :class => 'form-inline' }) do |f|
-              = f.file_field :image
-              = f.hidden_field :return_to_page, value: request_path(request)
-              = f.submit 'Last opp valgt bilde'
-          hr
+          - if request.user == @current_user
+            = simple_form_for([feature, feature.attachments.new],
+              :html => { :class => 'form-inline' }) do |f|
+                = f.file_field :image
+                = f.hidden_field :return_to_page, value: request_path(request)
+                = f.submit 'Last opp valgt bilde'
+            hr
 
           - if feature.attachments.present?
             - feature.attachments.each do |a|
