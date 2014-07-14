@@ -89,6 +89,9 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
         br
         span Published:
         span= !!request.published
+        br
+        span Last modified:
+        span= I18n.l(request.updated_at, format: :short) 
 
       br
       br
