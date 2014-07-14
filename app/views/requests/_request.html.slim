@@ -85,20 +85,16 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
           br
           = link_to 'Select an other recipient', select_recipient_path(request)
 
-        .muted
+        .muted.pull-right
           span Client:
           span= request.user.name rescue nil
           br
           span.muted= "<#{request.user.email}>"
           em= request.user.title if request.user.title
           br
-          br
-          span Status:
-          span= request.status
-          br
 
           br
-          span Last modified:
+          span Last modified: 
           span= I18n.l(request.updated_at, format: :short) 
 
       br
