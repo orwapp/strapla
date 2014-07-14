@@ -73,25 +73,33 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
 
 
     .span4
-      p.pull-right.muted
-        span Client:
-        span= request.user.name rescue nil
-        br
-        span.muted= "<#{request.user.email}>"
-        em= request.user.title if request.user.title
-        br
-        br
-        span Status:
-        span= request.status
-        br
-        span Delegated to:
-        span= request.delegated_to.name rescue 'Not delegated'
-        br
-        span Published:
-        span= !!request.published
-        br
-        span Last modified:
-        span= I18n.l(request.updated_at, format: :short) 
+      p.pull-right
+        - unless request.delegated?
+          strong 
+            | This task is not delegated to anyone yet. 
+          = link_to 'Select recipient', select_recipient_path(request), class: 'btn'
+
+        - if request.delegated_to 
+          span Delegated to: 
+          span= request.delegated_to
+          br
+          = link_to 'Select an other recipient', select_recipient_path(request)
+
+        .muted
+          span Client:
+          span= request.user.name rescue nil
+          br
+          span.muted= "<#{request.user.email}>"
+          em= request.user.title if request.user.title
+          br
+          br
+          span Status:
+          span= request.status
+          br
+
+          br
+          span Last modified:
+          span= I18n.l(request.updated_at, format: :short) 
 
       br
       br
