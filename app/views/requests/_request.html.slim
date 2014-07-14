@@ -40,7 +40,7 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
                 br
                 br
 
-            -  if request.system_description
+            -  if request.system_description.present?
               .media
                 strong System description
                 br
