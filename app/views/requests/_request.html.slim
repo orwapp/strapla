@@ -79,11 +79,12 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
             | This task is not delegated to anyone yet. 
           = link_to 'Select recipient', select_recipient_path(request), class: 'btn'
 
-        - if request.delegated_to 
-          span Delegated to: 
-          span= request.delegated_to
-          br
-          = link_to 'Select an other recipient', select_recipient_path(request)
+        - if request.user == current_user
+          - if request.delegated_to 
+            span Delegated to: 
+            span= request.delegated_to
+            br
+            = link_to 'Select an other recipient', select_recipient_path(request)
 
         .muted.pull-right
           span Client:
