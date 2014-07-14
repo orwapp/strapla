@@ -47,6 +47,10 @@ class Request < ActiveRecord::Base
       AND published = true;")
   end
 
+  def delegated?
+    delegated_to || request_group
+  end
+
   def self.with_price_quotes(user)
     # Select all requests that have a price quote
     Request.find_by_sql("SELECT * FROM price_quotes 
@@ -64,8 +68,10 @@ class Request < ActiveRecord::Base
   end
 
   def delegated_to
-    return unless self.delegated_to_user_id
-    User.find(self.delegated_to_user_id)
+    #return unless self.delegated_to_user_id
+    #User.find(self.delegated_to_user_id)
+    (request_group ? "The #{request_group.title} group" : '') || 
+    (delegated_to ? delegated_to.name : '')
   end
 
   def delegated_to=(user)
@@ -73,7 +79,9 @@ class Request < ActiveRecord::Base
   end
 
   def update_priority_on_features(order)
-    order.each_with_index { |id, order| Feature.where(id: id).first.update_attribute(:priority, order+1) }
+    order.each_with_index { |id, order| 
+      Feature.where(id: id).first.update_attribute(:priority, order+1) 
+    }
   end
 
 end
