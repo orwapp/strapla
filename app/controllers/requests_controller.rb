@@ -100,7 +100,7 @@ class RequestsController < ApplicationController
     @request.save
 
     flash[:notice] = "Thank you! #{@expert.name} will contact you shortly." 
-    redirect_to root_url
+    redirect_to @request
   end
 
   def delegate_to_group
@@ -108,7 +108,7 @@ class RequestsController < ApplicationController
     flash[:notice] = "The request has been forwarded to our expert group"
     @request.update_attribute(:published, true)
     @request.update_attribute(:status, 'delegated_to_group')
-    redirect_to root_url
+    redirect_to @request
   end
 
   def update
