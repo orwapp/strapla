@@ -43,7 +43,7 @@ describe Request do
 
       it "requests_with_accepted_quotes" do
         @dont_find_me = Fabricate(:request, user: @user, status: :rejected)
-        expect(@user.requests_with_accepted_quotes).to include(@request)
+        expect(@user.requests_with_accepted_quotes).to eq [@request]
       end
 
       context "the other selectors should not find anything here" do
