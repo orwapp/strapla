@@ -1,10 +1,12 @@
 class Comment < ActiveRecord::Base
-  belongs_to :price_quote
-  belongs_to :user
-  validates_presence_of :price_quote
-  validates_presence_of :user
+  belongs_to :commentable, polymorphic: true
 
-  after_save :send_email
+  #belongs_to :price_quote
+  #belongs_to :user
+  #validates_presence_of :price_quote
+  #validates_presence_of :user
+
+  #after_save :send_email
 
   private
   def send_email

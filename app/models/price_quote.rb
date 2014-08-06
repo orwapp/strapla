@@ -2,7 +2,8 @@ class PriceQuote < ActiveRecord::Base
   belongs_to :user
   belongs_to :request
   validates_presence_of :user, :hours_estimated, :request_id, :price
-  has_many :comments, dependent: :destroy
+  #has_many :comments, dependent: :destroy
+  has_many :comments, as: :commentable
 
   after_save :update_status!
   after_create :save_features
