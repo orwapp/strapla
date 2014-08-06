@@ -1,5 +1,5 @@
-- first_user  = @price_quote.comments.pluck(:user_id).uniq.first
-- second_user = @price_quote.comments.pluck(:user_id).uniq.second
+- first_user  = @price_quote.comments.pluck(:user_id).uniq.first rescue nil
+- second_user = @price_quote.comments.pluck(:user_id).uniq.second rescue nil
 
 li.comment_container(class="#{ comment.user_id == first_user ? 'first' : 'second' }")
   span
