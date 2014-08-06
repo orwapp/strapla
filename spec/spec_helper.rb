@@ -41,6 +41,12 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
+  # Only run tests that is tagget with focus.
+  # describe "something", :focus => true do
+  config.filter_run :focus => true
+  # Run all tests when no tests is tagged.
+  config.run_all_when_everything_filtered = true
+
 end
 
 
