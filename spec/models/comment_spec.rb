@@ -5,14 +5,11 @@ describe Comment, focus: true do
     @request_owner = Fabricate(:user)
     @expert        = Fabricate(:user)
     @price_quote   = Fabricate(:price_quote, user: @expert)
-    @comment = Fabricate(:comment, price_quote: @price_quote)
+    @comment       = Fabricate(:comment)
+    @comment.update_attribute(:commentable, @price_quote)
   end
   specify { @comment.should be_valid }
 
-  it "belongs to a Price Quote" do
-    @comment.price_quote.should      be_kind_of PriceQuote
-    @comment.price_quote.user.should be_kind_of User
-  end
 
   pending "When creating new comments" do
     let(:request_owner) { Fabricate(:user, email: 'request@owner.com') }

@@ -1,5 +1,4 @@
 Fabricator(:comment) do
-  text        "MyText"
-  price_quote { Fabricate(:price_quote) }
-  user        { Fabricate(:user) }
+  body        "I love comments"
+  user_id      { Fabricate(:user).id }
 end
