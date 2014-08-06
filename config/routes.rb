@@ -57,7 +57,7 @@ CodeRunner::Application.routes.draw do
   resources :features do
     resources :attachments, controller: 'features/attachments'
 		resources :estimated_hours
-    resources :comments
+    resources :comments,  :controller => 'features/comments'
   end
 
   post '/update_priority_order/:id' => 
@@ -72,7 +72,7 @@ CodeRunner::Application.routes.draw do
     get :upload_images
     resources :build, controller: 'requests/build'
     resources :price_quotes do
-      resources :comments
+      resources :comments,  :controller => 'price_quotes/comments'
     end
     get  '/quote'  => 'requests#quote',  as: :quote,  format: false
     get  'features/create_many/' => 'features#create_many', as: :create_many 
