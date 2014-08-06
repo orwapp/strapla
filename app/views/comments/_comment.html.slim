@@ -1,6 +1,8 @@
-- i ||= 1
-li.comment_container
-  span(class="#{i}")
+- first_user  = @price_quote.comments.pluck(:user_id).uniq.first
+- second_user = @price_quote.comments.pluck(:user_id).uniq.second
+
+li.comment_container(class="#{ comment.user_id == first_user ? 'first' : 'second' }")
+  span
     = "#{I18n.l comment.created_at} #{comment.user.name} wrote: " rescue nil
-  blockquote= " #{comment.text}"
+  blockquote= " #{comment.body}"
 
