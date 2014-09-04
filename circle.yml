@@ -1,0 +1,10 @@
+deployment:
+  production:
+    branch: master
+    commands:
+      - git push git@heroku.com:stabstr-beta.git $CIRCLE_SHA1:master
+      - heroku run rake db:migrate --app stabstr-beta 
+
+dependencies:
+  pre:
+    - mkdir tmp
