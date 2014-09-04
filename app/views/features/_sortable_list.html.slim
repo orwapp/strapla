@@ -43,8 +43,9 @@ table.table.table-bordered.table-striped
               br
               = link_to( image_tag(a.image.thumb.url, class: :thumbnail), 
                 a.image.url, target: :blank) 
-              = link_to('Remove', feature_attachment_path(feature, a), :confirm => 'Are you sure?', 
-                :method => :delete)
+              - if request.user == @current_user
+                = link_to('Remove', feature_attachment_path(feature, a), :confirm => 'Are you sure?', 
+                  :method => :delete)
 
 
         - if show_hours_estimated? && (request.user != @current_user)
