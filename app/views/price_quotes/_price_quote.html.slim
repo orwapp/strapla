@@ -1,10 +1,6 @@
 h2.label.label-success.big_font= price_quote.status.titleize if price_quote.status
 
 .container.border.small_padding
-  /- unless body_id == 'price_quotes_show'
-    - if price_quote.request.present?
-      span = "Request: #{link_to price_quote.request.title, price_quote.request}".html_safe
-  /hr
 
   - if price_quote.user == @current_user
     = render :partial => 'form', locals: { price_quote: price_quote }
@@ -25,7 +21,7 @@ h2.label.label-success.big_font= price_quote.status.titleize if price_quote.stat
     br
 
     strong= "Description: "
-    span= price_quote.description
+    span= simple_format price_quote.description
     br
 
   - if (@current_user == price_quote.request.user) and price_quote.request.features.present?
@@ -45,7 +41,7 @@ h2.label.label-success.big_font= price_quote.status.titleize if price_quote.stat
               td 
                 span= feature.title
               td 
-                span= feature.description
+                span= simple_format feature.description
               td 
                 span
                   = feature.estimated_hours.where( user_id: price_quote.user).last.hours rescue nil
