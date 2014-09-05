@@ -19,7 +19,7 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
           h4.lead.lead-pull-up= request.title
           strong Description
           br
-          = request.description
+          = simple_format(request.description)
 
 
           p
@@ -36,7 +36,7 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
               .media
                 strong Background information   
                 br
-                = request.background_information.html_safe
+                = simple_format request.background_information.html_safe
                 br
                 br
 
@@ -44,7 +44,7 @@ h2.label.label-info.big_font= request.request_group.title rescue nil
               .media
                 strong System description
                 br
-                = request.system_description.html_safe
+                = simple_format request.system_description.html_safe
                 br
                 br
 
