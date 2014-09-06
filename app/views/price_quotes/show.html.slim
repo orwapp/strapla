@@ -2,10 +2,7 @@
 br
 br
 br
-
-
 = render :partial => 'price_quote', locals: {price_quote: @price_quote}
-
 
 - if user_signed_in?
   .row
@@ -13,13 +10,5 @@ br
       - if (@price_quote.request.contractor == current_user)
         strong.text-success You won this assignment! Do your best and make the client happy.
 
-/.row
-  .span11
-    - if (@price_quote.request.user == current_user) && (@price_quote.request.status != :accepted)
-        = link_to 'Edit', edit_request_path(request), class: 'pull-right btn '   
-        = nbsp
-        = nbsp
-        = nbsp
-        = link_to 'Next', select_recipient_path(@price_quote.request), class: 'pull-right btn  btn-info'   if (@price_quote.request.user == current_user)
 
 br
