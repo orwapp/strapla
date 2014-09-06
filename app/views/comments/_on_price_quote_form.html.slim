@@ -1,4 +1,5 @@
-= simple_form_for([price_quote.request, price_quote, comment], :defaults => { :input_html => { :class => 'input-xxlarge', rows: 10 } }) do |f|
+= simple_form_for([price_quote.request, price_quote, comment], 
+:defaults => { :input_html => { :class => 'input-xxlarge', rows: 10 } }) do |f|
   = f.error_notification
   .form-inputs
     = f.input :body, label: 'Comment'

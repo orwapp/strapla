@@ -45,7 +45,7 @@ h2.label.label-success.big_font= price_quote.status.titleize if price_quote.stat
               td 
                 span= feature.title
               td 
-                span= feature.description
+                span= simple_format feature.description
               td 
                 span
                   = feature.estimated_hours.where( user_id: price_quote.user).last.hours rescue nil
