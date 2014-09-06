@@ -4,5 +4,7 @@
 li.comment_container(class="#{ comment.user_id == first_user ? 'first' : 'second' }")
   span
     = "#{I18n.l comment.created_at} #{comment.user.name} wrote: " rescue nil
-  blockquote= " #{ simple_format comment.body }"
+
+  blockquote
+    = simple_format comment.body
 
