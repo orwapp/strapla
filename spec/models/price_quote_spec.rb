@@ -15,7 +15,7 @@ describe PriceQuote do
   specify { @price_quote.should be_valid }
   specify { @accepted_price_quote.should be_valid }
 
-  describe "Comments", focus: true do
+  describe "Comments" do
     it "can have comments" do
       comment = Comment.create(body: 'hi')
       comment.update_attribute(:commentable, @price_quote)

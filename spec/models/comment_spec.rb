@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Comment, focus: true do
+describe Comment do
   before do
     @request_owner = Fabricate(:user)
     @expert        = Fabricate(:user)
