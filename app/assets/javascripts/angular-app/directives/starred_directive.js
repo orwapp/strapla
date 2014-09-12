@@ -10,6 +10,7 @@ angular.module('app')
     controller: function($scope, $attrs) {
       return $scope.star_clicked = function(e) {
         var id = $(e.target).closest('tr').data('customer-id');
+        alert('clicked')
         //console.log("info: " + $attrs.objectClass);
         //console.log("info: " + $attrs.objectId);
       };
