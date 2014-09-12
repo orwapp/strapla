@@ -41,6 +41,8 @@ group :production do
   gem 'exception_notification'
 end
 
+gem 'sprockets', '2.11.0'
+
 group :development do
   gem 'growl'
   gem 'foreman'
