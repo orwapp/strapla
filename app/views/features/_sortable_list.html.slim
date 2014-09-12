@@ -3,7 +3,7 @@ javascript:
   $( ".sortable" ).sortable( "refresh" );
    
    
-table.table.table-bordered.table-striped
+table.table.table-bordered.table-striped(ng-controller="FeaturesCtrl")
   thead
     tr
       th Title
@@ -13,6 +13,7 @@ table.table.table-bordered.table-striped
         th Hours estimated
       - if request.user == @current_user
         th Actions
+      th Status
       
   tbody.sortable(data-post-to-url="#{update_priority_order_path(request.id)}"  
     data-request-id="#{request.id}")
@@ -65,3 +66,5 @@ table.table.table-bordered.table-striped
             ' 
             = link_to 'Delete', feature,
               :confirm => 'Are you sure?', :method => :delete
+        td
+          status(feature-id="#{feature.id}" owner="#{request.user == @current_user}")

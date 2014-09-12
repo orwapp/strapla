@@ -1,5 +1,5 @@
 angular
-  .module('app', ['ngRoute', 'restangular'])
+  .module('app', ['ngRoute', 'restangular', 'rails'])
   .config(['$routeProvider', 'RestangularProvider', 
   function($routeProvider, RestangularProvider) {
     // CRUD API not implemented yet. Will use Grape when needed.

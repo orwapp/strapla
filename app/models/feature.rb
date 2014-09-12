@@ -9,5 +9,6 @@ class Feature < ActiveRecord::Base
   has_many :attachments
 
   validates_presence_of :title
+  validates :status, presence: true, inclusion: %w(not_started started completed accepted)
 
 end

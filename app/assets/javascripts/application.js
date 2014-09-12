@@ -19,4 +19,5 @@
 //= require angular-route
 //= require lodash
 //= require restangular
+//= require angularjs-rails-resource
 //= require_tree .
