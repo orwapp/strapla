@@ -3,9 +3,9 @@ $ ->
   # Initialize the datepicker
   $('[data-behaviour=datepicker]').datepicker()
 
-  increment_status_bar = -> 
-    completed_bar = $('.bar.completed') 
-    remaining_bar = $('.bar.remaining') 
+  increment_status_bar = ->
+    completed_bar = $('.bar.completed')
+    remaining_bar = $('.bar.remaining')
     current_completed_percent = completed_bar.data('percent')
     current_remaining_percent = remaining_bar.data('percent')
     new_completed_percent = eval(current_completed_percent + 12.5)
@@ -28,9 +28,9 @@ $ ->
     $('#info-box strong').html(title)
     $('#info-box').show()
     if hint_text and title
-      $('#info-box').show() 
-    else 
-      $('#info-box').hide() 
+      $('#info-box').show()
+    else
+      $('#info-box').hide()
 
     # The example box
     example_text = $(this).data('example')
