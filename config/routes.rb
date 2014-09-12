@@ -4,6 +4,8 @@ CodeRunner::Application.routes.draw do
 
 
 
+  get '/templates/:path' => 'templates#template',
+    :constraints => { :path => /.+/  }  
 
 	devise_for :users, :controllers => {:registrations => "users/registrations"}
 

@@ -9,6 +9,8 @@ gem 'fabrication'
 gem 'rails_12factor'   # Needed for Rails4 on Heroku
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
+gem 'bower-rails'
+
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

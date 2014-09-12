@@ -15,4 +15,7 @@
 //= require turbolinks
 //= require bootstrap
 //= require bootstrap-datepicker
+//= require angular
+//= require angular-route
+//= require restangular
 //= require_tree .
