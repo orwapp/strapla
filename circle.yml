@@ -2,8 +2,8 @@ deployment:
   production:
     branch: master
     commands:
-      - git push git@heroku.com:stabstr-beta.git $CIRCLE_SHA1:master
-      - heroku run rake db:migrate --app stabstr-beta 
+      - git push git@heroku.com:strapla-beta.git $CIRCLE_SHA1:master
+      - heroku run rake db:migrate --app strapla-beta 
 
 dependencies:
   pre:
