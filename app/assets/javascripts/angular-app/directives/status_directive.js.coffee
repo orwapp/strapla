@@ -1,8 +1,6 @@
 angular.module("app").directive "status", ->
   restrict: "E"
   scope: true
-    #featureId: "="
-    #features: "&features"
 
   templateUrl: "/templates/status.html.slim"
 
@@ -41,3 +39,6 @@ angular.module("app").directive "status", ->
       feature.status = newStatus.code
       feature.update().then ->
         console.log 'updated'
+      , (error) ->
+        # this is a placeholder for proper error handling, I guess there will be some global error handling when angular app grows
+        alert("Error in communication with backend")
