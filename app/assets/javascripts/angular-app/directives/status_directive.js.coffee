@@ -4,7 +4,7 @@ angular.module("app").directive "status", ->
 
   templateUrl: "/templates/status.html.slim"
 
-  controller: ($scope, $attrs, Feature, $filter) ->
+  controller: ['$scope', '$attrs', 'Feature', '$filter', ($scope, $attrs, Feature, $filter) ->
     isOwner = ($attrs.owner == 'true')
     featureId = parseInt($attrs.featureId, 10)
 
@@ -42,3 +42,4 @@ angular.module("app").directive "status", ->
         # this is a placeholder for proper error handling,
         # I guess there will be some global error handling when angular app grows
         alert("Error in communication with backend")
+  ]
