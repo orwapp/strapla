@@ -54,6 +54,7 @@ class FeaturesController < ApplicationController
     respond_to do |format|
     @form_id = "#edit_feature_#{params[:id]}"
     @return_to_page = params[:feature][:return_to_page].present? ? params[:feature][:return_to_page] :  "/requests/#{params[:request_id]}/build/features"
+    @feature.current_user = current_user
       if @feature.update(feature_params)
         format.html { redirect_to @return_to_page,
           notice: 'Feature was successfully updated.' }
