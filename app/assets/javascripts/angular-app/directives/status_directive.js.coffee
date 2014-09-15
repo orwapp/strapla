@@ -8,7 +8,7 @@ angular.module("app").directive "status", ->
 
   controller: ($scope, $attrs, Feature, $filter) ->
 
-    isOwner = $attrs.owner
+    isOwner = ($attrs.owner == 'true')
     featureId = parseInt($attrs.featureId, 10)
 
     $scope.feature = new Feature(id: featureId)
@@ -33,7 +33,7 @@ angular.module("app").directive "status", ->
       ,
         code: 'accepted',
         label: 'Accepted',
-        enabled: !isOwner
+        enabled: isOwner
 
     ]
 
