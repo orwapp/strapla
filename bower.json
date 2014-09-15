@@ -6,7 +6,8 @@
       "angular-route":    "latest",
       "angular-resource": "latest",
       "restangular":      "latest",
-      "lodash":           "latest"
+      "lodash":           "latest",
+      "angularjs-rails-resource": "latest"
     }
   },
   "vendor": {

@@ -1,0 +1,8 @@
+.btn-group
+  button.btn.btn-mini(
+    ng-repeat="s in statuses"
+    ng-bind="s.label"
+    ng-class="{'btn-primary' : s.code==feature.status}"
+    ng-click="changeStatus(feature, s)"
+    ng-disabled="!s.enabled"
+  )
