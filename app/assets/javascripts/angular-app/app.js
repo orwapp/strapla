@@ -12,3 +12,7 @@ angular
     //   redirectTo: '/'
     // });
   }]);
+
+$(document).on('ready page:load', function() {
+    angular.bootstrap(document.body, ['app']);
+});
