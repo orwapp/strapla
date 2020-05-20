@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '5.0.0'
+gem 'rails', '5.2.4.3'
 ruby '2.1.2'
 
 gem 'slim'
@@ -8,7 +8,7 @@ gem 'slim-rails', '>= 3.1.0'
 gem 'fabrication'
 gem 'rails_12factor'   # Needed for Rails4 on Heroku
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.1'
+gem 'coffee-rails', '~> 4.2.2'
 gem 'bower-rails'
 
 
@@ -18,12 +18,12 @@ gem 'jquery-rails', '>= 4.0.1'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks', '>= 2.0.0'
 
-gem 'simple_form' , '>= 3.2.1' #, :github => 'plataformatec/simple_form'
-gem 'jbuilder', '~> 1.2'
+gem 'simple_form' , '>= 4.0.0' #, :github => 'plataformatec/simple_form'
+gem 'jbuilder', '~> 1.5', '>= 1.5.3'
 gem 'sass-rails', '~> 5.0.5'
 gem 'bootstrap-sass', '~> 2.3.2.0'
-gem 'font-awesome-rails', '>= 4.5.0.1'
-gem 'devise', '>= 4.0.0'
+gem 'font-awesome-rails', '>= 4.7.0.4'
+gem 'devise', '>= 4.4.2'
 gem 'compass'
 gem 'compass-rails' #, :github => 'roderickvd/compass-rails'
 gem 'bootstrap-generators', '~> 2.3', '>= 2.3.2'
@@ -31,7 +31,7 @@ gem 'haml'
 gem 'haml-rails', '>= 0.5.3'
 gem 'bootstrap-datepicker-rails', '>= 1.1.1.10'
 gem 'wicked', '>= 1.0.2'
-gem 'activerecord-postgres-hstore'
+gem 'activerecord-postgres-hstore', '>= 0.7.7'
 gem 'pg'
 gem 'fog', '~> 1.3.1'
 gem 'color_routes'
@@ -51,7 +51,7 @@ group :development do
   gem 'better_errors', '>= 2.0.0'
   gem 'binding_of_caller'
   gem 'meta_request', '>= 0.2.8'
-	gem 'metric_fu'
+	gem 'metric_fu', '>= 4.6.0'
 end
 
 group :development, :test do
@@ -68,13 +68,13 @@ group :test do
   gem 'capybara', '>= 2.2.0'
 end
 
-gem 'mail_form', '>= 1.6.0'
+gem 'mail_form', '>= 1.7.1'
 gem 'redis'
 gem 'split', '>= 0.6.6', :require => 'split/dashboard'
 gem 'unicorn', '>= 4.7.0'
 gem 'resque', '>= 1.25.1'
 gem 'resque_mailer', '>= 2.2.6'
-gem 'carrierwave'
+gem 'carrierwave', '>= 0.9.0'
 gem 'mini_magick'
 gem 'newrelic_rpm'
 
