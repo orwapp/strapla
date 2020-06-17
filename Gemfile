@@ -13,7 +13,7 @@ gem 'bower-rails'
 
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails', '>= 4.0.1'
+gem 'jquery-rails', '>= 4.4.0'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks', '>= 2.0.0'
