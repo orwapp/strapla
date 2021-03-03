@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '5.0.0'
+gem 'rails', '6.0.3.5'
 ruby '2.1.2'
 
 gem 'slim'
@@ -8,7 +8,7 @@ gem 'slim-rails', '>= 3.1.0'
 gem 'fabrication'
 gem 'rails_12factor'   # Needed for Rails4 on Heroku
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.1'
+gem 'coffee-rails', '~> 4.2.2'
 gem 'bower-rails'
 
 
@@ -18,12 +18,12 @@ gem 'jquery-rails', '>= 4.0.1'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks', '>= 2.0.0'
 
-gem 'simple_form' , '>= 3.2.1' #, :github => 'plataformatec/simple_form'
+gem 'simple_form' , '>= 4.0.0' #, :github => 'plataformatec/simple_form'
 gem 'jbuilder', '~> 1.2'
-gem 'sass-rails', '~> 5.0.5'
+gem 'sass-rails', '~> 5.0.8'
 gem 'bootstrap-sass', '~> 2.3.2.0'
-gem 'font-awesome-rails', '>= 4.5.0.1'
-gem 'devise', '>= 4.0.0'
+gem 'font-awesome-rails', '>= 4.7.0.5'
+gem 'devise', '>= 4.7.0'
 gem 'compass'
 gem 'compass-rails' #, :github => 'roderickvd/compass-rails'
 gem 'bootstrap-generators', '~> 2.3', '>= 2.3.2'
@@ -68,7 +68,7 @@ group :test do
   gem 'capybara', '>= 2.2.0'
 end
 
-gem 'mail_form', '>= 1.6.0'
+gem 'mail_form', '>= 1.8.0'
 gem 'redis'
 gem 'split', '>= 0.6.6', :require => 'split/dashboard'
 gem 'unicorn', '>= 4.7.0'
