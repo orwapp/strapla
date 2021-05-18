@@ -33,7 +33,7 @@ gem 'bootstrap-datepicker-rails', '>= 1.1.1.10'
 gem 'wicked', '>= 1.0.2'
 gem 'activerecord-postgres-hstore'
 gem 'pg'
-gem 'fog', '~> 1.3.1'
+gem 'fog', '~> 1.14.0'
 gem 'color_routes'
 
 
