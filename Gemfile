@@ -60,8 +60,8 @@ group :development, :test do
 end
 
 group :test do
-  gem 'email_spec'
-  gem 'launchy'
+  gem 'email_spec', '>= 1.5.0'
+  gem 'launchy', '>= 2.4.2'
   gem 'database_cleaner'
   gem 'guard-rspec'
   gem 'selenium-webdriver'
