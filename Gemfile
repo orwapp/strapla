@@ -33,7 +33,7 @@ gem 'bootstrap-datepicker-rails', '>= 1.1.1.10'
 gem 'wicked', '>= 1.0.2'
 gem 'activerecord-postgres-hstore'
 gem 'pg'
-gem 'fog', '~> 1.3.1'
+gem 'fog', '~> 1.14.0'
 gem 'color_routes'
 
 
@@ -48,7 +48,7 @@ group :development do
   gem 'foreman'
   gem 'zeus'
   gem 'quiet_assets', '>= 1.0.2'
-  gem 'better_errors', '>= 2.0.0'
+  gem 'better_errors', '>= 2.8.0'
   gem 'binding_of_caller'
   gem 'meta_request', '>= 0.2.8'
 	gem 'metric_fu'
