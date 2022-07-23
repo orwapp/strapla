@@ -8,7 +8,7 @@ gem 'slim-rails', '>= 3.1.0'
 gem 'fabrication'
 gem 'rails_12factor'   # Needed for Rails4 on Heroku
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.1'
+gem 'coffee-rails', '~> 4.0.1'
 gem 'bower-rails'
 
 
@@ -19,8 +19,8 @@ gem 'jquery-rails', '>= 4.0.1'
 gem 'turbolinks', '>= 2.0.0'
 
 gem 'simple_form' , '>= 3.2.1' #, :github => 'plataformatec/simple_form'
-gem 'jbuilder', '~> 1.2'
-gem 'sass-rails', '~> 5.0.5'
+gem 'jbuilder', '~> 1.5', '>= 1.5.3'
+gem 'sass-rails', '~> 4.0.1'
 gem 'bootstrap-sass', '~> 2.3.2.0'
 gem 'font-awesome-rails', '>= 4.5.0.1'
 gem 'devise', '>= 4.0.0'
