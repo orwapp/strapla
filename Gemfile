@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '5.0.0'
+gem 'rails', '5.2.8.1'
 ruby '2.1.2'
 
 gem 'slim'
