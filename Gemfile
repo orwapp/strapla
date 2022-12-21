@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '5.0.0'
+gem 'rails', '4.2.0'
 ruby '2.1.2'
 
 gem 'slim'
@@ -20,7 +20,7 @@ gem 'turbolinks', '>= 2.0.0'
 
 gem 'simple_form' , '>= 3.2.1' #, :github => 'plataformatec/simple_form'
 gem 'jbuilder', '~> 1.2'
-gem 'sass-rails', '~> 5.0.5'
+gem 'sass-rails', '~> 5.0.0'
 gem 'bootstrap-sass', '~> 2.3.2.0'
 gem 'font-awesome-rails', '>= 4.5.0.1'
 gem 'devise', '>= 4.0.0'
@@ -41,7 +41,7 @@ group :production do
   gem 'exception_notification', '>= 4.0.1'
 end
 
-gem 'sprockets', '3.3.5'
+gem 'sprockets', '4.2.0'
 
 group :development do
   gem 'growl'
