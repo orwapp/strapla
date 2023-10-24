@@ -50,7 +50,7 @@ group :development do
   gem 'quiet_assets', '>= 1.0.2'
   gem 'better_errors', '>= 2.0.0'
   gem 'binding_of_caller'
-  gem 'meta_request', '>= 0.2.8'
+  gem 'meta_request', '>= 0.2.9'
 	gem 'metric_fu'
 end
 
