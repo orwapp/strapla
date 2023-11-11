@@ -18,7 +18,7 @@ gem 'jquery-rails', '>= 4.0.1'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks', '>= 2.0.0'
 
-gem 'simple_form' , '>= 3.2.1' #, :github => 'plataformatec/simple_form'
+gem 'simple_form' , '>= 4.0.0' #, :github => 'plataformatec/simple_form'
 gem 'jbuilder', '~> 1.2'
 gem 'sass-rails', '~> 5.0.5'
 gem 'bootstrap-sass', '~> 2.3.2.0'
@@ -31,7 +31,7 @@ gem 'haml'
 gem 'haml-rails', '>= 0.5.3'
 gem 'bootstrap-datepicker-rails', '>= 1.1.1.10'
 gem 'wicked', '>= 1.0.2'
-gem 'activerecord-postgres-hstore'
+gem 'activerecord-postgres-hstore', '>= 0.7.8'
 gem 'pg'
 gem 'fog', '~> 1.3.1'
 gem 'color_routes'
@@ -55,7 +55,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '>= 2.14.0'
+  gem 'rspec-rails', '>= 2.14.1'
   gem 'faker'
 end
 
@@ -68,13 +68,13 @@ group :test do
   gem 'capybara', '>= 2.2.0'
 end
 
-gem 'mail_form', '>= 1.6.0'
+gem 'mail_form', '>= 1.8.0'
 gem 'redis'
 gem 'split', '>= 0.6.6', :require => 'split/dashboard'
 gem 'unicorn', '>= 4.7.0'
 gem 'resque', '>= 1.25.1'
-gem 'resque_mailer', '>= 2.2.6'
-gem 'carrierwave'
+gem 'resque_mailer', '>= 2.2.7'
+gem 'carrierwave', '>= 0.10.0'
 gem 'mini_magick'
 gem 'newrelic_rpm'
 
