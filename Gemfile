@@ -33,7 +33,7 @@ gem 'bootstrap-datepicker-rails', '>= 1.1.1.10'
 gem 'wicked', '>= 1.0.2'
 gem 'activerecord-postgres-hstore'
 gem 'pg'
-gem 'fog', '~> 1.3.1'
+gem 'fog', '~> 1.14.0'
 gem 'color_routes'
 
 
@@ -65,7 +65,7 @@ group :test do
   gem 'database_cleaner'
   gem 'guard-rspec'
   gem 'selenium-webdriver'
-  gem 'capybara', '>= 2.2.0'
+  gem 'capybara', '>= 2.2.1'
 end
 
 gem 'mail_form', '>= 1.6.0'
