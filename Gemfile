@@ -70,9 +70,9 @@ end
 
 gem 'mail_form', '>= 1.6.0'
 gem 'redis'
-gem 'split', '>= 0.6.6', :require => 'split/dashboard'
+gem 'split', '>= 0.7.0', :require => 'split/dashboard'
 gem 'unicorn', '>= 4.7.0'
-gem 'resque', '>= 1.25.1'
+gem 'resque', '>= 1.25.2'
 gem 'resque_mailer', '>= 2.2.6'
 gem 'carrierwave'
 gem 'mini_magick'
