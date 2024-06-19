@@ -65,7 +65,7 @@ group :test do
   gem 'database_cleaner'
   gem 'guard-rspec'
   gem 'selenium-webdriver'
-  gem 'capybara', '>= 2.2.0'
+  gem 'capybara', '>= 2.2.1'
 end
 
 gem 'mail_form', '>= 1.6.0'
