@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '5.0.0'
+gem 'rails', '7.0.0'
 ruby '2.1.2'
 
 gem 'slim'
@@ -16,11 +16,11 @@ gem 'bower-rails'
 gem 'jquery-rails', '>= 4.0.1'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks', '>= 2.0.0'
+gem 'turbolinks', '>= 5.0.0'
 
 gem 'simple_form' , '>= 3.2.1' #, :github => 'plataformatec/simple_form'
 gem 'jbuilder', '~> 1.2'
-gem 'sass-rails', '~> 5.0.5'
+gem 'sass-rails', '~> 6.0.0'
 gem 'bootstrap-sass', '~> 2.3.2.0'
 gem 'font-awesome-rails', '>= 4.5.0.1'
 gem 'devise', '>= 4.0.0'
@@ -30,7 +30,7 @@ gem 'bootstrap-generators', '~> 2.3', '>= 2.3.2'
 gem 'haml'
 gem 'haml-rails', '>= 0.5.3'
 gem 'bootstrap-datepicker-rails', '>= 1.1.1.10'
-gem 'wicked', '>= 1.0.2'
+gem 'wicked', '>= 1.2.1'
 gem 'activerecord-postgres-hstore'
 gem 'pg'
 gem 'fog', '~> 1.3.1'
